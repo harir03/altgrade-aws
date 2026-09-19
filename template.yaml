@@ -1,0 +1,95 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AltGrade Alternate Credit Scoring - D1-D6 Serverless Pipeline
+  AWS SAM CLI Open-Source "Build It" Local Emulation Track (100% Local, Zero Cost)
+
+Globals:
+  Function:
+    Timeout: 30
+    MemorySize: 256
+    Runtime: python3.11
+    Environment:
+      Variables:
+        PYTHONPATH: /var/task:/var/task/app
+        DEMO_MODE: "true"
+
+Resources:
+  # ============================================================================
+  # 1. API Gateway (Single Entrypoint replacing in-process gather)
+  # ============================================================================
+  AltGradePipelineApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: dev
+      Cors:
+        AllowMethods: "'POST,OPTIONS'"
+        AllowHeaders: "'Content-Type,Authorization'"
+        AllowOrigin: "'*'"
+
+  # ============================================================================
+  # 2. Six Independent Worker Lambda Functions (D1 - D6)
+  # ============================================================================
+  D1BankUpiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.d1_bank_upi.handler
+      Description: "Worker D1: Bank Inflows & UPI Volatility"
+
+  D2TelecomFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.d2_telecom.handler
+      Description: "Worker D2: Telecom Utility & Recharge Cadence"
+
+  D3EcommerceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.d3_ecommerce.handler
+      Description: "Worker D3: E-Commerce Basket & Return Ratios"
+
+  D4LocationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.d4_location.handler
+      Description: "Worker D4: Geolocation Stability & Residence Tenure"
+
+  D5QuestionnaireFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.d5_questionnaire.handler
+      Description: "Worker D5: Psychometric Financial Discipline"
+
+  D6MerchantGstFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.d6_merchant_gst.handler
+      Description: "Worker D6: GST Merchant Filings & Footprint"
+
+  # ============================================================================
+  # 3. Pipeline Coordinator Function (API Gateway Trigger for sam local)
+  # ============================================================================
+  PipelineOrchestratorFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: backend/
+      Handler: lambdas.pipeline_orchestrator.handler
+      Description: "Receives applicant payload from FastAPI, dispatches to consented workers, and returns merged features"
+      Events:
+        PostPipeline:
+          Type: Api
+          Properties:
+            RestApiId: !Ref AltGradePipelineApi
+            Path: /pipeline/gather
+            Method: post
+
+Outputs:
+  PipelineEndpoint:
+    Description: "Local SAM API Gateway endpoint for D1-D6 pipeline"
+    Value: "http://127.0.0.1:3000/pipeline/gather"
