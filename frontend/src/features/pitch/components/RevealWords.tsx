@@ -53,10 +53,12 @@ export const RevealWords = ({
           {
             opacity: dim,
             y: isTouchOrSmall ? 2 : 4,
+            filter: "blur(6px)",
           },
           {
             opacity: 1,
             y: 0,
+            filter: "blur(0px)",
             force3D: true,
             ease: "power1.out",
             stagger: {
@@ -95,7 +97,8 @@ export const RevealWords = ({
                 className="rw-word inline-block transition-[color,text-shadow] duration-200"
                 style={{
                   opacity: dim,
-                  willChange: "opacity, transform",
+                  filter: "blur(6px)",
+                  willChange: "opacity, transform, filter",
                 }}
               >
                 {word}

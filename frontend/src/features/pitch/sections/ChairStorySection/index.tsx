@@ -38,44 +38,6 @@ export const ChairStorySection = () => {
             className="ab-story flex flex-col items-center text-center font-dm_sans text-[clamp(1.0rem,11.93px+1.13vw,1.65rem)] font-normal leading-[1.68] tracking-[-0.012em] text-[#18261A]"
           />
         </div>
-
-        {/* Why We Built AltGrade Problem & Solution Card */}
-        <div className="ab-altgrade-mission mt-[clamp(3.5rem,7vh,5.5rem)] w-full max-w-[78rem] p-7 md:p-12 rounded-3xl bg-white/75 border border-[#2F5527]/15 shadow-[0_12px_44px_rgba(20,40,22,0.06)] backdrop-blur-sm text-left">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 pb-6 border-b border-[#2F5527]/10">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#8FC45A] animate-pulse" />
-              <span className="text-xs uppercase font-semibold font-geist_mono tracking-widest text-[#2F5527]">
-                WHY WE BUILT ALTGRADE · THE ZERO-CIBIL PARADOX
-              </span>
-            </div>
-            <span className="px-3 py-1 rounded-full text-[11px] font-geist_mono font-medium bg-[#8FC45A]/15 text-[#21421b] border border-[#8FC45A]/30">
-              Financial Dignity for Bharat
-            </span>
-          </div>
-
-          <h3 className="mt-6 text-2xl md:text-4xl font-semibold font-headingNow text-[#121A12] leading-[1.2] tracking-tight">
-            Good banking history, but no traditional CIBIL? You shouldn't be credit-invisible.
-          </h3>
-
-          <p className="mt-5 font-dm_sans text-base md:text-xl text-[#18261A]/90 font-normal leading-relaxed text-pretty">
-            Millions of hardworking Indians manage steady cash flow, run thriving local businesses, and pay utility bills on time every single month—yet traditional banks still turn them away with a blunt rejection simply because they don't carry a legacy CIBIL score. Traditional credit bureaus penalize people who don't already have old debt. We built <strong className="font-semibold text-[#1F4517]">AltGrade</strong> to permanently fix this divide. By analyzing high-frequency alternate signals like recurring UPI merchant flows, utility bill regularity, GST filings, and verified behavioral consistency, AltGrade creates an instant, equitable score that turns real-world honesty into approved credit—with full DPDP privacy and zero bureaucratic gatekeeping.
-          </p>
-
-          <div className="mt-8 pt-6 border-t border-[#2F5527]/10 flex flex-wrap items-center gap-2.5 md:gap-4 text-xs md:text-sm font-geist_mono text-[#244626]">
-            <span className="px-3.5 py-1.5 rounded-full bg-[#182a14]/5 border border-[#5C8C3A]/20">
-              ⚡ High-Velocity UPI Scoring
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-[#182a14]/5 border border-[#5C8C3A]/20">
-              🛡️ Zero-Knowledge Edge AI
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-[#182a14]/5 border border-[#5C8C3A]/20">
-              🌱 No Prior Debt Required
-            </span>
-            <span className="px-3.5 py-1.5 rounded-full bg-[#182a14]/5 border border-[#5C8C3A]/20">
-              🇮🇳 Tailored for Bharat's Real Economy
-            </span>
-          </div>
-        </div>
       </div>
 
       <style>{`

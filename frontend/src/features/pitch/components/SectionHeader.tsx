@@ -1,3 +1,5 @@
+import { RevealWords } from "@/features/pitch/components/RevealWords";
+
 export type SectionHeaderProps = {
   variant: string;
   title?: string;
@@ -136,13 +138,13 @@ export const SectionHeader = (props: SectionHeaderProps) => {
 
         <div className="box-border caret-transparent outline-[3px] no-underline max-w-[704px] mt-[18px] mx-auto px-4">
           <div className="box-border caret-transparent gap-x-[30px] flex flex-col outline-[3px] gap-y-[30px] no-underline">
-            <p className="box-border caret-transparent text-stone-100 text-base tracking-[-0.01em] leading-[26px] min-h-[auto] min-w-[auto] outline-[3px] no-underline font-dm_sans md:text-[18px] md:leading-[30px]">
-              {renderWords(
-                props.descriptionWords,
-                "box-border caret-transparent text-base tracking-[-0.01em] leading-[26px] outline-[3px] no-underline md:text-[18px] md:leading-[30px]",
-                "box-border caret-transparent inline-block text-base tracking-[-0.01em] leading-[26px] text-stone-200/90 outline-[3px] no-underline md:text-[18px] md:leading-[30px]",
-              )}
-            </p>
+            {props.descriptionWords ? (
+              <RevealWords
+                paragraphs={[props.descriptionWords.join(" ")]}
+                className="text-stone-100 text-base tracking-[-0.01em] leading-[26px] font-dm_sans md:text-[18px] md:leading-[30px]"
+                dim={0.18}
+              />
+            ) : null}
           </div>
         </div>
       </div>
@@ -167,9 +169,13 @@ export const SectionHeader = (props: SectionHeaderProps) => {
         </h2>
 
         <div className="box-border caret-transparent outline-[3px] no-underline">
-          <p className="box-border caret-transparent text-stone-200/90 text-base leading-[26px] max-w-[704px] outline-[3px] no-underline mt-[18px] mx-auto font-dm_sans font-medium md:text-[18px] md:leading-[30px] px-4">
-            {props.description}
-          </p>
+          {props.description ? (
+            <RevealWords
+              paragraphs={[props.description]}
+              className="text-stone-200/90 text-base leading-[26px] max-w-[704px] outline-[3px] no-underline mt-[18px] mx-auto font-dm_sans font-medium md:text-[18px] md:leading-[30px] px-4"
+              dim={0.18}
+            />
+          ) : null}
         </div>
       </div>
     );
@@ -233,9 +239,13 @@ export const SectionHeader = (props: SectionHeaderProps) => {
             </span>
           </h2>
 
-          <p className="box-border caret-transparent text-[#18261A] text-[15.2px] tracking-[-0.152px] leading-[23.56px] max-w-[704px] outline-[3px] no-underline mt-4 mx-auto font-dm_sans font-medium md:text-[17px] md:leading-[27px] px-4">
-            {props.description}
-          </p>
+          {props.description ? (
+            <RevealWords
+              paragraphs={[props.description]}
+              className="text-[#18261A] text-[15.2px] tracking-[-0.152px] leading-[23.56px] max-w-[704px] outline-[3px] no-underline mt-4 mx-auto font-dm_sans font-medium md:text-[17px] md:leading-[27px] px-4"
+              dim={0.18}
+            />
+          ) : null}
         </div>
       </div>
     );

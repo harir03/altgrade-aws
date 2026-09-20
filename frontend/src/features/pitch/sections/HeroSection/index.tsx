@@ -64,16 +64,16 @@ export const HeroSection = () => {
         },
       });
 
-      // Subtle scale and vertical fade on hero logo content
+      // Parallax on hero logo content — keep fully visible with opacity 1 so it never vanishes
       gsap.to(".hero-center-content", {
-        y: "-15%",
-        scale: 0.95,
-        opacity: 0.2,
+        y: "-10%",
+        scale: 0.98,
+        opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: el,
           start: "top top",
-          end: "bottom 30%",
+          end: "bottom top",
           scrub: 0.35,
         },
       });
