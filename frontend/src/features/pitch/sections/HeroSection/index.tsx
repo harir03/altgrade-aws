@@ -238,14 +238,15 @@ export const HeroSection = () => {
         .hero-warp-wrap {
           position: relative;
           width: 100%;
-          max-width: min(92vw, 1150px);
-          aspect-ratio: 1559 / 702;
-          height: clamp(125px, min(24svh, 25vw), 285px);
-          max-height: 28svh;
+          max-width: min(84vw, 860px);
+          height: auto;
+          max-height: 24svh;
           display: flex;
           justify-content: center;
           align-items: center;
           margin-inline: auto;
+          box-sizing: border-box;
+          overflow: visible;
         }
 
         .hero-warp-wrap canvas,
@@ -368,7 +369,7 @@ export const HeroSection = () => {
         @media (max-width: 600px) {
           .hero-sky-zone {
             padding-top: clamp(3.8rem, 6.2svh, 4.8rem);
-            padding-bottom: clamp(2.2rem, 6.0svh, 3.6rem);
+            padding-bottom: clamp(1.8rem, 5svh, 2.8rem);
             padding-inline: clamp(0.5rem, 2.5vw, 1rem);
           }
           .hero-ground-zone {
@@ -376,9 +377,9 @@ export const HeroSection = () => {
             padding-inline: clamp(0.5rem, 2.5vw, 1rem);
           }
           .hero-warp-wrap {
-            width: min(90vw, 420px) !important;
-            max-width: min(90vw, 420px) !important;
-            height: clamp(105px, min(19svh, 32vw), 160px) !important;
+            width: min(88vw, 360px) !important;
+            max-width: 88vw !important;
+            height: auto !important;
             max-height: 20svh !important;
           }
           .hero-chair-annotation {
@@ -396,15 +397,15 @@ export const HeroSection = () => {
 
         @media (max-width: 480px) {
           .hero-warp-wrap {
-            width: min(92vw, 370px) !important;
-            max-width: min(92vw, 370px) !important;
-            height: clamp(100px, min(18svh, 34vw), 150px) !important;
+            width: min(88vw, 320px) !important;
+            max-width: 88vw !important;
+            height: auto !important;
             max-height: 19svh !important;
           }
           .hero-chair-annotation {
-            left: calc(50% + 12px);
+            left: calc(50% + 10px);
             right: 8px;
-            max-width: calc(50% - 14px);
+            max-width: calc(50% - 12px);
             gap: 0.28rem;
           }
         }

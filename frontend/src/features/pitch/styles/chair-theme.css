@@ -1,21 +1,7 @@
 @import "./recursive.css";
 
-/* ── Chair Website Fonts & Styles ── */
-@font-face {
-  font-family: 'bebasNeue';
-  src: url('https://www.recursiveacm.in/_next/static/immutable/media/BebasNeue_Regular-s.p.12892w_vpp2qa.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'headingNow';
-  src: url('https://www.recursiveacm.in/_next/static/immutable/media/HeadingNowTrial_45Medium.p.1zjwigtmc3cih.ttf') format('truetype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
+/* ── Clean Production Fonts (Outfit, Plus Jakarta Sans, Bebas Neue, DM Sans) ── */
+/* Zetafonts trial font replaced with free production Google Fonts */
 
 @font-face {
   font-family: 'display';
@@ -92,12 +78,12 @@
 
   /* ── Font Family Aliases ── */
   --font-dm-sans: "DM Sans", system-ui, sans-serif;
-  --font-heading: "HeadingNow", var(--font-dm-sans);
-  --font-headingNow: "HeadingNow", var(--font-dm-sans);
-  --font-hiruko: "HirukoBlackAlternate", var(--font-heading), sans-serif;
-  --font-display: "MADEOkineSansPERSONALUSE Bold", var(--font-heading), sans-serif;
+  --font-heading: "Outfit", "Plus Jakarta Sans", var(--font-dm-sans);
+  --font-headingNow: "Outfit", "Plus Jakarta Sans", var(--font-dm-sans);
+  --font-hiruko: "Outfit", var(--font-heading), sans-serif;
+  --font-display: "Outfit", var(--font-heading), sans-serif;
   --font-geist-mono: "Geist Mono", ui-monospace, monospace;
-  --font-bebas: "Bebas Neue", var(--font-headingNow), sans-serif;
+  --font-bebas: "Bebas Neue", "Outfit", sans-serif;
 
   /* ── Spacing ── */
   --padding-x: clamp(1rem, 2.5vw, 2rem);
@@ -109,15 +95,15 @@
 
 /* ── Explicit Font Utility Classes for Tailwind ── */
 .font-bebasNeue {
-  font-family: 'bebasNeue', 'Bebas Neue', var(--font-headingNow), sans-serif !important;
+  font-family: 'Bebas Neue', "Outfit", sans-serif !important;
 }
 
 .font-headingNow {
-  font-family: 'headingNow', 'HeadingNow', var(--font-dm-sans), sans-serif !important;
+  font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-dm-sans), sans-serif !important;
 }
 
 .font-display {
-  font-family: 'display', 'MADEOkineSansPERSONALUSE Bold', var(--font-heading), sans-serif !important;
+  font-family: 'Outfit', 'Plus Jakarta Sans', var(--font-heading), sans-serif !important;
 }
 
 .font-geist_mono {
@@ -129,5 +115,5 @@
 }
 
 .font-hiruko {
-  font-family: 'hiruko', 'HirukoBlackAlternate', var(--font-heading), sans-serif !important;
+  font-family: 'Outfit', var(--font-heading), sans-serif !important;
 }

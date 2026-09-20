@@ -2,9 +2,8 @@
         .sxp {
           position: relative;
           width: 100%;
-          /* The track supplies the scroll distance; the stage inside is one
-             viewport tall and sticks for the difference. */
-          --sxp-track: 320vh;
+          /* The track supplies the scroll distance; reduced from 320vh to 150vh to eliminate dead scroll voids */
+          --sxp-track: 150vh;
         }
 
         .sxp-track {
@@ -510,7 +509,7 @@
           opacity: 0.92;
         }
 
-        /* ── iOS Liquid Frosted Glass Cards (Transparent Cloud View - matching Campus Address) ── */
+        /* ── Consistent Premium Frosted Cards (Unified backing over clouds) ── */
         .sxp-partner-card {
           position: relative;
           width: clamp(195px, 16.5vw, 245px);
@@ -521,27 +520,25 @@
           justify-content: center;
           padding: 0 1.2rem;
           box-sizing: border-box;
-          background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 48%, rgba(220, 245, 215, 0.04) 100%);
-          backdrop-filter: blur(10px) saturate(160%);
-          -webkit-backdrop-filter: blur(10px) saturate(160%);
-          border: 1px solid rgba(255, 255, 255, 0.32);
-          border-bottom: 1px solid rgba(22, 45, 26, 0.06);
+          background: rgba(255, 255, 255, 0.88);
+          backdrop-filter: blur(14px) saturate(180%);
+          -webkit-backdrop-filter: blur(14px) saturate(180%);
+          border: 1px solid rgba(47, 85, 39, 0.16);
           box-shadow:
-            inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.55),
-            inset 0 -1px 1.5px 0 rgba(22, 45, 26, 0.03),
-            0 8px 24px -8px rgba(18, 38, 22, 0.06);
+            inset 0 1px 0 rgba(255, 255, 255, 0.95),
+            0 8px 24px -4px rgba(18, 38, 22, 0.08);
           border-radius: 20px;
           transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease, background 260ms ease, border-color 260ms ease;
           user-select: none;
         }
 
         .sxp-partner-card:hover {
-          background: linear-gradient(145deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 48%, rgba(220, 245, 215, 0.08) 100%);
+          background: rgba(255, 255, 255, 0.96);
           transform: translateY(-2px);
-          border-color: rgba(255, 255, 255, 0.55);
+          border-color: rgba(92, 140, 58, 0.45);
           box-shadow:
-            inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.75),
-            0 14px 36px -10px rgba(18, 38, 22, 0.09);
+            inset 0 1.5px 0 #ffffff,
+            0 14px 32px -6px rgba(18, 38, 22, 0.12);
         }
 
         .sxp-partner-logo {

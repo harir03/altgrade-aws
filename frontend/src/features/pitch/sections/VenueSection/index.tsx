@@ -64,7 +64,7 @@ export const VenueSection = () => {
           {/* Left Column: Details */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Campus Address Card */}
-            <div className="venue-anim-item p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm backdrop-blur-xs">
+            <div className="venue-anim-item p-6 md:p-8 rounded-2xl bg-white/92 border border-[#2F5527]/18 shadow-sm backdrop-blur-xs">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-lime-100 text-lime-900 rounded-xl">
                   <MapPin className="w-6 h-6" />
@@ -73,7 +73,7 @@ export const VenueSection = () => {
                   <h3 className="text-xl font-semibold font-headingNow text-neutral-900">
                     Campus Address
                   </h3>
-                  <p className="text-stone-600 text-sm md:text-base leading-relaxed mt-2 font-dm_sans">
+                  <p className="text-[#18261A]/90 font-medium text-sm md:text-base leading-relaxed mt-2 font-dm_sans">
                     157/ F, Nilgunj Road, Sahid Colony,
                     <br />
                     Panihati, Sodepur, Kolkata,
@@ -97,7 +97,7 @@ export const VenueSection = () => {
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-100 text-stone-800 text-xs font-semibold hover:bg-stone-200 transition-colors border border-stone-300/80"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-stone-100 text-stone-900 text-xs font-semibold hover:bg-stone-200 transition-colors border border-stone-300/80"
                 >
                   {copied ? <Check className="w-3.5 h-3.5 text-lime-700" /> : <Copy className="w-3.5 h-3.5" />}
                   <span>{copied ? "Copied!" : "Copy Address"}</span>
@@ -106,7 +106,7 @@ export const VenueSection = () => {
             </div>
 
             {/* Transit & Getting Here Card */}
-            <div className="venue-anim-item p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm backdrop-blur-xs">
+            <div className="venue-anim-item p-6 md:p-8 rounded-2xl bg-white/92 border border-[#2F5527]/18 shadow-sm backdrop-blur-xs">
               <h3 className="text-xl font-semibold font-headingNow text-neutral-900 mb-5">
                 Transit &amp; Getting Here
               </h3>
@@ -118,7 +118,7 @@ export const VenueSection = () => {
                   </div>
                   <div>
                     <span className="text-sm font-semibold text-neutral-900 block">By Train</span>
-                    <p className="text-xs md:text-sm text-stone-600 mt-0.5 leading-relaxed">
+                    <p className="text-xs md:text-sm text-[#18261A]/90 font-medium mt-0.5 leading-relaxed">
                       Sodepur Station (Sealdah North Line) is ~1.2 km away (5 mins by auto or e-rickshaw).
                     </p>
                   </div>
@@ -130,7 +130,7 @@ export const VenueSection = () => {
                   </div>
                   <div>
                     <span className="text-sm font-semibold text-neutral-900 block">By Bus</span>
-                    <p className="text-xs md:text-sm text-stone-600 mt-0.5 leading-relaxed">
+                    <p className="text-xs md:text-sm text-[#18261A]/90 font-medium mt-0.5 leading-relaxed">
                       Frequent buses via BT Road to Sodepur crossing or directly along Nilgunj Road.
                     </p>
                   </div>
@@ -142,7 +142,7 @@ export const VenueSection = () => {
                   </div>
                   <div>
                     <span className="text-sm font-semibold text-neutral-900 block">Cabs / Parking</span>
-                    <p className="text-xs md:text-sm text-stone-600 mt-0.5 leading-relaxed">
+                    <p className="text-xs md:text-sm text-[#18261A]/90 font-medium mt-0.5 leading-relaxed">
                       Drop-off right at GNIT Main Gate with designated event parking on campus.
                     </p>
                   </div>

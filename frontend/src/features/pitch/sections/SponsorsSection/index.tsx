@@ -92,12 +92,12 @@ export const SponsorsSection = () => {
         if (night) night.style.opacity = nightOpacity;
         if (plate) plate.style.opacity = nightOpacity;
 
-        const introP = p1Out(clamp(prog / 0.2));
+        const introP = p1Out(clamp(prog / 0.18));
         gsap.set(intro, { opacity: 1 - introP, y: -24 * introP });
         gsap.set(outro, { opacity: 1 - introP, y: 24 * introP });
 
-        const bodyP = p1Out(clamp((prog - 0.2) / 0.32));
-        gsap.set(body, { opacity: bodyP, y: 28 * (1 - bodyP) });
+        const bodyP = p1Out(clamp((prog - 0.16) / 0.36));
+        gsap.set(body, { opacity: bodyP, y: 24 * (1 - bodyP) });
         body.style.pointerEvents = bodyP > 0.08 ? "auto" : "none";
       };
 

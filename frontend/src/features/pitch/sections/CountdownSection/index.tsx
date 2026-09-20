@@ -77,7 +77,7 @@ export const CountdownSection = () => {
       id="countdown"
       ref={sectionRef}
       aria-label="Hackathon Countdown"
-      className="cd relative w-full bg-transparent text-[#111a12] pt-[clamp(3.5rem,8vh,6.5rem)] pb-[clamp(13rem,29vw,40rem)] overflow-hidden z-[1]"
+      className="cd relative w-full bg-transparent text-[#111a12] pt-[clamp(3.5rem,8vh,6.5rem)] pb-[clamp(4rem,9vw,7rem)] overflow-hidden z-[1]"
     >
       <div className="cd-inner relative max-w-[104rem] mx-auto px-4 md:px-8 text-center flex flex-col items-center z-[1]">
         {/* Ornament */}

@@ -263,30 +263,32 @@ export const TracksSection = () => {
             </div>
           </div>
 
-          {/* Track Tabs */}
-          <div className="mt-8 flex flex-wrap gap-2 justify-center" role="tablist" aria-label="Tracks">
-            {tracks.map((track, idx) => {
-              const isActive = idx === activeIdx;
-              return (
-                <button
-                  key={track.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActiveIdx(idx)}
-                  className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs md:text-sm font-geist_mono transition-all duration-200 border ${
-                    isActive
-                      ? "bg-lime-400/20 text-lime-200 border-lime-400/50 shadow-sm"
-                      : "bg-stone-900/50 text-stone-400 border-stone-800/80 hover:bg-stone-800/60 hover:text-stone-200"
-                  }`}
-                >
-                  <span className={`font-bold ${isActive ? "text-lime-400" : "text-stone-500"}`}>
-                    {track.num}
-                  </span>
-                  <span>{track.name}</span>
-                </button>
-              );
-            })}
+          {/* Elegant Single-Row Segmented Control */}
+          <div className="mt-8 flex justify-center w-full px-2" role="tablist" aria-label="Tracks">
+            <div className="inline-flex max-w-full overflow-x-auto no-scrollbar items-center p-1.5 rounded-full bg-[#0D180F]/95 border border-lime-800/40 backdrop-blur-md shadow-xl gap-1">
+              {tracks.map((track, idx) => {
+                const isActive = idx === activeIdx;
+                return (
+                  <button
+                    key={track.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    onClick={() => setActiveIdx(idx)}
+                    className={`flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-4 py-2 rounded-full text-xs font-geist_mono transition-all duration-300 whitespace-nowrap cursor-pointer select-none ${
+                      isActive
+                        ? "bg-[#5C8C3A] text-white font-semibold shadow-[0_2px_12px_rgba(92,140,58,0.45)]"
+                        : "text-stone-300 hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    <span className={`text-[11px] font-bold ${isActive ? "text-lime-200" : "text-lime-400/80"}`}>
+                      {track.num}
+                    </span>
+                    <span className="inline">{track.name}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

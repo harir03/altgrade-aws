@@ -15,13 +15,13 @@ export const HeroScrollCue = () => {
         className="hero-cue-text-block"
       >
         <p className="hero-cue-line">
-          bro put a plastic chair on a hill
+          Four plastic chairs on the hill.
           <br />
-          and called it a hackathon
+          An open table for Bharat's builders.
         </p>
 
         <span className="hero-cue-hint">
-          scroll for lore ↓
+          Explore the lore ↓
         </span>
       </a>
 
@@ -38,6 +38,7 @@ export const HeroScrollCue = () => {
           flex-shrink: 0;
           pointer-events: none;
           user-select: none;
+          filter: drop-shadow(0 2px 4px rgba(18, 38, 18, 0.15));
         }
 
         .hero-cue-text-block {
@@ -45,27 +46,42 @@ export const HeroScrollCue = () => {
           flex-direction: column;
           gap: 0.2rem;
           text-decoration: none;
-          color: #121A12;
+          color: #0C180E;
           min-width: 0;
+          background: rgba(247, 244, 237, 0.78);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px);
+          padding: clamp(0.3rem, 0.6vw, 0.45rem) clamp(0.5rem, 1vw, 0.8rem);
+          border-radius: 12px;
+          border: 1px solid rgba(47, 85, 39, 0.18);
+          box-shadow: 0 4px 16px rgba(18, 38, 22, 0.08);
+          transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .hero-cue-text-block:hover {
+          background: rgba(247, 244, 237, 0.95);
+          transform: translateY(-1px);
         }
 
         .hero-cue-line {
           margin: 0;
           font-family: var(--font-dm-sans), system-ui, sans-serif;
-          font-size: clamp(0.49rem, 1.1vw, 0.88rem);
-          font-weight: 500;
+          font-size: clamp(0.52rem, 1.1vw, 0.9rem);
+          font-weight: 600;
           letter-spacing: -0.015em;
-          line-height: 1.14;
+          line-height: 1.2;
+          color: #0C180E;
           word-break: break-word;
         }
 
         .hero-cue-hint {
           display: block;
           font-family: var(--font-geist-mono), ui-monospace, monospace;
-          font-size: clamp(0.39rem, 0.85vw, 0.68rem);
+          font-size: clamp(0.42rem, 0.85vw, 0.7rem);
           font-weight: 700;
-          letter-spacing: -0.02em;
-          line-height: 1.55;
+          letter-spacing: -0.01em;
+          line-height: 1.4;
+          color: #2F5527;
         }
 
         @media (max-width: 860px) {

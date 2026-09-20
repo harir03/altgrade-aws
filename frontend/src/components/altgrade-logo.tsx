@@ -67,7 +67,7 @@ export const AltGradeLogo: React.FC<AltGradeLogoProps> = ({
         <div className="relative inline-flex items-center justify-center">
           {/* Main Giant Condensed Wordmark with 4-point star negative-space/glyph */}
           <div
-            className="font-headingNow font-black text-[clamp(4.2rem,16vw,12.5rem)] tracking-[-0.045em] leading-[0.84] uppercase select-none text-center flex items-center justify-center"
+            className="font-headingNow font-black text-[clamp(3.0rem,11vw,8.6rem)] tracking-[-0.045em] leading-[0.84] uppercase select-none text-center flex items-center justify-center"
             style={{
               background: heroGradient,
               WebkitBackgroundClip: 'text',

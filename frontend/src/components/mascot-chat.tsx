@@ -28,12 +28,6 @@ interface ChatMessage {
   modelUsed?: string
 }
 
-const CYCLING_BUBBLES = [
-  { lang: 'en', label: 'English', text: 'Prefer an on-call banking service? Tap to chat or request an instant callback 👋' },
-  { lang: 'hi', label: 'हिंदी', text: 'फोन पर बैंकिंग सेवा पसंद करते हैं? सीधे कॉल बैक या चैट के लिए टैप करें 👋' },
-  { lang: 'gu', label: 'ગુજરાતી', text: 'ફોન પર બેંકિંગ સેવા જોઈએ છે? સીધા કૉલ બેક અથવા ચેટ માટે ટૅપ કરો 👋' },
-  { lang: 'ta', label: 'தமிழ்', text: 'ஃபோன் கால் மூலம் வங்கி சேவை தேவையா? உடனே பேச அல்லது கால் பேக் பெற தட்டவும் 👋' },
-]
 
 interface MascotTranslations {
   cardTitle: string
@@ -189,7 +183,6 @@ export function MascotChat() {
   const { i18n } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
   const [isExpanded, setIsExpanded] = useState(false)
-  const [currentBubbleIdx, setCurrentBubbleIdx] = useState(0)
   const [selectedLang, setSelectedLang] = useState<'hi' | 'gu' | 'ta' | 'en'>(() => {
     const curr = i18n.language
     return (curr === 'hi' || curr === 'gu' || curr === 'ta' || curr === 'en') ? curr : 'en'
@@ -222,8 +215,6 @@ export function MascotChat() {
   const [isLoading, setIsLoading] = useState(false)
   const [speakingId, setSpeakingId] = useState<string | null>(null)
   const [isLocalModel, setIsLocalModel] = useState<boolean>(true)
-  const [bubbleVisible, setBubbleVisible] = useState(true)
-  const [isBubbleDismissed, setIsBubbleDismissed] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
@@ -243,20 +234,6 @@ export function MascotChat() {
     }
   }, [])
 
-  // Auto-cycle speech bubbles every 4 seconds when minimized
-  useEffect(() => {
-    if (isOpen) return
-
-    const interval = setInterval(() => {
-      setBubbleVisible(false)
-      setTimeout(() => {
-        setCurrentBubbleIdx((prev) => (prev + 1) % CYCLING_BUBBLES.length)
-        setBubbleVisible(true)
-      }, 300)
-    }, 4000)
-
-    return () => clearInterval(interval)
-  }, [isOpen])
 
   // Check model status on mount
   useEffect(() => {
@@ -500,68 +477,24 @@ export function MascotChat() {
     }
   }
 
-  const currentBubble = CYCLING_BUBBLES[currentBubbleIdx]
-
   return (
-    <div className='fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end max-w-[calc(100vw-1.5rem)]'>
-      {/* Floating Cycling Speech Bubble (when chat is closed) */}
-      {!isOpen && !isBubbleDismissed && (
-        <div
-          onClick={() => {
-            setSelectedLang(currentBubble.lang as any)
-            setIsOpen(true)
-          }}
-          className={`relative mb-3 max-w-[min(20rem,calc(100vw-2rem))] cursor-pointer rounded-2xl border border-[#8fc45a]/40 bg-[#eef4ea]/95 p-3.5 shadow-[0_16px_50px_rgba(18,26,18,0.14)] text-[#121A12] backdrop-blur-xl transition-all duration-200 hover:border-[#8fc45a]/70 hover:scale-[1.02] ${
-            bubbleVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0 pointer-events-none'
-          }`}
-        >
-          <button
-            type='button'
-            onClick={(e) => {
-              e.stopPropagation()
-              setIsBubbleDismissed(true)
-            }}
-            className='absolute top-2.5 right-2.5 flex h-5 w-5 items-center justify-center rounded-full text-[#3d4f3b]/60 hover:bg-[#8fc45a]/20 hover:text-[#121A12] transition-colors'
-            title='Dismiss'
-          >
-            <X className='h-3 w-3' />
-          </button>
-          <div className='flex items-center gap-2 mb-2 pr-5'>
-            <div className='flex h-5 w-5 items-center justify-center rounded-full bg-[#8fc45a]/20 border border-[#8fc45a]/30 overflow-hidden'>
-              <ThinkingOrb state='solving' size={20} theme='light' />
-            </div>
-            <span className='text-[10px] font-mono tracking-widest uppercase text-[#2c4723] font-semibold'>
-              MITRA AI • {currentBubble.label}
-            </span>
-          </div>
-          <p className='text-xs font-normal text-[#121A12] leading-relaxed font-sans'>
-            {currentBubble.text}
-          </p>
-          <div className='mt-2.5 flex items-center justify-between text-[10px] font-mono text-[#3d4f3b]/80 border-t border-[#8fc45a]/20 pt-2'>
-            <span className='flex items-center gap-1.5'>
-              <ThinkingOrb state='breathing' size={20} theme='light' />
-              <span>{t.clickToChat}</span>
-            </span>
-            <span className='text-[#121A12] font-semibold hover:text-[#2b4b21] transition-colors'>{t.assistantArrow}</span>
-          </div>
-        </div>
-      )}
-
-      {/* Floating Mascot Button - Powered by ThinkingOrb (64px) in Recursive Front Theme */}
+    <div className='fixed bottom-4 right-4 sm:bottom-6 sm:right-6 pb-[env(safe-area-inset-bottom,0px)] pr-[env(safe-area-inset-right,0px)] z-40 flex flex-col items-end max-w-[calc(100vw-1.5rem)] pointer-events-none [&>*]:pointer-events-auto'>
+      {/* Collapsed FAB by default — only expands to chat when clicked (P0 fix: no auto-popping speech bubble overlapping content) */}
       {!isOpen && (
         <button
           type='button'
           onClick={() => setIsOpen(true)}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className='group relative flex h-[68px] w-[68px] sm:h-[72px] sm:w-[72px] items-center justify-center rounded-full bg-[#e8efe2]/92 border border-[#8fc45a]/40 text-[#121A12] shadow-[0_12px_36px_rgba(18,26,18,0.18),0_0_24px_rgba(143,196,90,0.25)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#8fc45a]/80 hover:shadow-[0_0_32px_rgba(143,196,90,0.45)] active:scale-95'
-          aria-label='Open AI Financial Guide'
+          className='group relative flex h-14 w-14 sm:h-[58px] sm:w-[58px] items-center justify-center rounded-full bg-[#e8efe2]/96 border border-[#8fc45a]/50 text-[#121A12] shadow-[0_10px_30px_rgba(18,26,18,0.18),0_0_20px_rgba(143,196,90,0.22)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#8fc45a]/80 hover:shadow-[0_0_28px_rgba(143,196,90,0.4)] active:scale-95 cursor-pointer'
+          aria-label='Open Mitra AI Financial Guide'
+          title='Ask Mitra AI (Vernacular Credit Guide)'
         >
-          {/* Ambient Glow Halo matching Recursive green */}
+          {/* Ambient Glow Halo */}
           <div className='absolute -inset-1 rounded-full bg-[#8fc45a]/25 opacity-0 group-hover:opacity-100 blur-md transition duration-300 pointer-events-none' />
 
-          {/* ThinkingOrb Canvas Core (64px) with Light/Forest Theme */}
-          <div className='relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center overflow-hidden rounded-full'>
+          {/* ThinkingOrb Canvas Core */}
+          <div className='relative flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center overflow-hidden rounded-full'>
             <ThinkingOrb
               state={isHovered ? 'working' : 'breathing'}
               size={64}
@@ -570,10 +503,10 @@ export function MascotChat() {
             />
           </div>
 
-          {/* Minimal live status pip */}
-          <span className='absolute top-1 right-1 flex h-3.5 w-3.5'>
+          {/* Live status pip */}
+          <span className='absolute top-0.5 right-0.5 flex h-3 w-3'>
             <span className='absolute inline-flex h-full w-full rounded-full bg-[#8fc45a] opacity-75 animate-ping' />
-            <span className='relative inline-flex h-3.5 w-3.5 rounded-full border-2 border-[#121A12] bg-[#8fc45a] shadow-xs' />
+            <span className='relative inline-flex h-3 w-3 rounded-full border-2 border-[#121A12] bg-[#8fc45a] shadow-xs' />
           </span>
         </button>
       )}
@@ -581,7 +514,8 @@ export function MascotChat() {
       {/* Modern AI Chat Window - Recursive Theme Frosted Linen & Forest */}
       {isOpen && (
         <div
-          className={`flex flex-col rounded-3xl border border-[#8fc45a]/40 bg-[#f4f7f1]/98 shadow-[0_32px_90px_rgba(18,26,18,0.22),0_0_0_1px_rgba(143,196,90,0.2)] text-[#121A12] backdrop-blur-3xl animate-in fade-in zoom-in-95 duration-200 overflow-hidden transition-all duration-300 ${
+          style={{ fontFamily: "'DM Sans', 'Noto Sans', 'Noto Sans Devanagari', 'Noto Sans Gujarati', 'Noto Sans Tamil', system-ui, sans-serif" }}
+          className={`relative z-50 flex flex-col rounded-3xl border border-[#8fc45a]/40 bg-[#f4f7f1]/98 shadow-[0_32px_90px_rgba(18,26,18,0.22),0_0_0_1px_rgba(143,196,90,0.2)] text-[#121A12] backdrop-blur-3xl animate-in fade-in zoom-in-95 duration-200 overflow-hidden transition-all duration-300 ${
             isExpanded
               ? 'h-[86vh] max-h-[760px] w-[94vw] sm:w-[720px] md:w-[800px]'
               : 'h-[min(580px,84vh)] w-[calc(100vw-1.5rem)] sm:w-[420px]'

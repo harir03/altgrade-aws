@@ -17,7 +17,7 @@ export const RevealWords = ({
   className = "",
   start = "top 84%",
   end = "bottom 38%",
-  dim = 0.18,
+  dim = 0.72,
 }: RevealWordsProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 

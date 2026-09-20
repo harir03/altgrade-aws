@@ -81,7 +81,7 @@ export const FaqList = () => {
     <div
       role="region"
       aria-label="Frequently Asked Questions"
-      className="border-t border-zinc-900/20 flex flex-col w-full"
+      className="border-t border-[#2F5527]/25 flex flex-col w-full"
     >
       {faqs.map((faq) => (
         <FaqItem
@@ -89,6 +89,7 @@ export const FaqList = () => {
           number={faq.number}
           question={faq.question}
           answer={faq.answer}
+          defaultOpen={faq.number === "1"}
         />
       ))}
     </div>

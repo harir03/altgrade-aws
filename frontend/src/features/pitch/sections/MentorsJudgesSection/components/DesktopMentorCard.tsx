@@ -17,90 +17,63 @@ export type DesktopMentorCardProps = {
 
 export const DesktopMentorCard = (props: DesktopMentorCardProps) => {
   return (
-    <div className="box-border caret-transparent min-h-0 min-w-0 outline-[3px] no-underline md:min-h-[auto] md:min-w-[auto]">
-      <div className="box-border caret-transparent opacity-[0.82] outline-[3px] no-underline">
-        <div className="aspect-[4_/_5] box-border caret-transparent outline-[3px] relative no-underline w-full">
-          <button
-            type="button"
-            aria-label={props.ariaLabel}
-            disabled={true}
-            className="bg-transparent caret-transparent block outline-[3px] absolute no-underline p-0 rounded-[22px] inset-0"
-          >
-            <span className="box-border caret-transparent block outline-[3px] absolute text-left no-underline overflow-hidden rounded-[22px] inset-0">
-              <span className="bg-[radial-gradient(118%_75%_at_50%_8%,rgba(78,122,52,0.34)_0%,rgba(78,122,52,0.56)_56%),linear-gradient(165deg,rgb(22,46,22,0%)_0%,rgb(7,14,5)_100%)] bg-[position:0%_0%,0%_0%] bg-size-[auto,auto] shadow-[rgba(190,224,168,0.14)_0px_0px_0px_1px_inset] box-border caret-transparent block isolate outline-[3px] absolute no-underline overflow-hidden rounded-[22px] inset-0">
-                <img
-                  src={props.primaryIconSrc}
-                  alt="Icon"
-                  className="bottom-[-2%] box-border caret-transparent outline-[3px] absolute no-underline transform-none w-[76%] left-2/4 md:translate-x-[-50.0%]"
-                />
+    <div
+      aria-label={props.ariaLabel}
+      className="group relative aspect-[4/5] rounded-[22px] bg-gradient-to-b from-[#112413]/95 via-[#09140a] to-[#040804] border border-[#5C8C3A]/35 p-6 flex flex-col justify-between shadow-[0_16px_48px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(143,196,90,0.2)] overflow-hidden transition-all duration-300 hover:border-[#8FC45A]/60 hover:shadow-[0_20px_60px_rgba(14,35,16,0.4)] text-left select-none"
+    >
+      {/* Subtle Background Glow */}
+      <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#8FC45A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#8FC45A]/15 transition-all duration-500" />
 
-                <span className="items-center box-border caret-transparent grid justify-items-center outline-[3px] pointer-events-none absolute no-underline top-0 bottom-[22%] inset-x-0">
-                  <img
-                    src={props.secondaryIconSrc}
-                    alt="Icon"
-                    className="box-border caret-transparent outline-[3px] no-underline w-[32%] md:w-[23.04px]"
-                  />
-                </span>
+      {/* Top Header: Seat & Sealed Status */}
+      <div className="flex items-center justify-between z-10">
+        <span className="font-geist_mono text-xs uppercase tracking-wider text-lime-400 font-semibold">
+          {props.seatLabel}
+        </span>
+        <span className="px-2.5 py-0.5 rounded-full bg-lime-950/80 border border-lime-700/40 text-lime-300 text-[10px] font-mono uppercase tracking-wider">
+          {props.status}
+        </span>
+      </div>
 
-                <span className="box-border caret-transparent block mix-blend-soft-light opacity-40 outline-[3px] pointer-events-none absolute no-underline inset-0" />
+      {/* Single Center Reveal Device: Mystery Seal Emblem */}
+      <div className="my-auto py-2 flex flex-col items-center justify-center z-10">
+        <div className="relative flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-lime-900/40 to-black/80 border border-lime-500/30 shadow-[0_0_24px_rgba(92,140,58,0.2)] group-hover:scale-105 group-hover:border-lime-400/50 transition-all duration-300">
+          <img
+            src={props.secondaryIconSrc}
+            alt=""
+            aria-hidden="true"
+            className="w-7 h-7 object-contain filter drop-shadow-[0_2px_8px_rgba(143,196,90,0.4)]"
+          />
+        </div>
+        <span className="mt-3 text-[10px] font-geist_mono uppercase tracking-widest text-lime-400/60">
+          CONFIDENTIAL DOSSIER
+        </span>
+      </div>
 
-                <span className="bg-[linear-gradient(to_bottom,rgba(4,10,5,0)_0%,rgba(4,10,5,0.32)_46%,rgba(2,6,3,0.88)_100%)] box-border caret-transparent flex flex-col outline-[3px] absolute gap-y-[2.4px] no-underline px-2 py-[8.8px] bottom-0 inset-x-0 md:gap-y-[4.48px] md:py-5">
-                  <span className="box-border caret-transparent text-lime-400/90 block text-[10.24px] font-medium tracking-[1.2288px] leading-[15.872px] min-h-0 min-w-0 outline-[3px] no-underline uppercase font-geist_mono md:text-[9.92px] md:tracking-[1.984px] md:leading-[15.376px] md:mb-0">
-                    {props.seatLabel}
-                  </span>
+      {/* Bottom Content: Domain & Focus */}
+      <div className="z-10 pt-3 border-t border-lime-900/30">
+        <span className="text-[10px] font-geist_mono uppercase tracking-widest text-lime-400 block font-medium">
+          {props.category}
+        </span>
 
-                  <span className="box-border caret-transparent text-lime-50 block text-[14.08px] font-medium tracking-[-0.25344px] leading-[16.6144px] min-h-0 min-w-0 outline-[3px] no-underline font-headingNow md:text-[16.64px] md:tracking-[-0.29952px] md:leading-[20.6336px]">
-                    {props.title}
-                  </span>
+        <h4 className="text-base md:text-lg font-bold font-headingNow text-lime-50 leading-snug mt-1 group-hover:text-white transition-colors">
+          {props.title}
+        </h4>
 
-                  <span className="bg-neutral-950/90 box-border caret-transparent text-lime-100/70 block text-[10.56px] font-medium tracking-[2.112px] leading-[16.368px] outline-[3px] absolute no-underline uppercase border border-lime-200/20 px-[6.4px] py-[-2.56px] rounded-full border-solid">
-                    {props.status}
-                  </span>
-                </span>
-              </span>
+        <p className="text-xs text-stone-300/80 font-dm_sans mt-1 line-clamp-2 leading-relaxed">
+          {props.groupLabel}
+        </p>
 
-              <span className="box-border caret-transparent block outline-[3px] absolute text-left no-underline transform-none overflow-hidden rounded-[22px] inset-0">
-                <span className="bg-[radial-gradient(110%_70%_at_12%_0%,rgba(92,140,58,0.3)_0%,rgba(92,140,58,0.58)_58%),linear-gradient(165deg,rgb(27,46,22,0%)_0%,rgb(7,14,5)_100%)] bg-[position:0%_0%,0%_0%] bg-size-[auto,auto] shadow-[rgba(190,224,168,0.18)_0px_0px_0px_1px_inset] box-border caret-transparent block text-lime-300 outline-[3px] no-underline uppercase font-geist_mono md:text-[9.6px]">
-                  {props.category}
-                </span>
-
-                <span className="box-border caret-transparent text-lime-50 block text-[14.08px] font-medium tracking-[-0.2816px] leading-[16.6144px] min-h-0 min-w-0 outline-[3px] no-underline mt-[2.4px] font-headingNow md:text-[19.2px] md:tracking-[-0.384px] md:leading-[23.04px]">
-                  {props.subtitle}
-                </span>
-
-                <span className="bg-lime-400/50 box-border caret-transparent block h-px min-h-0 min-w-0 outline-[3px] no-underline w-[19.2px] my-[-4.8px] md:my-[-12.8px]">
-                </span>
-
-                <span className="box-border caret-transparent text-stone-300/70 block text-[11.52px] font-medium leading-[17.856px] min-h-0 min-w-0 outline-[3px] no-underline mt-1 font-dm_sans md:text-[13.056px] md:leading-[20.6288px] md:min-h-[auto] md:min-w-[auto] md:mt-[9.6px]">
-                  {props.groupLabel}
-                </span>
-
-                <span className="box-border caret-transparent text-stone-300/60 block text-[10.56px] leading-[15.6672px] min-h-0 min-w-0 outline-[3px] no-underline mt-1 font-dm_sans md:text-[13.056px] md:leading-[20.6288px] md:min-h-[auto] md:min-w-[auto] md:mt-[9.6px]">
-                  {props.description}
-                </span>
-
-                <span className="box-border caret-transparent text-lime-50 block text-[16.8px] tracking-[0.336px] leading-[16.8px] min-h-0 min-w-0 outline-[3px] no-underline font-bebasneue md:text-[24.8px] md:tracking-[0.496px] md:leading-[24.8px] md:min-h-[auto] md:min-w-[auto]">
-                  <span className="box-border caret-transparent gap-x-[1.6px] flex flex-col min-h-0 min-w-0 outline-[3px] gap-y-[1.6px] no-underline md:min-h-[auto] md:min-w-[auto]">
-                    <span className="box-border caret-transparent text-lime-50 block text-[16.8px] tracking-[-0.336px] leading-[16.8px] min-h-0 min-w-0 outline-[3px] no-underline font-bebasNeue md:text-[24.8px] md:tracking-[-0.496px] md:leading-[24.8px]">
-                      {props.firstMetricValue}  
-                    </span>
-                    <span className="box-border caret-transparent text-stone-300/60 block text-[10.56px] font-medium tracking-[0.528px] leading-[16.368px] min-h-0 min-w-0 outline-[3px] no-underline uppercase font-dm_sans md:min-h-[auto] md:min-w-[auto]">
-                      {props.firstMetricLabel}
-                    </span>
-                  </span>
-
-                  <span className="box-border caret-transparent gap-x-[1.6px] flex flex-col min-h-0 min-w-0 outline-[3px] gap-y-[1.6px] no-underline md:min-h-[auto] md:min-w-[auto]">
-                    <span className="box-border caret-transparent text-lime-50 block text-[16.8px] tracking-[-0.336px] leading-[16.8px] min-h-0 min-w-0 outline-[3px] no-underline font-bebasNeue md:text-[24.8px] md:tracking-[-0.496px] md:leading-[24.8px]">
-                      {props.secondMetricValue}
-                    </span>
-                    <span className="box-border caret-transparent text-stone-300/60 block text-[10.56px] font-medium tracking-[0.528px] leading-[16.368px] min-h-0 min-w-0 outline-[3px] no-underline uppercase font-dm_sans md:min-h-[auto] md:min-w-[auto]">
-                      {props.secondMetricLabel}
-                    </span>
-                  </span>
-                </span>
-              </span>
-            </span>
-          </button>
+        {/* Metrics Strip */}
+        <div className="mt-3 flex items-center gap-3 text-[11px] font-geist_mono text-lime-300/90 pt-2 border-t border-white/5">
+          <span className="inline-flex items-center gap-1">
+            <b className="font-bold text-lime-200">{props.firstMetricValue}</b>
+            <span className="text-stone-400 text-[10px] uppercase">{props.firstMetricLabel}</span>
+          </span>
+          <span className="text-stone-600">·</span>
+          <span className="inline-flex items-center gap-1">
+            <b className="font-bold text-lime-200">{props.secondMetricValue}</b>
+            <span className="text-stone-400 text-[10px] uppercase">{props.secondMetricLabel}</span>
+          </span>
         </div>
       </div>
     </div>
