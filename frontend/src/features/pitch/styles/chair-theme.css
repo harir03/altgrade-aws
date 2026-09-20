@@ -117,3 +117,21 @@
 .font-hiruko {
   font-family: 'Outfit', var(--font-heading), sans-serif !important;
 }
+
+/* ── Reset Unwanted Outline Boxes ── */
+/* Remove Anima export outline-[3px] boxes across buttons, spans, headers, and badges */
+.outline-\[3px\],
+[class*="outline-\[3px\]"] {
+  outline: none !important;
+  outline-width: 0 !important;
+  outline-style: none !important;
+}
+
+/* Clear stray outlines on pitch elements unless explicitly keyboard focused */
+.font-dm_sans * {
+  outline: none;
+}
+.font-dm_sans *:focus-visible {
+  outline: 2px solid var(--color-accent, #5C8C3A) !important;
+  outline-offset: 2px !important;
+}
