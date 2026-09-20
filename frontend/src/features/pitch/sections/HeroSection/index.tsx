@@ -64,11 +64,10 @@ export const HeroSection = () => {
         },
       });
 
-      // Parallax on hero logo content — keep fully visible with opacity 1 so it never vanishes
+      // Parallax on hero logo content — keep fully visible and gracefully drift downward with the landscape
       gsap.to(".hero-center-content", {
-        y: "-10%",
+        y: "14%",
         scale: 0.98,
-        opacity: 1,
         ease: "none",
         scrollTrigger: {
           trigger: el,
@@ -107,9 +106,9 @@ export const HeroSection = () => {
             id="headingrow"
             className="hero-center-content"
             style={{
-              opacity: isRevealed ? 1 : 0,
+              opacity: 1,
               transform: isRevealed ? "translateY(0)" : "translateY(14px)",
-              transition: `opacity 0.7s ${easeCurve} 0.02s, transform 0.7s ${easeCurve} 0.02s`,
+              transition: `transform 0.7s ${easeCurve} 0.02s`,
             }}
           >
             <h1 className="sr-only">ALTGRADE — AI-Powered Alternate Credit Scoring & Financial Inclusion</h1>
@@ -121,7 +120,7 @@ export const HeroSection = () => {
                 aria-level={2}
                 aria-label="ALTGRADE — Alternate Credit Scoring & Inclusive Banking"
                 className="warp-text flex items-center justify-center w-full"
-                style={{ position: "relative", width: "100%", height: "100%", pointerEvents: "auto" }}
+                style={{ position: "relative", width: "100%", height: "100%", pointerEvents: "auto", opacity: 1 }}
               >
                 <AltGradeLogo variant="hero" sublabelText="ALTERNATE CREDIT FOR ALL" />
               </div>
@@ -210,10 +209,10 @@ export const HeroSection = () => {
           max-height: 50svh;
           display: flex;
           flex-direction: column;
-          justify-content: flex-end;
+          justify-content: center;
           align-items: center;
-          padding-top: clamp(4.2rem, 7svh, 5.5rem);
-          padding-bottom: clamp(1.5rem, 3.8svh, 3.2rem);
+          padding-top: clamp(4.8rem, 8.5svh, 6.2rem);
+          padding-bottom: clamp(1rem, 2.2svh, 2rem);
           padding-inline: clamp(0.75rem, 2vw, 1.5rem);
           box-sizing: border-box;
           pointer-events: none;
@@ -230,7 +229,8 @@ export const HeroSection = () => {
           justify-content: center;
           text-align: center;
           pointer-events: auto;
-          will-change: transform, opacity;
+          will-change: transform;
+          opacity: 1 !important;
           padding-inline: clamp(0.5rem, 1.5vw, 1.2rem);
           flex-shrink: 0;
         }

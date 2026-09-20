@@ -25,13 +25,10 @@ export const IntroOverlay: React.FC = () => {
     if (typeof window === "undefined") return "done";
     try {
       const s = window.location.search;
-      if (s.includes("intro=0")) {
+      if (s.includes("intro=0") || sessionStorage.getItem("recursive:intro:v1") === "1") {
         document.documentElement.dataset.intro = "done";
         return "done";
       }
-      // Reset any stale suppression flag so the loading animation plays
-      sessionStorage.removeItem("recursive:intro:v1");
-      sessionStorage.removeItem("recursive:skip-intro-for-anchor");
     } catch {
       // ignore
     }
@@ -62,6 +59,12 @@ export const IntroOverlay: React.FC = () => {
     if (hasFinishedRef.current) return;
     hasFinishedRef.current = true;
 
+    try {
+      sessionStorage.setItem("recursive:intro:v1", "1");
+    } catch {
+      // ignore
+    }
+
     // Unlock scrolling
     document.documentElement.style.overflow = "";
     document.body.style.overflow = "";
@@ -76,7 +79,7 @@ export const IntroOverlay: React.FC = () => {
     if (rootRef.current) {
       gsap.to(rootRef.current, {
         opacity: 0,
-        duration: 0.8,
+        duration: 0.6,
         ease: "power2.inOut",
         onComplete: () => {
           setPhase("done");

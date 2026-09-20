@@ -59,7 +59,12 @@
           var fv = f ? f[1] : null;
           var r = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-          if (fv === '0' || r) {
+          var hasSeenIntro = false;
+          try {
+            hasSeenIntro = sessionStorage.getItem('recursive:intro:v1') === '1';
+          } catch(e) {}
+
+          if (fv === '0' || r || hasSeenIntro) {
             document.documentElement.dataset.intro = 'done';
           } else {
             document.documentElement.dataset.intro = 'playing';
