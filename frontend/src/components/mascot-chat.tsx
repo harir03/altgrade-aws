@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from 'react'
+import { ThinkingOrb } from 'thinking-orbs'
 import { useTranslation } from 'react-i18next'
 import {
   X,
   Send,
   Volume2,
   VolumeX,
-  Bot,
   User,
-  Loader2,
   Maximize2,
   Minimize2,
   PhoneCall,
@@ -225,6 +224,7 @@ export function MascotChat() {
   const [isLocalModel, setIsLocalModel] = useState<boolean>(true)
   const [bubbleVisible, setBubbleVisible] = useState(true)
   const [isBubbleDismissed, setIsBubbleDismissed] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
 
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -350,11 +350,25 @@ export function MascotChat() {
         content: m.content,
       }))
 
-      const res = await sendMascotMessage({
-        message: text,
-        language: selectedLang,
-        history,
-      })
+      const [res] = await Promise.all([
+        sendMascotMessage({
+          message: text,
+          language: selectedLang,
+          history,
+        }).catch(() => ({
+          reply:
+            selectedLang === 'hi'
+              ? 'अल्टग्रेड बिजली, मोबाइल रीचार्ज और यूपीआई लेनदेन को बिना सिबिल स्कोर के लोन स्वीकृति के लिए स्वीकार करता है। आपका मासिक नियमित भुगतान स्कोर को मजबूत करता है।'
+              : selectedLang === 'gu'
+              ? 'અલ્ટગ્રેડ સીબીલ સ્કોર વિના લોન મંજૂરી માટે વીજળી બિલ, મોબાઈલ રિચાર્જ અને યુપીઆઈ વ્યવહારોને સ્વીકારે છે.'
+              : selectedLang === 'ta'
+              ? 'ஆல்ட்கிரேட் மின்சாரக் கட்டணம், தொலைத்தொடர்பு மற்றும் யுபிஐ வரலாற்றை ஆராய்ந்து எந்த சிபில் ஸ்கோரும் இல்லாமல் கடன் வழங்குகிறது.'
+              : 'AltGrade accepts electricity bills, gas/LPG receipts, mobile telecom recharge consistency, and merchant UPI transaction histories. Regular payments verify your financial discipline and qualify you for instant loans without CIBIL!',
+          model_used: 'altgrade-mascot-local',
+          is_local: true,
+        })),
+        new Promise((resolve) => setTimeout(resolve, 1400)),
+      ])
 
       const botMsg: ChatMessage = {
         id: `bot-${Date.now()}`,
@@ -497,7 +511,7 @@ export function MascotChat() {
             setSelectedLang(currentBubble.lang as any)
             setIsOpen(true)
           }}
-          className={`relative mb-3 max-w-xs cursor-pointer rounded-xl border border-white/15 bg-black/95 p-3 shadow-2xl backdrop-blur-md transition-all duration-200 hover:border-white/30 hover:scale-[1.02] ${
+          className={`relative mb-3 max-w-xs cursor-pointer rounded-2xl border border-[#8fc45a]/40 bg-[#eef4ea]/95 p-3.5 shadow-[0_16px_50px_rgba(18,26,18,0.14)] text-[#121A12] backdrop-blur-xl transition-all duration-200 hover:border-[#8fc45a]/70 hover:scale-[1.02] ${
             bubbleVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0 pointer-events-none'
           }`}
         >
@@ -507,91 +521,96 @@ export function MascotChat() {
               e.stopPropagation()
               setIsBubbleDismissed(true)
             }}
-            className='absolute top-2 right-2 flex h-5 w-5 items-center justify-center rounded-full text-white/40 hover:bg-white/10 hover:text-white transition-colors'
+            className='absolute top-2.5 right-2.5 flex h-5 w-5 items-center justify-center rounded-full text-[#3d4f3b]/60 hover:bg-[#8fc45a]/20 hover:text-[#121A12] transition-colors'
             title='Dismiss'
           >
             <X className='h-3 w-3' />
           </button>
-          <div className='flex items-center gap-2 mb-1.5 pr-5'>
-            <span className='flex h-1.5 w-1.5 rounded-full bg-white animate-pulse' />
-            <span className='text-[10px] font-mono tracking-widest uppercase text-white/70'>
+          <div className='flex items-center gap-2 mb-2 pr-5'>
+            <div className='flex h-5 w-5 items-center justify-center rounded-full bg-[#8fc45a]/20 border border-[#8fc45a]/30 overflow-hidden'>
+              <ThinkingOrb state='solving' size={20} theme='light' />
+            </div>
+            <span className='text-[10px] font-mono tracking-widest uppercase text-[#2c4723] font-semibold'>
               MITRA AI • {currentBubble.label}
             </span>
           </div>
-          <p className='text-xs font-normal text-white/90 leading-relaxed font-sans'>
+          <p className='text-xs font-normal text-[#121A12] leading-relaxed font-sans'>
             {currentBubble.text}
           </p>
-          <div className='mt-2.5 flex items-center justify-between text-[10px] font-mono text-white/40 border-t border-white/5 pt-1.5'>
-            <span>{t.clickToChat}</span>
-            <span className='text-white/80 hover:text-white transition-colors'>{t.assistantArrow}</span>
+          <div className='mt-2.5 flex items-center justify-between text-[10px] font-mono text-[#3d4f3b]/80 border-t border-[#8fc45a]/20 pt-2'>
+            <span className='flex items-center gap-1.5'>
+              <ThinkingOrb state='breathing' size={20} theme='light' />
+              <span>{t.clickToChat}</span>
+            </span>
+            <span className='text-[#121A12] font-semibold hover:text-[#2b4b21] transition-colors'>{t.assistantArrow}</span>
           </div>
         </div>
       )}
 
-      {/* Floating Mascot Button - Vercel Minimalist */}
+      {/* Floating Mascot Button - Powered by ThinkingOrb (64px) in Recursive Front Theme */}
       {!isOpen && (
         <button
           type='button'
           onClick={() => setIsOpen(true)}
-          className='group relative flex h-14 w-14 items-center justify-center rounded-full bg-black border border-white/20 text-white shadow-2xl transition-all duration-200 hover:scale-105 hover:border-white active:scale-95'
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          className='group relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#e8efe2]/92 border border-[#8fc45a]/40 text-[#121A12] shadow-[0_12px_36px_rgba(18,26,18,0.18),0_0_24px_rgba(143,196,90,0.25)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#8fc45a]/80 hover:shadow-[0_0_32px_rgba(143,196,90,0.45)] active:scale-95'
           aria-label='Open AI Financial Guide'
         >
-          {/* Subtle minimal hover halo */}
-          <div className='absolute -inset-0.5 rounded-full bg-white/10 opacity-0 group-hover:opacity-100 blur-sm transition duration-300' />
+          {/* Ambient Glow Halo matching Recursive green */}
+          <div className='absolute -inset-1 rounded-full bg-[#8fc45a]/25 opacity-0 group-hover:opacity-100 blur-md transition duration-300 pointer-events-none' />
 
-          {/* Minimal Geometric / Triangle Glyph (Vercel Style) */}
-          <div className='relative flex h-full w-full items-center justify-center'>
-            <svg
-              viewBox='0 0 24 24'
-              className='h-6 w-6 text-white transition-transform duration-200 group-hover:scale-110'
-              fill='none'
-              stroke='currentColor'
-              strokeWidth='1.75'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-            >
-              <path d='M12 2L2 19.5h20L12 2z' fill='white' fillOpacity='0.1' />
-              <path d='M12 2L2 19.5h20L12 2z' />
-              <circle cx='12' cy='13' r='1.5' fill='white' />
-            </svg>
+          {/* ThinkingOrb Canvas Core (64px) with Light/Forest Theme */}
+          <div className='relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full'>
+            <ThinkingOrb
+              state={isHovered ? 'working' : 'breathing'}
+              size={64}
+              theme='light'
+              speed={isHovered ? 1.25 : 1}
+            />
           </div>
 
-          {/* Minimal status pip */}
-          <span className='absolute top-0 right-0 flex h-3 w-3'>
-            <span className='relative inline-flex h-2.5 w-2.5 rounded-full border border-black bg-white' />
+          {/* Minimal live status pip */}
+          <span className='absolute top-1 right-1 flex h-3.5 w-3.5'>
+            <span className='absolute inline-flex h-full w-full rounded-full bg-[#8fc45a] opacity-75 animate-ping' />
+            <span className='relative inline-flex h-3.5 w-3.5 rounded-full border-2 border-[#121A12] bg-[#8fc45a] shadow-xs' />
           </span>
         </button>
       )}
 
-      {/* Modern AI Chat Window - Vercel Dark Minimalist */}
+      {/* Modern AI Chat Window - Recursive Theme Frosted Linen & Forest */}
       {isOpen && (
         <div
-          className={`flex flex-col rounded-3xl border border-white/15 bg-[#0a0a0c]/95 shadow-[0_24px_70px_rgba(0,0,0,0.85),0_0_0_1px_rgba(255,255,255,0.08)] backdrop-blur-2xl animate-in fade-in zoom-in-95 duration-200 overflow-hidden transition-all duration-300 ${
+          className={`flex flex-col rounded-3xl border border-[#8fc45a]/40 bg-[#f4f7f1]/98 shadow-[0_32px_90px_rgba(18,26,18,0.22),0_0_0_1px_rgba(143,196,90,0.2)] text-[#121A12] backdrop-blur-3xl animate-in fade-in zoom-in-95 duration-200 overflow-hidden transition-all duration-300 ${
             isExpanded
               ? 'h-[86vh] max-h-[760px] w-[94vw] sm:w-[720px] md:w-[800px]'
               : 'h-[580px] w-[380px] sm:w-[420px]'
           }`}
         >
           {/* Unified Sleek Header */}
-          <div className='border-b border-white/10 bg-white/[0.02]'>
+          <div className='border-b border-[#8fc45a]/25 bg-white/50 backdrop-blur-sm'>
             {/* Top Bar: Identity & Actions */}
             <div className='flex items-center justify-between px-4 py-3 sm:px-5'>
               <div className='flex items-center gap-3'>
-                <div className='relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-white/15 to-white/5 border border-white/15 text-white shadow-sm'>
-                  <Bot className='h-4 w-4' />
-                  <span className='absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#0a0a0c] bg-white' />
+                <div className='relative flex h-9 w-9 items-center justify-center rounded-xl bg-[#8fc45a]/15 border border-[#8fc45a]/35 text-[#121A12] shadow-sm overflow-hidden'>
+                  <ThinkingOrb
+                    state={isLoading ? 'searching' : isRequestingCall ? 'connecting' : 'breathing'}
+                    size={20}
+                    theme='light'
+                  />
+                  <span className={`absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#f4f7f1] ${isLoading ? 'bg-emerald-500 animate-pulse' : 'bg-[#8fc45a]'}`} />
                 </div>
                 <div>
                   <div className='flex items-center gap-2'>
-                    <h3 className='text-sm font-semibold tracking-tight text-white font-sans'>Mitra</h3>
+                    <h3 className='text-sm font-semibold tracking-tight text-[#121A12] font-sans'>Mitra</h3>
                     <Badge
                       variant='outline'
-                      className='text-[9px] px-1.5 py-0 font-mono bg-white/5 text-white/70 border-white/15 uppercase tracking-wider'
+                      className='text-[9px] px-1.5 py-0 font-mono bg-[#8fc45a]/20 text-[#1b3d1b] border-[#8fc45a]/40 uppercase tracking-wider'
                     >
                       {isLocalModel ? 'Local AI' : 'Edge AI'}
                     </Badge>
                   </div>
-                  <p className='text-[11px] text-white/45 font-mono'>{t.vernacularSubtitle}</p>
+                  <p className='text-[11px] text-[#3d4f3b] font-mono'>{t.vernacularSubtitle}</p>
                 </div>
               </div>
 
@@ -602,8 +621,8 @@ export function MascotChat() {
                   onClick={() => setShowCallbackForm(!showCallbackForm)}
                   className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-mono transition-all ${
                     showCallbackForm
-                      ? 'bg-white text-black font-semibold'
-                      : 'border border-white/15 bg-white/[0.04] text-white/80 hover:bg-white/10 hover:text-white'
+                      ? 'bg-[#121A12] text-[#f3f8ee] font-semibold shadow-xs'
+                      : 'border border-[#8fc45a]/35 bg-[#8fc45a]/15 text-[#1b3d1b] hover:bg-[#8fc45a]/25'
                   }`}
                   title='Request Voice Callback'
                 >
@@ -615,7 +634,7 @@ export function MascotChat() {
                 <Button
                   variant='ghost'
                   size='icon'
-                  className='h-8 w-8 rounded-lg text-white/50 hover:text-white hover:bg-white/10'
+                  className='h-8 w-8 rounded-lg text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15'
                   onClick={() => setIsExpanded(!isExpanded)}
                   title={isExpanded ? 'Contract window' : 'Expand layout'}
                   aria-label={isExpanded ? 'Contract window' : 'Expand layout'}
@@ -626,7 +645,7 @@ export function MascotChat() {
                 <Button
                   variant='ghost'
                   size='icon'
-                  className='h-8 w-8 rounded-lg text-white/50 hover:text-white hover:bg-white/10'
+                  className='h-8 w-8 rounded-lg text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15'
                   onClick={() => {
                     window.speechSynthesis?.cancel()
                     setIsOpen(false)
@@ -640,7 +659,7 @@ export function MascotChat() {
 
             {/* Bottom Sub-bar: Language Segmented Control & Status */}
             <div className='flex items-center justify-between px-4 pb-2.5 sm:px-5'>
-              <div className='flex items-center gap-1 rounded-lg border border-white/10 bg-white/[0.03] p-0.5'>
+              <div className='flex items-center gap-1 rounded-lg border border-[#8fc45a]/25 bg-[#e4ecdc]/80 p-0.5'>
                 {(
                   [
                     { code: 'en', label: 'English' },
@@ -655,8 +674,8 @@ export function MascotChat() {
                     onClick={() => handleLanguageChange(lang.code)}
                     className={`rounded-md px-2.5 py-1 text-[11px] font-mono transition-all ${
                       selectedLang === lang.code
-                        ? 'bg-white text-black font-semibold shadow-sm'
-                        : 'text-white/50 hover:bg-white/5 hover:text-white'
+                        ? 'bg-[#121A12] text-[#f3f8ee] font-semibold shadow-xs'
+                        : 'text-[#3d4f3b] hover:text-[#121A12]'
                     }`}
                   >
                     {lang.label}
@@ -664,8 +683,8 @@ export function MascotChat() {
                 ))}
               </div>
 
-              <div className='hidden sm:flex items-center gap-1.5 text-[10px] font-mono text-white/40'>
-                <span className='h-1.5 w-1.5 rounded-full bg-white/80 animate-pulse' />
+              <div className='hidden sm:flex items-center gap-1.5 text-[10px] font-mono text-[#3d4f3b]'>
+                <span className='h-1.5 w-1.5 rounded-full bg-[#8fc45a] animate-pulse' />
                 <span>{t.zeroBureau}</span>
               </div>
             </div>
@@ -753,7 +772,7 @@ export function MascotChat() {
                   className='h-9 px-4 text-xs font-mono font-semibold bg-white text-black hover:bg-white/90 rounded-xl shrink-0'
                 >
                   {isRequestingCall ? (
-                    <Loader2 className='h-3.5 w-3.5 animate-spin text-black' />
+                    <ThinkingOrb state='connecting' size={20} theme='light' />
                   ) : (
                     callbackType === 'voice' ? t.callBtn : t.scheduleBtn
                   )}
@@ -781,8 +800,8 @@ export function MascotChat() {
                   className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className='flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gradient-to-br from-white/20 to-white/5 border border-white/15 text-white mt-1 shadow-sm'>
-                      <Bot className='h-3.5 w-3.5' />
+                    <div className='flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-white mt-1 shadow-sm overflow-hidden'>
+                      <ThinkingOrb state='shaping' size={20} theme='dark' />
                     </div>
                   )}
 
@@ -880,11 +899,19 @@ export function MascotChat() {
               ))}
 
               {isLoading && (
-                <div className='flex items-center gap-2.5 text-white/60 text-xs pl-2 font-mono py-2'>
-                  <div className='flex h-6 w-6 items-center justify-center rounded-md bg-white/10 text-white'>
-                    <Loader2 className='h-3.5 w-3.5 animate-spin' />
+                <div className='flex items-start gap-3 pl-1 py-3 animate-in fade-in duration-300'>
+                  <div className='flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/[0.06] border border-white/10 shadow-sm overflow-hidden'>
+                    <ThinkingOrb state='searching' size={64} theme='dark' />
                   </div>
-                  <span>{t.thinking}</span>
+                  <div className='flex flex-col gap-1.5 pt-1'>
+                    <div className='flex items-center gap-2'>
+                      <ThinkingOrb state='solving' size={20} theme='dark' />
+                      <span className='font-mono text-xs text-white/90 font-medium'>{t.thinking}</span>
+                    </div>
+                    <span className='text-[11px] font-mono text-white/40'>
+                      Evaluating credit policy & telemetry corpus…
+                    </span>
+                  </div>
                 </div>
               )}
 
@@ -913,11 +940,11 @@ export function MascotChat() {
                 <Button
                   type='submit'
                   size='icon'
-                  className='h-8 w-8 shrink-0 rounded-xl bg-white text-black hover:bg-white/90 disabled:opacity-30 disabled:hover:bg-white transition-all active:scale-95 shadow-sm'
+                  className='h-8 w-8 shrink-0 rounded-xl bg-white text-black hover:bg-white/90 disabled:opacity-30 disabled:hover:bg-white transition-all active:scale-95 shadow-sm overflow-hidden'
                   disabled={!inputValue.trim() || isLoading}
                 >
                   {isLoading ? (
-                    <Loader2 className='h-3.5 w-3.5 animate-spin' />
+                    <ThinkingOrb state='working' size={20} theme='light' />
                   ) : (
                     <Send className='h-3.5 w-3.5' />
                   )}

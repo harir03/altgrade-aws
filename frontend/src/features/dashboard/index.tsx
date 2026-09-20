@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { ThinkingOrb } from 'thinking-orbs'
 import {
   Users,
   CheckCircle2,
@@ -1329,10 +1330,11 @@ export function LoanOfficerDashboard() {
                         </div>
                       ))}
                       {advisorLoading && (
-                        <div className='flex gap-2 items-center text-muted-foreground'>
-                          <Bot className='h-4 w-4 shrink-0 text-brand-blue' />
-                          <Loader2 className='h-3 w-3 animate-spin' />
-                          <span className='text-xs'>Thinking...</span>
+                        <div className='flex gap-2.5 items-center text-muted-foreground py-1.5 animate-in fade-in'>
+                          <div className='flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-brand-blue/10 overflow-hidden'>
+                            <ThinkingOrb state='searching' size={20} theme='auto' />
+                          </div>
+                          <span className='text-xs font-mono text-muted-foreground'>Consulting credit policy engine…</span>
                         </div>
                       )}
                       <div ref={chatEndRef} />
@@ -1350,9 +1352,13 @@ export function LoanOfficerDashboard() {
                         size='sm'
                         onClick={handleAdvisorAsk}
                         disabled={advisorLoading || !advisorInput.trim()}
-                        className='h-8 px-3'
+                        className='h-8 px-3 overflow-hidden'
                       >
-                        <Send className='h-3.5 w-3.5' />
+                        {advisorLoading ? (
+                          <ThinkingOrb state='working' size={20} theme='auto' />
+                        ) : (
+                          <Send className='h-3.5 w-3.5' />
+                        )}
                       </Button>
                     </div>
                   </div>
