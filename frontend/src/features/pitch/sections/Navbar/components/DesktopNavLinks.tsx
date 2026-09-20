@@ -1,67 +1,67 @@
+import { useState, useEffect } from "react";
+
+const navItems = [
+  { href: "#about", label: "the chair" },
+  { href: "#themes", label: "Themes" },
+  { href: "#judges", label: "Judges" },
+  { href: "#sponsors", label: "Sponsors" },
+  { href: "#faq", label: "FAQ" },
+];
+
 export const DesktopNavLinks = () => {
+  const [activeHref, setActiveHref] = useState<string>("");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 180;
+      let current = "";
+      for (const item of navItems) {
+        const el = document.querySelector(item.href);
+        if (el) {
+          const top = (el as HTMLElement).offsetTop;
+          const height = (el as HTMLElement).offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            current = item.href;
+          }
+        }
+      }
+      setActiveHref(current);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <div className="items-center box-border caret-transparent gap-x-[1.6px] hidden min-h-0 min-w-0 outline-[3px] gap-y-[1.6px] no-underline px-[4.8px] md:flex md:min-h-[auto] md:min-w-[auto]">
-      <a
-        href="#about"
-        className="box-border caret-transparent text-neutral-700 inline text-[13.6px] font-medium isolate leading-[21.08px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[12.8px] py-2 rounded-full md:block md:min-h-[auto] md:min-w-[auto]"
-      >
-        <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap z-[-2]">
-          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap md:min-h-[auto] md:min-w-[auto]">
-            the chair
-          </span>
-        </span>
-      </a>
-
-      <a
-        href="#themes"
-        className="box-border caret-transparent text-neutral-700 inline text-[13.6px] font-medium isolate leading-[21.08px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[12.8px] py-2 rounded-full md:block md:min-h-[auto] md:min-w-[auto]"
-      >
-        <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap z-[-2]">
-          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap md:min-h-[auto] md:min-w-[auto]">
-            Themes
-          </span>
-        </span>
-      </a>
-
-      <a
-        href="#judges"
-        className="box-border caret-transparent text-neutral-700 inline text-[13.6px] font-medium isolate leading-[21.08px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[12.8px] py-2 rounded-full md:block md:min-h-[auto] md:min-w-[auto]"
-      >
-        <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap z-[-2]">
-          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap md:min-h-[auto] md:min-w-[auto]">
-            Judges
-          </span>
-        </span>
-      </a>
-
-      <a
-        href="#sponsors"
-        className="box-border caret-transparent text-neutral-700 inline text-[13.6px] font-medium isolate leading-[21.08px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[12.8px] py-2 rounded-full md:block md:min-h-[auto] md:min-w-[auto]"
-      >
-        <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap z-[-2]">
-          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap md:min-h-[auto] md:min-w-[auto]">
-            Sponsors
-          </span>
-        </span>
-      </a>
-
-      <a
-        href="#faq"
-        className="bg-lime-400/30 box-border caret-transparent text-neutral-900 inline text-[13.6px] font-semibold isolate leading-[21.08px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[12.8px] py-2 rounded-full md:block md:min-h-[auto] md:min-w-[auto]"
-      >
-        <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap z-[-2]">
-          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap md:min-h-[auto] md:min-w-[auto]">
-            FAQ
-          </span>
-        </span>
-      </a>
+    <div className="items-center box-border caret-transparent gap-x-[3px] hidden min-h-0 min-w-0 outline-[3px] gap-y-[1.6px] no-underline px-[4.8px] md:flex md:min-h-[auto] md:min-w-[auto]">
+      {navItems.map((item) => {
+        const isActive = activeHref === item.href;
+        return (
+          <a
+            key={item.href}
+            href={item.href}
+            className={`box-border caret-transparent inline text-[13.6px] isolate leading-[21.08px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[13px] py-1.5 rounded-full md:block md:min-h-[auto] md:min-w-[auto] transition-all duration-200 ${
+              isActive
+                ? "bg-[#8fc45a]/30 text-[#121a12] font-bold shadow-xs scale-[1.02]"
+                : "text-neutral-700 hover:text-neutral-950 font-medium hover:bg-black/5"
+            }`}
+          >
+            <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap">
+              <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap capitalize">
+                {item.label}
+              </span>
+            </span>
+          </a>
+        );
+      })}
 
       <a
         href="/sign-in"
-        className="bg-[#2F5527] hover:bg-[#203c1b] text-white box-border caret-transparent inline text-[13px] font-semibold isolate leading-[21px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[14px] py-1.5 rounded-full md:block md:min-h-[auto] md:min-w-[auto] shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 ml-1"
+        className="bg-[#2F5527] hover:bg-[#203c1b] text-white box-border caret-transparent inline text-[13px] font-semibold isolate leading-[21px] min-h-0 min-w-0 outline-[3px] relative no-underline text-nowrap overflow-hidden px-[14px] py-1.5 rounded-full md:block md:min-h-[auto] md:min-w-[auto] shadow-sm transition-all duration-200 hover:scale-105 active:scale-95 ml-1.5"
       >
         <span className="items-center box-border caret-transparent inline-flex outline-[3px] relative no-underline text-nowrap">
-          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap md:min-h-[auto] md:min-w-[auto]">
+          <span className="box-border caret-transparent block min-h-0 min-w-0 outline-[3px] no-underline text-nowrap">
             Sign In / Portal
           </span>
         </span>

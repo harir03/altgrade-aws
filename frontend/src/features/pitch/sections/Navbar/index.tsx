@@ -81,7 +81,7 @@ export const Navbar = () => {
         <div className="limelq-nav-screen">
           {/* Header with brand + close */}
           <div className="limelq-head">
-            <span className="limelq-brand">RECURSIVE</span>
+            <span className="limelq-brand">ALTGRADE</span>
             <button
               type="button"
               className="limelq-close"

@@ -9,6 +9,8 @@ import {
 } from '@/components/ui/sidebar'
 import { Button } from '../ui/button'
 
+import { AltGradeLogo } from '../altgrade-logo'
+
 export function AppTitle() {
   const { setOpenMobile } = useSidebar()
   return (
@@ -23,10 +25,9 @@ export function AppTitle() {
             <Link
               to='/'
               onClick={() => setOpenMobile(false)}
-              className='grid flex-1 text-start text-sm leading-tight'
+              className='flex items-center gap-2 flex-1 text-start'
             >
-              <span className='truncate font-bold'>Shadcn-Admin</span>
-              <span className='truncate text-xs'>Vite + ShadcnUI</span>
+              <AltGradeLogo variant='nav' showSublabel={false} />
             </Link>
             <ToggleSidebar />
           </div>

@@ -1,6 +1,11 @@
 import Lenis from "lenis";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 let lenisInstance: Lenis | null = null;
+let tickerFn: ((time: number) => void) | null = null;
 
 export function initSmoothScroll(): Lenis | null {
   if (typeof window === "undefined") return null;
@@ -22,11 +27,16 @@ export function initSmoothScroll(): Lenis | null {
       infinite: false,
     });
 
-    function raf(time: number) {
-      lenisInstance?.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
+    // Synchronize Lenis momentum scroll with GSAP ScrollTrigger updates
+    lenisInstance.on("scroll", () => {
+      ScrollTrigger.update();
+    });
+
+    tickerFn = (time: number) => {
+      lenisInstance?.raf(time * 1000);
+    };
+    gsap.ticker.add(tickerFn);
+    gsap.ticker.lagSmoothing(0);
 
     // Global anchor click handler for smooth scrolling
     document.addEventListener("click", (e) => {
@@ -56,6 +66,10 @@ export function getLenis(): Lenis | null {
 }
 
 export function destroySmoothScroll(): void {
+  if (tickerFn) {
+    gsap.ticker.remove(tickerFn);
+    tickerFn = null;
+  }
   if (lenisInstance) {
     lenisInstance.destroy();
     lenisInstance = null;

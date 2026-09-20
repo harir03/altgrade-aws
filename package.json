@@ -1,4 +1,10 @@
 {
+  "name": "altgrade-root",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "install": "npm install --prefix frontend"
+  },
   "dependencies": {
     "@gsap/react": "^2.1.2",
     "gsap": "^3.15.0"

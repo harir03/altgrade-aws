@@ -1,37 +1,61 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CrowdCanvas } from "@/features/pitch/sections/Footer/components/CrowdCanvas";
+import { AltGradeLogo } from "@/components/altgrade-logo";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const Footer = () => {
+  const footerRef = useRef<HTMLElement>(null);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  useEffect(() => {
+    const el = footerRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // Parallax upward lift on giant footer wordmark
+      gsap.from(".footer-wordmark-wrap", {
+        y: "14%",
+        opacity: 0.7,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "bottom bottom",
+          scrub: 0.35,
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <footer className="footer-shell relative min-h-[clamp(240px,58vh,660px)] h-[clamp(240px,58vh,660px)] w-full bg-transparent text-[#142617] overflow-hidden select-none flex flex-col justify-end">
+    <footer ref={footerRef} className="footer-shell relative min-h-[clamp(240px,58vh,660px)] h-[clamp(240px,58vh,660px)] w-full bg-transparent text-[#142617] overflow-hidden select-none flex flex-col justify-end">
       {/* Luminous radial glow behind the letters */}
       <div className="footer-aurora" aria-hidden="true" />
 
-      {/* Giant RECURSIVE Wordmark */}
+      {/* Giant ALTGRADE Wordmark */}
       <div className="footer-wordmark-wrap">
         <span className="sr-only">
-          RECURSIVE — ACM Hackathon 2026 | GNIT Kolkata ACM Student Chapter, Guru Nanak Institute of Technology, Kolkata
+          ALTGRADE — AI-Powered Alternate Credit Scoring & Inclusive Banking
         </span>
         <div
-          className="warp-text relative w-full max-w-[100vw] h-full pointer-events-auto"
+          className="warp-text relative w-full max-w-[100vw] h-full pointer-events-auto flex items-end justify-center"
           role="heading"
           aria-level={2}
-          aria-label="RECURSIVE"
+          aria-label="ALTGRADE"
         >
-          <div
-            className="warp-text-fallback-txt absolute inset-0 flex items-end justify-center font-headingNow font-black text-[min(clamp(7.5rem,34vw,42rem),60vh)] tracking-[-0.035em] leading-[0.82] select-none"
-            style={{
-              background:
-                "linear-gradient(180deg, #070e08 0%, #0f1c12 36%, #1a301e 72%, #2c4e30 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            RECURSIVE
-          </div>
+          <AltGradeLogo variant="footer" />
         </div>
       </div>
 

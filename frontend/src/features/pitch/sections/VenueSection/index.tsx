@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/features/pitch/components/SectionHeader";
 import { MapPin, Navigation, Copy, Check, Train, Bus, Car, ExternalLink } from "lucide-react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const VenueSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [copied, setCopied] = useState(false);
   const addressText =
     "157/ F, Nilgunj Road, Sahid Colony, Panihati, Sodepur, Kolkata, West Bengal 700114";
@@ -13,9 +18,36 @@ export const VenueSection = () => {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.from(".venue-anim-item", {
+        y: 35,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.12,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 72%",
+          toggleActions: "play none none none",
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="venue"
+      ref={sectionRef}
       aria-label="Hackathon Venue & Location"
       className="box-border caret-transparent relative w-full pt-16 pb-24 px-5 text-neutral-900 scroll-mt-20 md:pt-24 md:pb-32 md:px-16"
     >
@@ -32,7 +64,7 @@ export const VenueSection = () => {
           {/* Left Column: Details */}
           <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Campus Address Card */}
-            <div className="p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm backdrop-blur-xs">
+            <div className="venue-anim-item p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm backdrop-blur-xs">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-lime-100 text-lime-900 rounded-xl">
                   <MapPin className="w-6 h-6" />
@@ -74,7 +106,7 @@ export const VenueSection = () => {
             </div>
 
             {/* Transit & Getting Here Card */}
-            <div className="p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm backdrop-blur-xs">
+            <div className="venue-anim-item p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm backdrop-blur-xs">
               <h3 className="text-xl font-semibold font-headingNow text-neutral-900 mb-5">
                 Transit &amp; Getting Here
               </h3>
@@ -120,7 +152,7 @@ export const VenueSection = () => {
           </div>
 
           {/* Right Column: Google Maps */}
-          <div className="lg:col-span-7 h-full min-h-[420px] rounded-2xl overflow-hidden border border-stone-200/90 shadow-md bg-stone-100 flex flex-col relative">
+          <div className="venue-anim-item lg:col-span-7 h-full min-h-[420px] rounded-2xl overflow-hidden border border-stone-200/90 shadow-md bg-stone-100 flex flex-col relative">
             <div className="p-3 bg-white/90 border-b border-stone-200 flex items-center justify-between text-xs font-mono text-stone-700">
               <span className="font-semibold text-stone-900">GNIT Campus · 22.6951° N, 88.3788° E</span>
               <a

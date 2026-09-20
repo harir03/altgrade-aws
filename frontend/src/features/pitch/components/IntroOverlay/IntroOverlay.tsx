@@ -23,15 +23,19 @@ const timings: [number, number][] = [
 export const IntroOverlay: React.FC = () => {
   const [phase, setPhase] = useState<"pending" | "playing" | "done">(() => {
     if (typeof window === "undefined") return "done";
-    // Check if previously completed in this session
     try {
-      if (sessionStorage.getItem("recursive:intro:v1") === "1") {
+      const s = window.location.search;
+      if (s.includes("intro=0")) {
         document.documentElement.dataset.intro = "done";
         return "done";
       }
+      // Reset any stale suppression flag so the loading animation plays
+      sessionStorage.removeItem("recursive:intro:v1");
+      sessionStorage.removeItem("recursive:skip-intro-for-anchor");
     } catch {
       // ignore
     }
+    document.documentElement.dataset.intro = "playing";
     return "playing";
   });
 
@@ -57,12 +61,6 @@ export const IntroOverlay: React.FC = () => {
   const finishIntro = useCallback(() => {
     if (hasFinishedRef.current) return;
     hasFinishedRef.current = true;
-
-    try {
-      sessionStorage.setItem("recursive:intro:v1", "1");
-    } catch {
-      // ignore
-    }
 
     // Unlock scrolling
     document.documentElement.style.overflow = "";
@@ -369,6 +367,13 @@ export const IntroOverlay: React.FC = () => {
         <div className="intro-media-clip">
           <div ref={mediaRef} className="intro-media">
             <div ref={focusRef} className="intro-focus">
+              <img
+                src="https://www.recursiveacm.in/images/hero/hero_poster_v3.jpg"
+                alt=""
+                aria-hidden="true"
+                draggable={false}
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
               <video
                 ref={videoRef}
                 src="https://www.recursiveacm.in/bg/hero_loop_pp.mp4"
@@ -394,6 +399,9 @@ export const IntroOverlay: React.FC = () => {
               <div className="intro-artifact-aura" aria-hidden="true" />
               <img
                 src="https://www.recursiveacm.in/images/ui/artifact.png"
+                onError={(e) => {
+                  e.currentTarget.src = "https://c.animaapp.com/LNkMILMOwPiVywCgFtLcSg/assets/artifact.png";
+                }}
                 alt=""
                 className="intro-artifact-img"
                 draggable={false}
@@ -411,7 +419,7 @@ export const IntroOverlay: React.FC = () => {
                   <span className="intro-welcome-word-i">Hackers!</span>
                 </span>
               </h1>
-              <span className="intro-welcome-sub">RECURSIVE 2026</span>
+              <span className="intro-welcome-sub">ALTGRADE 2026</span>
             </div>
           </div>
         </div>

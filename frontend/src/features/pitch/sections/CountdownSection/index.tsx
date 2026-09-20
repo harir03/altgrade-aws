@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlipClock, type ClockUnit } from "./components/FlipClock";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const CountdownSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const targetTime = new Date("2026-10-08T03:30:00Z").getTime();
 
   const getUnits = (): ClockUnit[] => {
@@ -27,9 +32,50 @@ export const CountdownSection = () => {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  // ScrollTrigger entrance and valley parallax
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // Stagger entrance on headings and clock
+      gsap.from([".cd-motif", ".cd-heading", ".cd-plaque-block", ".cd-plaque-sub", ".cd-clock-reveal"], {
+        y: 28,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Parallax on valley background image
+      gsap.to(".cd-valley-img", {
+        y: "12%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.4,
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
       id="countdown"
+      ref={sectionRef}
       aria-label="Hackathon Countdown"
       className="cd relative w-full bg-transparent text-[#111a12] pt-[clamp(3.5rem,8vh,6.5rem)] pb-[clamp(13rem,29vw,40rem)] overflow-hidden z-[1]"
     >

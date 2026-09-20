@@ -1,9 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroMedia } from "@/features/pitch/sections/HeroSection/components/HeroMedia";
 import { HeroActions } from "@/features/pitch/sections/HeroSection/components/HeroActions";
 import { HeroScrollCue } from "@/features/pitch/sections/HeroSection/components/HeroScrollCue";
+import { AltGradeLogo } from "@/components/altgrade-logo";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const HeroSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [isRevealed, setIsRevealed] = useState(() => {
     if (typeof document === "undefined") return true;
     return document.documentElement.dataset.intro === "done";
@@ -36,10 +42,62 @@ export const HeroSection = () => {
     };
   }, [isRevealed]);
 
-  const easeCurve = "cubic-bezier(0.23, 1, 0.32, 1)";
+  // ScrollTrigger Parallax for Hero Elements
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // Parallax scroll on video background
+      gsap.to(".hero-video-wrap", {
+        y: "22%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.4,
+        },
+      });
+
+      // Subtle scale and vertical fade on hero logo content
+      gsap.to(".hero-center-content", {
+        y: "-15%",
+        scale: 0.95,
+        opacity: 0.2,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top top",
+          end: "bottom 30%",
+          scrub: 0.35,
+        },
+      });
+
+      // Parallax on bottom log divider
+      gsap.to(".hero-log-divider", {
+        y: "-10%",
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.3,
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, [isRevealed]);
+
+  const easeCurve = "cubic-bezier(0.16, 1, 0.3, 1)";
 
   return (
-    <section id="hero" className="hero">
+    <section id="hero" ref={sectionRef} className="hero">
       <HeroMedia />
 
       <div className="hero-content-flex">
@@ -54,34 +112,18 @@ export const HeroSection = () => {
               transition: `opacity 0.7s ${easeCurve} 0.02s, transform 0.7s ${easeCurve} 0.02s`,
             }}
           >
-            <h1 className="sr-only">RECURSIVE 2026 — ACM Hackathon by GNIT Kolkata ACM Student Chapter</h1>
-            <p className="sr-only">Official website for RECURSIVE Hackathon 2026 at Guru Nanak Institute of Technology (GNIT), Kolkata. An 8-hour sprint in AI, Web3, FinTech, HealthTech, CyberSecurity, and Open Innovation. Register on Devfolio.</p>
+            <h1 className="sr-only">ALTGRADE — AI-Powered Alternate Credit Scoring & Financial Inclusion</h1>
+            <p className="sr-only">Official portal for AltGrade: Scoring the credit-invisible and unlocking financial dignity for Bharat through alternate data and edge AI.</p>
             
             <div className="hero-warp-wrap">
               <div
                 role="heading"
                 aria-level={2}
-                aria-label="RECURSIVE — Bend the moment"
-                className="warp-text"
+                aria-label="ALTGRADE — Alternate Credit Scoring & Inclusive Banking"
+                className="warp-text flex items-center justify-center w-full"
                 style={{ position: "relative", width: "100%", height: "100%", pointerEvents: "auto" }}
               >
-                <img
-                  src="https://www.recursiveacm.in/images/brand/logo.png"
-                  alt="RECURSIVE"
-                  className="warp-text-fallback-img"
-                  loading="eager"
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "contain",
-                    objectPosition: "center",
-                    pointerEvents: "none",
-                    userSelect: "none",
-                    filter: "brightness(0) drop-shadow(0 4px 16px rgba(0,0,0,0.25))",
-                  }}
-                />
+                <AltGradeLogo variant="hero" sublabelText="ALTERNATE CREDIT FOR ALL" />
               </div>
             </div>
           </div>

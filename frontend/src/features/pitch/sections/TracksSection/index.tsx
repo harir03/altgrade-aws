@@ -1,5 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/features/pitch/components/SectionHeader";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface TrackData {
   id: string;
@@ -99,12 +103,55 @@ const tracks: TrackData[] = [
 ];
 
 export const TracksSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const currentTrack = tracks[activeIdx];
+
+  // ScrollTrigger for track reveal and scroll progression
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      // Entrance fade & lift
+      gsap.from(".tracks-stage-box", {
+        y: 35,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 72%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      // Scroll progression to switch tracks smoothly as user scrolls through the section
+      ScrollTrigger.create({
+        trigger: el,
+        start: "top 40%",
+        end: "bottom 60%",
+        onUpdate: (self) => {
+          const newIdx = Math.min(
+            tracks.length - 1,
+            Math.floor(self.progress * tracks.length)
+          );
+          setActiveIdx(newIdx);
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
       id="themes"
+      ref={sectionRef}
       aria-label="The six tracks"
       className="box-border caret-transparent relative w-full pt-16 pb-20 px-5 text-center text-lime-50 scroll-mt-20 md:pt-28 md:pb-28 md:px-16"
     >
@@ -149,7 +196,7 @@ export const TracksSection = () => {
 
         {/* Stage Container */}
         <div className="w-full mt-10 md:mt-16 text-left">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center bg-stone-950/60 p-6 md:p-10 rounded-3xl border border-lime-900/30 shadow-2xl backdrop-blur-sm">
+          <div className="tracks-stage-box grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center bg-stone-950/60 p-6 md:p-10 rounded-3xl border border-lime-900/30 shadow-2xl backdrop-blur-sm">
             {/* Visual Morphing Plate */}
             <div className="relative w-full aspect-[16/11] rounded-2xl overflow-hidden bg-[#060B05] border border-lime-900/40 p-6 flex flex-col justify-between shadow-inner">
               <div className="flex justify-between items-center text-xs font-mono text-lime-400">
@@ -172,7 +219,7 @@ export const TracksSection = () => {
 
               <div className="flex items-center justify-between text-stone-400 text-xs font-geist_mono pt-3 border-t border-lime-950">
                 <span>GNIT ACM CHAPTER</span>
-                <span>RECURSIVE 2026</span>
+                <span>ALTGRADE 2026</span>
               </div>
 
               {/* Ambient Glow */}

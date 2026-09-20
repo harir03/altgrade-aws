@@ -1,11 +1,45 @@
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/features/pitch/components/SectionHeader";
 import { ArrowUpRight } from "lucide-react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const OrganizersSection = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      gsap.from(".org-anim-card", {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 74%",
+          toggleActions: "play none none none",
+        },
+      });
+    }, el);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section
-      id="acm"
-      aria-label="Organizers of Recursive"
+      id="organizers"
+      ref={sectionRef}
+      aria-label="Organizers of AltGrade"
       className="box-border caret-transparent relative w-full pt-16 pb-20 px-5 text-neutral-900 scroll-mt-20 md:pt-24 md:pb-28 md:px-16"
     >
       <div className="max-w-[1280px] mx-auto flex flex-col items-center text-center">
@@ -22,7 +56,7 @@ export const OrganizersSection = () => {
         </h2>
 
         {/* Host chapter card */}
-        <div className="w-full max-w-xl mt-10 p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm flex flex-col items-center">
+        <div className="org-anim-card w-full max-w-xl mt-10 p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm flex flex-col items-center">
           <span className="text-xs font-semibold font-geist_mono tracking-wider text-stone-500 uppercase mb-3">
             HOSTED BY
           </span>
@@ -46,7 +80,7 @@ export const OrganizersSection = () => {
         </div>
 
         {/* Story Text */}
-        <div className="max-w-2xl mt-10 space-y-4 font-dm_sans text-stone-700 text-base md:text-lg leading-relaxed">
+        <div className="org-anim-card max-w-2xl mt-10 space-y-4 font-dm_sans text-stone-700 text-base md:text-lg leading-relaxed">
           <p>
             In collaboration with the Department of Information Technology, Guru Nanak Institute of Technology.
           </p>
@@ -56,7 +90,7 @@ export const OrganizersSection = () => {
         </div>
 
         {/* Institutional Accreditation Marks */}
-        <div className="w-full mt-12 pt-8 border-t border-stone-200/80">
+        <div className="org-anim-card w-full mt-12 pt-8 border-t border-stone-200/80">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 bg-white/60 border border-stone-200/80 rounded-xl shadow-xs">
               <img

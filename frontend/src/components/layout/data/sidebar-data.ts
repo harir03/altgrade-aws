@@ -14,9 +14,9 @@ export const sidebarData: SidebarData = {
   },
   teams: [
     {
-      name: 'Minions',
+      name: 'AltGrade',
       logo: Command,
-      plan: 'Alternate Scoring',
+      plan: 'Alternate Credit Engine',
     },
   ],
   navGroups: [

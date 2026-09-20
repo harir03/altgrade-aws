@@ -3,9 +3,9 @@ import { FaqItem } from "@/features/pitch/sections/FaqSection/components/FaqItem
 const faqs = [
   {
     number: "1",
-    question: "What is Recursive and who is organizing it?",
+    question: "What is AltGrade and who is organizing it?",
     answer:
-      "Recursive is the inaugural flagship 8-hour in-person hackathon hosted by the GNIT Kolkata ACM Student Chapter in collaboration with the Department of Information Technology at Guru Nanak Institute of Technology (GNIT), Kolkata. It brings together developers, designers, and builders for eight hours of rapid prototyping, honest software craft, and collaborative problem-solving.",
+      "AltGrade is an AI-powered alternate credit scoring and financial inclusion platform built for the credit-invisible populations of Bharat, hosted and presented in collaboration with GNIT Kolkata ACM Student Chapter at Guru Nanak Institute of Technology (GNIT), Kolkata. It brings together developers, designers, and fintech builders for rapid prototyping, honest software craft, and collaborative problem-solving.",
   },
   {
     number: "2",
@@ -17,15 +17,15 @@ const faqs = [
     number: "3",
     question: "Is there any registration fee?",
     answer:
-      "No. Recursive is 100% free of cost. Admission, high-speed Wi-Fi access, meals, snacks, beverages, exclusive swag kits, and mentorship are provided completely free to all shortlisted participants.",
+      "No. AltGrade is 100% free of cost. Admission, high-speed Wi-Fi access, meals, snacks, beverages, exclusive swag kits, and mentorship are provided completely free to all shortlisted participants.",
   },
   {
     number: "4",
     question: "How do I apply, and what is the idea submission process?",
-    answer: `Applying for Recursive is done via Devfolio with an idea review round:
+    answer: `Applying for AltGrade is done via Devfolio with an idea review round:
 
 1. Register on Devfolio: Click the 'Apply with Devfolio' button and complete your profile. Form a team of 2 to 4 members (min 2, max 4 builders).
-2. Download the Idea Template: Access the official Recursive ACM Idea Submission Template on Google Slides.
+2. Download the Idea Template: Access the official AltGrade ACM Idea Submission Template on Google Slides.
 3. Prepare Your Proposal: Follow the official 8-slide structure (Cover, Team Details, Problem Statement, Solution, Tech Stack, Methodology, Feasibility & Scalability, Business Impact & Future Scope).
 4. Export as PDF & Upload: Remove the final Guidelines slide, save your completed deck as a PDF (maximum 8 slides total including cover slide), and upload it directly in your Devfolio application form before registration closes.
 5. Review & RSVP: Applications will be reviewed by the organizing committee. Shortlisted teams will receive an acceptance invitation on Devfolio and email to confirm their attendance (RSVP) for the in-person hackathon at GNIT.`,
@@ -35,7 +35,7 @@ const faqs = [
     question: "What should be included in our Idea Submission PPT?",
     answer: `Your presentation must strictly follow the official 8-slide structure from the template (maximum 8 slides, including the cover slide):
 
-• Slide 1 — Cover Slide: Official Shift-8 Recursive Hackathon branding with GNIT & ACM chapter headers.
+• Slide 1 — Cover Slide: Official Shift-8 AltGrade Hackathon branding with GNIT & ACM chapter headers.
 • Slide 2 — Team Details: Team Name, chosen Theme, and member table (Team Lead, Member 1, Member 2, Member 3: Full Name, College Name, Contact Number, Email).
 • Slide 3 — Problem Statement: Clearly identify and state a real-world problem, define the core challenge & target users, explain why it matters, and highlight existing gaps/challenges.
 • Slide 4 — Your Solution: Clearly describe your idea, system, or prototype, major features & how it works, how it addresses user needs, and its uniqueness & impact.

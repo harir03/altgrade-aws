@@ -587,94 +587,48 @@ export function MascotChat() {
               : 'h-[580px] w-[380px] sm:w-[420px]'
           }`}
         >
-          {/* Unified Sleek Header */}
-          <div className='border-b border-[#8fc45a]/25 bg-white/50 backdrop-blur-sm'>
-            {/* Top Bar: Identity & Actions */}
-            <div className='flex items-center justify-between px-4 py-3 sm:px-5'>
-              <div className='flex items-center gap-3'>
-                <div className='relative flex h-9 w-9 items-center justify-center rounded-xl bg-[#8fc45a]/15 border border-[#8fc45a]/35 text-[#121A12] shadow-sm overflow-hidden'>
-                  <ThinkingOrb
-                    state={isLoading ? 'searching' : isRequestingCall ? 'connecting' : 'breathing'}
-                    size={20}
-                    theme='light'
-                  />
-                  <span className={`absolute -top-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border-2 border-[#f4f7f1] ${isLoading ? 'bg-emerald-500 animate-pulse' : 'bg-[#8fc45a]'}`} />
-                </div>
-                <div>
-                  <div className='flex items-center gap-2'>
-                    <h3 className='text-sm font-semibold tracking-tight text-[#121A12] font-sans'>Mitra</h3>
-                    <Badge
-                      variant='outline'
-                      className='text-[9px] px-1.5 py-0 font-mono bg-[#8fc45a]/20 text-[#1b3d1b] border-[#8fc45a]/40 uppercase tracking-wider'
-                    >
-                      {isLocalModel ? 'Local AI' : 'Edge AI'}
-                    </Badge>
-                  </div>
-                  <p className='text-[11px] text-[#3d4f3b] font-mono'>{t.vernacularSubtitle}</p>
-                </div>
+          {/* Sleek Single-Row Header */}
+          <div className='border-b border-[#8fc45a]/25 bg-white/75 px-4 py-3 sm:px-5 backdrop-blur-md flex items-center justify-between shrink-0'>
+            {/* Identity & Status */}
+            <div className='flex items-center gap-2.5'>
+              <div className='relative flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-[#8fc45a]/20 border border-[#8fc45a]/35 shadow-2xs overflow-hidden'>
+                <ThinkingOrb
+                  state={isLoading ? 'searching' : isRequestingCall ? 'connecting' : 'breathing'}
+                  size={20}
+                  theme='light'
+                />
+                <span className={`absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full border border-white ${isLoading ? 'bg-emerald-500 animate-pulse' : 'bg-[#8fc45a]'}`} />
               </div>
-
-              <div className='flex items-center gap-1.5'>
-                {/* Voice Call Assistance Button */}
-                <button
-                  type='button'
-                  onClick={() => setShowCallbackForm(!showCallbackForm)}
-                  className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-mono transition-all ${
-                    showCallbackForm
-                      ? 'bg-[#121A12] text-[#f3f8ee] font-semibold shadow-xs'
-                      : 'border border-[#8fc45a]/35 bg-[#8fc45a]/15 text-[#1b3d1b] hover:bg-[#8fc45a]/25'
-                  }`}
-                  title='Request Voice Callback'
-                >
-                  <PhoneCall className='h-3 w-3' />
-                  <span className='hidden xs:inline'>{t.requestCallHeaderBtn}</span>
-                </button>
-
-                {/* Window Controls */}
-                <Button
-                  variant='ghost'
-                  size='icon'
-                  className='h-8 w-8 rounded-lg text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15'
-                  onClick={() => setIsExpanded(!isExpanded)}
-                  title={isExpanded ? 'Contract window' : 'Expand layout'}
-                  aria-label={isExpanded ? 'Contract window' : 'Expand layout'}
-                >
-                  {isExpanded ? <Minimize2 className='h-3.5 w-3.5' /> : <Maximize2 className='h-3.5 w-3.5' />}
-                </Button>
-
-                <Button
-                  variant='ghost'
-                  size='icon'
-                  className='h-8 w-8 rounded-lg text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15'
-                  onClick={() => {
-                    window.speechSynthesis?.cancel()
-                    setIsOpen(false)
-                  }}
-                  aria-label='Close assistant'
-                >
-                  <X className='h-4 w-4' />
-                </Button>
+              <div>
+                <div className='flex items-center gap-1.5'>
+                  <h3 className='text-[13px] font-bold tracking-tight text-[#121A12] font-sans'>Mitra</h3>
+                  <Badge variant='outline' className='text-[9px] px-1.5 py-0 font-mono bg-[#8fc45a]/20 text-[#1b3d1b] border-[#8fc45a]/40 uppercase tracking-wider'>
+                    {isLocalModel ? 'Local AI' : 'Edge AI'}
+                  </Badge>
+                </div>
+                <span className='text-[10px] text-[#3d4f3b] font-mono leading-none block'>Vernacular Credit Guide</span>
               </div>
             </div>
 
-            {/* Bottom Sub-bar: Language Segmented Control & Status */}
-            <div className='flex items-center justify-between px-4 pb-2.5 sm:px-5'>
-              <div className='flex items-center gap-1 rounded-lg border border-[#8fc45a]/25 bg-[#e4ecdc]/80 p-0.5'>
+            {/* Actions Cluster */}
+            <div className='flex items-center gap-1.5'>
+              {/* Segmented Language Switcher */}
+              <div className='flex items-center rounded-lg border border-[#8fc45a]/30 bg-[#e4ecdc]/80 p-0.5 text-[10px] font-mono'>
                 {(
                   [
-                    { code: 'en', label: 'English' },
-                    { code: 'hi', label: 'हिंदी' },
-                    { code: 'gu', label: 'ગુજરાતી' },
-                    { code: 'ta', label: 'தமிழ்' },
+                    { code: 'en', label: 'EN' },
+                    { code: 'hi', label: 'HI' },
+                    { code: 'gu', label: 'GU' },
+                    { code: 'ta', label: 'TA' },
                   ] as const
                 ).map((lang) => (
                   <button
                     key={lang.code}
                     type='button'
                     onClick={() => handleLanguageChange(lang.code)}
-                    className={`rounded-md px-2.5 py-1 text-[11px] font-mono transition-all ${
+                    className={`rounded px-1.5 py-0.5 transition-all ${
                       selectedLang === lang.code
-                        ? 'bg-[#121A12] text-[#f3f8ee] font-semibold shadow-xs'
+                        ? 'bg-[#121A12] text-white font-semibold shadow-2xs'
                         : 'text-[#3d4f3b] hover:text-[#121A12]'
                     }`}
                   >
@@ -683,43 +637,75 @@ export function MascotChat() {
                 ))}
               </div>
 
-              <div className='hidden sm:flex items-center gap-1.5 text-[10px] font-mono text-[#3d4f3b]'>
-                <span className='h-1.5 w-1.5 rounded-full bg-[#8fc45a] animate-pulse' />
-                <span>{t.zeroBureau}</span>
-              </div>
+              {/* Officer Voice Callback Toggle */}
+              <button
+                type='button'
+                onClick={() => setShowCallbackForm(!showCallbackForm)}
+                className={`p-1.5 rounded-lg border transition-all ${
+                  showCallbackForm
+                    ? 'bg-[#121A12] text-white border-[#121A12]'
+                    : 'bg-[#8fc45a]/15 text-[#1b3d1b] border-[#8fc45a]/35 hover:bg-[#8fc45a]/25'
+                }`}
+                title='Request Officer Callback'
+              >
+                <PhoneCall className='h-3.5 w-3.5' />
+              </button>
+
+              {/* Window Size & Close */}
+              <Button
+                variant='ghost'
+                size='icon'
+                className='h-7 w-7 rounded-lg text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15'
+                onClick={() => setIsExpanded(!isExpanded)}
+                title={isExpanded ? 'Contract' : 'Expand'}
+              >
+                {isExpanded ? <Minimize2 className='h-3.5 w-3.5' /> : <Maximize2 className='h-3.5 w-3.5' />}
+              </Button>
+
+              <Button
+                variant='ghost'
+                size='icon'
+                className='h-7 w-7 rounded-lg text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15'
+                onClick={() => {
+                  window.speechSynthesis?.cancel()
+                  setIsOpen(false)
+                }}
+              >
+                <X className='h-4 w-4' />
+              </Button>
             </div>
           </div>
 
           {/* Slide-Down Callback Request Drawer */}
           {showCallbackForm && (
-            <div className='border-b border-white/15 bg-black/95 p-4 sm:p-5 space-y-3 animate-in fade-in slide-in-from-top-2 duration-200'>
+            <div className='border-b border-[#8fc45a]/30 bg-[#eef4ea]/95 p-3.5 sm:p-4 space-y-2.5 animate-in fade-in slide-in-from-top-2 duration-200'>
               <div className='flex items-center justify-between'>
                 <div className='flex items-center gap-2'>
-                  <div className='flex h-7 w-7 items-center justify-center rounded-md bg-white text-black'>
-                    <PhoneCall className='h-3.5 w-3.5' />
+                  <div className='flex h-6 w-6 items-center justify-center rounded-lg bg-[#121A12] text-white shadow-2xs'>
+                    <PhoneCall className='h-3 w-3 text-[#8fc45a]' />
                   </div>
                   <div>
-                    <h4 className='text-xs font-semibold text-white font-sans'>{t.drawerTitle}</h4>
-                    <p className='text-[10px] text-white/50 font-mono'>{t.drawerDesc}</p>
+                    <h4 className='text-xs font-semibold text-[#121A12] font-sans'>{t.drawerTitle}</h4>
+                    <p className='text-[10px] text-[#3d4f3b] font-mono'>{t.drawerDesc}</p>
                   </div>
                 </div>
                 <button
                   type='button'
                   onClick={() => setShowCallbackForm(false)}
-                  className='text-white/40 hover:text-white transition-colors p-1'
+                  className='text-[#3d4f3b] hover:text-[#121A12] p-1'
                 >
                   <X className='h-3.5 w-3.5' />
                 </button>
               </div>
 
-              <div className='flex rounded-lg border border-white/10 bg-white/[0.02] p-1 gap-1 text-[11px] font-mono'>
+              <div className='flex rounded-lg border border-[#8fc45a]/25 bg-[#e4ecdc]/80 p-0.5 gap-1 text-[11px] font-mono'>
                 <button
                   type='button'
                   onClick={() => setCallbackType('voice')}
-                  className={`flex-1 py-1.5 px-2 rounded-md transition-all text-center ${
+                  className={`flex-1 py-1 px-2 rounded-md transition-all text-center ${
                     callbackType === 'voice'
-                      ? 'bg-white text-black font-semibold shadow-sm'
-                      : 'text-white/60 hover:text-white'
+                      ? 'bg-[#121A12] text-[#f3f8ee] font-semibold shadow-2xs'
+                      : 'text-[#3d4f3b] hover:text-[#121A12]'
                   }`}
                 >
                   {t.voiceOption}
@@ -727,19 +713,19 @@ export function MascotChat() {
                 <button
                   type='button'
                   onClick={() => setCallbackType('officer')}
-                  className={`flex-1 py-1.5 px-2 rounded-md transition-all text-center ${
+                  className={`flex-1 py-1 px-2 rounded-md transition-all text-center ${
                     callbackType === 'officer'
-                      ? 'bg-white text-black font-semibold shadow-sm'
-                      : 'text-white/60 hover:text-white'
+                      ? 'bg-[#121A12] text-[#f3f8ee] font-semibold shadow-2xs'
+                      : 'text-[#3d4f3b] hover:text-[#121A12]'
                   }`}
                 >
                   {t.officerOption}
                 </button>
               </div>
 
-              <div className='flex gap-2 pt-1'>
+              <div className='flex gap-2 pt-0.5'>
                 <div className='relative flex-1'>
-                  <span className='absolute left-3 top-2.5 text-xs font-mono text-white/40'>+91</span>
+                  <span className='absolute left-3 top-2 text-xs font-mono text-[#3d4f3b]'>+91</span>
                   <Input
                     type={isPhoneMasked ? 'password' : 'tel'}
                     value={isPhoneMasked ? maskPhoneNumber(callbackPhone).replace('+91 ', '') : callbackPhone}
@@ -753,15 +739,14 @@ export function MascotChat() {
                       }
                     }}
                     placeholder={t.phonePlaceholder}
-                    className='h-9 pl-11 pr-9 text-xs font-mono bg-white/[0.04] border-white/15 text-white placeholder:text-white/30 rounded-xl focus-visible:ring-1 focus-visible:ring-white'
+                    className='h-8 pl-11 pr-9 text-xs font-mono bg-white/90 border-[#8fc45a]/35 text-[#121A12] placeholder:text-[#6e826b] rounded-lg focus-visible:ring-1 focus-visible:ring-[#8fc45a]'
                   />
                   <button
                     type='button'
                     onClick={() => setIsPhoneMasked(!isPhoneMasked)}
-                    className='absolute right-2.5 top-2.5 text-white/40 hover:text-white transition-colors'
-                    title={isPhoneMasked ? 'Show unmasked phone number' : 'Mask phone number'}
+                    className='absolute right-2.5 top-2 text-[#3d4f3b] hover:text-[#121A12] transition-colors'
                   >
-                    {isPhoneMasked ? <EyeOff className='h-3.5 w-3.5' /> : <Eye className='h-3.5 w-3.5' />}
+                    {isPhoneMasked ? <EyeOff className='h-3 w-3' /> : <Eye className='h-3 w-3' />}
                   </button>
                 </div>
                 <Button
@@ -769,7 +754,7 @@ export function MascotChat() {
                   size='sm'
                   disabled={isRequestingCall}
                   onClick={handleRequestCallback}
-                  className='h-9 px-4 text-xs font-mono font-semibold bg-white text-black hover:bg-white/90 rounded-xl shrink-0'
+                  className='h-8 px-3 text-xs font-mono font-semibold bg-[#121A12] text-[#f3f8ee] hover:bg-[#203020] rounded-lg shrink-0 transition-all active:scale-95 shadow-2xs'
                 >
                   {isRequestingCall ? (
                     <ThinkingOrb state='connecting' size={20} theme='light' />
@@ -783,34 +768,64 @@ export function MascotChat() {
 
           {/* Active Call In-Progress Banner */}
           {callStageMsg && (
-            <div className='mx-4 mt-3 flex items-center gap-2.5 rounded-xl border border-white/20 bg-black px-3.5 py-2.5 text-xs font-mono text-white animate-pulse'>
-              <PhoneCall className='h-4 w-4 shrink-0 text-white animate-bounce' />
+            <div className='mx-4 mt-2.5 flex items-center gap-2.5 rounded-xl border border-[#8fc45a]/40 bg-[#121A12] px-3.5 py-2 text-xs font-mono text-[#f3f8ee] shadow-sm animate-pulse'>
+              <PhoneCall className='h-3.5 w-3.5 shrink-0 text-[#8fc45a] animate-bounce' />
               <div className='flex-1 truncate'>
-                <span className='font-semibold text-white'>Account Manager Call:</span> {callStageMsg}
+                <span className='font-semibold text-[#8fc45a]'>Officer Call Active:</span> {callStageMsg}
               </div>
             </div>
           )}
 
-          {/* Centered Conversation Thread (Solves the empty black void in expanded mode) */}
-          <div className='flex-1 overflow-y-auto px-4 sm:px-6 py-5 space-y-4 font-sans'>
-            <div className='max-w-2xl mx-auto w-full space-y-4'>
+          {/* Centered Conversation Thread */}
+          <div className='flex-1 overflow-y-auto px-4 sm:px-6 py-4 space-y-4 font-sans'>
+            <div className='max-w-2xl mx-auto w-full space-y-3.5'>
+              {/* Clean Starter Suggestion Chips (Visible at Start) */}
+              {messages.length <= 1 && (
+                <div className='pt-1 pb-2 space-y-2 animate-in fade-in duration-300'>
+                  <span className='text-[10px] font-mono text-[#3d4f3b] uppercase tracking-wider block font-semibold'>
+                    Quick Questions
+                  </span>
+                  <div className='grid grid-cols-1 sm:grid-cols-2 gap-1.5'>
+                    {[
+                      { label: '🌱 How does Zero-CIBIL scoring work?', query: 'How does AltGrade score people without a traditional CIBIL score?' },
+                      { label: '⚡ Can I qualify with UPI history?', query: 'Can I qualify for an AltGrade credit line with my daily UPI inflows?' },
+                      { label: '💳 Check loan eligibility criteria', query: 'What documents and alternate data are needed to check loan eligibility?' },
+                      { label: '📞 Request an officer phone callback', query: 'How do I speak to an officer regarding a micro-business credit line?' },
+                    ].map((item, idx) => (
+                      <button
+                        key={idx}
+                        type='button'
+                        onClick={() => {
+                          setInputValue(item.query)
+                          if (inputRef.current) inputRef.current.focus()
+                        }}
+                        className='text-left p-2 rounded-xl border border-[#8fc45a]/25 bg-white/80 hover:bg-[#e8efe2] hover:border-[#8fc45a]/60 transition-all text-xs font-sans text-[#121A12] shadow-2xs group flex items-start gap-1.5'
+                      >
+                        <span className='h-1.5 w-1.5 rounded-full bg-[#8fc45a] mt-1 shrink-0 group-hover:scale-125 transition-transform' />
+                        <span className='font-medium text-[#121A12] leading-snug'>{item.label}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                  className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.role === 'assistant' && (
-                    <div className='flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/[0.08] border border-white/15 text-white mt-1 shadow-sm overflow-hidden'>
-                      <ThinkingOrb state='shaping' size={20} theme='dark' />
+                    <div className='flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#8fc45a]/20 border border-[#8fc45a]/35 text-[#121A12] mt-1 shadow-2xs overflow-hidden'>
+                      <ThinkingOrb state='shaping' size={20} theme='light' />
                     </div>
                   )}
 
-                  <div className={`space-y-1.5 ${msg.role === 'user' ? 'max-w-[80%]' : 'max-w-[88%] sm:max-w-[82%]'}`}>
+                  <div className={`space-y-1 ${msg.role === 'user' ? 'max-w-[80%]' : 'max-w-[88%] sm:max-w-[82%]'}`}>
                     <div
-                      className={`rounded-2xl px-4 py-3 text-xs sm:text-[13px] leading-relaxed transition-all ${
+                      className={`rounded-2xl px-3.5 py-2.5 text-xs sm:text-[13px] leading-relaxed transition-all ${
                         msg.role === 'user'
-                          ? 'bg-white text-zinc-950 font-medium rounded-tr-sm shadow-sm'
-                          : 'bg-white/[0.04] border border-white/[0.09] text-zinc-100 rounded-tl-sm backdrop-blur-sm'
+                          ? 'bg-[#121A12] text-[#f4f8f0] font-medium rounded-tr-xs shadow-xs'
+                          : 'bg-white/95 border border-[#8fc45a]/20 text-[#121A12] rounded-tl-xs shadow-[0_2px_8px_rgba(18,26,18,0.03)] backdrop-blur-sm'
                       }`}
                     >
                       <p className='whitespace-pre-wrap'>{msg.content}</p>
@@ -826,24 +841,24 @@ export function MascotChat() {
                         msg.content.includes('કૉલબેક') ||
                         msg.content.includes('कॉल बैक') ||
                         msg.content.includes('கால் பேக்')) && (
-                        <div className='mt-3.5 space-y-2.5 pt-3 border-t border-white/[0.08]'>
-                          <div className='rounded-xl border border-white/15 bg-white/[0.04] p-3 transition-all hover:border-white/25'>
-                            <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5'>
+                        <div className='mt-2.5 pt-2.5 border-t border-[#8fc45a]/20'>
+                          <div className='rounded-xl border border-[#8fc45a]/30 bg-[#e8efe2]/70 p-2.5 transition-all hover:border-[#8fc45a]/50'>
+                            <div className='flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2'>
                               <div className='space-y-0.5'>
-                                <div className='flex items-center gap-1.5 text-xs font-semibold text-white'>
-                                  <PhoneCall className='h-3.5 w-3.5 text-white' />
+                                <div className='flex items-center gap-1.5 text-xs font-semibold text-[#121A12]'>
+                                  <PhoneCall className='h-3 w-3 text-[#2b4b21]' />
                                   <span>{t.cardTitle}</span>
                                 </div>
-                                <p className='text-[11px] text-white/60 font-mono leading-relaxed'>
+                                <p className='text-[10.5px] text-[#3d4f3b] font-mono leading-relaxed'>
                                   {t.cardDesc}
                                 </p>
                               </div>
                               <button
                                 type='button'
                                 onClick={() => setShowCallbackForm(true)}
-                                className='shrink-0 rounded-lg bg-white px-3 py-1.5 text-[11px] font-mono font-semibold text-black hover:bg-white/90 transition-all active:scale-95 shadow-sm flex items-center gap-1.5'
+                                className='shrink-0 rounded-lg bg-[#121A12] px-2.5 py-1 text-[10.5px] font-mono font-semibold text-[#f3f8ee] hover:bg-[#203020] transition-all active:scale-95 shadow-2xs flex items-center gap-1'
                               >
-                                <PhoneCall className='h-3 w-3' />
+                                <PhoneCall className='h-2.5 w-2.5 text-[#8fc45a]' />
                                 <span>{t.cardBtn}</span>
                               </button>
                             </div>
@@ -854,7 +869,7 @@ export function MascotChat() {
 
                     {/* Metadata & Actions Footer */}
                     <div
-                      className={`flex items-center gap-2 text-[10px] font-mono text-white/40 px-1 ${
+                      className={`flex items-center gap-2 text-[9.5px] font-mono text-[#5a6e56] px-1 ${
                         msg.role === 'user' ? 'justify-end' : 'justify-between'
                       }`}
                     >
@@ -863,24 +878,24 @@ export function MascotChat() {
                       {msg.role === 'assistant' && (
                         <div className='flex items-center gap-2'>
                           {msg.modelUsed && (
-                            <span className='text-[9px] text-white/30 font-mono hidden xs:inline'>
+                            <span className='text-[9px] text-[#5a6e56]/80 font-mono hidden xs:inline'>
                               {msg.modelUsed === 'local-model' ? 'Ollama' : msg.modelUsed}
                             </span>
                           )}
                           <button
                             type='button'
                             onClick={() => handleSpeak(msg.id, msg.content)}
-                            className='flex items-center gap-1 rounded-md px-1.5 py-0.5 text-white/60 hover:text-white hover:bg-white/10 transition-colors'
-                            title='Listen to this response'
+                            className='flex items-center gap-1 rounded px-1 py-0.5 text-[#3d4f3b] hover:text-[#121A12] hover:bg-[#8fc45a]/15 transition-colors'
+                            title='Listen'
                           >
                             {speakingId === msg.id ? (
                               <>
-                                <VolumeX className='h-3 w-3 text-white animate-pulse' />
-                                <span className='text-white'>{t.stopBtn}</span>
+                                <VolumeX className='h-2.5 w-2.5 text-[#121A12] animate-pulse' />
+                                <span className='text-[#121A12]'>{t.stopBtn}</span>
                               </>
                             ) : (
                               <>
-                                <Volume2 className='h-3 w-3' />
+                                <Volume2 className='h-2.5 w-2.5' />
                                 <span>{t.listenBtn}</span>
                               </>
                             )}
@@ -891,25 +906,23 @@ export function MascotChat() {
                   </div>
 
                   {msg.role === 'user' && (
-                    <div className='flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white text-black font-semibold mt-1 shadow-sm'>
-                      <User className='h-3.5 w-3.5' />
+                    <div className='flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#121A12] text-white font-semibold mt-1 shadow-2xs'>
+                      <User className='h-3 w-3' />
                     </div>
                   )}
                 </div>
               ))}
 
+              {/* Clean Single Thinking Orb Indicator */}
               {isLoading && (
-                <div className='flex items-start gap-3 pl-1 py-3 animate-in fade-in duration-300'>
-                  <div className='flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-white/[0.06] border border-white/10 shadow-sm overflow-hidden'>
-                    <ThinkingOrb state='searching' size={64} theme='dark' />
+                <div className='flex items-center gap-2.5 pl-1 py-2 animate-in fade-in duration-300'>
+                  <div className='flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-white/95 border border-[#8fc45a]/35 shadow-2xs overflow-hidden'>
+                    <ThinkingOrb state='searching' size={20} theme='light' />
                   </div>
-                  <div className='flex flex-col gap-1.5 pt-1'>
-                    <div className='flex items-center gap-2'>
-                      <ThinkingOrb state='solving' size={20} theme='dark' />
-                      <span className='font-mono text-xs text-white/90 font-medium'>{t.thinking}</span>
-                    </div>
-                    <span className='text-[11px] font-mono text-white/40'>
-                      Evaluating credit policy & telemetry corpus…
+                  <div className='flex flex-col'>
+                    <span className='font-mono text-xs text-[#121A12] font-semibold'>{t.thinking}</span>
+                    <span className='text-[10px] font-mono text-[#3d4f3b]'>
+                      Evaluating AltGrade alternate credit signals…
                     </span>
                   </div>
                 </div>
@@ -919,40 +932,40 @@ export function MascotChat() {
             </div>
           </div>
 
-          {/* Unified Composer Bar */}
-          <div className='border-t border-white/10 bg-[#0a0a0c]/90 px-4 py-3 sm:px-6 sm:py-3.5 backdrop-blur-md'>
+          {/* Clean Unified Composer Bar */}
+          <div className='border-t border-[#8fc45a]/25 bg-white/70 px-4 py-2.5 sm:px-5 backdrop-blur-md shrink-0'>
             <div className='max-w-2xl mx-auto w-full'>
               <form
                 onSubmit={(e) => {
                   e.preventDefault()
                   handleSend()
                 }}
-                className='relative flex items-center rounded-2xl border border-white/15 bg-white/[0.03] transition-all focus-within:border-white/40 focus-within:bg-white/[0.05] focus-within:ring-1 focus-within:ring-white/20 shadow-inner px-3 py-1'
+                className='relative flex items-center rounded-2xl border border-[#8fc45a]/35 bg-white/95 transition-all focus-within:border-[#8fc45a] focus-within:ring-2 focus-within:ring-[#8fc45a]/25 shadow-2xs px-3 py-1'
               >
                 <Input
                   ref={inputRef}
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   placeholder={t.inputPlaceholder}
-                  className='h-10 text-xs sm:text-[13px] bg-transparent border-0 text-white placeholder:text-white/35 focus-visible:ring-0 focus-visible:outline-none shadow-none py-1.5'
+                  className='h-9 text-xs sm:text-[13px] bg-transparent border-0 text-[#121A12] placeholder:text-[#6e826b] focus-visible:ring-0 focus-visible:outline-none shadow-none py-1'
                   disabled={isLoading}
                 />
                 <Button
                   type='submit'
                   size='icon'
-                  className='h-8 w-8 shrink-0 rounded-xl bg-white text-black hover:bg-white/90 disabled:opacity-30 disabled:hover:bg-white transition-all active:scale-95 shadow-sm overflow-hidden'
+                  className='h-7 w-7 shrink-0 rounded-xl bg-[#121A12] text-white hover:bg-[#203020] disabled:opacity-35 transition-all active:scale-95 shadow-2xs overflow-hidden'
                   disabled={!inputValue.trim() || isLoading}
                 >
                   {isLoading ? (
                     <ThinkingOrb state='working' size={20} theme='light' />
                   ) : (
-                    <Send className='h-3.5 w-3.5' />
+                    <Send className='h-3 w-3' />
                   )}
                 </Button>
               </form>
 
-              <p className='mt-2 text-center text-[10px] font-mono text-white/30 tracking-wide'>
-                {t.footerTagline}
+              <p className='mt-1.5 text-center text-[9.5px] font-mono text-[#5a6e56] tracking-wide'>
+                AltGrade DPDP Compliant · Zero Bureau Footprint
               </p>
             </div>
           </div>
