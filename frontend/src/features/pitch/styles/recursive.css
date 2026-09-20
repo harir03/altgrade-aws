@@ -532,7 +532,7 @@
 
           /* Ultra-translucent crystal frosted glass on mobile phone navbar pill */
           .nav-glass-container > div,
-          .nav-glass-container :global(.relative.isolate) {
+          .nav-glass-container .relative.isolate {
             background: rgba(255, 255, 255, 0.08) !important;
             backdrop-filter: blur(28px) saturate(200%) !important;
             -webkit-backdrop-filter: blur(28px) saturate(200%) !important;

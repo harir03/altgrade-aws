@@ -503,7 +503,7 @@ export function MascotChat() {
   const currentBubble = CYCLING_BUBBLES[currentBubbleIdx]
 
   return (
-    <div className='fixed bottom-6 right-6 z-50 flex flex-col items-end'>
+    <div className='fixed bottom-4 right-3 sm:bottom-6 sm:right-6 z-50 flex flex-col items-end max-w-[calc(100vw-1.5rem)]'>
       {/* Floating Cycling Speech Bubble (when chat is closed) */}
       {!isOpen && !isBubbleDismissed && (
         <div
@@ -511,7 +511,7 @@ export function MascotChat() {
             setSelectedLang(currentBubble.lang as any)
             setIsOpen(true)
           }}
-          className={`relative mb-3 max-w-xs cursor-pointer rounded-2xl border border-[#8fc45a]/40 bg-[#eef4ea]/95 p-3.5 shadow-[0_16px_50px_rgba(18,26,18,0.14)] text-[#121A12] backdrop-blur-xl transition-all duration-200 hover:border-[#8fc45a]/70 hover:scale-[1.02] ${
+          className={`relative mb-3 max-w-[min(20rem,calc(100vw-2rem))] cursor-pointer rounded-2xl border border-[#8fc45a]/40 bg-[#eef4ea]/95 p-3.5 shadow-[0_16px_50px_rgba(18,26,18,0.14)] text-[#121A12] backdrop-blur-xl transition-all duration-200 hover:border-[#8fc45a]/70 hover:scale-[1.02] ${
             bubbleVisible ? 'translate-y-0 opacity-100' : 'translate-y-2 opacity-0 pointer-events-none'
           }`}
         >
@@ -554,14 +554,14 @@ export function MascotChat() {
           onClick={() => setIsOpen(true)}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
-          className='group relative flex h-[72px] w-[72px] items-center justify-center rounded-full bg-[#e8efe2]/92 border border-[#8fc45a]/40 text-[#121A12] shadow-[0_12px_36px_rgba(18,26,18,0.18),0_0_24px_rgba(143,196,90,0.25)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#8fc45a]/80 hover:shadow-[0_0_32px_rgba(143,196,90,0.45)] active:scale-95'
+          className='group relative flex h-[68px] w-[68px] sm:h-[72px] sm:w-[72px] items-center justify-center rounded-full bg-[#e8efe2]/92 border border-[#8fc45a]/40 text-[#121A12] shadow-[0_12px_36px_rgba(18,26,18,0.18),0_0_24px_rgba(143,196,90,0.25)] backdrop-blur-2xl transition-all duration-300 hover:scale-105 hover:border-[#8fc45a]/80 hover:shadow-[0_0_32px_rgba(143,196,90,0.45)] active:scale-95'
           aria-label='Open AI Financial Guide'
         >
           {/* Ambient Glow Halo matching Recursive green */}
           <div className='absolute -inset-1 rounded-full bg-[#8fc45a]/25 opacity-0 group-hover:opacity-100 blur-md transition duration-300 pointer-events-none' />
 
           {/* ThinkingOrb Canvas Core (64px) with Light/Forest Theme */}
-          <div className='relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full'>
+          <div className='relative flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center overflow-hidden rounded-full'>
             <ThinkingOrb
               state={isHovered ? 'working' : 'breathing'}
               size={64}
@@ -584,7 +584,7 @@ export function MascotChat() {
           className={`flex flex-col rounded-3xl border border-[#8fc45a]/40 bg-[#f4f7f1]/98 shadow-[0_32px_90px_rgba(18,26,18,0.22),0_0_0_1px_rgba(143,196,90,0.2)] text-[#121A12] backdrop-blur-3xl animate-in fade-in zoom-in-95 duration-200 overflow-hidden transition-all duration-300 ${
             isExpanded
               ? 'h-[86vh] max-h-[760px] w-[94vw] sm:w-[720px] md:w-[800px]'
-              : 'h-[580px] w-[380px] sm:w-[420px]'
+              : 'h-[min(580px,84vh)] w-[calc(100vw-1.5rem)] sm:w-[420px]'
           }`}
         >
           {/* Sleek Single-Row Header */}

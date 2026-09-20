@@ -105,8 +105,36 @@ export function UserAuthForm({
     })
   }
 
+  const fillDemoAccount = (email: string) => {
+    form.setValue('email', email)
+    form.setValue('password', 'Password@123')
+  }
+
   return (
     <Form {...form}>
+      {/* Quick Demo Logins Bar */}
+      <div className="mb-2 space-y-1.5">
+        <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
+          Fast Demo Access
+        </span>
+        <div className="flex flex-wrap gap-1.5">
+          <button
+            type="button"
+            onClick={() => fillDemoAccount('admin@altgrade.in')}
+            className="rounded-md border border-[#8FC45A]/30 bg-[#8FC45A]/10 px-2.5 py-1 text-[11px] font-mono text-[#A3D96E] hover:bg-[#8FC45A]/20 transition-colors"
+          >
+            👔 Loan Officer (admin)
+          </button>
+          <button
+            type="button"
+            onClick={() => fillDemoAccount('farmer@altgrade.in')}
+            className="rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] font-mono text-zinc-300 hover:bg-white/10 transition-colors"
+          >
+            🌾 Applicant (farmer)
+          </button>
+        </div>
+      </div>
+
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         className={cn('grid gap-3', className)}
@@ -122,7 +150,7 @@ export function UserAuthForm({
                 <input
                   type="email"
                   placeholder='name@example.com'
-                  className="w-full rounded-md border border-white/10 bg-black px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-[#00dfd8]/50 focus:ring-1 focus:ring-[#00dfd8]/30 transition-colors"
+                  className="w-full rounded-md border border-white/10 bg-black px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-[#8FC45A]/60 focus:ring-1 focus:ring-[#8FC45A]/30 transition-colors font-mono"
                   {...field}
                 />
               </FormControl>
@@ -139,7 +167,7 @@ export function UserAuthForm({
               <FormControl>
                 <PasswordInput
                   placeholder='********'
-                  className="w-full rounded-md border border-white/10 bg-black px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-[#00dfd8]/50 focus:ring-1 focus:ring-[#00dfd8]/30 transition-colors"
+                  className="w-full rounded-md border border-white/10 bg-black px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-[#8FC45A]/60 focus:ring-1 focus:ring-[#8FC45A]/30 transition-colors"
                   {...field}
                 />
               </FormControl>
@@ -156,7 +184,7 @@ export function UserAuthForm({
         <button
           type="submit"
           disabled={isLoading}
-          className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-white px-4 py-2.5 text-sm font-medium text-black transition-all hover:bg-zinc-200 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-[#8FC45A] hover:bg-[#9dd666] px-4 py-2.5 text-sm font-semibold text-[#121A12] shadow-sm transition-all active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? <Loader2 className='size-4 animate-spin' /> : <LogIn className='size-4' />}
           Sign in

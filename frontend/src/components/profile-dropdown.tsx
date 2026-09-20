@@ -19,8 +19,8 @@ export function ProfileDropdown() {
   const { auth } = useAuthStore()
   const user = auth.user
 
-  const name = user ? user.email.split('@')[0] : 'satnaing'
-  const email = user ? user.email : 'satnaingdev@gmail.com'
+  const name = user ? user.email.split('@')[0] : 'Loan Officer'
+  const email = user ? user.email : 'officer@altgrade.in'
   const initials = name.slice(0, 2).toUpperCase()
 
   return (
@@ -29,7 +29,7 @@ export function ProfileDropdown() {
         <DropdownMenuTrigger asChild>
           <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
             <Avatar className='h-8 w-8'>
-              <AvatarImage src='/avatars/01.png' alt='@shadcn' />
+              <AvatarImage src='/avatars/01.png' alt='@altgrade' />
               <AvatarFallback>{initials}</AvatarFallback>
             </Avatar>
           </Button>

@@ -2,6 +2,7 @@ import { Outlet, useMatches, Link, useNavigate } from '@tanstack/react-router'
 import { CheckCircle2, ArrowLeft, LogOut } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useAuthStore } from '@/stores/auth-store'
+import { AltGradeLogo } from '@/components/altgrade-logo'
 
 function StepIndicator({ currentPath }: { currentPath: string }) {
   const { t } = useTranslation()
@@ -102,11 +103,8 @@ export function ApplicantLayout() {
                 <span className='hidden sm:inline'>{t('nav.home', 'Home')}</span>
               </Link>
             )}
-            <Link to='/pitch' className='flex items-center gap-2.5 hover:opacity-80 transition-opacity'>
-              <div className='flex h-7 w-7 items-center justify-center rounded-md bg-foreground text-xs font-bold text-background'>
-                AG
-              </div>
-              <span className='text-sm font-semibold tracking-[-0.02em]'>{t('nav.brand', 'AltGrade')}</span>
+            <Link to='/pitch' className='flex items-center hover:opacity-85 transition-opacity'>
+              <AltGradeLogo variant="nav" showSublabel={false} />
             </Link>
           </div>
 
