@@ -68,9 +68,6 @@ export const Footer = () => {
         />
       </div>
 
-      {/* Bottom Cutout Fade */}
-      <div className="footer-cutout-fade" aria-hidden="true" />
-
       {/* Back to Top Button */}
       <div className="absolute bottom-6 right-6 pointer-events-auto z-[110]">
         <button
@@ -151,21 +148,6 @@ export const Footer = () => {
             radial-gradient(ellipse 80% 60% at 50% 88%, rgba(143, 196, 90, 0.22) 0%, rgba(92, 140, 58, 0.06) 55%, transparent 85%),
             radial-gradient(ellipse 50% 40% at 15% 80%, rgba(200, 224, 180, 0.24) 0%, transparent 68%),
             radial-gradient(ellipse 50% 40% at 85% 80%, rgba(180, 215, 170, 0.24) 0%, transparent 68%);
-        }
-
-        .footer-cutout-fade {
-          position: absolute;
-          inset: auto 0 0 0;
-          height: clamp(34px, 12.5%, 72px);
-          z-index: 25;
-          pointer-events: none;
-          background: linear-gradient(
-            180deg,
-            rgba(4, 10, 5, 0) 0%,
-            rgba(4, 10, 5, 0.45) 30%,
-            rgba(3, 8, 4, 0.88) 65%,
-            #020603 100%
-          );
         }
       `}</style>
     </footer>
