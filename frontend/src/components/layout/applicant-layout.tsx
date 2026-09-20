@@ -24,7 +24,7 @@ function StepIndicator({ currentPath }: { currentPath: string }) {
             {i > 0 && (
               <div
                 className={`h-px w-8 transition-colors duration-300 sm:w-12 ${
-                  isComplete ? 'bg-foreground' : 'bg-border'
+                  isComplete ? 'bg-[#5C8C3A]' : 'bg-[#2F5527]/40'
                 }`}
               />
             )}
@@ -32,14 +32,14 @@ function StepIndicator({ currentPath }: { currentPath: string }) {
               <div
                 className={`flex h-7 w-7 items-center justify-center rounded-full text-xs font-semibold transition-all duration-300 ${
                   isActive
-                    ? 'bg-foreground text-background'
+                    ? 'bg-[#5C8C3A] text-[#050B06] font-bold shadow-[0_0_12px_rgba(92,140,58,0.4)]'
                     : isComplete
-                      ? 'bg-foreground/10 text-foreground'
-                      : 'bg-muted text-muted-foreground'
+                      ? 'bg-[#122415] text-[#8FC45A] border border-[#2F5527]'
+                      : 'bg-[#0A140C] text-[#9BB096]/60 border border-[#2F5527]/30'
                 }`}
               >
                 {isComplete ? (
-                  <CheckCircle2 className='h-4 w-4' />
+                  <CheckCircle2 className='h-4 w-4 text-[#8FC45A]' />
                 ) : (
                   i + 1
                 )}
@@ -47,8 +47,10 @@ function StepIndicator({ currentPath }: { currentPath: string }) {
               <span
                 className={`hidden text-sm tracking-[-0.01em] sm:inline ${
                   isActive
-                    ? 'font-semibold text-foreground'
-                    : 'text-muted-foreground'
+                    ? 'font-bold text-[#F4F8F1]'
+                    : isComplete
+                      ? 'text-[#8FC45A] font-medium'
+                      : 'text-[#9BB096]/70'
                 }`}
               >
                 {step.label}
@@ -104,7 +106,7 @@ export function ApplicantLayout() {
               </Link>
             )}
             <Link to='/pitch' className='flex items-center hover:opacity-85 transition-opacity'>
-              <AltGradeLogo variant="nav" showSublabel={false} />
+              <AltGradeLogo variant="nav" theme="dark" showSublabel={false} />
             </Link>
           </div>
 

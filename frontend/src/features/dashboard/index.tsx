@@ -73,19 +73,19 @@ import { Button } from '@/components/ui/button'
 import { Stepper, Step } from '@/components/ui/stepper'
 
 const BAND_COLORS: Record<string, string> = {
-  'Excellent': 'bg-brand-blue',
-  'Good': 'bg-sky-wash',
-  'Fair': 'bg-graphite',
-  'Poor': 'bg-rust',
-  'Not Eligible': 'bg-destructive',
+  'Excellent': 'bg-[#8FC45A]',
+  'Good': 'bg-[#5C8C3A]',
+  'Fair': 'bg-[#E5A93C]',
+  'Poor': 'bg-[#E06D53]',
+  'Not Eligible': 'bg-[#EF4444]',
 }
 
 const BAND_BG: Record<string, string> = {
-  'Excellent': 'bg-brand-blue/15 text-brand-blue border-brand-blue/30',
-  'Good': 'bg-sky-wash/40 text-graphite border-sky-wash/60',
-  'Fair': 'bg-graphite/15 text-graphite border-graphite/30',
-  'Poor': 'bg-rust/15 text-rust border-rust/30',
-  'Not Eligible': 'bg-destructive/15 text-destructive border-destructive/30',
+  'Excellent': 'bg-[#142817] text-[#8FC45A] border-[#2F5527]/80',
+  'Good': 'bg-[#0F2012] text-[#A6DC6E] border-[#2F5527]/70',
+  'Fair': 'bg-[#241A06] text-[#F3C562] border-[#785414]/70',
+  'Poor': 'bg-[#29120C] text-[#F38C74] border-[#783020]/70',
+  'Not Eligible': 'bg-[#280B0B] text-[#F87171] border-[#7A1D1D]/70',
 }
 
 function PersonalizedMessageComposer({
@@ -146,21 +146,24 @@ function PersonalizedMessageComposer({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className='sm:max-w-[520px] bg-black border border-white/15 text-white'>
+      <DialogContent className='sm:max-w-[520px] bg-[#050B06] border border-[#2F5527]/50 text-[#F4F8F1]'>
         <DialogHeader>
-          <DialogTitle className='tracking-tight text-white'>Send Personalized Message</DialogTitle>
-          <DialogDescription className='text-xs text-white/50'>
+          <DialogTitle className='tracking-tight font-headingNow font-bold text-lg text-[#F4F8F1] flex items-center gap-2'>
+            <span className='size-2 rounded-full bg-[#8FC45A] animate-pulse' />
+            Send Personalized Message
+          </DialogTitle>
+          <DialogDescription className='text-xs text-[#9BB096]'>
             Reach out to {alert.name} with an empathetic, context-aware message.
           </DialogDescription>
         </DialogHeader>
 
         {sent ? (
           <div className='py-8 text-center space-y-3'>
-            <div className='mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-white/10 border border-white/20'>
-              <CheckCircle2 className='h-6 w-6 text-white' />
+            <div className='mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[#142817] border border-[#2F5527] text-[#8FC45A]'>
+              <CheckCircle2 className='h-6 w-6 text-[#8FC45A]' />
             </div>
-            <p className='text-sm font-medium text-white'>Message {channel === 'call' ? 'queued & AI call triggered' : 'sent'} successfully</p>
-            <p className='text-xs text-white/50'>
+            <p className='text-sm font-medium text-[#F4F8F1]'>Message {channel === 'call' ? 'queued & AI call triggered' : 'sent'} successfully</p>
+            <p className='text-xs text-[#9BB096]'>
               {channel === 'call'
                 ? 'An AI agent will call the user with your message context.'
                 : channel === 'sms'
@@ -171,14 +174,14 @@ function PersonalizedMessageComposer({
         ) : (
           <div className='space-y-4 py-2'>
             {alert.ai_summary && (
-              <div className='rounded-lg border border-white/10 bg-white/[0.02] p-3 text-xs text-white/60 leading-relaxed'>
-                <span className='font-mono font-medium text-white/80 text-[10px] uppercase tracking-wider'>AI Context</span>
-                <p className='mt-1'>{alert.ai_summary}</p>
+              <div className='rounded-lg border border-[#2F5527]/40 bg-[#0A140C] p-3 text-xs text-[#9BB096] leading-relaxed'>
+                <span className='font-mono font-medium text-[#8FC45A] text-[10px] uppercase tracking-wider'>AI Context</span>
+                <p className='mt-1 text-[#F4F8F1]'>{alert.ai_summary}</p>
               </div>
             )}
 
             <div className='space-y-1.5'>
-              <Label className='text-xs font-mono text-white/60'>Delivery Channel</Label>
+              <Label className='text-xs font-mono text-[#9BB096]'>Delivery Channel</Label>
               <div className='flex gap-2'>
                 {[
                   { value: 'sms', label: 'SMS', icon: <MessageCircle className='h-3 w-3' /> },
@@ -191,8 +194,8 @@ function PersonalizedMessageComposer({
                     onClick={() => setChannel(ch.value)}
                     className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-[11px] font-mono border transition-colors ${
                       channel === ch.value
-                        ? 'border-white/40 bg-white text-black font-semibold'
-                        : 'border-white/10 bg-white/[0.02] text-white/50 hover:border-white/20 hover:text-white'
+                        ? 'border-[#8FC45A] bg-[#5C8C3A] text-[#050B06] font-bold shadow-xs'
+                        : 'border-[#2F5527]/40 bg-[#0A140C] text-[#9BB096] hover:border-[#8FC45A]/40 hover:text-[#F4F8F1]'
                     }`}
                   >
                     {ch.icon} {ch.label}
@@ -202,7 +205,7 @@ function PersonalizedMessageComposer({
             </div>
 
             <div className='space-y-1.5'>
-              <Label className='text-xs font-mono text-white/60'>Category</Label>
+              <Label className='text-xs font-mono text-[#9BB096]'>Category</Label>
               <div className='flex gap-2 flex-wrap'>
                 {[
                   { value: 'check_in', label: 'Check-in' },
@@ -216,8 +219,8 @@ function PersonalizedMessageComposer({
                     onClick={() => setCategory(cat.value)}
                     className={`px-2.5 py-1 rounded text-[10px] font-mono border transition-colors ${
                       category === cat.value
-                        ? 'border-white/40 bg-white text-black font-semibold'
-                        : 'border-white/10 bg-white/[0.02] text-white/50 hover:border-white/20 hover:text-white'
+                        ? 'border-[#8FC45A] bg-[#142817] text-[#8FC45A] font-semibold'
+                        : 'border-[#2F5527]/40 bg-[#0A140C] text-[#9BB096] hover:border-[#8FC45A]/40 hover:text-[#F4F8F1]'
                     }`}
                   >
                     {cat.label}
@@ -227,12 +230,12 @@ function PersonalizedMessageComposer({
             </div>
 
             <div className='space-y-1.5'>
-              <Label className='text-xs font-mono text-white/60'>Message</Label>
+              <Label className='text-xs font-mono text-[#9BB096]'>Message</Label>
               <Textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={4}
-                className='text-xs font-mono resize-none bg-white/[0.04] border-white/15 text-white placeholder:text-white/30 focus-visible:ring-1 focus-visible:ring-white'
+                className='text-xs font-mono resize-none bg-[#0A140C] border-[#2F5527]/50 text-[#F4F8F1] placeholder:text-[#9BB096]/40 focus-visible:ring-1 focus-visible:ring-[#8FC45A]'
                 placeholder='Type a personalized message...'
               />
             </div>
@@ -240,10 +243,10 @@ function PersonalizedMessageComposer({
             <Button
               onClick={handleSend}
               disabled={!message.trim() || sending}
-              className='w-full text-xs font-mono bg-white text-black hover:bg-white/90 font-semibold'
+              className='w-full text-xs font-mono bg-[#5C8C3A] text-[#050B06] hover:bg-[#8FC45A] font-bold transition-colors'
             >
               {sending ? (
-                <><Loader2 className='h-3 w-3 animate-spin mr-1.5 text-black' /> Sending...</>
+                <><Loader2 className='h-3 w-3 animate-spin mr-1.5 text-[#050B06]' /> Sending...</>
               ) : (
                 <>{channel === 'call' ? <Phone className='h-3 w-3 mr-1.5' /> : <Send className='h-3 w-3 mr-1.5' />} Send via {channel === 'call' ? 'AI Agent Call' : channel === 'sms' ? 'SMS' : 'In-App'}</>
               )}
@@ -285,18 +288,18 @@ function OfficerAlertsBanner({
   if (!alerts || alerts.length === 0) return null
 
   return (
-    <Card className='border border-white/10 bg-black shadow-none mb-4 animate-fade-up'>
+    <Card className='border border-[#2F5527]/50 bg-[#0A140C]/90 backdrop-blur-md shadow-none mb-4 animate-fade-up'>
       <CardHeader className='pb-2 pt-4 px-5'>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
-            <div className='flex h-5 w-5 items-center justify-center rounded-full bg-white/10 text-white'>
+            <div className='flex h-5 w-5 items-center justify-center rounded-full bg-[#142817] text-[#8FC45A] border border-[#2F5527]/60'>
               <BellRing className='h-3 w-3' />
             </div>
-            <CardTitle className='text-xs font-mono uppercase tracking-widest text-white'>
+            <CardTitle className='text-xs font-mono uppercase tracking-widest text-[#F4F8F1]'>
               Financial Stress & Action Triggers ({alerts.length})
             </CardTitle>
           </div>
-          <Badge variant='outline' className='text-[10px] font-mono text-white/50 border-white/10'>
+          <Badge variant='outline' className='text-[10px] font-mono text-[#8FC45A] border-[#2F5527]/60 bg-[#142817]'>
             AI-Powered Detection
           </Badge>
         </div>
@@ -311,45 +314,45 @@ function OfficerAlertsBanner({
             return (
               <div
                 key={i}
-                className='flex flex-col justify-between rounded-lg border border-white/10 bg-white/[0.02] p-3.5 transition-all duration-200 hover:border-white/20'
+                className='flex flex-col justify-between rounded-lg border border-[#2F5527]/40 bg-[#050B06]/80 p-3.5 transition-all duration-200 hover:border-[#8FC45A]/40'
               >
                 <div className='space-y-1.5'>
                   <div className='flex items-center justify-between'>
-                    <span className='font-mono font-medium text-xs text-white truncate max-w-[170px]'>{a.name}</span>
-                    <span className='font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-white/15 bg-white/5 text-white/80'>
+                    <span className='font-mono font-semibold text-xs text-[#F4F8F1] truncate max-w-[170px]'>{a.name}</span>
+                    <span className='font-mono text-[9px] uppercase tracking-wider px-1.5 py-0.5 rounded border border-[#2F5527]/70 bg-[#142817] text-[#8FC45A]'>
                       {a.type.replace(/_/g, ' ')}
                     </span>
                   </div>
 
-                  {/* Severity & Confidence — themed black/white */}
+                  {/* Severity & Confidence — themed obsidian/emerald */}
                   <div className='flex items-center gap-3 mt-1'>
                     <div className='flex-1'>
                       <div className='flex items-center justify-between mb-0.5'>
-                        <span className='font-mono text-[9px] uppercase tracking-wider text-white/40'>Severity</span>
-                        <span className='font-mono text-[10px] font-medium text-white/70'>{severity}</span>
+                        <span className='font-mono text-[9px] uppercase tracking-wider text-[#9BB096]'>Severity</span>
+                        <span className='font-mono text-[10px] font-medium text-[#F38C74]'>{severity}</span>
                       </div>
-                      <div className='h-1 w-full rounded-full bg-white/10'>
+                      <div className='h-1 w-full rounded-full bg-[#2F5527]/30'>
                         <div
-                          className='h-1 rounded-full bg-white/60 transition-all duration-500'
+                          className='h-1 rounded-full bg-gradient-to-r from-[#E5A93C] to-[#E06D53] transition-all duration-500'
                           style={{ width: `${severity}%` }}
                         />
                       </div>
                     </div>
                     <div className='flex-1'>
                       <div className='flex items-center justify-between mb-0.5'>
-                        <span className='font-mono text-[9px] uppercase tracking-wider text-white/40'>Confidence</span>
-                        <span className='font-mono text-[10px] font-medium text-white/70'>{confidence}%</span>
+                        <span className='font-mono text-[9px] uppercase tracking-wider text-[#9BB096]'>Confidence</span>
+                        <span className='font-mono text-[10px] font-medium text-[#8FC45A]'>{confidence}%</span>
                       </div>
-                      <div className='h-1 w-full rounded-full bg-white/10'>
+                      <div className='h-1 w-full rounded-full bg-[#2F5527]/30'>
                         <div
-                          className='h-1 rounded-full bg-white/40 transition-all duration-500'
+                          className='h-1 rounded-full bg-gradient-to-r from-[#5C8C3A] to-[#8FC45A] transition-all duration-500'
                           style={{ width: `${confidence}%` }}
                         />
                       </div>
                     </div>
                   </div>
 
-                  <p className='text-[11px] text-white/60 leading-relaxed line-clamp-2'>
+                  <p className='text-[11px] text-[#9BB096] leading-relaxed line-clamp-2'>
                     {a.message}
                   </p>
 
@@ -358,17 +361,17 @@ function OfficerAlertsBanner({
                     <button
                       type='button'
                       onClick={() => setExpandedIdx(isExpanded ? null : i)}
-                      className='text-[10px] font-mono text-white/40 hover:text-white/70 transition-colors flex items-center gap-1'
+                      className='text-[10px] font-mono text-[#8FC45A] hover:text-[#A6DC6E] transition-colors flex items-center gap-1'
                     >
                       <Sparkles className='h-2.5 w-2.5' />
                       {isExpanded ? 'Hide AI Summary' : 'View AI Summary'}
                     </button>
                   )}
                   {isExpanded && a.ai_summary && (
-                    <div className='rounded border border-white/10 bg-white/[0.03] p-2.5 text-[11px] text-white/60 leading-relaxed animate-fade-up'>
+                    <div className='rounded border border-[#2F5527]/40 bg-[#0C1A0F] p-2.5 text-[11px] text-[#9BB096] leading-relaxed animate-fade-up'>
                       <p>{a.ai_summary}</p>
                       {a.recommended_action && (
-                        <p className='mt-1.5 text-white/80 font-medium'>
+                        <p className='mt-1.5 text-[#8FC45A] font-medium'>
                           → {a.recommended_action}
                         </p>
                       )}
@@ -376,15 +379,15 @@ function OfficerAlertsBanner({
                   )}
                 </div>
 
-                <div className='mt-3 flex items-center justify-between border-t border-white/10 pt-2 text-[11px]'>
-                  <span className='font-mono text-white/40'>Score: {a.score}</span>
+                <div className='mt-3 flex items-center justify-between border-t border-[#2F5527]/30 pt-2 text-[11px]'>
+                  <span className='font-mono text-[#9BB096]'>Score: <span className='text-[#8FC45A] font-semibold'>{a.score}</span></span>
                   <div className='flex gap-1.5'>
                     {(a.empathetic_message || a.type === 'pre_delinquency' || a.type === 'low_savings' || a.type === 'salary_delay' || a.type === 'medical_emergency' || a.type === 'emi_default_risk') && (
                       <Button
                         size='sm'
                         variant='outline'
                         onClick={() => onSendMessage(a)}
-                        className='h-6 px-2 text-[10px] font-mono rounded border-white/15 hover:bg-white hover:text-black transition-colors'
+                        className='h-6 px-2 text-[10px] font-mono rounded border-[#2F5527]/60 bg-[#142817] text-[#8FC45A] hover:bg-[#5C8C3A] hover:text-[#050B06] hover:border-[#8FC45A] transition-colors'
                       >
                         <MessageCircle className='h-2.5 w-2.5 mr-1' /> Message
                       </Button>
@@ -393,7 +396,7 @@ function OfficerAlertsBanner({
                       size='sm'
                       variant='outline'
                       onClick={() => onActionClick(a.user_id)}
-                      className='h-6 px-2.5 text-[10px] font-mono rounded border-white/15 hover:bg-white hover:text-black transition-colors'
+                      className='h-6 px-2.5 text-[10px] font-mono rounded border-[#2F5527]/60 bg-[#142817] text-[#F4F8F1] hover:bg-[#8FC45A] hover:text-[#050B06] hover:border-[#8FC45A] transition-colors'
                     >
                       {a.action} →
                     </Button>
@@ -411,62 +414,72 @@ function OfficerAlertsBanner({
 function StatsCards({ data, stressCount = 0 }: { data: DashboardOverview; stressCount?: number }) {
   return (
     <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-5'>
-      <Card className='animate-fade-up'>
+      <Card className='animate-fade-up border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md hover:border-[#8FC45A]/40 transition-all duration-200'>
         <CardHeader className='flex flex-row items-center justify-between pb-2'>
-          <CardTitle className='text-sm font-medium'>Total Scored</CardTitle>
-          <Users className='h-4 w-4 text-muted-foreground' />
+          <CardTitle className='text-xs font-mono uppercase tracking-wider text-[#9BB096]'>Total Scored</CardTitle>
+          <div className='flex size-6 items-center justify-center rounded-md bg-[#142817] text-[#8FC45A] border border-[#2F5527]/50'>
+            <Users className='h-3.5 w-3.5' />
+          </div>
         </CardHeader>
         <CardContent>
-          <div className='text-2xl font-bold tracking-[-0.04em]'>{data.total_scored}</div>
-          <p className='text-xs text-muted-foreground'>Applicants assessed</p>
+          <div className='font-headingNow font-black text-3xl tracking-tight text-[#F4F8F1]'>{data.total_scored}</div>
+          <p className='text-xs text-[#9BB096] mt-0.5'>Applicants assessed</p>
         </CardContent>
       </Card>
 
-      <Card className='animate-fade-up [animation-delay:50ms]'>
+      <Card className='animate-fade-up [animation-delay:50ms] border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md hover:border-[#5C8C3A]/70 transition-all duration-200'>
         <CardHeader className='flex flex-row items-center justify-between pb-2'>
-          <CardTitle className='text-sm font-medium'>Approval Rate</CardTitle>
-          <CheckCircle2 className='h-4 w-4 text-brand-blue' />
+          <CardTitle className='text-xs font-mono uppercase tracking-wider text-[#9BB096]'>Approval Rate</CardTitle>
+          <div className='flex size-6 items-center justify-center rounded-md bg-[#142817] text-[#8FC45A] border border-[#2F5527]/50'>
+            <CheckCircle2 className='h-3.5 w-3.5' />
+          </div>
         </CardHeader>
         <CardContent>
-          <div className='text-2xl font-bold tracking-[-0.04em]'>{data.approval_rate}%</div>
-          <p className='text-xs text-muted-foreground'>Score ≥ 500 (Good or above)</p>
+          <div className='font-headingNow font-black text-3xl tracking-tight text-[#8FC45A]'>{data.approval_rate}%</div>
+          <p className='text-xs text-[#9BB096] mt-0.5'>Score ≥ 500 (Good or above)</p>
         </CardContent>
       </Card>
 
-      <Card className='animate-fade-up [animation-delay:100ms]'>
+      <Card className='animate-fade-up [animation-delay:100ms] border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md hover:border-[#E5A93C]/50 transition-all duration-200'>
         <CardHeader className='flex flex-row items-center justify-between pb-2'>
-          <CardTitle className='text-sm font-medium'>Contradiction Review</CardTitle>
-          <AlertTriangle className='h-4 w-4 text-rust' />
+          <CardTitle className='text-xs font-mono uppercase tracking-wider text-[#9BB096]'>Contradiction Review</CardTitle>
+          <div className='flex size-6 items-center justify-center rounded-md bg-[#241A06] text-[#F3C562] border border-[#785414]/50'>
+            <AlertTriangle className='h-3.5 w-3.5' />
+          </div>
         </CardHeader>
         <CardContent>
-          <div className='text-2xl font-bold tracking-[-0.04em]'>{data.conflict_count}</div>
-          <p className='text-xs text-muted-foreground'>
+          <div className='font-headingNow font-black text-3xl tracking-tight text-[#F3C562]'>{data.conflict_count}</div>
+          <p className='text-xs text-[#9BB096] mt-0.5'>
             Flagged for conflicting signals
           </p>
         </CardContent>
       </Card>
 
-      <Card className='animate-fade-up [animation-delay:125ms] border-white/20 bg-white/[0.02]'>
+      <Card className='animate-fade-up [animation-delay:125ms] border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md hover:border-[#8FC45A]/40 transition-all duration-200'>
         <CardHeader className='flex flex-row items-center justify-between pb-2'>
-          <CardTitle className='text-sm font-medium text-white'>Stress Alerts</CardTitle>
-          <BellRing className='h-4 w-4 text-white/70' />
+          <CardTitle className='text-xs font-mono uppercase tracking-wider text-[#9BB096]'>Stress Alerts</CardTitle>
+          <div className='flex size-6 items-center justify-center rounded-md bg-[#142817] text-[#8FC45A] border border-[#2F5527]/50'>
+            <BellRing className='h-3.5 w-3.5' />
+          </div>
         </CardHeader>
         <CardContent>
-          <div className='text-2xl font-bold tracking-[-0.04em] font-mono text-white'>{stressCount}</div>
-          <p className='text-xs text-white/50'>
+          <div className='font-headingNow font-black text-3xl tracking-tight text-[#8FC45A]'>{stressCount}</div>
+          <p className='text-xs text-[#9BB096] mt-0.5'>
             Salary delay & savings signals
           </p>
         </CardContent>
       </Card>
 
-      <Card className='animate-fade-up [animation-delay:150ms]'>
+      <Card className='animate-fade-up [animation-delay:150ms] border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md hover:border-[#EF4444]/40 transition-all duration-200'>
         <CardHeader className='flex flex-row items-center justify-between pb-2'>
-          <CardTitle className='text-sm font-medium'>Hard Blocked</CardTitle>
-          <ShieldAlert className='h-4 w-4 text-[var(--destructive)]' />
+          <CardTitle className='text-xs font-mono uppercase tracking-wider text-[#9BB096]'>Hard Blocked</CardTitle>
+          <div className='flex size-6 items-center justify-center rounded-md bg-[#280B0B] text-[#F87171] border border-[#7A1D1D]/50'>
+            <ShieldAlert className='h-3.5 w-3.5' />
+          </div>
         </CardHeader>
         <CardContent>
-          <div className='text-2xl font-bold tracking-[-0.04em]'>{data.hard_cap_count}</div>
-          <p className='text-xs text-muted-foreground'>
+          <div className='font-headingNow font-black text-3xl tracking-tight text-[#F87171]'>{data.hard_cap_count}</div>
+          <p className='text-xs text-[#9BB096] mt-0.5'>
             Wilful defaulter or EMI cap
           </p>
         </CardContent>
@@ -479,10 +492,10 @@ function DistributionChart({ data }: { data: DashboardOverview }) {
   const maxCount = Math.max(...data.band_distribution.map((b) => b.count), 1)
 
   return (
-    <Card>
+    <Card className='border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md'>
       <CardHeader>
-        <CardTitle className='text-base'>Score Distribution</CardTitle>
-        <CardDescription>
+        <CardTitle className='text-base font-semibold text-[#F4F8F1]'>Score Distribution</CardTitle>
+        <CardDescription className='text-xs text-[#9BB096]'>
           Across {data.total_scored} applicants in the assessment population
         </CardDescription>
       </CardHeader>
@@ -490,20 +503,20 @@ function DistributionChart({ data }: { data: DashboardOverview }) {
         <div className='space-y-3'>
           {data.band_distribution.map((band) => (
             <div key={band.band} className='flex items-center gap-3'>
-              <div className='w-28 shrink-0 text-right text-sm font-medium'>
+              <div className='w-28 shrink-0 text-right text-sm font-medium font-mono text-[#F4F8F1]'>
                 {band.band}
               </div>
               <div className='flex flex-1 items-center gap-2'>
-                <div className='relative h-6 flex-1 rounded-md bg-muted'>
+                <div className='relative h-6 flex-1 rounded-md bg-[#050B06] border border-[#2F5527]/30 overflow-hidden'>
                   <div
-                    className={`absolute left-0 top-0 h-full rounded-md transition-all duration-500 ${BAND_COLORS[band.band] ?? 'bg-muted-foreground'}`}
+                    className={`absolute left-0 top-0 h-full rounded-md transition-all duration-500 shadow-sm ${BAND_COLORS[band.band] ?? 'bg-muted-foreground'}`}
                     style={{ width: `${(band.count / maxCount) * 100}%` }}
                   />
                 </div>
               </div>
-              <div className='w-16 text-right text-sm'>
-                <span className='font-semibold'>{band.count}</span>
-                <span className='text-muted-foreground'> ({band.percentage}%)</span>
+              <div className='w-16 text-right text-sm font-mono'>
+                <span className='font-bold text-[#F4F8F1]'>{band.count}</span>
+                <span className='text-[#9BB096] text-xs'> ({band.percentage}%)</span>
               </div>
             </div>
           ))}
@@ -523,86 +536,89 @@ function ConflictsTable({
   onReview: (applicant: ConflictApplicant) => void
 }) {
   return (
-    <Card>
+    <Card className='border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md'>
       <CardHeader>
-        <CardTitle className='flex items-center gap-2 text-base'>
-          <AlertTriangle className='h-4 w-4 text-[var(--brand-warning)]' />
+        <CardTitle className='flex items-center gap-2 text-base font-semibold text-[#F4F8F1]'>
+          <AlertTriangle className='h-4 w-4 text-[#E5A93C]' />
           Applicants Flagged for Contradiction Review
         </CardTitle>
-        <CardDescription>
+        <CardDescription className='text-xs text-[#9BB096]'>
           Applicants where data sources provided conflicting assessments
           (combined magnitude &gt; 50 score points)
         </CardDescription>
       </CardHeader>
       <CardContent>
         {data.flagged_applicants.length === 0 ? (
-          <p className='py-4 text-center text-sm text-muted-foreground'>
+          <p className='py-4 text-center text-sm text-[#9BB096] font-mono'>
             No applicants flagged for contradiction review
           </p>
         ) : (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Applicant</TableHead>
-                <TableHead>Score</TableHead>
-                <TableHead>Band</TableHead>
-                <TableHead>Conflicting Workers</TableHead>
-                <TableHead className='text-right'>Action</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {data.flagged_applicants.map((applicant) => {
-                const decision = completedDecisions[applicant.user_id]
-                return (
-                  <TableRow key={applicant.user_id}>
-                    <TableCell className='font-mono text-sm'>
-                      {applicant.user_id}
-                    </TableCell>
-                    <TableCell className='font-semibold'>
-                      {applicant.score}
-                    </TableCell>
-                    <TableCell>
-                      <Badge
-                        variant='outline'
-                        className={BAND_BG[applicant.band] ?? ''}
-                      >
-                        {applicant.band}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className='max-w-xs'>
-                      {applicant.conflicts.map((c, i) => (
-                        <p key={i} className='text-xs text-muted-foreground'>
-                          {c}
-                        </p>
-                      ))}
-                    </TableCell>
-                    <TableCell className='text-right'>
-                      {decision ? (
+          <div className='rounded-lg border border-[#2F5527]/40 overflow-hidden bg-[#050B06]/60'>
+            <Table>
+              <TableHeader>
+                <TableRow className='border-b border-[#2F5527]/40 bg-[#0C1A0F]/60 hover:bg-[#0C1A0F]/80'>
+                  <TableHead className='font-mono text-[11px] uppercase tracking-wider text-[#8FC45A]'>Applicant</TableHead>
+                  <TableHead className='font-mono text-[11px] uppercase tracking-wider text-[#8FC45A]'>Score</TableHead>
+                  <TableHead className='font-mono text-[11px] uppercase tracking-wider text-[#8FC45A]'>Band</TableHead>
+                  <TableHead className='font-mono text-[11px] uppercase tracking-wider text-[#8FC45A]'>Conflicting Workers</TableHead>
+                  <TableHead className='font-mono text-[11px] uppercase tracking-wider text-[#8FC45A] text-right'>Action</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {data.flagged_applicants.map((applicant) => {
+                  const decision = completedDecisions[applicant.user_id]
+                  return (
+                    <TableRow key={applicant.user_id} className='border-b border-[#2F5527]/20 hover:bg-[#0A140C]/80 transition-colors'>
+                      <TableCell className='font-mono text-xs font-semibold text-[#F4F8F1]'>
+                        {applicant.user_id}
+                      </TableCell>
+                      <TableCell className='font-mono text-xs font-bold text-[#8FC45A]'>
+                        {applicant.score}
+                      </TableCell>
+                      <TableCell>
                         <Badge
                           variant='outline'
-                          className={
-                            decision === 'approved'
-                              ? 'bg-brand-blue/15 text-brand-blue border-brand-blue/30'
-                              : 'bg-destructive/15 text-destructive border-destructive/30'
-                          }
+                          className={`font-mono text-[10px] uppercase font-semibold ${BAND_BG[applicant.band] ?? ''}`}
                         >
-                          {decision.toUpperCase()}
+                          {applicant.band}
                         </Badge>
-                      ) : (
-                        <Button
-                          size='sm'
-                          variant='outline'
-                          onClick={() => onReview(applicant)}
-                        >
-                          Review
-                        </Button>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
+                      </TableCell>
+                      <TableCell className='max-w-xs'>
+                        {applicant.conflicts.map((c, i) => (
+                          <p key={i} className='text-xs text-[#9BB096] font-mono'>
+                            {c}
+                          </p>
+                        ))}
+                      </TableCell>
+                      <TableCell className='text-right'>
+                        {decision ? (
+                          <Badge
+                            variant='outline'
+                            className={
+                              decision === 'approved'
+                                ? 'bg-[#142817] text-[#8FC45A] border-[#2F5527]/70 font-mono text-[10px] uppercase font-semibold'
+                                : 'bg-[#280B0B] text-[#F87171] border-[#7A1D1D]/60 font-mono text-[10px] uppercase font-semibold'
+                            }
+                          >
+                            {decision.toUpperCase()}
+                          </Badge>
+                        ) : (
+                          <Button
+                            size='sm'
+                            variant='outline'
+                            onClick={() => onReview(applicant)}
+                            className='h-7 px-3 text-xs font-mono rounded border-[#2F5527]/60 bg-[#142817] text-[#8FC45A] hover:bg-[#5C8C3A] hover:text-[#050B06] hover:border-[#8FC45A] transition-colors'
+                          >
+                            Review
+                          </Button>
+                        )}
+                      </TableCell>
+                    </TableRow>
+                  )
+                })}
+              </TableBody>
+            </Table>
+          </div>
         )}
       </CardContent>
     </Card>
@@ -612,32 +628,38 @@ function ConflictsTable({
 function FairnessCard({ data }: { data: DashboardOverview }) {
   const f = data.fairness
   return (
-    <Card>
+    <Card className='border-[rgba(92,140,58,0.18)] bg-[#0A140C]/90 backdrop-blur-md'>
       <CardHeader>
-        <CardTitle className='flex items-center gap-2 text-base'>
-          <ShieldCheck className='h-4 w-4 text-brand-blue' />
+        <CardTitle className='flex items-center gap-2 text-base font-semibold text-[#F4F8F1]'>
+          <ShieldCheck className='h-4 w-4 text-[#8FC45A]' />
           Fairness Audit
         </CardTitle>
-        <CardDescription>
+        <CardDescription className='text-xs text-[#9BB096]'>
           Demographic parity check across protected groups
         </CardDescription>
       </CardHeader>
       <CardContent className='space-y-3'>
         <div className='flex items-center justify-between'>
-          <span className='text-sm'>Disparate Impact Ratio</span>
-          <span className='text-lg font-bold tracking-[-0.02em]'>
+          <span className='text-sm text-[#9BB096]'>Disparate Impact Ratio</span>
+          <span className='text-lg font-bold font-mono text-[#F4F8F1] tracking-tight'>
             {f.demographic_parity_ratio.toFixed(4)}
           </span>
         </div>
         <div className='flex items-center justify-between'>
-          <span className='text-sm'>Four-Fifths Rule (≥ 0.80)</span>
-          <Badge variant={f.passes_four_fifths ? 'default' : 'destructive'}>
+          <span className='text-sm text-[#9BB096]'>Four-Fifths Rule (≥ 0.80)</span>
+          <Badge
+            variant='outline'
+            className={f.passes_four_fifths
+              ? 'bg-[#142817] text-[#8FC45A] border-[#2F5527]/70 font-mono text-[10px] uppercase font-semibold'
+              : 'bg-[#280B0B] text-[#F87171] border-[#7A1D1D]/60 font-mono text-[10px] uppercase font-semibold'
+            }
+          >
             {f.passes_four_fifths ? 'Passes' : 'Fails'}
           </Badge>
         </div>
         <div className='flex items-center justify-between'>
-          <span className='text-sm'>Last Audit</span>
-          <span className='text-sm text-muted-foreground'>{f.last_audit}</span>
+          <span className='text-sm text-[#9BB096]'>Last Audit</span>
+          <span className='text-xs font-mono text-[#9BB096]'>{f.last_audit}</span>
         </div>
       </CardContent>
     </Card>
@@ -1038,7 +1060,7 @@ export function LoanOfficerDashboard() {
             </p>
           </div>
           {isSimulated && user?.email !== 'testadmin@altgrade.in' && (
-            <Badge variant='outline' className='bg-white/10 text-white/90 border-white/20 px-3 py-1 font-mono text-xs animate-pulse'>
+            <Badge variant='outline' className='bg-[#142817] text-[#8FC45A] border-[#2F5527]/80 px-3 py-1 font-mono text-xs animate-pulse'>
               Simulated Data
             </Badge>
           )}
@@ -1083,24 +1105,27 @@ export function LoanOfficerDashboard() {
 
       {selectedApplicant && (
         <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogContent className={`transition-all duration-300 flex flex-col ${
+          <DialogContent className={`transition-all duration-300 flex flex-col bg-[#050B06] border border-[#2F5527]/50 text-[#F4F8F1] ${
             isExpanded
               ? 'max-w-[95vw] w-[95vw] h-[95vh] max-h-[95vh] md:max-w-[95vw] lg:max-w-[95vw] xl:max-w-[95vw] p-6'
               : 'sm:max-w-[640px] max-h-[85vh] overflow-y-auto'
           }`}>
             <DialogHeader className='relative pr-10 shrink-0'>
               <div className='flex items-center justify-between'>
-                <DialogTitle className='tracking-tight'>Review Credit Application</DialogTitle>
+                <DialogTitle className='tracking-tight font-headingNow font-bold text-lg text-[#F4F8F1] flex items-center gap-2'>
+                  <span className='size-2 rounded-full bg-[#8FC45A] animate-pulse' />
+                  Review Credit Application
+                </DialogTitle>
                 <Button
                   variant='ghost'
                   size='icon'
                   onClick={() => setIsExpanded(!isExpanded)}
-                  className='absolute right-10 top-0 h-6 w-6 text-muted-foreground hover:text-foreground'
+                  className='absolute right-10 top-0 h-6 w-6 text-[#9BB096] hover:text-[#F4F8F1] hover:bg-[#122415]'
                 >
                   {isExpanded ? <Minimize2 className='h-4 w-4' /> : <Maximize2 className='h-4 w-4' />}
                 </Button>
               </div>
-              <DialogDescription>
+              <DialogDescription className='text-xs text-[#9BB096]'>
                 Inspect per-source scores, consult the AI advisor, then log your final decision.
               </DialogDescription>
             </DialogHeader>
@@ -1121,86 +1146,86 @@ export function LoanOfficerDashboard() {
             >
               <Step>
                 <div className={`space-y-4 py-2 text-sm ${isExpanded ? 'overflow-y-auto max-h-[70vh] pr-2' : ''}`}>
-                  <h3 className='font-medium text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1'>Step 1: Per-Source Score Breakdown</h3>
-                  <div className='rounded-lg bg-neutral-50 p-3.5 dark:bg-neutral-900 border border-neutral-100 dark:border-neutral-800 space-y-2.5'>
-                    <div className='flex justify-between'>
-                      <span className='text-neutral-500 font-medium'>Applicant</span>
-                      <span className='font-mono font-medium'>{selectedApplicant.user_id}</span>
+                  <h3 className='font-medium text-xs uppercase tracking-wider text-[#8FC45A] font-mono mb-1'>Step 1: Per-Source Score Breakdown</h3>
+                  <div className='rounded-lg bg-[#0A140C] p-3.5 border border-[#2F5527]/40 space-y-2.5'>
+                    <div className='flex justify-between items-center'>
+                      <span className='text-[#9BB096] font-medium'>Applicant</span>
+                      <span className='font-mono font-bold text-[#F4F8F1]'>{selectedApplicant.user_id}</span>
                     </div>
-                    <div className='flex justify-between'>
-                      <span className='text-neutral-500 font-medium'>Model Score</span>
-                      <span className='font-bold'>{selectedApplicant.score} / 850</span>
+                    <div className='flex justify-between items-center'>
+                      <span className='text-[#9BB096] font-medium'>Model Score</span>
+                      <span className='font-mono font-bold text-[#8FC45A]'>{selectedApplicant.score} / 850</span>
                     </div>
-                    <div className='flex justify-between'>
-                      <span className='text-neutral-500 font-medium'>Risk Band</span>
-                      <Badge variant='outline' className={BAND_BG[selectedApplicant.band] ?? ''}>{selectedApplicant.band}</Badge>
+                    <div className='flex justify-between items-center'>
+                      <span className='text-[#9BB096] font-medium'>Risk Band</span>
+                      <Badge variant='outline' className={`font-mono text-[10px] uppercase font-semibold ${BAND_BG[selectedApplicant.band] ?? ''}`}>{selectedApplicant.band}</Badge>
                     </div>
                   </div>
 
                   {personalizationLoading ? (
-                    <div className='flex items-center gap-2 p-3 rounded-lg border border-white/10 bg-white/[0.02] text-xs text-white/60 font-mono'>
+                    <div className='flex items-center gap-2 p-3 rounded-lg border border-[#2F5527]/40 bg-[#0A140C] text-xs text-[#8FC45A] font-mono'>
                       <Loader2 className='h-3.5 w-3.5 animate-spin' /> Loading livelihood persona & financial health pulse...
                     </div>
                   ) : personalization ? (
                     <div className='space-y-2.5'>
                       {personalization.segment && (
-                        <div className='rounded-lg bg-black border border-white/10 p-3 space-y-1.5 animate-fade-up'>
+                        <div className='rounded-lg bg-[#0A140C] border border-[#2F5527]/40 p-3 space-y-1.5 animate-fade-up'>
                           <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-2'>
                               <span className='text-base'>{personalization.segment.icon}</span>
-                              <span className='font-mono font-medium text-xs text-white'>
+                              <span className='font-mono font-semibold text-xs text-[#F4F8F1]'>
                                 {personalization.segment.name}
                               </span>
                             </div>
-                            <Badge variant='outline' className='bg-white/5 border-white/15 text-[10px] font-mono text-white/80'>
+                            <Badge variant='outline' className='bg-[#142817] border-[#2F5527]/60 text-[10px] font-mono text-[#8FC45A]'>
                               {personalization.segment.segment?.toUpperCase()}
                             </Badge>
                           </div>
-                          <p className='text-[11px] text-white/60 leading-relaxed'>
+                          <p className='text-[11px] text-[#9BB096] leading-relaxed'>
                             {personalization.segment.tagline}
                           </p>
                           {personalization.segment.underwriter_notes && (
-                            <div className='text-[11px] text-white/80 bg-white/[0.03] border border-white/10 p-2.5 rounded mt-1 leading-relaxed font-mono'>
-                              <span className='font-semibold text-white'>Underwriter Intelligence:</span> {personalization.segment.underwriter_notes}
+                            <div className='text-[11px] text-[#F4F8F1] bg-[#050B06] border border-[#2F5527]/40 p-2.5 rounded mt-1 leading-relaxed font-mono'>
+                              <span className='font-semibold text-[#8FC45A]'>Underwriter Intelligence:</span> {personalization.segment.underwriter_notes}
                             </div>
                           )}
                         </div>
                       )}
 
                       {personalization.health && (
-                        <div className='rounded-lg border border-white/10 bg-black p-3 space-y-2.5 animate-fade-up'>
+                        <div className='rounded-lg border border-[#2F5527]/40 bg-[#0A140C] p-3 space-y-2.5 animate-fade-up'>
                           <div className='flex items-center justify-between'>
                             <div className='flex items-center gap-2'>
-                              <div className='h-2 w-2 rounded-full bg-white animate-pulse' />
-                              <span className='font-mono font-medium text-xs text-white'>
+                              <div className='h-2 w-2 rounded-full bg-[#8FC45A] animate-pulse' />
+                              <span className='font-mono font-medium text-xs text-[#F4F8F1]'>
                                 {personalization.health.status_label}
                               </span>
                             </div>
-                            <span className='text-xs font-mono text-white/60'>
-                              Stability: {personalization.health.stability_score}/100
+                            <span className='text-xs font-mono text-[#9BB096]'>
+                              Stability: <span className='text-[#8FC45A] font-semibold'>{personalization.health.stability_score}/100</span>
                             </span>
                           </div>
 
                           <div className='grid grid-cols-2 gap-2 text-xs'>
-                            <div className='bg-white/[0.02] rounded p-2 border border-white/10 text-center font-mono'>
-                              <div className='text-white/40 text-[10px]'>Liquidity Buffer</div>
-                              <div className='font-bold text-xs text-white'>{personalization.health.liquidity_buffer_days} Days</div>
+                            <div className='bg-[#050B06] rounded p-2 border border-[#2F5527]/40 text-center font-mono'>
+                              <div className='text-[#9BB096] text-[10px]'>Liquidity Buffer</div>
+                              <div className='font-bold text-xs text-[#8FC45A]'>{personalization.health.liquidity_buffer_days} Days</div>
                             </div>
-                            <div className='bg-white/[0.02] rounded p-2 border border-white/10 text-center font-mono'>
-                              <div className='text-white/40 text-[10px]'>Bill Discipline</div>
-                              <div className='font-bold text-xs text-white'>{personalization.health.bill_discipline_pct}% On-Time</div>
+                            <div className='bg-[#050B06] rounded p-2 border border-[#2F5527]/40 text-center font-mono'>
+                              <div className='text-[#9BB096] text-[10px]'>Bill Discipline</div>
+                              <div className='font-bold text-xs text-[#8FC45A]'>{personalization.health.bill_discipline_pct}% On-Time</div>
                             </div>
                           </div>
 
-                          <p className='text-[11px] text-white/60 leading-relaxed'>
+                          <p className='text-[11px] text-[#9BB096] leading-relaxed'>
                             {personalization.health.intervention_summary}
                           </p>
 
                           {personalization.health.warning_signals?.length > 0 && (
-                            <div className='text-[11px] text-white/80 space-y-0.5 pt-1 font-mono border-t border-white/10'>
+                            <div className='text-[11px] text-[#F38C74] space-y-0.5 pt-1 font-mono border-t border-[#2F5527]/30'>
                               {personalization.health.warning_signals.map((w: string, idx: number) => (
                                 <div key={idx} className='flex items-start gap-1.5'>
-                                  <span className='text-white/40'>•</span>
+                                  <span className='text-[#E5A93C]'>•</span>
                                   <span>{w}</span>
                                 </div>
                               ))}
@@ -1213,11 +1238,11 @@ export function LoanOfficerDashboard() {
 
                   {profileLoading ? (
                     <div className='space-y-2'>
-                      {[1,2,3,4,5].map((i) => <Skeleton key={i} className='h-5 w-full' />)}
+                      {[1,2,3,4,5].map((i) => <Skeleton key={i} className='h-5 w-full bg-[#122415]/50' />)}
                     </div>
                   ) : applicantProfile?.shap_details && applicantProfile.shap_details.length > 0 ? (
                     <div className='space-y-1.5'>
-                      <span className='text-xs font-medium text-neutral-500 uppercase tracking-wider'>SHAP Feature Contributions</span>
+                      <span className='text-xs font-mono font-medium text-[#8FC45A] uppercase tracking-wider'>SHAP Feature Contributions</span>
                       {[...applicantProfile.shap_details]
                         .sort((a, b) => Math.abs(b.points) - Math.abs(a.points))
                         .slice(0, 10)
@@ -1227,77 +1252,77 @@ export function LoanOfficerDashboard() {
                           const positive = f.points > 0
                           return (
                             <div key={i} className='flex items-center gap-2'>
-                              <span className='w-32 shrink-0 text-right text-[11px] font-medium text-muted-foreground truncate'>
+                              <span className='w-32 shrink-0 text-right text-[11px] font-mono text-[#9BB096] truncate'>
                                 {f.label.replace(/^(bank_|telecom_|ecom_|loc_|psych_|merchant_)/, '')}
                               </span>
-                              <div className='flex-1 h-4 relative'>
-                                <div className='absolute left-1/2 h-full w-px bg-border' />
+                              <div className='flex-1 h-4 relative bg-[#050B06] rounded border border-[#2F5527]/30'>
+                                <div className='absolute left-1/2 h-full w-px bg-[#2F5527]/60' />
                                 {positive ? (
-                                  <div className='absolute left-1/2 h-full rounded-r bg-brand-blue/70' style={{ width: `${pct / 2}%` }} />
+                                  <div className='absolute left-1/2 h-full rounded-r bg-[#5C8C3A]' style={{ width: `${pct / 2}%` }} />
                                 ) : (
-                                  <div className='absolute h-full rounded-l bg-rust/70' style={{ width: `${pct / 2}%`, right: '50%' }} />
+                                  <div className='absolute h-full rounded-l bg-[#E06D53]' style={{ width: `${pct / 2}%`, right: '50%' }} />
                                 )}
                               </div>
-                              <span className={`w-14 text-right text-[11px] font-semibold ${positive ? 'text-brand-blue' : 'text-rust'}`}>
+                              <span className={`w-14 text-right text-[11px] font-mono font-bold ${positive ? 'text-[#8FC45A]' : 'text-[#F38C74]'}`}>
                                 {f.points > 0 ? '+' : ''}{f.points.toFixed(1)}
                               </span>
-                              <Badge variant='outline' className='text-[10px] px-1.5 py-0'>{f.worker}</Badge>
+                              <Badge variant='outline' className='text-[10px] px-1.5 py-0 border-[#2F5527]/60 bg-[#142817] text-[#8FC45A] font-mono'>{f.worker}</Badge>
                             </div>
                           )
                         })}
                     </div>
                   ) : (
-                    <p className='text-xs text-muted-foreground'>No detailed SHAP data available for this applicant.</p>
+                    <p className='text-xs text-[#9BB096] font-mono'>No detailed SHAP data available for this applicant.</p>
                   )}
 
-                  <div className='space-y-1 pt-2 border-t border-neutral-100 dark:border-neutral-800'>
-                    <span className='text-xs font-medium text-neutral-500 uppercase tracking-wider'>Conflicting Signals</span>
+                  <div className='space-y-1 pt-2 border-t border-[#2F5527]/30'>
+                    <span className='text-xs font-mono font-medium text-[#8FC45A] uppercase tracking-wider'>Conflicting Signals</span>
                     {selectedApplicant.conflicts.map((c, i) => (
-                      <p key={i} className='text-xs text-muted-foreground leading-relaxed'>• {c}</p>
+                      <p key={i} className='text-xs text-[#9BB096] font-mono leading-relaxed'>• {c}</p>
                     ))}
                   </div>
 
                   {summaryLoading ? (
-                    <div className='space-y-1.5 pt-2 border-t border-neutral-100 dark:border-neutral-800'>
-                      <span className='text-xs font-medium text-neutral-500 uppercase tracking-wider block'>AI Conflict Interview</span>
-                      <div className='flex items-center gap-1.5 text-xs text-muted-foreground'>
-                        <Loader2 className='h-3 w-3 animate-spin text-neutral-500' /> Loading interview summary...
+                    <div className='space-y-1.5 pt-2 border-t border-[#2F5527]/30'>
+                      <span className='text-xs font-mono font-medium text-[#8FC45A] uppercase tracking-wider block'>AI Conflict Interview</span>
+                      <div className='flex items-center gap-1.5 text-xs text-[#9BB096] font-mono'>
+                        <Loader2 className='h-3 w-3 animate-spin text-[#8FC45A]' /> Loading interview summary...
                       </div>
                     </div>
                   ) : interviewSummary ? (
-                    <div className='space-y-2 pt-2 border-t border-neutral-100 dark:border-neutral-800 bg-neutral-100/50 dark:bg-neutral-900/50 p-2.5 rounded-lg border border-rust/10'>
-                      <span className='text-xs font-semibold text-rust uppercase tracking-wider block'>AI Conflict Interview Summary</span>
-                      <p className='text-xs text-muted-foreground leading-relaxed whitespace-pre-wrap'>{interviewSummary}</p>
+                    <div className='space-y-2 pt-2 border-t border-[#2F5527]/30 bg-[#0A140C] p-2.5 rounded-lg border border-[#E5A93C]/30'>
+                      <span className='text-xs font-semibold text-[#F3C562] font-mono uppercase tracking-wider block'>AI Conflict Interview Summary</span>
+                      <p className='text-xs text-[#9BB096] leading-relaxed whitespace-pre-wrap'>{interviewSummary}</p>
                     </div>
                   ) : null}
 
-                  <div className='space-y-2 pt-2 border-t border-neutral-100 dark:border-neutral-800'>
-                    <span className='text-xs font-medium text-neutral-500 uppercase tracking-wider'>Loan Eligibility</span>
+                  <div className='space-y-2 pt-2 border-t border-[#2F5527]/30'>
+                    <span className='text-xs font-mono font-medium text-[#8FC45A] uppercase tracking-wider'>Loan Eligibility</span>
                     {eligibilityLoading ? (
-                      <div className='flex items-center gap-2 text-muted-foreground'>
-                        <Loader2 className='h-3 w-3 animate-spin' />
+                      <div className='flex items-center gap-2 text-[#9BB096] font-mono'>
+                        <Loader2 className='h-3 w-3 animate-spin text-[#8FC45A]' />
                         <span className='text-xs'>Loading eligibility...</span>
                       </div>
                     ) : eligibility?.is_eligible ? (
                       <div className='grid grid-cols-3 gap-2'>
-                        <div className='rounded-lg bg-brand-blue/5 border border-brand-blue/20 p-2.5 text-center'>
-                          <IndianRupee className='h-3.5 w-3.5 text-brand-blue mx-auto mb-1' />
-                          <div className='text-sm font-bold'>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(eligibility.max_loan_amount)}</div>
-                          <div className='text-[10px] text-muted-foreground'>Max Amount</div>
+                        <div className='rounded-lg bg-[#0A140C] border border-[#2F5527]/50 p-2.5 text-center'>
+                          <IndianRupee className='h-3.5 w-3.5 text-[#8FC45A] mx-auto mb-1' />
+                          <div className='text-sm font-bold font-mono text-[#F4F8F1]'>{new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(eligibility.max_loan_amount)}</div>
+                          <div className='text-[10px] text-[#9BB096] font-mono'>Max Amount</div>
                         </div>
-                        <div className='rounded-lg bg-brand-blue/5 border border-brand-blue/20 p-2.5 text-center'>
-                          <Percent className='h-3.5 w-3.5 text-brand-blue mx-auto mb-1' />
-                          <div className='text-sm font-bold'>{eligibility.interest_rate_annual}%</div>
-                          <div className='text-[10px] text-muted-foreground'>Annual Rate</div>
+                        <div className='rounded-lg bg-[#0A140C] border border-[#2F5527]/50 p-2.5 text-center'>
+                          <Percent className='h-3.5 w-3.5 text-[#8FC45A] mx-auto mb-1' />
+                          <div className='text-sm font-bold font-mono text-[#8FC45A]'>{eligibility.interest_rate_annual}%</div>
+                          <div className='text-[10px] text-[#9BB096] font-mono'>Annual Rate</div>
                         </div>
-                        <div className='rounded-lg bg-brand-blue/5 border border-brand-blue/20 p-2.5 text-center'>
-                          <Clock className='h-3.5 w-3.5 text-brand-blue mx-auto mb-1' />
-                          <div className='text-sm font-bold'>{eligibility.tenure_options[eligibility.tenure_options.length - 1]?.tenure_months || 0}m</div>
-                          <div className='text-[10px] text-muted-foreground'>Max Tenure</div>
+                        <div className='rounded-lg bg-[#0A140C] border border-[#2F5527]/50 p-2.5 text-center'>
+                          <Clock className='h-3.5 w-3.5 text-[#8FC45A] mx-auto mb-1' />
+                          <div className='text-sm font-bold font-mono text-[#F4F8F1]'>{eligibility.tenure_options[eligibility.tenure_options.length - 1]?.tenure_months || 0}m</div>
+                          <div className='text-[10px] text-[#9BB096] font-mono'>Max Tenure</div>
                         </div>
                       </div>
                     ) : (
-                      <p className='text-xs text-rust'>Not eligible for loan based on current score.</p>
+                      <p className='text-xs text-[#F38C74] font-mono'>Not eligible for loan based on current score.</p>
                     )}
                   </div>
                 </div>
@@ -1305,54 +1330,54 @@ export function LoanOfficerDashboard() {
 
               <Step>
                 <div className={`space-y-3 py-2 text-sm ${isExpanded ? 'flex flex-col flex-1 overflow-hidden h-[70vh] pr-2' : ''}`}>
-                  <h3 className='font-medium text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1'>Step 2: AI Credit Advisor</h3>
-                  <p className='text-xs text-muted-foreground shrink-0'>Ask the AI about this applicant&apos;s score factors, risk indicators, or regulatory context.</p>
+                  <h3 className='font-medium text-xs uppercase tracking-wider text-[#8FC45A] font-mono mb-1'>Step 2: AI Credit Advisor</h3>
+                  <p className='text-xs text-[#9BB096] shrink-0'>Ask the AI about this applicant&apos;s score factors, risk indicators, or regulatory context.</p>
 
-                  <div className={`rounded-lg border border-neutral-200 dark:border-neutral-800 flex flex-col transition-all duration-300 ${isExpanded ? 'flex-1 min-h-[300px]' : 'h-[240px]'}`}>
+                  <div className={`rounded-lg border border-[#2F5527]/40 bg-[#0A140C]/80 flex flex-col transition-all duration-300 ${isExpanded ? 'flex-1 min-h-[300px]' : 'h-[240px]'}`}>
                     <div className='flex-1 overflow-y-auto p-3 space-y-3'>
                       {advisorMessages.length === 0 && (
-                        <div className='flex flex-col items-center justify-center h-full gap-2 text-muted-foreground'>
-                          <Bot className='h-6 w-6 opacity-40' />
-                          <p className='text-xs'>Ask about this applicant&apos;s credit profile</p>
+                        <div className='flex flex-col items-center justify-center h-full gap-2 text-[#9BB096]'>
+                          <Bot className='h-6 w-6 text-[#8FC45A]/50' />
+                          <p className='text-xs font-mono'>Ask about this applicant&apos;s credit profile</p>
                         </div>
                       )}
                       {advisorMessages.map((msg, i) => (
                         <div key={i} className={`flex gap-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                          {msg.role === 'advisor' && <Bot className='h-4 w-4 mt-1 shrink-0 text-brand-blue' />}
+                          {msg.role === 'advisor' && <Bot className='h-4 w-4 mt-1 shrink-0 text-[#8FC45A]' />}
                           <div className={`max-w-[85%] rounded-lg px-3 py-2 text-xs leading-relaxed whitespace-pre-wrap ${
                             msg.role === 'user'
-                              ? 'bg-foreground text-background'
-                              : 'bg-neutral-100 dark:bg-neutral-800 text-foreground'
+                              ? 'bg-[#122415] text-[#F4F8F1] border border-[#2F5527]/70'
+                              : 'bg-[#050B06] text-[#F4F8F1] border border-[#2F5527]/40'
                           }`}>
                             {msg.content}
                           </div>
-                          {msg.role === 'user' && <User className='h-4 w-4 mt-1 shrink-0 text-muted-foreground' />}
+                          {msg.role === 'user' && <User className='h-4 w-4 mt-1 shrink-0 text-[#9BB096]' />}
                         </div>
                       ))}
                       {advisorLoading && (
-                        <div className='flex gap-2.5 items-center text-muted-foreground py-1.5 animate-in fade-in'>
-                          <div className='flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-brand-blue/10 overflow-hidden'>
+                        <div className='flex gap-2.5 items-center text-[#9BB096] py-1.5 animate-in fade-in'>
+                          <div className='flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#122415] border border-[#2F5527]/60 overflow-hidden'>
                             <ThinkingOrb state='searching' size={20} theme='auto' />
                           </div>
-                          <span className='text-xs font-mono text-muted-foreground'>Consulting credit policy engine…</span>
+                          <span className='text-xs font-mono text-[#8FC45A]'>Consulting credit policy engine…</span>
                         </div>
                       )}
                       <div ref={chatEndRef} />
                     </div>
-                    <div className='border-t border-neutral-200 dark:border-neutral-800 p-2 flex gap-2'>
+                    <div className='border-t border-[#2F5527]/40 p-2 flex gap-2 bg-[#050B06]'>
                       <Input
                         placeholder='Why is the return rate flagged?'
                         value={advisorInput}
                         onChange={(e) => setAdvisorInput(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleAdvisorAsk()}
-                        className='text-xs h-8'
+                        className='text-xs h-8 bg-[#0A140C] border-[#2F5527]/50 text-[#F4F8F1] focus-visible:ring-[#8FC45A]'
                         disabled={advisorLoading}
                       />
                       <Button
                         size='sm'
                         onClick={handleAdvisorAsk}
                         disabled={advisorLoading || !advisorInput.trim()}
-                        className='h-8 px-3 overflow-hidden'
+                        className='h-8 px-3 overflow-hidden bg-[#5C8C3A] hover:bg-[#8FC45A] text-[#050B06] font-semibold transition-colors'
                       >
                         {advisorLoading ? (
                           <ThinkingOrb state='working' size={20} theme='auto' />
@@ -1372,7 +1397,7 @@ export function LoanOfficerDashboard() {
                       <button
                         key={q}
                         onClick={() => { setAdvisorInput(q); }}
-                        className='text-[10px] px-2 py-1 rounded-full border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-muted-foreground'
+                        className='text-[10px] px-2.5 py-1 rounded-full border border-[#2F5527]/60 bg-[#122415]/60 hover:bg-[#142817] hover:border-[#8FC45A]/50 text-[#8FC45A] transition-colors font-mono'
                       >
                         {q}
                       </button>
@@ -1383,15 +1408,15 @@ export function LoanOfficerDashboard() {
 
               <Step>
                 <div className={`space-y-4 py-2 text-sm ${isExpanded ? 'overflow-y-auto max-h-[70vh] pr-2' : ''}`}>
-                  <h3 className='font-medium text-xs uppercase tracking-wider text-neutral-500 dark:text-neutral-400 mb-1'>Step 3: Credit Decision & Inclusive Structuring</h3>
+                  <h3 className='font-medium text-xs uppercase tracking-wider text-[#8FC45A] font-mono mb-1'>Step 3: Credit Decision & Inclusive Structuring</h3>
                   <div className='space-y-3.5'>
                     <div className='space-y-1.5'>
-                      <Label htmlFor='decision'>Officer Credit Decision</Label>
+                      <Label htmlFor='decision' className='text-xs font-mono text-[#9BB096]'>Officer Credit Decision</Label>
                       <select
                         id='decision'
                         value={decision}
                         onChange={(e) => setDecision(e.target.value as 'approved' | 'rejected')}
-                        className='w-full rounded-md border border-neutral-200 bg-white px-3 py-2 text-sm dark:border-neutral-800 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-900 dark:focus:ring-neutral-50'
+                        className='w-full rounded-md border border-[#2F5527]/50 bg-[#0A140C] px-3 py-2 text-sm text-[#F4F8F1] focus:outline-none focus:ring-1 focus:ring-[#8FC45A]'
                       >
                         <option value='approved'>Approve Loan</option>
                         <option value='rejected'>Reject Loan</option>
@@ -1447,11 +1472,11 @@ export function LoanOfficerDashboard() {
                           </div>
                           <div className='col-span-2 space-y-1.5'>
                             <div className='flex items-center justify-between'>
-                              <Label htmlFor='moratorium' className='flex items-center gap-1.5'>
-                                <Calendar className='h-3.5 w-3.5 text-brand-blue' />
+                              <Label htmlFor='moratorium' className='flex items-center gap-1.5 text-xs font-mono text-[#9BB096]'>
+                                <Calendar className='h-3.5 w-3.5 text-[#8FC45A]' />
                                 Seasonal Harvest Grace Period (Moratorium)
                               </Label>
-                              <span className='text-[10px] text-muted-foreground'>Prevents early default during pre-harvest cycles</span>
+                              <span className='text-[10px] text-[#9BB096] font-mono'>Prevents early default during pre-harvest cycles</span>
                             </div>
                             <select
                               id='moratorium'
@@ -1463,7 +1488,7 @@ export function LoanOfficerDashboard() {
                                   runSimulation(selectedApplicant.user_id, approvedAmount, interestRate, terms, val)
                                 }
                               }}
-                              className='w-full rounded-md border border-neutral-200 bg-white px-3 py-2 text-xs dark:border-neutral-800 dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 focus:outline-none focus:ring-1 focus:ring-neutral-900 dark:focus:ring-neutral-50'
+                              className='w-full rounded-md border border-[#2F5527]/50 bg-[#0A140C] px-3 py-2 text-xs text-[#F4F8F1] focus:outline-none focus:ring-1 focus:ring-[#8FC45A]'
                             >
                               <option value={0}>0 months — Standard monthly EMI schedule</option>
                               <option value={1}>1 month — Post-seeding / setup relief window</option>
@@ -1473,63 +1498,63 @@ export function LoanOfficerDashboard() {
                           </div>
                         </div>
 
-                        {/* Underwriter What-If Simulator Result - Vercel Minimalist */}
+                        {/* Underwriter What-If Simulator Result - AltGrade Obsidian Glass */}
                         {simulating ? (
-                          <div className='flex items-center justify-center p-3 border border-white/10 rounded-lg bg-white/[0.02] text-xs text-white/60 font-mono gap-2'>
+                          <div className='flex items-center justify-center p-3 border border-[#2F5527]/40 rounded-lg bg-[#0A140C] text-xs text-[#8FC45A] font-mono gap-2'>
                             <Loader2 className='h-3.5 w-3.5 animate-spin' /> Recalculating reducing-balance EMI & debt burden...
                           </div>
                         ) : simulationResult ? (
-                          <div className='rounded-lg border border-white/10 bg-black p-3 space-y-2.5 animate-fade-up'>
+                          <div className='rounded-lg border border-[#2F5527]/40 bg-[#0A140C] p-3 space-y-2.5 animate-fade-up'>
                             <div className='flex items-center justify-between'>
                               <div className='flex items-center gap-1.5'>
-                                <Sliders className='h-3.5 w-3.5 text-white/70' />
-                                <span className='font-mono font-medium text-xs text-white'>Reducing Balance EMI & Affordability</span>
+                                <Sliders className='h-3.5 w-3.5 text-[#8FC45A]' />
+                                <span className='font-mono font-medium text-xs text-[#F4F8F1]'>Reducing Balance EMI & Affordability</span>
                               </div>
                               <span
-                                className='font-mono text-[10px] px-2 py-0.5 rounded border border-white/15 bg-white/5 text-white'
+                                className='font-mono text-[10px] px-2 py-0.5 rounded border border-[#2F5527]/60 bg-[#142817] text-[#8FC45A]'
                               >
                                 {simulationResult.is_affordable ? 'Affordable (FOIR Safe)' : 'High Debt Burden'}
                               </span>
                             </div>
 
                             <div className='grid grid-cols-3 gap-2 text-center font-mono'>
-                              <div className='bg-white/[0.02] p-2 rounded-md border border-white/10'>
-                                <div className='text-[10px] text-white/40'>Monthly EMI</div>
-                                <div className='text-xs font-bold text-white'>
+                              <div className='bg-[#050B06] p-2 rounded-md border border-[#2F5527]/40'>
+                                <div className='text-[10px] text-[#9BB096]'>Monthly EMI</div>
+                                <div className='text-xs font-bold text-[#8FC45A]'>
                                   ₹{Math.round(simulationResult.monthly_emi).toLocaleString('en-IN')}
                                 </div>
                               </div>
-                              <div className='bg-white/[0.02] p-2 rounded-md border border-white/10'>
-                                <div className='text-[10px] text-white/40'>FOIR Burden</div>
-                                <div className='text-xs font-bold text-white'>
+                              <div className='bg-[#050B06] p-2 rounded-md border border-[#2F5527]/40'>
+                                <div className='text-[10px] text-[#9BB096]'>FOIR Burden</div>
+                                <div className='text-xs font-bold text-[#8FC45A]'>
                                   {simulationResult.foir_ratio_pct.toFixed(1)}%
                                 </div>
                               </div>
-                              <div className='bg-white/[0.02] p-2 rounded-md border border-white/10'>
-                                <div className='text-[10px] text-white/40'>Score Impact</div>
-                                <div className='text-xs font-bold text-white'>
+                              <div className='bg-[#050B06] p-2 rounded-md border border-[#2F5527]/40'>
+                                <div className='text-[10px] text-[#9BB096]'>Score Impact</div>
+                                <div className='text-xs font-bold text-[#8FC45A]'>
                                   {simulationResult.score_delta >= 0 ? `+${simulationResult.score_delta}` : simulationResult.score_delta} pts
                                 </div>
                               </div>
                             </div>
 
-                            <p className='text-[11px] text-white/60 leading-relaxed bg-white/[0.02] border border-white/10 p-2 rounded font-mono'>
-                              <strong className='text-white'>Guidance:</strong> {simulationResult.guidance}
+                            <p className='text-[11px] text-[#9BB096] leading-relaxed bg-[#050B06] border border-[#2F5527]/40 p-2 rounded font-mono'>
+                              <strong className='text-[#8FC45A]'>Guidance:</strong> {simulationResult.guidance}
                             </p>
                           </div>
                         ) : null}
 
-                        {/* Government Welfare Scheme Matcher - Vercel Minimalist */}
+                        {/* Government Welfare Scheme Matcher - AltGrade Obsidian Glass */}
                         {personalization?.recommendations && personalization.recommendations.length > 0 && (
-                          <div className='space-y-2 pt-2 border-t border-white/10 animate-fade-up'>
+                          <div className='space-y-2 pt-2 border-t border-[#2F5527]/30 animate-fade-up'>
                             <div className='flex items-center justify-between'>
                               <div className='flex items-center gap-1.5'>
-                                <Award className='h-3.5 w-3.5 text-white/70' />
-                                <span className='text-xs font-mono uppercase tracking-wider text-white/70'>
+                                <Award className='h-3.5 w-3.5 text-[#8FC45A]' />
+                                <span className='text-xs font-mono uppercase tracking-wider text-[#8FC45A]'>
                                   Matched Welfare & Subsidized Schemes
                                 </span>
                               </div>
-                              <span className='text-[10px] font-mono text-white/40'>Attach to reduce default risk</span>
+                              <span className='text-[10px] font-mono text-[#9BB096]'>Attach to reduce default risk</span>
                             </div>
 
                             <div className='space-y-2'>
@@ -1545,31 +1570,31 @@ export function LoanOfficerDashboard() {
                                     }}
                                     className={`cursor-pointer rounded-lg border p-2.5 transition-all duration-150 flex items-start gap-2.5 ${
                                       isChecked
-                                        ? 'border-white/30 bg-white/10'
-                                        : 'border-white/10 bg-white/[0.01] hover:border-white/20 hover:bg-white/[0.03]'
+                                        ? 'border-[#8FC45A] bg-[#122415] shadow-xs'
+                                        : 'border-[#2F5527]/40 bg-[#050B06] hover:border-[#8FC45A]/40 hover:bg-[#0A140C]'
                                     }`}
                                   >
                                     <input
                                       type='checkbox'
                                       checked={isChecked}
                                       onChange={() => {}}
-                                      className='mt-1 h-3.5 w-3.5 rounded border-white/20 bg-black text-white focus:ring-white cursor-pointer accent-white'
+                                      className='mt-1 h-3.5 w-3.5 rounded border-[#2F5527]/60 bg-[#050B06] text-[#8FC45A] focus:ring-[#8FC45A] cursor-pointer accent-[#8FC45A]'
                                     />
                                     <div className='flex-1 min-w-0 space-y-1'>
                                       <div className='flex items-center justify-between gap-1'>
-                                        <span className='font-mono font-medium text-xs text-white truncate'>
+                                        <span className='font-mono font-medium text-xs text-[#F4F8F1] truncate'>
                                           {rec.scheme_name}
                                         </span>
-                                        <Badge variant='outline' className='text-[9px] px-1.5 py-0 bg-white/5 text-white border-white/15 shrink-0 font-mono'>
+                                        <Badge variant='outline' className='text-[9px] px-1.5 py-0 bg-[#142817] text-[#8FC45A] border-[#2F5527]/60 shrink-0 font-mono'>
                                           {rec.match_score}% Match
                                         </Badge>
                                       </div>
-                                      <div className='flex flex-wrap gap-x-2 text-[10px] text-white/50 font-mono'>
+                                      <div className='flex flex-wrap gap-x-2 text-[10px] text-[#9BB096] font-mono'>
                                         <span>🏛️ {rec.ministry_or_body}</span>
                                         <span>• 💰 {rec.max_benefit}</span>
                                         <span>• 📉 {rec.interest_subsidy}</span>
                                       </div>
-                                      <p className='text-[10px] text-white/40 line-clamp-1'>
+                                      <p className='text-[10px] text-[#9BB096]/80 line-clamp-1 font-mono'>
                                         {rec.match_reasons?.join('; ')}
                                       </p>
                                     </div>
@@ -1587,29 +1612,29 @@ export function LoanOfficerDashboard() {
 
               <Step>
                 <div className={`space-y-4 py-2 text-sm ${isExpanded ? 'overflow-y-auto max-h-[70vh] pr-2' : ''}`}>
-                  <h3 className='font-medium text-xs uppercase tracking-wider text-white/50 mb-1 font-mono'>Step 4: Reasoning & Audit Log</h3>
+                  <h3 className='font-medium text-xs uppercase tracking-wider text-[#8FC45A] mb-1 font-mono'>Step 4: Reasoning & Audit Log</h3>
 
-                  {/* Summary of Structuring Package - Vercel Minimalist */}
-                  <div className='rounded-lg bg-black border border-white/10 p-3 space-y-2'>
+                  {/* Summary of Structuring Package - AltGrade Obsidian Glass */}
+                  <div className='rounded-lg bg-[#0A140C] border border-[#2F5527]/50 p-3 space-y-2'>
                     <div className='flex items-center justify-between'>
-                      <span className='text-xs font-mono font-medium text-white'>Structuring Package Summary</span>
-                      <Badge variant='outline' className={decision === 'approved' ? 'bg-white text-black border-white font-mono text-[10px]' : 'bg-white/10 text-white/80 border-white/20 font-mono text-[10px]'}>
+                      <span className='text-xs font-mono font-medium text-[#F4F8F1]'>Structuring Package Summary</span>
+                      <Badge variant='outline' className={decision === 'approved' ? 'bg-[#142817] text-[#8FC45A] border-[#2F5527] font-mono text-[10px] font-semibold' : 'bg-[#280B0B] text-[#F87171] border-[#7A1D1D] font-mono text-[10px] font-semibold'}>
                         {decision === 'approved' ? 'APPROVE WITH SAFEGUARDS' : 'REJECT APPLICATION'}
                       </Badge>
                     </div>
 
                     {decision === 'approved' && (
                       <div className='flex flex-wrap gap-1.5 text-[11px] font-mono'>
-                        <span className='rounded bg-white/5 px-2 py-0.5 border border-white/15 text-white'>₹{approvedAmount.toLocaleString('en-IN')}</span>
-                        <span className='rounded bg-white/5 px-2 py-0.5 border border-white/15 text-white'>{interestRate}% p.a.</span>
-                        <span className='rounded bg-white/5 px-2 py-0.5 border border-white/15 text-white'>{terms}</span>
+                        <span className='rounded bg-[#050B06] px-2 py-0.5 border border-[#2F5527]/60 text-[#8FC45A] font-semibold'>₹{approvedAmount.toLocaleString('en-IN')}</span>
+                        <span className='rounded bg-[#050B06] px-2 py-0.5 border border-[#2F5527]/60 text-[#8FC45A] font-semibold'>{interestRate}% p.a.</span>
+                        <span className='rounded bg-[#050B06] px-2 py-0.5 border border-[#2F5527]/60 text-[#F4F8F1]'>{terms}</span>
                         {moratoriumMonths > 0 && (
-                          <span className='rounded bg-white/10 text-white px-2 py-0.5 border border-white/20'>
+                          <span className='rounded bg-[#142817] text-[#8FC45A] px-2 py-0.5 border border-[#2F5527]/80 font-semibold'>
                             {moratoriumMonths}m Harvest Moratorium
                           </span>
                         )}
                         {selectedSchemes.map((s, idx) => (
-                          <span key={idx} className='rounded bg-white/10 text-white px-2 py-0.5 border border-white/20'>
+                          <span key={idx} className='rounded bg-[#142817] text-[#8FC45A] px-2 py-0.5 border border-[#2F5527]/80 font-semibold'>
                             ✓ {s}
                           </span>
                         ))}
@@ -1618,15 +1643,16 @@ export function LoanOfficerDashboard() {
                   </div>
 
                   <div className='space-y-1.5'>
-                    <Label htmlFor='notes'>Decision Notes & Reasoning</Label>
+                    <Label htmlFor='notes' className='text-xs font-mono text-[#9BB096]'>Decision Notes & Reasoning</Label>
                     <Textarea
                       id='notes'
                       placeholder='Explain rationale for override, field verification findings, crop/shop health, or attached subsidies...'
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
                       rows={4}
+                      className='bg-[#0A140C] border-[#2F5527]/50 text-[#F4F8F1] focus-visible:ring-[#8FC45A]'
                     />
-                    <p className='text-xs text-muted-foreground mt-1'>Notes are required to submit. Decision and attached restructuring package will be logged to knowledge audit trail.</p>
+                    <p className='text-xs text-[#9BB096] font-mono mt-1'>Notes are required to submit. Decision and attached restructuring package will be logged to knowledge audit trail.</p>
                   </div>
                 </div>
               </Step>
