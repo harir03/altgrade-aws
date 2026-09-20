@@ -66,6 +66,7 @@
   --color-accent-bright: #8FC45A;
   --color-accent-deep: #2F5527;
   --color-border: rgba(47, 85, 39, 0.12);
+  --color-night: #040A05;
 
   /* ── Radius ── */
   --radius-pill: 999px;

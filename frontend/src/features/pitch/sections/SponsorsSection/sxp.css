@@ -2,8 +2,8 @@
         .sxp {
           position: relative;
           width: 100%;
-          /* The track supplies the scroll distance; reduced from 320vh to 150vh to eliminate dead scroll voids */
-          --sxp-track: 150vh;
+          /* Calibrated track height: 240vh allows intro hold, smooth expansion, and comfortable dwell */
+          --sxp-track: 240vh;
         }
 
         .sxp-track {
@@ -49,7 +49,8 @@
         .sxp-night {
           position: absolute;
           inset: 0;
-          background: var(--color-night);
+          background: #040A05;
+          z-index: 1;
         }
 
         /* ── Night-side label ── */
@@ -83,7 +84,7 @@
         .sxp-intro-eyebrow {
           font-family: var(--font-geist-mono), monospace;
           font-size: 0.72rem;
-          font-weight: 500;
+          font-weight: 600;
           letter-spacing: 0.2em;
           text-transform: uppercase;
           color: #8FC45A;
@@ -94,29 +95,32 @@
           max-width: 26ch;
           font-family: var(--font-heading), var(--font-dm-sans), sans-serif;
           font-size: clamp(1.35rem, 3.4vw, 2.35rem);
-          font-weight: 500;
+          font-weight: 600;
           line-height: 1.16;
           letter-spacing: -0.026em;
           color: #F1F7E9;
           text-wrap: balance;
+          text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
         }
 
         .sxp-intro-sub {
           margin: 0;
           max-width: 40ch;
           font-family: var(--font-dm-sans), sans-serif;
-          font-size: clamp(0.85rem, 1.2vw, 1rem);
+          font-size: clamp(0.88rem, 1.25vw, 1.05rem);
           line-height: 1.55;
-          color: rgba(214, 232, 202, 0.62);
+          color: #B5CCA8;
           text-wrap: pretty;
+          text-shadow: 0 2px 16px rgba(0, 0, 0, 0.8);
         }
 
         .sxp-intro-hint {
           font-family: var(--font-geist-mono), monospace;
-          font-size: 0.68rem;
+          font-size: 0.72rem;
+          font-weight: 500;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: rgba(206, 226, 194, 0.4);
+          color: #8FC45A;
         }
 
         /* ── The window ── */

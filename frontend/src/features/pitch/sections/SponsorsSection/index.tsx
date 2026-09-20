@@ -25,12 +25,14 @@ export const SponsorsSection = () => {
     const keyline = stage.querySelector<HTMLElement>(".sxp-keyline");
     const night = stage.querySelector<HTMLElement>(".sxp-night");
     const plate = stage.querySelector<HTMLElement>(".sxp-plate");
+    const preview = stage.querySelector<HTMLElement>(".sxp-frame-preview");
 
     const setP = (v: number) => stage.style.setProperty("--sxp-p", v.toFixed(4));
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       setP(1);
       gsap.set([intro, outro], { opacity: 0 });
+      if (preview) gsap.set(preview, { opacity: 0 });
       gsap.set(body, { opacity: 1, y: 0 });
       return;
     }
@@ -70,7 +72,8 @@ export const SponsorsSection = () => {
 
       const updateFrame = (prog: number) => {
         setP(prog);
-        const p = sineOut(clamp(prog / 0.55));
+        // Expansion curve calibrated to smoothly open from prog 0.10 to 0.65
+        const p = sineOut(clamp((prog - 0.10) / 0.55));
         const r = 1 - p;
         const iy = Math.max(0, (H - A) / 2) * r;
         const ix = Math.max(0, (W - O) / 2) * r;
@@ -88,17 +91,29 @@ export const SponsorsSection = () => {
           keyline.style.opacity = Math.max(0, (r - 0.06) / 0.94).toFixed(3);
         }
 
-        const nightOpacity = Math.max(0, Math.min(1, (1 - p) * 2.8)).toFixed(3);
+        // Night background fades as the window expands to fill viewport
+        const nightOpacity = Math.max(0, Math.min(1, (1 - p) * 1.8)).toFixed(3);
         if (night) night.style.opacity = nightOpacity;
         if (plate) plate.style.opacity = nightOpacity;
 
-        const introP = p1Out(clamp(prog / 0.18));
+        // Preview title "OUR SPONSORS" smoothly dissolves as expansion progresses
+        if (preview) {
+          const previewP = p1Out(clamp((prog - 0.10) / 0.22));
+          gsap.set(preview, {
+            opacity: 1 - previewP,
+            scale: 1 + 0.08 * previewP,
+          });
+        }
+
+        // Intro labels fade out as expansion starts
+        const introP = p1Out(clamp((prog - 0.06) / 0.22));
         gsap.set(intro, { opacity: 1 - introP, y: -24 * introP });
         gsap.set(outro, { opacity: 1 - introP, y: 24 * introP });
 
-        const bodyP = p1Out(clamp((prog - 0.16) / 0.36));
+        // Body content fades in cleanly and stays visible through dwell time (0.65 to 1.0)
+        const bodyP = p1Out(clamp((prog - 0.28) / 0.36));
         gsap.set(body, { opacity: bodyP, y: 24 * (1 - bodyP) });
-        body.style.pointerEvents = bodyP > 0.08 ? "auto" : "none";
+        body.style.pointerEvents = bodyP > 0.4 ? "auto" : "none";
       };
 
       updateFrame(0);
@@ -115,8 +130,10 @@ export const SponsorsSection = () => {
         trigger: track,
         start: "top top",
         end: "bottom bottom",
+        pin: stage,
+        pinSpacing: false,
         animation: tween,
-        scrub: isTouch ? 0.14 : 0.2,
+        scrub: isTouch ? 0.12 : 0.2,
         fastScrollEnd: false,
         preventOverlaps: true,
         invalidateOnRefresh: true,
