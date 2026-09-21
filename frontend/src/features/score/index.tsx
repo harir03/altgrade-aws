@@ -560,7 +560,7 @@ export function ScorePage() {
     if (isFarmer) {
       if (bankVolatility > 0.3) {
         questions.push({ type: 'conflict', text:
-          `Your bank balance fluctuates by ${(bankVolatility * 100).toFixed(0)}% month-to-month. For agricultural income, seasonal variation is expected — but we need to understand your harvest cycle. Which months do you receive harvest income, and which months have the lowest cash flow? Do you receive PM-Kisan installments regularly?`
+          `Your bank balance fluctuates by ${(bankVolatility * 100).toFixed(0)}% month-to-month. For agricultural income, seasonal variation is expected, but we need to understand your harvest cycle. Which months do you receive harvest income, and which months have the lowest cash flow? Do you receive PM-Kisan installments regularly?`
         })
       }
 
@@ -583,19 +583,19 @@ export function ScorePage() {
       }
 
       questions.push({ type: 'financial', text:
-        `Describe your primary agricultural income sources. How many acres do you farm, what crops do you grow, and what is your approximate annual harvest income? Do you receive PM-Kisan Direct Benefit Transfer (₹6,000/year)? Do you have a Kisan Credit Card (KCC) — if yes, what is the credit limit and current outstanding?`
+        `Describe your primary agricultural income sources. How many acres do you farm, what crops do you grow, and what is your approximate annual harvest income? Do you receive PM-Kisan Direct Benefit Transfer (₹6,000/year)? Do you have a Kisan Credit Card (KCC): if yes, what is the credit limit and current outstanding?`
       })
 
       questions.push({ type: 'financial', text:
-        `What are your main farming expenses — seeds, fertilizers, labor, equipment rental? How do you fund these during non-harvest months? Do you take seasonal crop loans from any bank or cooperative?`
+        `What are your main farming expenses: seeds, fertilizers, labor, equipment rental? How do you fund these during non-harvest months? Do you take seasonal crop loans from any bank or cooperative?`
       })
 
       questions.push({ type: 'verification', text:
-        `Do you have any existing loans — KCC, tractor loan, SHG borrowing, or informal debts from moneylenders? List each with the lender, amount, and repayment status. Have you ever defaulted on a crop loan?`
+        `Do you have any existing loans: KCC, tractor loan, SHG borrowing, or informal debts from moneylenders? List each with the lender, amount, and repayment status. Have you ever defaulted on a crop loan?`
       })
 
       questions.push({ type: 'verification', text:
-        `If we verify your PM-Kisan enrollment and KCC records with the district agriculture office, will everything match what you have told us? Is there anything about your financial situation — pending land disputes, shared farming income, or family obligations — that you have not disclosed?`
+        `If we verify your PM-Kisan enrollment and KCC records with the district agriculture office, will everything match what you have told us? Is there anything about your financial situation (pending land disputes, shared farming income, or family obligations) that you have not disclosed?`
       })
 
     } else if (isMsme) {
@@ -612,7 +612,7 @@ export function ScorePage() {
         }
       } else if (gstTurnover > 100000 && bankInflow < gstTurnover / 24) {
         questions.push({ type: 'conflict', text:
-          `Your GST filings declare ${formatInr(gstTurnover)} annual turnover (~${formatInr(gstTurnover / 12)}/month). But bank inflows show only ${formatInr(bankInflow)}/month — ${((bankInflow * 12 / gstTurnover) * 100).toFixed(0)}% of declared revenue. Where is the remaining ${formatInr(gstTurnover / 12 - bankInflow)}/month? Are customers paying in cash?`
+          `Your GST filings declare ${formatInr(gstTurnover)} annual turnover (~${formatInr(gstTurnover / 12)}/month). But bank inflows show only ${formatInr(bankInflow)}/month, representing ${((bankInflow * 12 / gstTurnover) * 100).toFixed(0)}% of declared revenue. Where is the remaining ${formatInr(gstTurnover / 12 - bankInflow)}/month? Are customers paying in cash?`
         })
       }
 
@@ -629,7 +629,7 @@ export function ScorePage() {
       }
 
       questions.push({ type: 'financial', text:
-        `What is your MSME's exact monthly revenue and profit margin? Break down your top 3 business expenses (rent, inventory, salaries) with amounts. What is your average monthly supplier payment cycle — do you pay within 15 days, 30 days, or longer?`
+        `What is your MSME's exact monthly revenue and profit margin? Break down your top 3 business expenses (rent, inventory, salaries) with amounts. What is your average monthly supplier payment cycle: do you pay within 15 days, 30 days, or longer?`
       })
 
       questions.push({ type: 'financial', text:
@@ -691,7 +691,7 @@ export function ScorePage() {
       })
 
       questions.push({ type: 'financial', text:
-        `How much do you save or invest each month? Where — bank savings, mutual funds, gold, cash at home? Does the math add up with your stated income and expenses?`
+        `How much do you save or invest each month? Where: bank savings, mutual funds, gold, cash at home? Does the math add up with your stated income and expenses?`
       })
 
       questions.push({ type: 'verification', text:
@@ -699,7 +699,7 @@ export function ScorePage() {
       })
 
       questions.push({ type: 'verification', text:
-        `If we verify your income with your employer or CA, would the numbers match? Is there anything about your finances you have not disclosed — informal debts, family obligations, or pending liabilities?`
+        `If we verify your income with your employer or CA, would the numbers match? Is there anything about your finances you have not disclosed: informal debts, family obligations, or pending liabilities?`
       })
     }
 
@@ -745,7 +745,7 @@ export function ScorePage() {
       reaction = `That is an extremely short answer for a question about your financial situation. A one-line response does not inspire confidence.`
     } else if (wordCount < 15) {
       credibility -= 15
-      reaction = `Your answer lacks detail. When a loan officer reviews this, they will want specifics — not general statements.`
+      reaction = `Your answer lacks detail. When a loan officer reviews this, they will want specifics, not general statements.`
     } else if (wordCount > 30) {
       credibility += 10
     }
@@ -772,7 +772,7 @@ export function ScorePage() {
 
     if (q.type === 'verification' && wordCount > 20 && hasNumbers) {
       credibility += 20
-      if (!reaction) reaction = `Detailed and verifiable — this strengthens your credibility.`
+      if (!reaction) reaction = `Detailed and verifiable: this strengthens your credibility.`
     }
 
     credibility = Math.max(10, Math.min(95, credibility))
@@ -788,7 +788,7 @@ export function ScorePage() {
       setInterviewMessages([
         {
           role: 'bot',
-          content: `I am the AltGrade AI Verification Auditor. I've found contradictions in your scoring data that require clarification.\n\nThis interview has ${totalInterviewQuestions} questions in 3 phases:\n• Conflict Resolution — explain data contradictions\n• Financial Verification — provide exact income and expense figures\n• Cross-Verification — confirm consistency and disclose obligations\n\nYour answers will be scored for credibility and sent to the Loan Officer.\n\nQuestion 1 of ${totalInterviewQuestions} [${interviewQuestions[0]?.type?.toUpperCase()}]:\n${interviewQuestions[0]?.text}`
+          content: `I am the AltGrade AI Verification Auditor. I've found contradictions in your scoring data that require clarification.\n\nThis interview has ${totalInterviewQuestions} questions in 3 phases:\n• Conflict Resolution: explain data contradictions\n• Financial Verification: provide exact income and expense figures\n• Cross-Verification: confirm consistency and disclose obligations\n\nYour answers will be scored for credibility and sent to the Loan Officer.\n\nQuestion 1 of ${totalInterviewQuestions} [${interviewQuestions[0]?.type?.toUpperCase()}]:\n${interviewQuestions[0]?.text}`
         }
       ])
       setInterviewStep(0)

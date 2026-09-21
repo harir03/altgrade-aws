@@ -300,7 +300,7 @@ export function EligibilityPage() {
             </div>
 
             <div className='border-t border-border/50 pt-4 space-y-3'>
-              <p className='text-sm font-medium'>Apply for this loan — request a callback</p>
+              <p className='text-sm font-medium'>Apply for this loan: request a callback</p>
               <div className='grid gap-3 sm:grid-cols-2'>
                 <div>
                   <label className='text-xs text-muted-foreground block mb-1'>Your Name</label>

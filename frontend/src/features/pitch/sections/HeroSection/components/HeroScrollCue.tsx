@@ -15,13 +15,13 @@ export const HeroScrollCue = () => {
         className="hero-cue-text-block"
       >
         <p className="hero-cue-line">
-          Four plastic chairs on the hill.
+          The white chair of Bharat commerce.
           <br />
-          An open table for Bharat's builders.
+          Everyday tea stalls, mandis and kiranas.
         </p>
 
         <span className="hero-cue-hint">
-          Explore the lore ↓
+          Explore our credit thesis ↓
         </span>
       </a>
 

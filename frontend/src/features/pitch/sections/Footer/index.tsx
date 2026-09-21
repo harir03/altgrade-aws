@@ -47,7 +47,7 @@ export const Footer = () => {
       {/* Giant ALTGRADE Wordmark */}
       <div className="footer-wordmark-wrap">
         <span className="sr-only">
-          ALTGRADE — AI-Powered Alternate Credit Scoring & Inclusive Banking
+          ALTGRADE: AI-Powered Alternate Credit Scoring & Inclusive Banking
         </span>
         <div
           className="warp-text relative w-full max-w-[100vw] h-full pointer-events-auto flex items-end justify-center"

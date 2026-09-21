@@ -3,12 +3,12 @@ export const MentorsCallToAction = () => {
     <div className="box-border caret-transparent min-h-[auto] min-w-[auto] outline-[3px] no-underline">
       <div className="items-center box-border caret-transparent gap-x-[18.4px] flex flex-col outline-[3px] gap-y-[18.4px] no-underline mt-[45px]">
         <p className="box-border caret-transparent text-stone-300/40 text-[10.56px] font-semibold tracking-[1.4784px] leading-[16.368px] min-h-[auto] min-w-[auto] outline-[3px] no-underline uppercase font-geist_mono">
-          Mentor &amp; judge profiles are currently locked · Revealing soon
+          Advisory board governance dossiers are sealed : Protocol v1.0
         </p>
 
         <button
           type="button"
-          aria-label="Explore all mentors and judges - Currently Locked"
+          aria-label="Explore all advisory board disciplines : Currently Sealed"
           disabled={true}
           className="items-center bg-lime-950/90 caret-transparent text-stone-200 gap-x-[10.4px] flex text-[14.08px] font-semibold justify-center leading-[21.824px] min-h-[auto] min-w-[272px] outline-[3px] relative gap-y-[10.4px] no-underline border border-lime-200/20 overflow-hidden px-[20.1325px] py-[11.52px] rounded-full font-dm_sans md:px-7"
         >
@@ -21,7 +21,7 @@ export const MentorsCallToAction = () => {
           </span>
 
           <span className="box-border caret-transparent block min-h-[auto] min-w-[auto] outline-[3px] no-underline">
-            Explore all mentors &amp; judges
+            Explore Advisory &amp; Risk Board
           </span>
         </button>
       </div>

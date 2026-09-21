@@ -324,7 +324,7 @@ function OfficerAlertsBanner({
                     </span>
                   </div>
 
-                  {/* Severity & Confidence — themed obsidian/emerald */}
+                  {/* Severity & Confidence: themed obsidian/emerald */}
                   <div className='flex items-center gap-3 mt-1'>
                     <div className='flex-1'>
                       <div className='flex items-center justify-between mb-0.5'>
@@ -1490,10 +1490,10 @@ export function LoanOfficerDashboard() {
                               }}
                               className='w-full rounded-md border border-[#2F5527]/50 bg-[#0A140C] px-3 py-2 text-xs text-[#F4F8F1] focus:outline-none focus:ring-1 focus:ring-[#8FC45A]'
                             >
-                              <option value={0}>0 months — Standard monthly EMI schedule</option>
-                              <option value={1}>1 month — Post-seeding / setup relief window</option>
-                              <option value={2}>2 months — Kharif harvest grace period (Recommended for Farmers)</option>
-                              <option value={3}>3 months — Extended crop maturity / seasonal cycle</option>
+                              <option value={0}>0 months: Standard monthly EMI schedule</option>
+                              <option value={1}>1 month: Post-seeding / setup relief window</option>
+                              <option value={2}>2 months: Kharif harvest grace period (Recommended for Farmers)</option>
+                              <option value={3}>3 months: Extended crop maturity / seasonal cycle</option>
                             </select>
                           </div>
                         </div>

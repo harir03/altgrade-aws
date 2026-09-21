@@ -91,7 +91,7 @@
           background-color: rgba(255, 255, 255, 0.5);
         }
 
-        /* item content — ripples like the hero wordmark while active */
+        /* item content - ripples like the hero wordmark while active */
         .nav-link-body {
           position: relative;
           z-index: 2;
@@ -110,7 +110,7 @@
           filter: url(#nav-wave-txt);
         }
 
-        /* Liquid outline — a conic-gradient border that lights up, spins on
+        /* Liquid outline - a conic-gradient border that lights up, spins on
            hover, and ripples through the #nav-wave turbulence filter. */
         @property --nav-a {
           syntax: "<angle>";
@@ -267,7 +267,7 @@
           min-height: 100vh;
           min-height: 100dvh;
           z-index: 99999;
-          /* Translucent frosted linen glass canvas — highly transparent */
+          /* Translucent frosted linen glass canvas - highly transparent */
           background: rgba(234, 229, 220, 0.52);
           backdrop-filter: blur(36px) saturate(190%);
           -webkit-backdrop-filter: blur(36px) saturate(190%);
@@ -566,7 +566,7 @@
           z-index: 1;
         }
 
-        /* ── 100% Clean Video Plate — Unscaled & Hardware Accelerated for Pure Clarity ── */
+        /* ── 100% Clean Video Plate - Unscaled & Hardware Accelerated for Pure Clarity ── */
         .hero-video {
           position: absolute;
           inset: 0;
@@ -1237,7 +1237,7 @@
            .fkc-cell is the unclipped box the vapour lives in; .fkc-digit is the
            card itself and clips. The clip matters: an unfolding flap swings its
            free edge toward the viewer, and perspective magnifies whatever is
-           nearer — so the lower flap was drawing ~17% oversized, with square
+           nearer - so the lower flap was drawing ~17% oversized, with square
            corners poking out past the card's rounded ones. That read as a
            glitch. Clipping at the card makes the overhang impossible.
 
@@ -1303,7 +1303,7 @@
 
         /* A full-height numeral inside a half-height box. The alignment does the
            whole job: flex-start leaves the head showing and clips the feet,
-           flex-end does the reverse. No transform — one would shift the crop off
+           flex-end does the reverse. No transform - one would shift the crop off
            the seam and the two halves would stop lining up. */
         .fkc-digit b {
           display: block;
@@ -1456,7 +1456,7 @@
 
         /* ── Labels & separators ── */
         /* These sit over the valley photograph, which runs from pale haze to
-           dark grass across the board's width — hence the halo rather than a
+           dark grass across the board's width - hence the halo rather than a
            flat tint. */
         .fkc-label {
           font-family: var(--font-geist-mono), monospace;
@@ -1498,7 +1498,7 @@
           white-space: nowrap;
         }
 
-        /* Four groups across is eight cards in a row — under ~680px that either
+        /* Four groups across is eight cards in a row - under ~680px that either
            overflows or shrinks the numerals past reading size. Fold to a fixed
            2x2 instead and let the cards grow back. Grid, not flex-wrap, so the
            break is deterministic rather than dependent on the measured width. */
@@ -3819,7 +3819,7 @@
           width: 100%;
           height: 100%;
           object-fit: contain;
-          /* Original botanical green — rich, natural, matches site ornament */
+          /* Original botanical green - rich, natural, matches site ornament */
           filter: brightness(1.16) saturate(1.1);
           pointer-events: none;
           user-select: none;
@@ -3921,7 +3921,7 @@
           width: 100%;
           height: 100%;
           object-fit: contain;
-          /* Original botanical green — rich, natural, matches site ornament */
+          /* Original botanical green - rich, natural, matches site ornament */
           filter: brightness(1.16) saturate(1.1);
           pointer-events: none;
           user-select: none;
@@ -4206,7 +4206,7 @@
           filter: drop-shadow(0 1px 2px rgba(24, 46, 16, 0.28));
         }
 
-        /* Hands sweep on a stylised cycle — fast enough to read as running at a
+        /* Hands sweep on a stylised cycle - fast enough to read as running at a
            glance, slow enough not to pull the eye off the headline. */
         .cd-dial-hour,
         .cd-dial-min {
@@ -4219,7 +4219,7 @@
         @keyframes cd-dial-sweep { to { transform: rotate(360deg); } }
 
         /* Three puffs lifting off the face, same language as the flap vapour
-           on the board below — just scaled to icon size. */
+           on the board below - just scaled to icon size. */
         .cd-dial-smoke {
           position: absolute;
           left: 50%;
@@ -4265,7 +4265,7 @@
           filter: drop-shadow(0 1px 2px rgba(24, 46, 16, 0.24));
         }
 
-        /* HeadingNow (trial cut) ships no numerals — "08, 2026" comes out as
+        /* HeadingNow (trial cut) ships no numerals - "08, 2026" comes out as
            .notdef boxes in it. Bebas has them, and it is the same face as the
            flap digits below, so the plaque and the board agree. */
         .cd-plaque-date {
@@ -4303,7 +4303,7 @@
           justify-content: center;
         }
 
-        /* ── Valley overlay — uncropped, full width, anchored to bottom ── */
+        /* ── Valley overlay - uncropped, full width, anchored to bottom ── */
         .cd-valley {
           position: absolute;
           bottom: 0;
@@ -4321,7 +4321,7 @@
         }
 
         /* Black under-plate. The photograph's last band is already #010301, so
-           painting the same value behind it is invisible — but it means the
+           painting the same value behind it is invisible - but it means the
            clipped bottom edge blends against black instead of the page's cloud
            background, which is the other half of the hairline fix. Overshoots
            the edge on all three sides so no fractional row is left uncovered. */
@@ -4350,7 +4350,7 @@
           width: 100%;
           background: transparent;
           color: #EEF5E6;
-          /* Half the visible gap to the next section — the other half is its
+          /* Half the visible gap to the next section - the other half is its
              own padding-top. 13vh on both sides read as ~250px of dead field. */
           padding-block: clamp(3.25rem, 7.5vh, 6rem);
           overflow: hidden;
@@ -4658,7 +4658,7 @@
           overflow: hidden;
         }
 
-        /* the dwell bar — restarts on every slide change via its React key */
+        /* the dwell bar - restarts on every slide change via its React key */
         .th-tab-bar i {
           display: block;
           height: 100%;
@@ -4747,7 +4747,7 @@
         }
 
         /* Both the black field and the sky plate retire once the window is
-           open — see the note on .sxp-plate for why. */
+           open - see the note on .sxp-plate for why. */
         .sxp-night,
         .sxp-plate {
           opacity: clamp(0, calc((1 - var(--sxp-p)) * 2.8), 1);
@@ -4859,7 +4859,7 @@
            while it is stuck; the moment the track runs out and it scrolls away,
            its plate travels with it while the page's fixed backdrop does not,
            and the two slide apart into a visible seam. So both this and the
-           black behind it fade out over the last of the opening — at which
+           black behind it fade out over the last of the opening - at which
            point they are painting exactly what the page backdrop is painting,
            so removing them changes nothing on screen and there is no longer
            anything that can drift. */

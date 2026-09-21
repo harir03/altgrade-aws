@@ -36,7 +36,7 @@
         }
 
         /* Both the black field and the sky plate retire once the window is
-           open — see the note on .sxp-plate for why. */
+           open: see the note on .sxp-plate for why. */
         .sxp-night,
         .sxp-plate {
           opacity: clamp(0, calc((1 - var(--sxp-p)) * 2.8), 1);
@@ -152,7 +152,7 @@
            while it is stuck; the moment the track runs out and it scrolls away,
            its plate travels with it while the page's fixed backdrop does not,
            and the two slide apart into a visible seam. So both this and the
-           black behind it fade out over the last of the opening — at which
+           black behind it fade out over the last of the opening: at which
            point they are painting exactly what the page backdrop is painting,
            so removing them changes nothing on screen and there is no longer
            anything that can drift. */

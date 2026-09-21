@@ -2,12 +2,12 @@ import { RevealWords } from "@/features/pitch/components/RevealWords";
 
 export const ChairStorySection = () => {
   const storyParagraph =
-    "The plastic chair is an everyday staple across Kolkata, scattered on college terraces, roadside tea stalls, and neighborhood corners where people gather to talk for hours. For this hackathon, four of these chairs sit together on the hill as an open table for your team. You arrive with people you know or team up in the morning, claim your spot, and spend eight focused hours turning an idea into working software before the day ends.";
+    "The plastic chair is an everyday staple across India, sitting outside neighborhood tea stalls, grain mandis, and roadside shops where honest commerce happens from dawn to dusk. Millions of small merchants run profitable enterprises, serve hundreds of customers daily, and pay their bills on time without a single default. Yet traditional banks reject them simply because they carry no legacy bureau credit score. AltGrade was created to eliminate this divide: turning active UPI cashflows, utility receipts, and real-world honesty into approved, affordable capital for Bharat.";
 
   return (
     <section
       id="about"
-      aria-label="About the Chair"
+      aria-label="The White Chair and Bharat Credit Thesis"
       className="ab relative w-full bg-transparent text-[#111a12] pt-[clamp(6rem,13vh,10rem)] pb-[clamp(3.5rem,8vh,6.5rem)] overflow-hidden z-[1]"
     >
       <div className="ab-inner relative max-w-[96rem] mx-auto px-4 md:px-8 text-center flex flex-col items-center">
@@ -26,7 +26,7 @@ export const ChairStorySection = () => {
         <div className="ab-head-wrap w-full text-center">
           <h2 className="rh ab-heading font-headingNow font-medium text-[clamp(2.6rem,5.8vw,4.6rem)] leading-[1.1] tracking-[-0.035em] text-[#111a12] text-center">
             <span className="rh-line flex justify-center">
-              <span className="rh-inner">The Story of the Chair</span>
+              <span className="rh-inner">The White Chair and Bharat's Credit Invisible</span>
             </span>
           </h2>
         </div>

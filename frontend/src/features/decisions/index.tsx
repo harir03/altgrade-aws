@@ -206,16 +206,16 @@ export function DecisionsPage() {
                           </Badge>
                         </TableCell>
                         <TableCell className='font-mono text-xs text-[#F4F8F1]'>
-                          {d.decision === 'approved' ? `${d.interest_rate}%` : '—'}
+                          {d.decision === 'approved' ? `${d.interest_rate}%` : '-'}
                         </TableCell>
                         <TableCell className='font-mono text-xs text-[#9BB096]'>
-                          {d.decision === 'approved' ? d.terms : '—'}
+                          {d.decision === 'approved' ? d.terms : '-'}
                         </TableCell>
                         <TableCell className='text-xs max-w-[200px] truncate text-[#9BB096]'>
-                          {d.notes || '—'}
+                          {d.notes || '-'}
                         </TableCell>
                         <TableCell className='font-mono text-xs text-[#9BB096]'>
-                          {d.timestamp ? new Date(d.timestamp).toLocaleDateString() : '—'}
+                          {d.timestamp ? new Date(d.timestamp).toLocaleDateString() : '-'}
                         </TableCell>
                         <TableCell className='text-right'>
                           <Button
@@ -243,7 +243,7 @@ export function DecisionsPage() {
             <DialogHeader>
               <DialogTitle className='tracking-tight text-base font-headingNow font-bold text-[#F4F8F1] flex items-center gap-2'>
                 <span className='size-2 rounded-full bg-[#8FC45A] animate-pulse' />
-                AI Advisor — {selectedDecision.user_id}
+                AI Advisor: {selectedDecision.user_id}
               </DialogTitle>
             </DialogHeader>
 

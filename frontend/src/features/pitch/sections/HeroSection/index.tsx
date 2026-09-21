@@ -64,7 +64,7 @@ export const HeroSection = () => {
         },
       });
 
-      // Parallax on hero logo content — keep fully visible and gracefully drift downward with the landscape
+      // Parallax on hero logo content: keep fully visible and gracefully drift downward with the landscape
       gsap.to(".hero-center-content", {
         y: "14%",
         scale: 0.98,
@@ -100,7 +100,7 @@ export const HeroSection = () => {
       <HeroMedia />
 
       <div className="hero-content-flex">
-        {/* Sky Zone — top 50svh: logo lives here */}
+        {/* Sky Zone: top 50svh, logo lives here */}
         <div className="hero-sky-zone">
           <div
             id="headingrow"
@@ -111,14 +111,14 @@ export const HeroSection = () => {
               transition: `transform 0.7s ${easeCurve} 0.02s`,
             }}
           >
-            <h1 className="sr-only">ALTGRADE — AI-Powered Alternate Credit Scoring & Financial Inclusion</h1>
+            <h1 className="sr-only">ALTGRADE: AI-Powered Alternate Credit Scoring & Financial Inclusion</h1>
             <p className="sr-only">Official portal for AltGrade: Scoring the credit-invisible and unlocking financial dignity for Bharat through alternate data and edge AI.</p>
-            
+
             <div className="hero-warp-wrap">
               <div
                 role="heading"
                 aria-level={2}
-                aria-label="ALTGRADE — Alternate Credit Scoring & Inclusive Banking"
+                aria-label="ALTGRADE: Alternate Credit Scoring & Inclusive Banking"
                 className="warp-text flex items-center justify-center w-full"
                 style={{ position: "relative", width: "100%", height: "100%", pointerEvents: "auto", opacity: 1 }}
               >
@@ -128,7 +128,7 @@ export const HeroSection = () => {
           </div>
         </div>
 
-        {/* Ground Zone — bottom 50svh: action dock lives here */}
+        {/* Ground Zone: bottom 50svh, action dock lives here */}
         <div className="hero-ground-zone">
           <div
             className="hero-bottom-area"

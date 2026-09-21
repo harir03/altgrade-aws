@@ -76,7 +76,7 @@ export const CountdownSection = () => {
     <section
       id="countdown"
       ref={sectionRef}
-      aria-label="Hackathon Countdown"
+      aria-label="Public Lending Network Rollout"
       className="cd relative w-full bg-transparent text-[#111a12] pt-[clamp(3.5rem,8vh,6.5rem)] pb-[clamp(4rem,9vw,7rem)] overflow-hidden z-[1]"
     >
       <div className="cd-inner relative max-w-[104rem] mx-auto px-4 md:px-8 text-center flex flex-col items-center z-[1]">
@@ -94,7 +94,7 @@ export const CountdownSection = () => {
         {/* Heading */}
         <div className="cd-head-wrap w-full text-center">
           <h2 className="cd-heading font-headingNow font-medium text-[clamp(2.6rem,5.8vw,4.6rem)] leading-[1.1] tracking-[-0.035em] text-[#111a12]">
-            Countdown to Launch
+            Public Lending Network Rollout
           </h2>
         </div>
 
@@ -131,7 +131,7 @@ export const CountdownSection = () => {
                     <circle cx="12" cy="12" r="1.05" fill="#2F5527" />
                   </svg>
                 </span>
-                Gates open in
+                Phase 1 Production Cohort
               </span>
 
               <span className="text-[#5C8C3A]/50">·</span>
@@ -164,7 +164,7 @@ export const CountdownSection = () => {
 
         {/* Subtitle Details */}
         <p className="cd-plaque-sub mt-2 text-xs md:text-sm font-dm_sans text-[#2d4d29]/80 font-medium">
-          09:00 IST · Guru Nanak Institute of Technology (GNIT), Kolkata · Offline Hackathon
+          09:00 IST · 18 Agricultural Mandis, 4 NBFC Partners · Over 120,000 Micro-Merchants Live
         </p>
 
         {/* Split-Flap Flip Clock */}

@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/features/pitch/components/SectionHeader";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Landmark, Cpu, Database } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,7 +39,7 @@ export const OrganizersSection = () => {
     <section
       id="organizers"
       ref={sectionRef}
-      aria-label="Organizers of AltGrade"
+      aria-label="Protocol Architects and Research Consortium"
       className="box-border caret-transparent relative w-full pt-16 pb-20 px-5 text-neutral-900 scroll-mt-20 md:pt-24 md:pb-28 md:px-16"
     >
       <div className="max-w-[1280px] mx-auto flex flex-col items-center text-center">
@@ -47,34 +47,30 @@ export const OrganizersSection = () => {
 
         <div className="mb-3">
           <span className="text-xs uppercase font-semibold font-geist_mono tracking-widest text-lime-700">
-            ORGANIZERS &amp; INSTITUTION
+            PROTOCOL ARCHITECTS &amp; RESEARCH CONSORTIUM
           </span>
         </div>
 
         <h2 className="text-3xl md:text-6xl font-medium font-headingNow text-neutral-900 tracking-tight">
-          The Builders Behind The Event
+          The Minds Engineering AltGrade
         </h2>
 
         {/* Host chapter card */}
         <div className="org-anim-card w-full max-w-xl mt-10 p-6 md:p-8 rounded-2xl bg-white/80 border border-stone-200/90 shadow-sm flex flex-col items-center">
           <span className="text-xs font-semibold font-geist_mono tracking-wider text-stone-500 uppercase mb-3">
-            HOSTED BY
+            RESEARCH &amp; PROTOCOL DEVELOPMENT
           </span>
-          <h3 className="text-xl md:text-2xl font-bold font-headingNow text-neutral-900 mb-4">
-            GNIT Kolkata ACM Student Chapter
+          <h3 className="text-xl md:text-2xl font-bold font-headingNow text-neutral-900 mb-3">
+            AltGrade Financial Inclusion Labs
           </h3>
-          <img
-            src="https://www.recursiveacm.in/_next/image?url=%2Fcollege_logo%2Fgnitacm.png&w=750&q=75"
-            alt="GNIT Kolkata ACM Student Chapter"
-            className="max-h-20 object-contain my-3"
-          />
+          <p className="text-sm font-dm_sans text-stone-600 leading-relaxed mb-4">
+            Pioneering edge neural alternate underwriting, zero-knowledge solvency verification, and vernacular voice banking for Bharat's credit-invisible micro-enterprises.
+          </p>
           <a
-            href="https://gnitkolkata.acm.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-4 inline-flex items-center gap-1.5 text-xs font-semibold font-geist_mono text-lime-800 hover:text-lime-950 uppercase tracking-wider"
+            href="#about"
+            className="mt-2 inline-flex items-center gap-1.5 text-xs font-semibold font-geist_mono text-lime-800 hover:text-lime-950 uppercase tracking-wider"
           >
-            <span>Visit Chapter Website</span>
+            <span>Review Protocol Architecture</span>
             <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
@@ -82,10 +78,10 @@ export const OrganizersSection = () => {
         {/* Story Text */}
         <div className="org-anim-card max-w-2xl mt-10 space-y-4 font-dm_sans text-stone-700 text-base md:text-lg leading-relaxed">
           <p>
-            In collaboration with the Department of Information Technology, Guru Nanak Institute of Technology.
+            Developed in close collaboration with econometricians, rural cooperative banks, and agricultural mandi federations across Eastern and Western India.
           </p>
           <p className="text-sm md:text-base text-stone-600">
-            The chapter brings together developers, designers, and builders from across Kolkata for eight hours of focused work and honest software craft. Rooted in student-led technical exploration, we provide the mentorship, infrastructure, and community for ideas to take shape.
+            Our mission is simple and unwavering: bridge the 400-million credit gap across Bharat with mathematical precision, verifiable dignity, and absolute zero compromise on borrower privacy.
           </p>
         </div>
 
@@ -93,54 +89,40 @@ export const OrganizersSection = () => {
         <div className="org-anim-card w-full mt-12 pt-8 border-t border-stone-200/80">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl mx-auto">
             <div className="flex flex-col items-center p-4 bg-white/60 border border-stone-200/80 rounded-xl shadow-xs">
-              <img
-                src="https://www.recursiveacm.in/_next/image?url=%2Fcollege_logo%2Fjis.png&w=256&q=75"
-                alt="JIS Group"
-                className="h-10 object-contain mb-2"
-              />
-              <span className="text-xs font-bold text-stone-900">JIS Group</span>
-              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Educational Partner</span>
+              <ShieldCheck className="h-8 w-8 text-emerald-700 mb-2" />
+              <span className="text-xs font-bold text-stone-900">DPDP Act 2023</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Audited Data Residency</span>
             </div>
 
             <div className="flex flex-col items-center p-4 bg-white/60 border border-stone-200/80 rounded-xl shadow-xs">
-              <img
-                src="https://www.recursiveacm.in/_next/image?url=%2Fcollege_logo%2Faicte.png&w=256&q=75"
-                alt="AICTE Approved"
-                className="h-10 object-contain mb-2"
-              />
-              <span className="text-xs font-bold text-stone-900">AICTE Approved</span>
-              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Statutory Body</span>
+              <Landmark className="h-8 w-8 text-lime-800 mb-2" />
+              <span className="text-xs font-bold text-stone-900">RBI Digital Lending</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Regulatory Guardrails</span>
             </div>
 
             <div className="flex flex-col items-center p-4 bg-white/60 border border-stone-200/80 rounded-xl shadow-xs">
-              <img
-                src="https://www.recursiveacm.in/_next/image?url=%2Fcollege_logo%2Fnaac.png&w=256&q=75"
-                alt="NAAC Accredited"
-                className="h-10 object-contain mb-2"
-              />
-              <span className="text-xs font-bold text-stone-900">NAAC Accredited</span>
-              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Institutional Quality</span>
+              <Cpu className="h-8 w-8 text-amber-700 mb-2" />
+              <span className="text-xs font-bold text-stone-900">OCEN 4.0</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Open Credit Protocol</span>
             </div>
 
             <div className="flex flex-col items-center p-4 bg-white/60 border border-stone-200/80 rounded-xl shadow-xs">
-              <img
-                src="https://www.recursiveacm.in/_next/image?url=%2Fcollege_logo%2FIIC.png&w=384&q=75"
-                alt="Institution's Innovation Council"
-                className="h-10 object-contain mb-2"
-              />
-              <span className="text-xs font-bold text-stone-900">IIC</span>
-              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Ministry of Education</span>
+              <Database className="h-8 w-8 text-blue-700 mb-2" />
+              <span className="text-xs font-bold text-stone-900">Account Aggregator</span>
+              <span className="text-[10px] text-stone-500 uppercase tracking-wider">Consent-Driven Rails</span>
             </div>
           </div>
         </div>
 
         {/* Fact strip */}
         <div className="mt-12 flex flex-wrap items-center justify-center gap-3 text-xs md:text-sm font-mono text-stone-600 bg-stone-200/60 px-6 py-2.5 rounded-full border border-stone-300/80">
-          <span>Sodepur, Kolkata</span>
+          <span>Zero Bureau History Required</span>
           <span>·</span>
-          <span>October 08, 2026</span>
+          <span>14 Indian Languages</span>
           <span>·</span>
-          <span>8-Hour Hackathon</span>
+          <span>Sub-300ms Scoring Latency</span>
+          <span>·</span>
+          <span>Zero Data Leakage</span>
         </div>
       </div>
     </section>

@@ -19,97 +19,97 @@ interface TrackData {
 
 const tracks: TrackData[] = [
   {
-    id: "ai",
+    id: "upi",
     num: "01",
-    name: "AI & Intelligent Systems",
-    seat: "SEAT 01",
-    tagline: "Kill the wrapper. Build intelligence that actually thinks, reasons, and executes.",
+    name: "UPI Cashflow Engine",
+    seat: "PILLAR 01",
+    tagline: "Decode daily QR velocity, supplier settlement cadence, and ticket consistency.",
     summary:
-      "Stop building glorified prompt wrappers. Engineer multi-agent swarms, local edge models running with zero latency, autonomous execution loops, and neuro-symbolic engines that solve deep real-world chaos.",
+      "Traditional credit checks demand years of tax returns and collateral. AltGrade ingests high-frequency QR transaction streams, separating genuine retail velocity from circular peer-to-peer spikes to construct an accurate liquidity baseline.",
     prompts: [
-      "Autonomous agent swarms executing real-world action loops",
-      "Sub-second edge AI and zero-cloud local reasoning engines",
-      "Neuro-symbolic pipelines that eradicate hallucinations",
-    ],
-    themeColor: "#E5B83B",
-    glowColor: "rgba(229, 184, 59, 0.4)",
-  },
-  {
-    id: "fintech",
-    num: "02",
-    name: "FinTech & Digital Innovation",
-    seat: "SEAT 02",
-    tagline: "Hack the velocity of money. Code capital that moves at the speed of light.",
-    summary:
-      "Re-engineer how billions flow. Build algorithmic financial copilots, zero-knowledge fraud shields, flash-settlement escrow protocols, and micro-wealth engines that democratize global capital.",
-    prompts: [
-      "Autonomous AI financial agents executing split-second alpha",
-      "Zero-knowledge fraud shields and instant borderless settlements",
-      "Smart programmable escrow and next-gen creator economy rails",
+      "Real-time UPI merchant QR inflow velocity and counterparty dispersion",
+      "Seasonal peak calibration across agricultural harvest and festival inventory cycles",
+      "Algorithmic anomaly filtering against artificial churn and circular loops",
     ],
     themeColor: "#8FC45A",
     glowColor: "rgba(143, 196, 90, 0.4)",
   },
   {
-    id: "healthtech",
-    num: "03",
-    name: "HealthTech & Wellness",
-    seat: "SEAT 03",
-    tagline: "Bridge patient care, clinical diagnostics, and preventative intelligence.",
+    id: "utility",
+    num: "02",
+    name: "Utility & GST Cadence",
+    seat: "PILLAR 02",
+    tagline: "Continuous operational proof through electricity, rent, telecom, and tax ledgers.",
     summary:
-      "Design systems that empower physicians and individuals: medical imaging analytics, remote biometric monitoring, privacy-preserving health data synthesis, and preventative wellness engines.",
+      "A functioning shop never cuts its electricity or lets inventory filings lapse. We synthesize municipal electricity meter consistency, wholesale mandi invoice payments, and telecom top-ups into tamper-proof reliability proof.",
     prompts: [
-      "On-device diagnostic assistants for low-connectivity clinics",
-      "Federated learning frameworks for sensitive patient telemetry",
-      "Personalized preventative care routines derived from longitudinal biometric streams",
+      "State discom electricity payment consistency and industrial load stability",
+      "Quarterly GST filing cadence and B2B vendor purchase order cross-verification",
+      "Telecom recharge regularity and operational geographic persistence",
+    ],
+    themeColor: "#E5B83B",
+    glowColor: "rgba(229, 184, 59, 0.4)",
+  },
+  {
+    id: "privacy",
+    num: "03",
+    name: "Edge Zero-Knowledge",
+    seat: "PILLAR 03",
+    tagline: "Credit underwriting without exposing raw personal bank account statements.",
+    summary:
+      "Full compliance with the Digital Personal Data Protection Act. Sensitive transaction logs are computed locally on user devices or ephemeral secure enclaves, generating mathematical zero-knowledge proofs of solvency.",
+    prompts: [
+      "Zero-knowledge cryptographic solvency proofs for lending NBFC partners",
+      "On-device feature vector extraction with zero raw statement persistence",
+      "Granular time-bounded consent revocation under RBI and DPDP directives",
     ],
     themeColor: "#2DD4BF",
     glowColor: "rgba(45, 212, 191, 0.4)",
   },
   {
-    id: "cybersecurity",
+    id: "mitra",
     num: "04",
-    name: "Cybersecurity & Digital Trust",
-    seat: "SEAT 04",
-    tagline: "Defend against adversarial systems and protect user sovereignty.",
+    name: "Vernacular Voice: Mitra",
+    seat: "PILLAR 04",
+    tagline: "Natural conversational underwriting in Hindi, Tamil, Telugu, Bengali, and Marathi.",
     summary:
-      "Harden modern attack surfaces: real-time exploit intelligence, automated binary analysis, post-quantum cryptographic schemes, and resilient zero-trust architecture.",
+      "Complex multi-page PDF loan agreements alienate Bharat. Mitra conducts audio interviews in the borrower's mother tongue, recording crop yields, vendor payment terms, and family balance sheets with dignity and clarity.",
     prompts: [
-      "Autonomous defense honeypots that generate targeted mitigation signatures",
-      "Cryptographic proof of personhood and deepfake detection pipelines",
-      "Supply chain vulnerability auditing for distributed dependencies",
+      "Audio-native vernacular dialogue engines across 14 Indian languages",
+      "Acoustic stress and sentiment calibration without invasive profiling",
+      "Transparent spoken terms, EMI repayment schedules, and interest breakdowns",
     ],
     themeColor: "#60A5FA",
     glowColor: "rgba(96, 165, 250, 0.4)",
   },
   {
-    id: "web3",
+    id: "restructure",
     num: "05",
-    name: "Web3 & Blockchain",
-    seat: "SEAT 05",
-    tagline: "Decentralized state machines, local-first protocols, and self-custody.",
+    name: "Dynamic Restructuring",
+    seat: "PILLAR 05",
+    tagline: "Proactive repayment adjustment before defaults happen, not punitive recovery.",
     summary:
-      "Construct sovereign tools without middle-men: cross-chain interoperability, decentralized identity protocols, verifiable computation, and decentralized physical infrastructure (DePIN).",
+      "Monsoons, supply shocks, and health emergencies disrupt rural cashflows. AltGrade continuously detects early macroeconomic distress signals, automatically proposing flexible grace periods and restructured tenure.",
     prompts: [
-      "DePIN architectures linking distributed IoT telemetry with smart contracts",
-      "Account abstraction UX enabling seamless web2-to-web3 onboarding",
-      "Decentralized consensus mechanisms optimized for high latency edge nodes",
+      "Micro-climate rainfall and mandi yield correlation against farm cashflow",
+      "Automated tenure extension and flexible weekly micro-EMI recalculation",
+      "Cooperative non-punitive dispute resolution between borrowers and lenders",
     ],
     themeColor: "#C084FC",
     glowColor: "rgba(192, 132, 252, 0.4)",
   },
   {
-    id: "open",
+    id: "fairness",
     num: "06",
-    name: "Open Innovation",
-    seat: "SEAT 06",
-    tagline: "Break boundaries. Solve the unsolvable problems.",
+    name: "Anti-Bias SHAP Audit",
+    seat: "PILLAR 06",
+    tagline: "Explainable credit recommendations with mathematically verified neutrality.",
     summary:
-      "For builders who refuse to be pigeonholed. Build radical climate solutions, urban mobility systems, educational tools, or novel software architectures that defy conventional categorization.",
+      "Black-box AI credit scoring risks perpetuating demographic bias. AltGrade computes exact SHAP and counterfactual fairness values for every underwriting decision, allowing human loan officers to inspect every contributing factor.",
     prompts: [
-      "Hyper-localized community infrastructure and disaster response networks",
-      "Creative coding, spatial computing, and accessible sensory interfaces",
-      "Radical tools for thought, distributed learning, and cooperative ownership",
+      "Exact feature attribution scoring ensuring zero demographic bias",
+      "Counterfactual improvement roadmaps for declined micro-merchants",
+      "Audit-ready explainability dossiers formatted for NBFC and RBI compliance",
     ],
     themeColor: "#FB923C",
     glowColor: "rgba(251, 146, 60, 0.4)",
@@ -133,43 +133,7 @@ const Words = ({ text, className = "" }: { text: string; className?: string }) =
 
 // Track Visual Plate Icons
 const TrackVisualIcon = ({ id, color }: { id: string; color: string }) => {
-  if (id === "ai") {
-    return (
-      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(229,184,59,0.5)]">
-        {/* Head profile silhouette */}
-        <path
-          d="M68 28C92 28 112 48 112 72C112 84 107 95 99 102V116C99 122 94 126 88 126H78V134H58V126H54C42 126 32 116 32 104V88C32 82 36 78 40 78C42 78 44 79 45 80C46 51 56 28 68 28Z"
-          fill="none"
-          stroke={color}
-          strokeWidth="4.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-        {/* Brain chip in center */}
-        <rect x="62" y="58" width="36" height="36" rx="7" fill="none" stroke={color} strokeWidth="4" />
-        {/* Chip pins */}
-        <path d="M70 54V58M80 54V58M90 54V58" stroke={color} strokeWidth="3" strokeLinecap="round" />
-        <path d="M70 94V98M80 94V98M90 94V98" stroke={color} strokeWidth="3" strokeLinecap="round" />
-        <path d="M58 70H62M58 80H62" stroke={color} strokeWidth="3" strokeLinecap="round" />
-        <path d="M98 70H102M98 80H102" stroke={color} strokeWidth="3" strokeLinecap="round" />
-        {/* AI text inside */}
-        <text
-          x="80"
-          y="83"
-          textAnchor="middle"
-          fill={color}
-          fontSize="18"
-          fontWeight="900"
-          fontFamily="system-ui, sans-serif"
-          letterSpacing="1"
-        >
-          AI
-        </text>
-      </svg>
-    );
-  }
-
-  if (id === "fintech") {
+  if (id === "upi") {
     return (
       <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(143,196,90,0.5)]">
         {/* Rising growth chart curve and arrow */}
@@ -195,33 +159,29 @@ const TrackVisualIcon = ({ id, color }: { id: string; color: string }) => {
     );
   }
 
-  if (id === "healthtech") {
+  if (id === "utility") {
     return (
-      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(45,212,191,0.5)]">
+      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(229,184,59,0.5)]">
+        {/* Lightbulb and energy grid */}
         <path
-          d="M80 134C80 134 30 102 30 64C30 46 44 32 62 32C72 32 80 38 80 38C80 38 88 32 98 32C116 32 130 46 130 64C130 102 80 134 80 134Z"
+          d="M80 32C60 32 44 48 44 68C44 80 50 90 60 98V110C60 113 63 116 66 116H94C97 116 100 113 100 110V98C110 90 116 80 116 68C116 48 100 32 80 32Z"
           fill="none"
           stroke={color}
           strokeWidth="4.5"
           strokeLinecap="round"
           strokeLinejoin="round"
         />
-        {/* ECG pulse line inside */}
-        <path
-          d="M40 76H60L68 56L76 96L84 68L92 84L98 76H120"
-          fill="none"
-          stroke={color}
-          strokeWidth="4.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
+        {/* Filament / meter mark */}
+        <path d="M68 76L74 62H86L92 76" fill="none" stroke={color} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M66 122H94M70 128H90M74 134H86" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+        <path d="M80 16V22M32 68H38M122 68H128M46 38L52 44M114 38L108 44" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
       </svg>
     );
   }
 
-  if (id === "cybersecurity") {
+  if (id === "privacy") {
     return (
-      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(96,165,250,0.5)]">
+      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(45,212,191,0.5)]">
         {/* Shield */}
         <path
           d="M80 26L124 44V82C124 112 104 136 80 144C56 136 36 112 36 82V44L80 26Z"
@@ -240,39 +200,60 @@ const TrackVisualIcon = ({ id, color }: { id: string; color: string }) => {
     );
   }
 
-  if (id === "web3") {
+  if (id === "mitra") {
     return (
-      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(192,132,252,0.5)]">
-        {/* Central Isometric Cube */}
-        <path d="M80 34L114 54V94L80 114L46 94V54L80 34Z" fill="none" stroke={color} strokeWidth="4.5" strokeLinejoin="round" />
-        <path d="M80 34V114M114 54L80 74L46 54" stroke={color} strokeWidth="4" strokeLinejoin="round" />
-        {/* Satellite nodes */}
-        <circle cx="28" cy="46" r="6" fill={color} />
-        <circle cx="132" cy="46" r="6" fill={color} />
-        <circle cx="80" cy="136" r="6" fill={color} />
-        <path d="M46 54L28 46M114 54L132 46M80 114L80 136" stroke={color} strokeWidth="2.5" strokeDasharray="4 4" />
+      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(96,165,250,0.5)]">
+        {/* Head profile silhouette */}
+        <path
+          d="M68 28C92 28 112 48 112 72C112 84 107 95 99 102V116C99 122 94 126 88 126H78V134H58V126H54C42 126 32 116 32 104V88C32 82 36 78 40 78C42 78 44 79 45 80C46 51 56 28 68 28Z"
+          fill="none"
+          stroke={color}
+          strokeWidth="4.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        {/* Sound wave / voice mic inside */}
+        <path d="M70 66V82M76 60V88M82 54V94M88 60V88M94 66V82" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
       </svg>
     );
   }
 
-  // Open Innovation
+  if (id === "restructure") {
+    return (
+      <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(192,132,252,0.5)]">
+        {/* Dynamic resilience curve and heart / cycle */}
+        <path
+          d="M80 134C80 134 30 102 30 64C30 46 44 32 62 32C72 32 80 38 80 38C80 38 88 32 98 32C116 32 130 46 130 64C130 102 80 134 80 134Z"
+          fill="none"
+          stroke={color}
+          strokeWidth="4.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        {/* Pulse line inside */}
+        <path
+          d="M40 76H60L68 56L76 96L84 68L92 84L98 76H120"
+          fill="none"
+          stroke={color}
+          strokeWidth="4.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    );
+  }
+
+  // Anti-Bias SHAP Audit
   return (
     <svg viewBox="0 0 160 160" className="w-28 h-28 md:w-36 md:h-36 drop-shadow-[0_0_24px_rgba(251,146,60,0.5)]">
-      {/* Lightbulb outline */}
-      <path
-        d="M80 32C60 32 44 48 44 68C44 80 50 90 60 98V110C60 113 63 116 66 116H94C97 116 100 113 100 110V98C110 90 116 80 116 68C116 48 100 32 80 32Z"
-        fill="none"
-        stroke={color}
-        strokeWidth="4.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      {/* Filament */}
-      <path d="M68 76L74 62H86L92 76" fill="none" stroke={color} strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round" />
-      {/* Base screw lines */}
-      <path d="M66 122H94M70 128H90M74 134H86" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
-      {/* Energy rays */}
-      <path d="M80 16V22M32 68H38M122 68H128M46 38L52 44M114 38L108 44" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+      {/* Central Isometric Cube */}
+      <path d="M80 34L114 54V94L80 114L46 94V54L80 34Z" fill="none" stroke={color} strokeWidth="4.5" strokeLinejoin="round" />
+      <path d="M80 34V114M114 54L80 74L46 54" stroke={color} strokeWidth="4" strokeLinejoin="round" />
+      {/* Satellite nodes */}
+      <circle cx="28" cy="46" r="6" fill={color} />
+      <circle cx="132" cy="46" r="6" fill={color} />
+      <circle cx="80" cy="136" r="6" fill={color} />
+      <path d="M46 54L28 46M114 54L132 46M80 114L80 136" stroke={color} strokeWidth="2.5" strokeDasharray="4 4" />
     </svg>
   );
 };
@@ -352,46 +333,26 @@ export const TracksSection = () => {
     return () => ctx.revert();
   }, []);
 
-  // Signature Word Reveal & Blur Animation on track change
+  // Animate text blur and mask reveal on track change
   useEffect(() => {
     const el = sectionRef.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (!el) return;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        ".th-brief-seat",
-        { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, force3D: true, ease: "power2.out", duration: 0.45 }
-      );
-      gsap.fromTo(
-        ".th-brief-title .th-mask-inner",
-        { yPercent: 110 },
-        { yPercent: 0, force3D: true, ease: "power3.out", duration: 0.65 }
-      );
-      gsap.fromTo(
-        ".th-brief-rule i",
-        { scaleX: 0 },
-        { scaleX: 1, force3D: true, ease: "power2.out", duration: 0.6, delay: 0.05 }
+        ".th-mask-inner",
+        { y: "100%", opacity: 0 },
+        { y: "0%", opacity: 1, force3D: true, ease: "power3.out", duration: 0.6 }
       );
       gsap.fromTo(
         ".th-brief-line .th-word",
-        { opacity: 0, y: 8, filter: "blur(4px)" },
-        { opacity: 1, y: 0, filter: "blur(0px)", force3D: true, ease: "power2.out", duration: 0.55, stagger: 0.014 }
+        { opacity: 0, y: 8, filter: "blur(5px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", force3D: true, ease: "power2.out", duration: 0.45, stagger: 0.015, delay: 0.03 }
       );
       gsap.fromTo(
         ".th-brief-summary .th-word",
         { opacity: 0, y: 6, filter: "blur(4px)" },
         { opacity: 1, y: 0, filter: "blur(0px)", force3D: true, ease: "power2.out", duration: 0.5, stagger: 0.012, delay: 0.06 }
-      );
-      gsap.fromTo(
-        ".th-prompts li",
-        { opacity: 0, y: 10 },
-        { opacity: 1, y: 0, force3D: true, ease: "power2.out", duration: 0.45, stagger: 0.05, delay: 0.1 }
-      );
-      gsap.fromTo(
-        ".th-plate-content",
-        { opacity: 0.4, scale: 0.96 },
-        { opacity: 1, scale: 1, force3D: true, ease: "power2.out", duration: 0.5 }
       );
     }, el);
 
@@ -407,7 +368,7 @@ export const TracksSection = () => {
     <section
       id="themes"
       ref={sectionRef}
-      aria-label="The six tracks"
+      aria-label="The six alternate credit intelligence pillars"
       className="th box-border caret-transparent relative w-full pt-28 pb-20 px-5 text-center text-lime-50 scroll-mt-28 md:pt-36 md:pb-28 md:px-14"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
@@ -419,13 +380,13 @@ export const TracksSection = () => {
 
         <SectionHeader
           variant="tracks"
-          eyebrow="The six tracks"
-          titleLineOne="Six directions"
-          titleLineTwo="to build in."
+          eyebrow="Alternate Credit Intelligence"
+          titleLineOne="Six Pillars of"
+          titleLineTwo="Alternate Underwriting."
           descriptionWords={[
-            "One", "seat", "at", "the", "table", "for", "each.",
-            "Pick", "the", "one", "you", "cannot", "stop", "thinking", "about", "—",
-            "every", "track", "is", "judged", "on", "the", "same", "four", "criteria."
+            "Traditional", "bureau", "scores", "exclude", "400", "million", "Indians.",
+            "AltGrade", "analyzes", "real-time", "UPI", "cashflows,", "verified", "utility", "cadence,",
+            "and", "vernacular", "voice", "signals", "with", "zero-knowledge", "privacy."
           ]}
         />
 

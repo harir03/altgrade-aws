@@ -3,12 +3,12 @@ import gsap from "gsap";
 import { LiquidMetalButton } from "./LiquidMetalButton";
 
 const lines = [
-  { words: ["Welcome", "to", "the", "bottom."] },
-  { words: ["Do", "you", "know", "what's", "at", "the", "top?"] },
-  { words: ["Yep.", "A", "single", "plastic", "chair."] },
-  { words: ["Hundreds", "of", "hackers…", "but", "only", "ONE", "team", "gets", "to", "sit."], accent: "ONE" },
-  { words: ["So", "here's", "the", "dare:", "can", "you", "conquer", "it?"] },
-  { words: ["Let's", "find", "out."] },
+  { words: ["Over", "400", "million", "Indians", "are", "invisible", "to", "banks."] },
+  { words: ["They", "run", "vital", "stores", "and", "pay", "bills", "on", "time."] },
+  { words: ["Yet", "legacy", "bureaus", "reject", "them", "without", "past", "debt."] },
+  { words: ["AltGrade", "turns", "real", "economic", "honesty", "into", "instant", "credit."], accent: "AltGrade" },
+  { words: ["Powered", "by", "alternate", "data,", "UPI", "signals", "and", "edge", "AI."] },
+  { words: ["Financial", "dignity", "for", "Bharat."] },
 ];
 
 const timings: [number, number][] = [
@@ -411,18 +411,18 @@ export const IntroOverlay: React.FC = () => {
               />
             </div>
             <div ref={welcomeBlockRef} className="intro-welcome-block">
-              <h1 className="intro-welcome-title" aria-label="Hi There, Hackers!">
+              <h1 className="intro-welcome-title" aria-label="Welcome to AltGrade">
                 <span className="intro-welcome-word">
-                  <span className="intro-welcome-word-i">Hi</span>
+                  <span className="intro-welcome-word-i">Credit</span>
                 </span>
                 <span className="intro-welcome-word">
-                  <span className="intro-welcome-word-i">There,</span>
+                  <span className="intro-welcome-word-i">For</span>
                 </span>
                 <span className="intro-welcome-word">
-                  <span className="intro-welcome-word-i">Hackers!</span>
+                  <span className="intro-welcome-word-i">All</span>
                 </span>
               </h1>
-              <span className="intro-welcome-sub">ALTGRADE 2026</span>
+              <span className="intro-welcome-sub">FINANCIAL DIGNITY FOR BHARAT</span>
             </div>
           </div>
         </div>

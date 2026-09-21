@@ -27,7 +27,7 @@ export const JudgeSeal: React.FC = () => {
         <svg
           viewBox="0 0 240 240"
           role="img"
-          aria-label="PANEL SEALED — sealed until the reveal"
+          aria-label="PANEL SEALED: sealed until official deployment"
         >
           <defs>
             <radialGradient

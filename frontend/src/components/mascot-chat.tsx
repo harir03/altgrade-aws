@@ -79,7 +79,7 @@ const MASCOT_I18N: Record<'en' | 'hi' | 'gu' | 'ta', MascotTranslations> = {
     assistantArrow: 'Assistant →',
     thinking: 'Thinking in English...',
     welcomeGreeting:
-      'Hello! I am Mitra, your credit & financial guide. AltGrade brings online banking for all—evaluating your everyday utility bills and UPI history to approve fair loans without a CIBIL score.\n\nPrefer an on-call banking service? You can request an immediate callback from our AI Voice Officer or ask any question right here!',
+      'Hello! I am Mitra, your credit & financial guide. AltGrade brings online banking for all: evaluating your everyday utility bills and UPI history to approve fair loans without a CIBIL score.\n\nPrefer an on-call banking service? You can request an immediate callback from our AI Voice Officer or ask any question right here!',
     callbackVoiceConfirm: (phone: string) =>
       `📞 On-Call Banking Callback requested for ${phone}. Arun (Personal Account Manager) is dialing your number to discuss loan options.`,
     callbackOfficerConfirm: (phone: string) =>
@@ -479,7 +479,7 @@ export function MascotChat() {
 
   return (
     <div className='fixed bottom-4 right-4 sm:bottom-6 sm:right-6 pb-[env(safe-area-inset-bottom,0px)] pr-[env(safe-area-inset-right,0px)] z-40 flex flex-col items-end max-w-[calc(100vw-1.5rem)] pointer-events-none [&>*]:pointer-events-auto'>
-      {/* Collapsed FAB by default — only expands to chat when clicked (P0 fix: no auto-popping speech bubble overlapping content) */}
+      {/* Collapsed FAB by default: only expands to chat when clicked (P0 fix: no auto-popping speech bubble overlapping content) */}
       {!isOpen && (
         <button
           type='button'

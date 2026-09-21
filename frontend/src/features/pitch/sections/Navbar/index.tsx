@@ -21,10 +21,10 @@ export const Navbar = () => {
   }, [menuOpen]);
 
   const navLinks = [
-    { href: "#about", label: "The Chair" },
-    { href: "#themes", label: "Themes" },
-    { href: "#judges", label: "Judges" },
-    { href: "#sponsors", label: "Sponsors" },
+    { href: "#about", label: "The Thesis" },
+    { href: "#themes", label: "Scoring Pillars" },
+    { href: "#judges", label: "Advisory Board" },
+    { href: "#sponsors", label: "Partners" },
     { href: "#faq", label: "FAQ" },
   ];
 

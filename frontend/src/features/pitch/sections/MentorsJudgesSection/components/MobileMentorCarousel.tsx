@@ -2,48 +2,48 @@ export const MobileMentorCarousel = () => {
   const mentors = [
     {
       seat: "Seat 01",
-      title: "Distributed & scalable systems",
-      category: "Technical architecture",
+      title: "Central Banking & Compliance",
+      category: "Regulatory Architecture",
     },
     {
       seat: "Seat 02",
-      title: "AI, agents & machine learning",
-      category: "Intelligent agents",
+      title: "Privacy & Cryptography",
+      category: "Zero-Knowledge Proofs",
     },
     {
       seat: "Seat 03",
-      title: "Interface, craft & typography",
-      category: "Product & design",
+      title: "Rural Economic Intelligence",
+      category: "Agri-Fintech Systems",
     },
     {
       seat: "Seat 04",
-      title: "IoT & hardware prototyping",
-      category: "Embedded systems",
+      title: "Acoustic AI & Vernacular NLP",
+      category: "Voice Underwriting",
     },
     {
       seat: "Seat 05",
-      title: "Security, privacy & resilience",
-      category: "Trust & security",
+      title: "Data Protection & Ethics",
+      category: "DPDP Governance",
     },
     {
       seat: "Seat 06",
-      title: "Pitching, product & venture",
-      category: "Story & venture",
+      title: "Institutional Capital",
+      category: "NBFC Partnerships",
     },
     {
       seat: "Seat 07",
-      title: "Climate tech & bio-computation",
-      category: "Bio & Climate",
+      title: "Algorithmic Fairness",
+      category: "Anti-Bias Auditing",
     },
     {
       seat: "Seat 08",
-      title: "Devtools, protocols & compilers",
-      category: "Open web & tools",
+      title: "Sovereign Infrastructure",
+      category: "Financial Cloud Edge",
     },
     {
       seat: "Seat 09",
-      title: "Vision, robotics & edge compute",
-      category: "Autonomous systems",
+      title: "Financial Inclusion Impact",
+      category: "Merchant Advocacy",
     },
   ];
 

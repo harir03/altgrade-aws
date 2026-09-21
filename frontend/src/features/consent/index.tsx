@@ -1339,7 +1339,7 @@ export function ConsentPage() {
                   <MapPin className='h-4 w-4 text-brand-blue shrink-0' />
                   <div className='flex-1 min-w-0'>
                     <p className='text-sm font-medium truncate'>{currentAddress.place}</p>
-                    <p className='text-[10px] text-muted-foreground'>{t('consent.sincePresent', 'Since {{year}} — Present', { year: currentAddress.fromYear })}</p>
+                    <p className='text-[10px] text-muted-foreground'>{t('consent.sincePresent', 'Since {{year}} - Present', { year: currentAddress.fromYear })}</p>
                   </div>
                   <button onClick={() => setCurrentAddress(null)} className='text-muted-foreground hover:text-destructive transition-colors'>
                     <X className='h-4 w-4' />
@@ -1433,7 +1433,7 @@ export function ConsentPage() {
             <div className='space-y-3'>
               <div className='flex items-center justify-between'>
                 <Label className='text-sm font-semibold'>{t('consent.previousPlacesLived', 'Previous Places Lived')}</Label>
-                <span className='text-[10px] text-muted-foreground'>{t('consent.optionalAddMany', 'Optional — add as many as needed')}</span>
+                <span className='text-[10px] text-muted-foreground'>{t('consent.optionalAddMany', 'Optional: add as many as needed')}</span>
               </div>
 
               {locationEntries.length > 0 && (
@@ -1444,7 +1444,7 @@ export function ConsentPage() {
                       <div className='flex-1 min-w-0'>
                         <p className='text-sm font-medium truncate'>{entry.place}</p>
                         <p className='text-[10px] text-muted-foreground'>
-                          {entry.fromYear} — {entry.toYear === null ? t('consent.present', 'Present') : entry.toYear}
+                          {entry.fromYear} - {entry.toYear === null ? t('consent.present', 'Present') : entry.toYear}
                         </p>
                       </div>
                       <button onClick={() => handleRemoveLocation(i)} className='text-muted-foreground hover:text-destructive transition-colors'>
@@ -1575,7 +1575,7 @@ export function ConsentPage() {
             </div>
 
             <CardDescription className='text-sm text-muted-foreground mt-2'>
-              {t('consent.psychDesc', 'Question {{current}} of {{total}} — answer on screen or request an AI voice call.', { current: currentQuestionIdx + 1, total: activeQuestions.length })}
+              {t('consent.psychDesc', 'Question {{current}} of {{total}}: answer on screen or request an AI voice call.', { current: currentQuestionIdx + 1, total: activeQuestions.length })}
             </CardDescription>
 
             {/* AI Phone Callback Request Banner */}

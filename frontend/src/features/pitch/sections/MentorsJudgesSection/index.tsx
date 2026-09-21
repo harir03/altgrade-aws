@@ -54,16 +54,16 @@ export const MentorsJudgesSection = () => {
     <section
       id="judges"
       ref={sectionRef}
-      aria-label="Mentors and Judges"
+      aria-label="Governance and Risk Advisory Board"
       className="box-border caret-transparent relative w-full pt-[60px] pb-24 px-5 text-center text-lime-50 md:pt-28 md:pb-36 md:px-16 overflow-hidden"
     >
       <div className="max-w-[1376px] mx-auto flex flex-col items-center relative">
         <SectionHeader variant="artifactOnly" title="" />
         <SectionHeader
           variant="mentors"
-          eyebrow="The panel & mentors"
-          title="Mentors & Judges"
-          description="Nine seats, nine domains — locked. The mentor & judge lineup stays sealed until the official reveal."
+          eyebrow="Governance & Risk Advisory"
+          title="Advisory & Underwriting Board"
+          description="Nine institutional disciplines: locked in governance. Our advisory board brings regulatory, cryptographic, and grassroots banking oversight."
         />
         <MentorGrid />
         <MentorsCallToAction />
