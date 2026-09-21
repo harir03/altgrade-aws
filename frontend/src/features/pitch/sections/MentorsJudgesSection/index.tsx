@@ -32,6 +32,19 @@ export const MentorsJudgesSection = () => {
           toggleActions: "play none none none",
         },
       });
+
+      // Subtle parallax rotation & scale on wax seal emblem
+      gsap.to(".jseal-wax", {
+        rotation: 4,
+        scale: 1.05,
+        ease: "none",
+        scrollTrigger: {
+          trigger: el,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 0.5,
+        },
+      });
     }, el);
 
     return () => ctx.revert();

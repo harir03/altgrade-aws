@@ -22,6 +22,7 @@ export const Navbar = () => {
 
   const navLinks = [
     { href: "#about", label: "The Thesis" },
+    { href: "#countdown", label: "5-Min Scoring" },
     { href: "#themes", label: "Scoring Pillars" },
     { href: "#judges", label: "Future Scope" },
     { href: "#sponsors", label: "Partners" },

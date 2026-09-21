@@ -251,8 +251,8 @@ export const SponsorsSection = () => {
                               <path d="M18.74 18.06c-1.39.9-3.23 1.39-5.18 1.39-3.23 0-5.83-1.3-7.55-3.32-.24-.28-.02-.6.28-.42 2.37 1.42 5.07 2.19 7.82 2.19 1.77 0 3.7-.42 5.43-1.3.39-.2.72.24.42.46zM20.25 15.65c-.17-.22-.84-.1-1.64.07-.81.16-1.57.4-1.74.19-.17-.22.42-.87.89-1.4.47-.53.94-.99 1.37-.88.43.11.83.74.88 1.15.06.4-.33.87-.76.87zM8.5 7.27c0-1.84.97-2.73 2.65-2.73 1.63 0 2.58.91 2.58 2.73v4.61c0 .48.16.66.5.66.3 0 .49-.15.82-.44l.43.43c-.43.51-.9.84-1.57.84-.79 0-1.28-.48-1.28-1.37v-.5c-.65.75-1.5 1.14-2.45 1.14-1.46 0-2.32-.98-2.32-2.58 0-1.84 1.14-2.82 3.39-2.9l1.3-.05v-.86c0-1.12-.55-1.63-1.63-1.63-.98 0-1.52.42-1.72 1.37l-1.07-.17z" />
                             </svg>
                             <div className="flex flex-col text-left">
-                              <span className="text-white font-bold text-sm tracking-wide">AWS Cloud</span>
-                              <span className="text-lime-300 text-[10px] font-geist_mono">Mumbai Region</span>
+                              <span className="text-[#122214] font-bold text-sm tracking-wide">AWS Cloud</span>
+                              <span className="text-[#3b6033] text-[10px] font-geist_mono font-medium">Mumbai Region</span>
                             </div>
                             <div className="sxp-devfolio-divider" aria-hidden="true" />
                             <div className="sxp-devfolio-tagline">
@@ -275,11 +275,11 @@ export const SponsorsSection = () => {
                           role="img"
                           aria-label="NPCI and UPI"
                         >
-                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-lime-400" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg viewBox="0 0 24 24" className="w-6 h-6 text-[#1E6B2F]" fill="none" stroke="currentColor" strokeWidth="2">
                             <rect x="2" y="5" width="20" height="14" rx="2" />
                             <line x1="2" y1="10" x2="22" y2="10" />
                           </svg>
-                          <span className="font-bold text-white text-xs tracking-wider font-geist_mono">
+                          <span className="font-bold text-[#122214] text-xs tracking-wider font-geist_mono">
                             NPCI · UPI
                           </span>
                         </div>
@@ -295,10 +295,10 @@ export const SponsorsSection = () => {
                           title="DigiLocker and IndiaStack"
                           aria-label="DigiLocker and IndiaStack"
                         >
-                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-emerald-300" fill="none" stroke="currentColor" strokeWidth="2">
+                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#1A6E40]" fill="none" stroke="currentColor" strokeWidth="2">
                             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                           </svg>
-                          <span className="font-bold text-white text-xs font-geist_mono">
+                          <span className="font-bold text-[#122214] text-xs font-geist_mono">
                             IndiaStack
                           </span>
                         </div>
@@ -323,14 +323,14 @@ export const SponsorsSection = () => {
                           className="sxp-partner-card sxp-float-card sxp-react-kolkata-card flex items-center justify-center gap-2 px-3"
                           title="Account Aggregator Ecosystem"
                         >
-                          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                          <span className="text-xs font-bold text-lime-100 font-geist_mono">Account Aggregator (AA)</span>
+                          <span className="w-2 h-2 rounded-full bg-[#1A824A] animate-pulse" />
+                          <span className="text-xs font-bold text-[#122214] font-geist_mono">Account Aggregator (AA)</span>
                         </div>
                         <div
                           className="sxp-partner-card sxp-float-card-alt sxp-innofusion-card flex items-center justify-center gap-2 px-3"
                           title="Open Credit Enablement Network"
                         >
-                          <span className="text-xs font-bold text-lime-200 font-geist_mono">OCEN Protocol 4.0</span>
+                          <span className="text-xs font-bold text-[#122214] font-geist_mono">OCEN Protocol 4.0</span>
                         </div>
                       </div>
 
@@ -339,19 +339,19 @@ export const SponsorsSection = () => {
                           className="sxp-partner-card sxp-float-card sxp-stuamb-card flex items-center justify-center gap-2.5 px-3"
                           title="Reserve Bank Innovation Hub"
                         >
-                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-lime-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8">
+                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-[#1B4E28] flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8">
                             <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 3l9 7H3l9-7z" />
                           </svg>
                           <div className="flex flex-col text-left">
-                            <span className="text-xs font-bold text-white font-geist_mono">RBIH Sandbox</span>
-                            <span className="text-[9px] text-lime-400/80 uppercase font-geist_mono">Governance</span>
+                            <span className="text-xs font-bold text-[#122214] font-geist_mono">RBIH Sandbox</span>
+                            <span className="text-[9px] text-[#3B6033] uppercase font-geist_mono font-semibold">Governance</span>
                           </div>
                         </div>
                         <div
                           className="sxp-partner-card sxp-float-card-alt sxp-gdg-card flex items-center justify-center gap-2 px-3"
                           title="Open Network for Digital Commerce"
                         >
-                          <span className="text-xs font-bold text-lime-100 font-geist_mono">ONDC Financial Services</span>
+                          <span className="text-xs font-bold text-[#122214] font-geist_mono">ONDC Financial Services</span>
                         </div>
                       </div>
 
@@ -360,13 +360,13 @@ export const SponsorsSection = () => {
                           className="sxp-partner-card sxp-float-card sxp-coderush-card flex items-center justify-center gap-2 px-3"
                           title="Agricultural APMC Mandis"
                         >
-                          <span className="text-xs font-bold text-amber-200 font-geist_mono">18 District Mandis</span>
+                          <span className="text-xs font-bold text-[#8A5B00] font-geist_mono">18 District Mandis</span>
                         </div>
                         <div
                           className="sxp-partner-card sxp-float-card-alt sxp-mahakash-card flex items-center justify-center gap-2 px-3"
                           title="4 Tier-1 NBFC Lending Partners"
                         >
-                          <span className="text-xs font-bold text-lime-300 font-geist_mono">4 Partner NBFCs</span>
+                          <span className="text-xs font-bold text-[#1E6B2F] font-geist_mono">4 Partner NBFCs</span>
                         </div>
                       </div>
                     </div>
@@ -380,19 +380,19 @@ export const SponsorsSection = () => {
                         className="sxp-partner-card sxp-float-card sxp-lnc-card flex items-center justify-center gap-2 px-4"
                         title="Digital Personal Data Protection Compliance"
                       >
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-teal-300" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#136B5E]" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-xs font-bold text-stone-200 font-geist_mono">DPDP Act 2023 Guardrails</span>
+                        <span className="text-xs font-bold text-[#122214] font-geist_mono">DPDP Act 2023 Guardrails</span>
                       </div>
                       <div
                         className="sxp-partner-card sxp-float-card-alt sxp-eventopia-card flex items-center justify-center gap-2 px-4"
                         title="Anti-Predatory Fair Lending Protocol"
                       >
-                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" strokeWidth="2">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4 text-[#176E3B]" fill="none" stroke="currentColor" strokeWidth="2">
                           <path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span className="text-xs font-bold text-stone-200 font-geist_mono">Fair Lending Standard</span>
+                        <span className="text-xs font-bold text-[#122214] font-geist_mono">Fair Lending Standard</span>
                       </div>
                     </div>
                   </div>
@@ -405,7 +405,7 @@ export const SponsorsSection = () => {
                   <div className="sxp-cta-wrap mt-8">
                     <a
                       href="#about"
-                      className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-b from-stone-900 to-black text-[#f3f8ee] font-bold text-sm shadow-md hover:scale-105 active:scale-95 transition-all duration-200 border border-lime-800/30"
+                      className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#111A11] text-[#F4F8F0] font-bold text-sm shadow-lg hover:bg-[#1A261A] hover:scale-105 active:scale-95 transition-all duration-200 border border-lime-900/30"
                     >
                       <span>Inquire for NBFC Co-Lending Integration</span>
                       <svg viewBox="0 0 24 24" width={14} height={14} fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">

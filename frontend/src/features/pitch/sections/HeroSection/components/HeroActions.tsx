@@ -1,41 +1,22 @@
 export const HeroActions = () => {
   return (
     <div className="hero-action-dock-split">
-      <div className="devfolio-button-wrapper" style={{ position: "relative", display: "inline-flex", alignItems: "center", justifyContent: "center", minHeight: "44px", height: "44px", width: "220px", maxWidth: "100%" }}>
-        <a
-          href="/applicant"
-          aria-label="Launch Applicant Portal for instant credit evaluation"
-          className="hero-dock-btn-primary"
-          style={{
-            width: "100%",
-            height: "100%",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10px",
-            backgroundColor: "#1F4517",
-            borderRadius: "6px",
-            color: "#ffffff",
-            fontSize: "15px",
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            textDecoration: "none",
-            whiteSpace: "nowrap",
-            boxShadow: "0 4px 14px rgba(31, 69, 23, 0.4)",
-            border: "1px solid rgba(143, 196, 90, 0.5)",
-            transition: "background-color 150ms ease, transform 150ms ease, box-shadow 150ms ease",
-          }}
-        >
-          <svg className="w-4 h-4 text-[#8FC45A]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 0C12 7 7 12 0 12C7 12 12 17 12 24C12 17 17 12 24 12C17 12 12 7 12 0Z" />
-          </svg>
-          <span>Applicant Portal</span>
-        </a>
-      </div>
+      {/* Button 1: Applicant Portal (Pastel Green) */}
+      <a
+        href="/applicant"
+        aria-label="Launch Applicant Portal for instant credit evaluation"
+        className="hero-btn-applicant"
+      >
+        <svg className="w-4 h-4 text-[#264A22]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 0C12 7 7 12 0 12C7 12 12 17 12 24C12 17 17 12 24 12C17 12 12 7 12 0Z" />
+        </svg>
+        <span>Applicant Portal</span>
+      </a>
 
+      {/* Button 2: Officer Portal (Deep Obsidian) */}
       <a
         href="/sign-in"
-        className="hero-portal-btn"
+        className="hero-btn-officer"
         aria-label="Launch Loan Officer Decision Portal"
       >
         <span className="hero-portal-pip" />
@@ -43,57 +24,77 @@ export const HeroActions = () => {
         <span className="hero-portal-arrow">→</span>
       </a>
 
-      <a
-        href="#about"
-        className="hero-discord-btn"
-        aria-label="Read our credit inclusion thesis"
-      >
-        <svg className="w-4 h-4 text-[#2F5527]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-          <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-        </svg>
-        <span>Credit Thesis</span>
-      </a>
-
       <style>{`
         .hero-action-dock-split {
           display: flex;
           align-items: center;
-          gap: 0.65rem;
+          gap: 0.85rem;
           flex-wrap: wrap;
           justify-content: center;
         }
 
-        .hero-portal-btn {
+        .hero-btn-applicant {
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 0.5rem;
-          height: 44px;
-          padding: 0 1.15rem;
-          border-radius: 6px;
-          background: #121A12;
-          color: #F4F0E8;
-          border: 1px solid rgba(143, 196, 90, 0.35);
+          gap: 0.55rem;
+          height: 46px;
+          padding: 0 1.4rem;
+          border-radius: 8px;
+          background: #D2E8B8;
+          color: #142813;
+          border: 1px solid rgba(47, 85, 39, 0.3);
           font-family: var(--font-dm-sans), system-ui, sans-serif;
-          font-size: 0.88rem;
-          font-weight: 600;
+          font-size: 0.92rem;
+          font-weight: 700;
           letter-spacing: -0.01em;
           text-decoration: none;
-          box-shadow: 0 4px 16px rgba(18, 26, 18, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 16px rgba(47, 85, 39, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.6);
           transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
           white-space: nowrap;
         }
 
-        .hero-portal-btn:hover {
-          background: #1d2d1d;
-          border-color: #8FC45A;
-          color: #ffffff;
+        .hero-btn-applicant:hover {
+          background: #C2DEA4;
+          border-color: rgba(47, 85, 39, 0.5);
           transform: translateY(-1px);
-          box-shadow: 0 6px 20px rgba(143, 196, 90, 0.25);
+          box-shadow: 0 6px 20px rgba(47, 85, 39, 0.25);
         }
 
-        .hero-portal-btn:active {
+        .hero-btn-applicant:active {
+          transform: scale(0.98);
+        }
+
+        .hero-btn-officer {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.55rem;
+          height: 46px;
+          padding: 0 1.35rem;
+          border-radius: 8px;
+          background: #111A11;
+          color: #F4F8F0;
+          border: 1px solid rgba(143, 196, 90, 0.35);
+          font-family: var(--font-dm-sans), system-ui, sans-serif;
+          font-size: 0.92rem;
+          font-weight: 600;
+          letter-spacing: -0.01em;
+          text-decoration: none;
+          box-shadow: 0 4px 16px rgba(17, 26, 17, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+          transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
+          white-space: nowrap;
+        }
+
+        .hero-btn-officer:hover {
+          background: #1B2B1C;
+          border-color: #8FC45A;
+          color: #FFFFFF;
+          transform: translateY(-1px);
+          box-shadow: 0 6px 22px rgba(143, 196, 90, 0.25);
+        }
+
+        .hero-btn-officer:active {
           transform: scale(0.98);
         }
 
@@ -113,54 +114,8 @@ export const HeroActions = () => {
           transition: transform 180ms ease;
         }
 
-        .hero-portal-btn:hover .hero-portal-arrow {
+        .hero-btn-officer:hover .hero-portal-arrow {
           transform: translateX(2px);
-        }
-
-        .hero-discord-btn {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.5rem;
-          height: 44px;
-          padding: 0 1.05rem;
-          border-radius: 6px;
-          background: #FFFFFF;
-          color: #23272A;
-          border: 1px solid rgba(0, 0, 0, 0.12);
-          font-family: var(--font-dm-sans), system-ui, sans-serif;
-          font-size: 0.88rem;
-          font-weight: 600;
-          letter-spacing: -0.01em;
-          text-decoration: none;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-          transition: background 180ms ease, color 180ms ease, border-color 180ms ease, transform 180ms ease, box-shadow 180ms ease;
-          white-space: nowrap;
-        }
-
-        .hero-discord-btn:hover {
-          background: #F8F9FE;
-          color: #5865F2;
-          border-color: rgba(88, 101, 242, 0.4);
-          transform: translateY(-1px);
-          box-shadow: 0 6px 18px rgba(88, 101, 242, 0.18);
-        }
-
-        .hero-discord-btn:active {
-          transform: scale(0.98);
-          background: #ECEFFB;
-        }
-
-        .hero-discord-icon {
-          color: #5865F2;
-          width: 1.15rem;
-          height: 1.15rem;
-          flex-shrink: 0;
-          transition: transform 180ms ease;
-        }
-
-        .hero-discord-btn:hover .hero-discord-icon {
-          transform: scale(1.06);
         }
 
         @media (max-width: 720px) {
@@ -170,9 +125,8 @@ export const HeroActions = () => {
             max-width: 18rem;
             align-items: stretch;
           }
-          .hero-action-dock-split .devfolio-button-wrapper,
-          .hero-portal-btn,
-          .hero-discord-btn {
+          .hero-btn-applicant,
+          .hero-btn-officer {
             width: 100% !important;
             max-width: 100% !important;
           }

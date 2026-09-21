@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SectionHeader } from "@/features/pitch/components/SectionHeader";
+import { getLenis } from "@/features/pitch/utils/smoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -262,7 +263,6 @@ export const TracksSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [dwellKey, setDwellKey] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
   const [isIntersecting, setIsIntersecting] = useState(false);
   const currentTrack = tracks[activeIdx];
 
@@ -275,24 +275,43 @@ export const TracksSection = () => {
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     observer.observe(el);
 
     return () => observer.disconnect();
   }, []);
 
-  // 6-Second Auto progression
+  const handleAdvance = () => {
+    if (activeIdx < tracks.length - 1) {
+      setActiveIdx((prev) => prev + 1);
+      setDwellKey((k) => k + 1);
+    } else {
+      // Completed all 6 scoring pillars: smoothly transition to next section (Future Scope)
+      const nextSec = document.getElementById("judges");
+      if (nextSec) {
+        const lenis = getLenis();
+        if (lenis) {
+          lenis.scrollTo(nextSec, { offset: -20, duration: 1.4 });
+        } else {
+          nextSec.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      }
+      setActiveIdx(0);
+      setDwellKey((k) => k + 1);
+    }
+  };
+
+  // 6-Second Auto progression: auto-advances cards and moves to next section
   useEffect(() => {
-    if (!isIntersecting || isPaused) return;
+    if (!isIntersecting) return;
 
     const timer = setTimeout(() => {
-      setActiveIdx((prev) => (prev + 1) % tracks.length);
-      setDwellKey((k) => k + 1);
+      handleAdvance();
     }, 6000);
 
     return () => clearTimeout(timer);
-  }, [activeIdx, dwellKey, isIntersecting, isPaused]);
+  }, [activeIdx, dwellKey, isIntersecting]);
 
   // Entrance animation for section
   useEffect(() => {
@@ -370,8 +389,6 @@ export const TracksSection = () => {
       ref={sectionRef}
       aria-label="The six alternate credit intelligence pillars"
       className="th box-border caret-transparent relative w-full pt-28 pb-20 px-5 text-center text-lime-50 scroll-mt-28 md:pt-36 md:pb-28 md:px-14"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
     >
       <div id="tracks" className="relative -top-20 h-0 pointer-events-none" aria-hidden="true" />
 
@@ -394,7 +411,19 @@ export const TracksSection = () => {
         <div className="th-stage-reveal w-full mt-10 md:mt-16">
           <div className="th-stage">
             {/* Left: Morphing Visual Plate */}
-            <div className="th-plate">
+            <div
+              className="th-plate cursor-pointer group"
+              onClick={handleAdvance}
+              title={activeIdx < tracks.length - 1 ? `Advance to ${tracks[activeIdx + 1].name}` : "Proceed to Future Scope"}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  handleAdvance();
+                }
+              }}
+            >
               {/* Giant Outline Number in Top Left */}
               <span className="th-plate-index" aria-hidden="true">
                 {currentTrack.num}
@@ -426,8 +455,10 @@ export const TracksSection = () => {
                 </div>
               </div>
 
-              {/* Bottom Right Drag To Morph Hint */}
-              <span className="th-plate-hint">Drag to morph</span>
+              {/* Bottom Right Advance Hint */}
+              <span className="th-plate-hint">
+                {activeIdx < tracks.length - 1 ? `Next Pillar (${tracks[activeIdx + 1].num}) →` : "Next Section →"}
+              </span>
             </div>
 
             {/* Right: The Brief */}
@@ -464,6 +495,23 @@ export const TracksSection = () => {
                   </li>
                 ))}
               </ul>
+
+              {/* Quick-advance action row */}
+              <div className="mt-8 flex items-center gap-3">
+                <button
+                  type="button"
+                  onClick={handleAdvance}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all bg-[#8FC45A]/15 hover:bg-[#8FC45A]/25 text-[#D2E8B8] border border-[#8FC45A]/30 hover:border-[#8FC45A]/50 cursor-pointer"
+                >
+                  <span>{activeIdx < tracks.length - 1 ? `Next: ${tracks[activeIdx + 1].name}` : "Explore Future Scope"}</span>
+                  <svg className="w-3.5 h-3.5" viewBox="0 0 16 16" fill="none">
+                    <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+                <span className="text-xs text-[#8FC45A]/60 font-mono">
+                  0{activeIdx + 1} / 0{tracks.length}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -486,6 +534,7 @@ export const TracksSection = () => {
                   <span className="th-tab-name">{track.name}</span>
                   <span className="th-tab-bar" aria-hidden="true">
                     {isActive && <i key={`${track.id}-${dwellKey}`} />}
+                    {idx < activeIdx && <i className="is-completed" />}
                   </span>
                 </button>
               );
@@ -737,6 +786,19 @@ export const TracksSection = () => {
           background: linear-gradient(90deg, #5C8C3A, #B8DE8C);
           transform-origin: left center;
           animation: th-dwell 6s linear forwards;
+        }
+
+        .th-tab-bar i.is-completed {
+          display: block;
+          height: 100%;
+          width: 100%;
+          background: rgba(143, 196, 90, 0.45);
+          animation: none;
+          transform: scaleX(1);
+        }
+
+        .th-plate:hover .th-plate-hint {
+          color: rgba(240, 250, 230, 0.9);
         }
 
         @keyframes th-dwell {

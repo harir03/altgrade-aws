@@ -1,10 +1,11 @@
 import { DesktopMentorCard } from "@/features/pitch/sections/MentorsJudgesSection/components/DesktopMentorCard";
 import { MobileMentorCarousel } from "@/features/pitch/sections/MentorsJudgesSection/components/MobileMentorCarousel";
+import { JudgeSeal } from "@/features/pitch/sections/MentorsJudgesSection/components/JudgeSeal";
 
 export const MentorGrid = () => {
   return (
     <div className="box-border caret-transparent min-h-[auto] min-w-[auto] outline-[3px] no-underline mt-11 md:mt-[60px] w-full">
-      <div className="jd-grid-wrap relative w-full max-w-[1376px] mx-auto">
+      <div className="jd-grid-wrap relative w-full max-w-[1376px] mx-auto" data-sealed="true">
         <div className="jd-grid box-border caret-transparent gap-x-3 hidden grid-cols-[repeat(2,minmax(0px,1fr))] outline-[3px] gap-y-3 no-underline w-full md:gap-x-[35.2px] md:grid md:grid-cols-[repeat(3,minmax(0px,1fr))] md:gap-y-[35.2px]">
           <DesktopMentorCard
             ariaLabel="Scope 01: Satellite Crop Telemetry"
@@ -161,6 +162,8 @@ export const MentorGrid = () => {
         </div>
 
         <MobileMentorCarousel />
+
+        <JudgeSeal />
       </div>
     </div>
   );

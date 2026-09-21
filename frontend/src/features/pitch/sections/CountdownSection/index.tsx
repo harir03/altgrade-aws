@@ -7,30 +7,40 @@ gsap.registerPlugin(ScrollTrigger);
 
 export const CountdownSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const targetTime = new Date("2026-10-08T03:30:00Z").getTime();
+  const [secondsRemaining, setSecondsRemaining] = useState<number>(() => {
+    return 300 - (Math.floor(Date.now() / 1000) % 300);
+  });
 
-  const getUnits = (): ClockUnit[] => {
-    const diffSeconds = Math.floor(Math.max(0, targetTime - Date.now()) / 1000);
+  const getUnits = (secs: number): ClockUnit[] => {
     const pad = (n: number) => Math.max(0, n).toString().padStart(2, "0");
+    const mins = Math.floor(secs / 60);
+    const s = secs % 60;
     return [
-      { value: pad(Math.floor(diffSeconds / 86400)), label: "Days" },
-      { value: pad(Math.floor((diffSeconds % 86400) / 3600)), label: "Hours" },
-      { value: pad(Math.floor((diffSeconds % 3600) / 60)), label: "Minutes" },
-      { value: pad(diffSeconds % 60), label: "Seconds" },
+      { value: "00", label: "Days (Banks: 30)" },
+      { value: "00", label: "Hours Delay" },
+      { value: pad(mins), label: "Minutes" },
+      { value: pad(s), label: "Seconds" },
     ];
   };
 
-  const [units, setUnits] = useState<ClockUnit[]>(getUnits);
+  const [units, setUnits] = useState<ClockUnit[]>(() => getUnits(secondsRemaining));
 
   useEffect(() => {
-    let timeoutId: ReturnType<typeof setTimeout>;
-    const tick = () => {
-      setUnits(getUnits());
-      timeoutId = setTimeout(tick, 1000 - (Date.now() % 1000) + 15);
-    };
-    timeoutId = setTimeout(tick, 1000 - (Date.now() % 1000) + 15);
-    return () => clearTimeout(timeoutId);
+    const interval = setInterval(() => {
+      setSecondsRemaining((prev) => {
+        const next = prev <= 1 ? 300 : prev - 1;
+        setUnits(getUnits(next));
+        return next;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
   }, []);
+
+  const handleResetSimulation = () => {
+    setSecondsRemaining(300);
+    setUnits(getUnits(300));
+  };
 
   // ScrollTrigger entrance and valley parallax
   useEffect(() => {
@@ -72,11 +82,15 @@ export const CountdownSection = () => {
     return () => ctx.revert();
   }, []);
 
+  // Compute active telemetry stage based on elapsed time (300 - secondsRemaining)
+  const elapsed = 300 - secondsRemaining;
+  const currentStage = elapsed < 45 ? 1 : elapsed < 120 ? 2 : elapsed < 220 ? 3 : 4;
+
   return (
     <section
       id="countdown"
       ref={sectionRef}
-      aria-label="Public Lending Network Rollout"
+      aria-label="5-Minute Autonomous Underwriting Speed"
       className="cd relative w-full bg-transparent text-[#111a12] pt-[clamp(3.5rem,8vh,6.5rem)] pb-[clamp(4rem,9vw,7rem)] overflow-hidden z-[1]"
     >
       <div className="cd-inner relative max-w-[104rem] mx-auto px-4 md:px-8 text-center flex flex-col items-center z-[1]">
@@ -93,8 +107,8 @@ export const CountdownSection = () => {
 
         {/* Heading */}
         <div className="cd-head-wrap w-full text-center">
-          <h2 className="cd-heading font-headingNow font-medium text-[clamp(2.6rem,5.8vw,4.6rem)] leading-[1.1] tracking-[-0.035em] text-[#111a12]">
-            Public Lending Network Rollout
+          <h2 className="cd-heading font-headingNow font-medium text-[clamp(2.4rem,5.2vw,4.4rem)] leading-[1.1] tracking-[-0.035em] text-[#111a12]">
+            Scored in Under 5 Minutes
           </h2>
         </div>
 
@@ -102,60 +116,18 @@ export const CountdownSection = () => {
         <div className="cd-plaque-block mt-[clamp(1.2rem,2.5vh,2rem)] flex justify-center w-full">
           <div className="cd-plaque flex items-center justify-center gap-3 md:gap-4 max-w-full">
             <span className="cd-plaque-rule cd-plaque-rule-l w-12 md:w-20 h-[1px] bg-gradient-to-r from-transparent to-[#5C8C3A]/50" aria-hidden="true" />
-            
+
             <span className="cd-plaque-core inline-flex items-center gap-2 md:gap-3 px-4 py-1.5 rounded-full bg-[#182a14]/5 border border-[#5C8C3A]/25 backdrop-blur-sm shadow-sm text-xs md:text-sm font-geist_mono text-[#244626]">
               <span className="cd-plaque-eyebrow inline-flex items-center gap-1.5 font-semibold text-[#2F5527]">
-                <span className="cd-dial relative w-4 h-4 flex-shrink-0" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" className="w-full h-full">
-                    <defs>
-                      <linearGradient id="cdp-ink" gradientUnits="userSpaceOnUse" x1="3.5" y1="3" x2="20.5" y2="21">
-                        <stop offset="0" stopColor="#8FC45A" />
-                        <stop offset="0.5" stopColor="#5C8C3A" />
-                        <stop offset="1" stopColor="#2F5527" />
-                      </linearGradient>
-                      <radialGradient id="cdp-face" gradientUnits="userSpaceOnUse" cx="8.8" cy="7.9" r="15">
-                        <stop offset="0" stopColor="rgba(244, 250, 236, 0.95)" />
-                        <stop offset="0.65" stopColor="rgba(224, 238, 208, 0.6)" />
-                        <stop offset="1" stopColor="rgba(184, 212, 160, 0.28)" />
-                      </radialGradient>
-                    </defs>
-                    <circle cx="12" cy="12" r="9.1" fill="url(#cdp-face)" stroke="url(#cdp-ink)" strokeWidth="1.6" />
-                    <g stroke="url(#cdp-ink)" strokeWidth="1.15" strokeLinecap="round" opacity="0.5">
-                      <line x1="12" y1="4.5" x2="12" y2="6.1" />
-                      <line x1="19.5" y1="12" x2="17.9" y2="12" />
-                      <line x1="12" y1="19.5" x2="12" y2="17.9" />
-                      <line x1="4.5" y1="12" x2="6.1" y2="12" />
-                    </g>
-                    <line className="cd-dial-hour" x1="12" y1="12" x2="12" y2="7.8" stroke="url(#cdp-ink)" strokeWidth="1.9" strokeLinecap="round" />
-                    <line className="cd-dial-min" x1="12" y1="12" x2="15.9" y2="12" stroke="url(#cdp-ink)" strokeWidth="1.5" strokeLinecap="round" />
-                    <circle cx="12" cy="12" r="1.05" fill="#2F5527" />
-                  </svg>
-                </span>
-                Phase 1 Production Cohort
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
+                Live Underwriting Cycle
               </span>
 
               <span className="text-[#5C8C3A]/50">·</span>
 
-              <svg className="cd-plaque-cal w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 22 22" aria-hidden="true">
-                <defs>
-                  <linearGradient id="cdp-cal" gradientUnits="userSpaceOnUse" x1="2.5" y1="2.5" x2="19.5" y2="19.5">
-                    <stop offset="0" stopColor="#8FC45A" />
-                    <stop offset="0.5" stopColor="#5C8C3A" />
-                    <stop offset="1" stopColor="#2F5527" />
-                  </linearGradient>
-                </defs>
-                <g stroke="url(#cdp-cal)" strokeWidth="1.5" strokeLinecap="round" fill="none">
-                  <rect x="2.8" y="4.6" width="16.4" height="14.6" rx="2.6" />
-                  <line x1="2.8" y1="9.2" x2="19.2" y2="9.2" />
-                  <line x1="7.3" y1="2.6" x2="7.3" y2="6.2" />
-                  <line x1="14.7" y1="2.6" x2="14.7" y2="6.2" />
-                </g>
-                <rect x="9.2" y="11.8" width="3.6" height="3.6" rx="1" fill="url(#cdp-cal)" />
-              </svg>
-
-              <time className="cd-plaque-date font-medium" dateTime="2026-10-08T09:00:00+05:30">
-                October 08, 2026
-              </time>
+              <span className="font-semibold text-emerald-800">
+                05:00 Decision Window
+              </span>
             </span>
 
             <span className="cd-plaque-rule cd-plaque-rule-r w-12 md:w-20 h-[1px] bg-gradient-to-l from-transparent to-[#5C8C3A]/50" aria-hidden="true" />
@@ -163,15 +135,75 @@ export const CountdownSection = () => {
         </div>
 
         {/* Subtitle Details */}
-        <p className="cd-plaque-sub mt-2 text-xs md:text-sm font-dm_sans text-[#2d4d29]/80 font-medium">
-          09:00 IST · 18 Agricultural Mandis, 4 NBFC Partners · Over 120,000 Micro-Merchants Live
+        <p className="cd-plaque-sub mt-3 max-w-2xl text-xs md:text-sm font-dm_sans text-[#2d4d29]/90 font-medium leading-relaxed">
+          While traditional commercial banks take 21 to 30 days of paperwork to underwrite an MSME, AltGrade generates verified risk scores in under 5 minutes.
         </p>
 
         {/* Split-Flap Flip Clock */}
-        <div className="cd-clock-reveal mt-[clamp(2.4rem,5vh,4.2rem)] w-full">
+        <div className="cd-clock-reveal mt-[clamp(2rem,4.5vh,3.8rem)] w-full">
           <div className="cd-clock-wrapper w-full flex justify-center">
             <FlipClock units={units} />
           </div>
+        </div>
+
+        {/* Real-time Telemetry Pipeline Stages */}
+        <div className="mt-8 max-w-4xl w-full grid grid-cols-2 md:grid-cols-4 gap-2.5 px-2">
+          <div className={`p-3 rounded-xl border text-left transition-all duration-300 ${currentStage >= 1 ? "bg-[#142813]/90 border-emerald-500/50 shadow-md text-white" : "bg-white/40 border-stone-300/40 text-stone-600"}`}>
+            <div className="flex items-center justify-between text-[10px] font-geist_mono mb-1">
+              <span className={currentStage >= 1 ? "text-lime-400 font-bold" : "text-stone-500"}>STAGE 01</span>
+              <span>00:45</span>
+            </div>
+            <p className="text-xs font-dm_sans font-semibold leading-tight m-0">Consent & KYC</p>
+            <span className="text-[10px] opacity-75 font-geist_mono block mt-1">DPDP Verified</span>
+          </div>
+
+          <div className={`p-3 rounded-xl border text-left transition-all duration-300 ${currentStage >= 2 ? "bg-[#142813]/90 border-emerald-500/50 shadow-md text-white" : "bg-white/40 border-stone-300/40 text-stone-600"}`}>
+            <div className="flex items-center justify-between text-[10px] font-geist_mono mb-1">
+              <span className={currentStage >= 2 ? "text-lime-400 font-bold" : "text-stone-500"}>STAGE 02</span>
+              <span>01:30</span>
+            </div>
+            <p className="text-xs font-dm_sans font-semibold leading-tight m-0">Cashflow Ingestion</p>
+            <span className="text-[10px] opacity-75 font-geist_mono block mt-1">UPI & Mandi Ledgers</span>
+          </div>
+
+          <div className={`p-3 rounded-xl border text-left transition-all duration-300 ${currentStage >= 3 ? "bg-[#142813]/90 border-emerald-500/50 shadow-md text-white" : "bg-white/40 border-stone-300/40 text-stone-600"}`}>
+            <div className="flex items-center justify-between text-[10px] font-geist_mono mb-1">
+              <span className={currentStage >= 3 ? "text-lime-400 font-bold" : "text-stone-500"}>STAGE 03</span>
+              <span>03:15</span>
+            </div>
+            <p className="text-xs font-dm_sans font-semibold leading-tight m-0">Neural Risk Score</p>
+            <span className="text-[10px] opacity-75 font-geist_mono block mt-1">ZK Proof Computed</span>
+          </div>
+
+          <div className={`p-3 rounded-xl border text-left transition-all duration-300 ${currentStage >= 4 ? "bg-[#142813]/90 border-emerald-500/50 shadow-md text-white" : "bg-white/40 border-stone-300/40 text-stone-600"}`}>
+            <div className="flex items-center justify-between text-[10px] font-geist_mono mb-1">
+              <span className={currentStage >= 4 ? "text-lime-400 font-bold" : "text-stone-500"}>STAGE 04</span>
+              <span>04:55</span>
+            </div>
+            <p className="text-xs font-dm_sans font-semibold leading-tight m-0">Capital Sanction</p>
+            <span className="text-[10px] opacity-75 font-geist_mono block mt-1">Disbursal Ready</span>
+          </div>
+        </div>
+
+        {/* Simulation Reset & Quick Action */}
+        <div className="mt-5 flex items-center gap-3">
+          <button
+            type="button"
+            onClick={handleResetSimulation}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/70 hover:bg-white text-stone-800 text-[11px] font-geist_mono border border-stone-300/60 shadow-sm transition-all hover:scale-105 active:scale-95"
+          >
+            <svg viewBox="0 0 24 24" className="w-3 h-3 text-emerald-700" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <path d="M1 4v6h6M23 20v-6h-6" />
+              <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15" />
+            </svg>
+            <span>Restart 5-Min Cycle</span>
+          </button>
+          <a
+            href="/applicant"
+            className="inline-flex items-center gap-1 text-[11px] font-geist_mono text-[#244626] font-semibold hover:underline"
+          >
+            <span>Apply for live score evaluation →</span>
+          </a>
         </div>
       </div>
 
@@ -186,16 +218,6 @@ export const CountdownSection = () => {
           loading="eager"
         />
       </div>
-
-      <style>{`
-        .cd-dial-smoke i {
-          position: absolute;
-          border-radius: 50%;
-          background: rgba(143, 196, 90, 0.5);
-          filter: blur(2px);
-          opacity: 0;
-        }
-      `}</style>
     </section>
   );
 };
