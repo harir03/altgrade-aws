@@ -24,12 +24,12 @@ export const DesktopMentorCard = (props: DesktopMentorCardProps) => {
       {/* Subtle Background Glow */}
       <div className="absolute -top-16 -right-16 w-36 h-36 bg-[#8FC45A]/10 rounded-full blur-2xl pointer-events-none group-hover:bg-[#8FC45A]/15 transition-all duration-500" />
 
-      {/* Top Header: Seat & Sealed Status */}
+      {/* Top Header: Seat & Status */}
       <div className="flex items-center justify-between z-10">
         <span className="font-geist_mono text-xs uppercase tracking-wider text-lime-400 font-semibold">
           {props.seatLabel}
         </span>
-        <span className="px-2.5 py-0.5 rounded-full bg-lime-950/80 border border-lime-700/40 text-lime-300 text-[10px] font-mono uppercase tracking-wider">
+        <span className="px-2.5 py-0.5 rounded-full bg-emerald-950/90 border border-emerald-500/40 text-emerald-300 text-[10px] font-geist_mono uppercase tracking-wider font-semibold shadow-[0_0_12px_rgba(16,185,129,0.15)]">
           {props.status}
         </span>
       </div>
@@ -44,8 +44,8 @@ export const DesktopMentorCard = (props: DesktopMentorCardProps) => {
             className="w-7 h-7 object-contain filter drop-shadow-[0_2px_8px_rgba(143,196,90,0.4)]"
           />
         </div>
-        <span className="mt-3 text-[10px] font-geist_mono uppercase tracking-widest text-lime-400/60">
-          CONFIDENTIAL DOSSIER
+        <span className="mt-3 text-[10px] font-geist_mono uppercase tracking-widest text-lime-400/70">
+          PLANNED HORIZON
         </span>
       </div>
 
@@ -59,8 +59,8 @@ export const DesktopMentorCard = (props: DesktopMentorCardProps) => {
           {props.title}
         </h4>
 
-        <p className="text-xs text-stone-300/80 font-dm_sans mt-1 line-clamp-2 leading-relaxed">
-          {props.groupLabel}
+        <p className="text-xs text-stone-300/80 font-dm_sans mt-1 line-clamp-3 leading-relaxed">
+          {props.description}
         </p>
 
         {/* Metrics Strip */}

@@ -19,7 +19,7 @@ export const MentorsJudgesSection = () => {
     }
 
     const ctx = gsap.context(() => {
-      // Stagger entrance on desktop mentor cards
+      // Stagger entrance on desktop cards
       gsap.from(".jd-grid > *", {
         y: 30,
         opacity: 0,
@@ -32,19 +32,6 @@ export const MentorsJudgesSection = () => {
           toggleActions: "play none none none",
         },
       });
-
-      // Subtle parallax rotation & scale on wax seal emblem
-      gsap.to(".jseal-wax", {
-        rotation: 4,
-        scale: 1.05,
-        ease: "none",
-        scrollTrigger: {
-          trigger: el,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.5,
-        },
-      });
     }, el);
 
     return () => ctx.revert();
@@ -54,16 +41,16 @@ export const MentorsJudgesSection = () => {
     <section
       id="judges"
       ref={sectionRef}
-      aria-label="Governance and Risk Advisory Board"
+      aria-label="Future Scope and Planned Implementations"
       className="box-border caret-transparent relative w-full pt-[60px] pb-24 px-5 text-center text-lime-50 md:pt-28 md:pb-36 md:px-16 overflow-hidden"
     >
       <div className="max-w-[1376px] mx-auto flex flex-col items-center relative">
         <SectionHeader variant="artifactOnly" title="" />
         <SectionHeader
           variant="mentors"
-          eyebrow="Governance & Risk Advisory"
-          title="Advisory & Underwriting Board"
-          description="Nine institutional disciplines: locked in governance. Our advisory board brings regulatory, cryptographic, and grassroots banking oversight."
+          eyebrow="Strategic Roadmap & Horizons"
+          title="Future Scope & Planned Implementations"
+          description="Nine foundational expansions engineered for Bharat's credit frontier. From satellite crop telemetry and ONDC supply chain underwriting to cross-border remittances and decentralized offline proofs."
         />
         <MentorGrid />
         <MentorsCallToAction />

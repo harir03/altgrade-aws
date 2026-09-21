@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 const navItems = [
   { href: "#about", label: "The Thesis" },
   { href: "#themes", label: "Scoring Pillars" },
-  { href: "#judges", label: "Advisory Board" },
+  { href: "#judges", label: "Future Scope" },
   { href: "#sponsors", label: "Partners" },
   { href: "#faq", label: "FAQ" },
 ];
