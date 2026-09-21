@@ -5,7 +5,6 @@ import { TracksSection } from "@/features/pitch/sections/TracksSection";
 import { MentorsJudgesSection } from "@/features/pitch/sections/MentorsJudgesSection";
 import { SponsorsSection } from "@/features/pitch/sections/SponsorsSection";
 import { FaqSection } from "@/features/pitch/sections/FaqSection";
-import { VenueSection } from "@/features/pitch/sections/VenueSection";
 import { OrganizersSection } from "@/features/pitch/sections/OrganizersSection";
 
 export const Main = () => {
@@ -22,7 +21,6 @@ export const Main = () => {
 
       <SponsorsSection />
       <FaqSection />
-      <VenueSection />
       <OrganizersSection />
     </main>
   );

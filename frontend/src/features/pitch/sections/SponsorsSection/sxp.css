@@ -248,115 +248,163 @@
           align-items: center;
         }
 
-        /* ── Side Artifacts Wings ── */
+        /* ── Side Artifacts Wings (Polaroids & Tech Badges) ── */
         .sxp-artifacts-wing {
           position: absolute;
           top: 0;
           bottom: 0;
-          width: clamp(210px, 19vw, 280px);
-          pointer-events: none;
-          z-index: 1;
+          width: clamp(230px, 20vw, 300px);
+          pointer-events: auto;
+          z-index: 10;
           user-select: none;
         }
 
         .sxp-wing-left {
-          left: max(0.5rem, calc(50% - 33.5rem));
+          left: max(0.5rem, calc(50% - 37rem));
         }
 
         .sxp-wing-right {
-          right: max(0.5rem, calc(50% - 33.5rem));
+          right: max(0.5rem, calc(50% - 37rem));
         }
 
-        /* ── Left wing: doodle on top (alongside Devfolio), Victoria polaroid lower (matching tablet) ── */
-        .sxp-art-doodle-left {
+        @media (max-width: 1140px) {
+          .sxp-artifacts-wing {
+            display: none !important;
+          }
+        }
+
+        /* ── AltGrade Premium Polaroid Cards ── */
+        .sxp-polaroid-frame {
           position: absolute;
-          top: clamp(21%, 23.5vh, 26%);
-          left: clamp(1.2rem, 2.5vw, 3.6rem);
+          background: #fbfbf8;
+          border: 1px solid rgba(0, 0, 0, 0.12);
+          border-radius: 6px;
+          padding: 8px 8px 14px 8px;
+          box-shadow:
+            0 20px 42px -10px rgba(0, 0, 0, 0.45),
+            0 4px 14px -2px rgba(0, 0, 0, 0.22),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.95);
+          transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 320ms ease;
+          pointer-events: auto;
+          cursor: pointer;
+        }
+
+        .sxp-polaroid-tape {
+          position: absolute;
+          top: -11px;
+          left: 50%;
+          transform: translateX(-50%) rotate(-1.5deg);
+          width: 76px;
+          height: 22px;
+          background: rgba(146, 192, 130, 0.85);
+          border-left: 2px dashed rgba(255, 255, 255, 0.5);
+          border-right: 2px dashed rgba(255, 255, 255, 0.5);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+          backdrop-filter: blur(2px);
+          z-index: 10;
+          pointer-events: none;
+        }
+
+        .sxp-polaroid-photo {
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+          border-radius: 3px;
+          display: block;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+        }
+
+        .sxp-polaroid-meta {
+          margin-top: 8px;
+          text-align: center;
+        }
+
+        .sxp-polaroid-title {
+          font-family: var(--font-dm-sans), sans-serif;
+          font-size: clamp(0.72rem, 0.8vw, 0.82rem);
+          font-weight: 700;
+          color: #122214;
+          letter-spacing: -0.01em;
+          display: block;
+          line-height: 1.2;
+        }
+
+        .sxp-polaroid-subtitle {
+          font-family: var(--font-geist-mono), monospace;
+          font-size: clamp(0.56rem, 0.62vw, 0.64rem);
+          font-weight: 600;
+          color: #3b6033;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          display: block;
+          margin-top: 2px;
+        }
+
+        /* Left Wing Positions */
+        .sxp-polaroid-aws {
+          top: clamp(4%, 6vh, 8%);
+          left: clamp(-3.5rem, -3.5vw, -1.8rem);
+          width: clamp(210px, 17vw, 250px);
+          transform: rotate(-6.5deg);
+          z-index: 2;
+        }
+
+        .sxp-polaroid-aws:hover {
+          transform: scale(1.05) rotate(-4deg);
+          box-shadow: 0 28px 54px -10px rgba(0, 0, 0, 0.55);
+          z-index: 10;
+        }
+
+        .sxp-polaroid-kirana {
+          top: clamp(54%, 58vh, 62%);
+          left: clamp(-4.5rem, -4.2vw, -2.5rem);
+          width: clamp(200px, 16vw, 240px);
+          transform: rotate(4deg);
           z-index: 3;
         }
 
-        /* Victoria Memorial: positioned lower alongside partners with clean spacing (matching tablet) */
-        .sxp-polaroid-group.sxp-polaroid-group-left {
-          position: absolute;
-          top: clamp(48%, 51vh, 56%);
-          left: clamp(-4.6rem, -4.5vw, -3.2rem);
-          z-index: 1;
+        .sxp-polaroid-kirana:hover {
+          transform: scale(1.05) rotate(2deg);
+          box-shadow: 0 28px 54px -10px rgba(0, 0, 0, 0.55);
+          z-index: 10;
         }
 
-        /* ── Right wing: Howrah bridge alongside domain sponsor without overlapping (matching tablet) ── */
-        .sxp-polaroid-group.sxp-polaroid-group-right {
-          position: absolute;
-          top: clamp(25%, 28vh, 31%);
-          left: auto;
-          right: clamp(-3.6rem, -3.8vw, -2.4rem);
-          z-index: 1;
+        /* Right Wing Positions */
+        .sxp-polaroid-bangalore {
+          top: clamp(8%, 11vh, 14%);
+          right: clamp(-3.5rem, -3.5vw, -1.8rem);
+          width: clamp(225px, 18vw, 265px);
+          transform: rotate(6.5deg);
+          z-index: 2;
         }
 
-        .sxp-art-doodle-right {
+        .sxp-polaroid-bangalore:hover {
+          transform: scale(1.05) rotate(4.5deg);
+          box-shadow: 0 28px 54px -10px rgba(0, 0, 0, 0.55);
+          z-index: 10;
+        }
+
+        .sxp-badge-bangalore {
           position: absolute;
-          top: clamp(60%, 64vh, 68%);
-          right: clamp(0.2rem, 1.2vw, 1.8rem);
+          top: clamp(58%, 62vh, 66%);
+          right: clamp(-1.5rem, -1.5vw, 0rem);
+          width: clamp(200px, 16vw, 240px);
+          transform: rotate(-4deg);
           z-index: 3;
+          background: rgba(246, 252, 242, 0.95);
+          backdrop-filter: blur(12px);
+          border: 1.5px dashed rgba(48, 86, 40, 0.5);
+          border-radius: 12px;
+          padding: 12px 14px;
+          box-shadow: 0 16px 32px -6px rgba(0, 0, 0, 0.28);
+          pointer-events: auto;
+          transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 300ms ease;
         }
 
-        /* Polaroid groups */
-        .sxp-polaroid-group {
-          position: relative;
-        }
-
-        .sxp-polaroid-victoria-img {
-          position: relative;
-          z-index: 2;
-          width: clamp(200px, 18vw, 255px);
-          height: auto;
-          transform: rotate(-10deg);
-          filter: drop-shadow(0 20px 38px rgba(0, 0, 0, 0.40)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
-          transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .sxp-wing-left:hover .sxp-polaroid-victoria-img {
-          transform: scale(1.03) rotate(-8deg);
-        }
-
-        .sxp-polaroid-howrah-img {
-          position: relative;
-          z-index: 2;
-          width: clamp(205px, 18.5vw, 265px);
-          height: auto;
-          transform: rotate(8.5deg);
-          filter: drop-shadow(0 20px 38px rgba(0, 0, 0, 0.40)) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
-          transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .sxp-wing-right:hover .sxp-polaroid-howrah-img {
-          transform: scale(1.03) rotate(10.5deg);
-        }
-
-        .sxp-doodle-ideas-img {
-          width: clamp(115px, 10.5vw, 155px);
-          height: auto;
-          display: block;
-          transform: rotate(-9deg);
-          filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
-          transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .sxp-wing-left:hover .sxp-doodle-ideas-img {
-          transform: scale(1.04) rotate(-7deg);
-        }
-
-        .sxp-doodle-tomorrow-img {
-          width: clamp(120px, 11vw, 160px);
-          height: auto;
-          display: block;
-          transform: rotate(9deg);
-          filter: brightness(1.25) contrast(1.1) drop-shadow(0 1px 3px rgba(0, 0, 0, 0.22));
-          transition: transform 280ms cubic-bezier(0.22, 1, 0.36, 1), filter 280ms ease;
-        }
-
-        .sxp-wing-right:hover .sxp-doodle-tomorrow-img {
-          transform: scale(1.04) rotate(11deg);
-          filter: brightness(1.35) contrast(1.15) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+        .sxp-badge-bangalore:hover {
+          transform: scale(1.05) rotate(-2deg);
+          box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.36);
+          z-index: 10;
         }
 
         /* ── Center Content Cluster ── */
@@ -513,7 +561,7 @@
           opacity: 0.92;
         }
 
-        /* ── Consistent Premium Frosted Cards (Unified backing over clouds) ── */
+        /* ── Consistent Premium Obsidian-Emerald Enclave Cards (High Contrast over clouds) ── */
         .sxp-partner-card {
           position: relative;
           width: clamp(195px, 16.5vw, 245px);
@@ -524,25 +572,26 @@
           justify-content: center;
           padding: 0 1.2rem;
           box-sizing: border-box;
-          background: rgba(255, 255, 255, 0.88);
-          backdrop-filter: blur(14px) saturate(180%);
-          -webkit-backdrop-filter: blur(14px) saturate(180%);
-          border: 1px solid rgba(47, 85, 39, 0.16);
+          background: rgba(11, 23, 14, 0.92) !important;
+          backdrop-filter: blur(16px) saturate(180%) !important;
+          -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+          border: 1px solid rgba(143, 196, 90, 0.32) !important;
           box-shadow:
-            inset 0 1px 0 rgba(255, 255, 255, 0.95),
-            0 8px 24px -4px rgba(18, 38, 22, 0.08);
+            inset 0 1px 0 rgba(255, 255, 255, 0.15),
+            0 12px 28px -4px rgba(0, 0, 0, 0.45) !important;
           border-radius: 20px;
           transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 260ms ease, background 260ms ease, border-color 260ms ease;
           user-select: none;
         }
 
         .sxp-partner-card:hover {
-          background: rgba(255, 255, 255, 0.96);
+          background: rgba(16, 32, 19, 0.98) !important;
           transform: translateY(-2px);
-          border-color: rgba(92, 140, 58, 0.45);
+          border-color: rgba(143, 196, 90, 0.65) !important;
           box-shadow:
-            inset 0 1.5px 0 #ffffff,
-            0 14px 32px -6px rgba(18, 38, 22, 0.12);
+            inset 0 1px 0 rgba(255, 255, 255, 0.25),
+            0 16px 36px -6px rgba(0, 0, 0, 0.6),
+            0 0 24px rgba(92, 140, 58, 0.28) !important;
         }
 
         .sxp-partner-logo {
@@ -683,11 +732,10 @@
         }
 
         .sxp-stuamb-card {
-          width: clamp(146px, 12.2vw, 175px) !important;
-          height: clamp(146px, 12.2vw, 175px) !important;
-          aspect-ratio: 1 / 1;
-          border-radius: clamp(20px, 1.6vw, 24px) !important;
-          padding: 0.35rem !important;
+          width: clamp(195px, 16.5vw, 245px) !important;
+          height: clamp(66px, 7.2vh, 78px) !important;
+          border-radius: 20px !important;
+          padding: 0.35rem 1rem !important;
           display: flex !important;
           align-items: center !important;
           justify-content: center !important;
@@ -703,8 +751,9 @@
         }
 
         .sxp-gdg-card {
-          width: clamp(185px, 15.5vw, 235px) !important;
-          height: clamp(74px, 8.4vh, 88px) !important;
+          width: clamp(195px, 16.5vw, 245px) !important;
+          height: clamp(66px, 7.2vh, 78px) !important;
+          border-radius: 20px !important;
           text-decoration: none;
           padding: 0.4rem 0.8rem !important;
         }
@@ -727,10 +776,10 @@
         }
 
         .sxp-osen-card {
-          width: clamp(135px, 11vw, 165px) !important;
+          width: clamp(155px, 13vw, 195px) !important;
           height: clamp(68px, 7.5vh, 80px) !important;
           border-radius: 20px !important;
-          padding: 0 0.65rem !important;
+          padding: 0 0.85rem !important;
         }
 
         .sxp-osen-logo {
@@ -742,10 +791,10 @@
         }
 
         .sxp-xyz-card {
-          width: clamp(105px, 8.2vw, 130px) !important;
+          width: clamp(155px, 13vw, 195px) !important;
           height: clamp(68px, 7.5vh, 80px) !important;
           border-radius: 20px !important;
-          padding: 0 0.5rem !important;
+          padding: 0 0.85rem !important;
           text-decoration: none;
         }
 

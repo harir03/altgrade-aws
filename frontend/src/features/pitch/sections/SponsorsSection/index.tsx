@@ -178,23 +178,38 @@ export const SponsorsSection = () => {
               <div className="sxp-stage-layout">
                 {/* Left Wing Artifacts */}
                 <div className="sxp-artifacts-wing sxp-wing-left" aria-hidden="true">
-                  <div className="sxp-artifact-item sxp-art-doodle-left">
+                  {/* Polaroid 1: AWS Sovereign Cloud */}
+                  <div className="sxp-polaroid-frame sxp-polaroid-aws" title="AWS Mumbai ap-south-1 Sovereign Enclave">
+                    <div className="sxp-polaroid-tape" />
                     <img
-                      src="https://www.recursiveacm.in/images/ui/doodle_ideas_impact.png"
-                      alt=""
-                      className="sxp-art-img sxp-doodle-ideas-img"
-                      width={159}
-                      height={127}
+                      src="/images/ecosystem/aws_datacenter.jpg"
+                      alt="AWS Sovereign Cloud Data Center"
+                      className="sxp-polaroid-photo"
+                      width={400}
+                      height={300}
+                      loading="lazy"
                     />
+                    <div className="sxp-polaroid-meta">
+                      <span className="sxp-polaroid-title">AWS Sovereign Edge</span>
+                      <span className="sxp-polaroid-subtitle">Mumbai ap-south-1 · Cloud</span>
+                    </div>
                   </div>
-                  <div className="sxp-polaroid-group sxp-polaroid-group-left">
+
+                  {/* Polaroid 2: Bharat Kirana Commerce */}
+                  <div className="sxp-polaroid-frame sxp-polaroid-kirana" title="Everyday Bharat Kirana Commerce">
+                    <div className="sxp-polaroid-tape" />
                     <img
-                      src="https://www.recursiveacm.in/images/ui/polaroid_victoria.png"
-                      alt=""
-                      className="sxp-art-img sxp-polaroid-victoria-img"
-                      width={240}
-                      height={217}
+                      src="/images/ecosystem/bharat_kirana.jpg"
+                      alt="Bharat Kirana Merchant Store"
+                      className="sxp-polaroid-photo"
+                      width={400}
+                      height={300}
+                      loading="lazy"
                     />
+                    <div className="sxp-polaroid-meta">
+                      <span className="sxp-polaroid-title">Bharat Commerce</span>
+                      <span className="sxp-polaroid-subtitle">400M Unbanked · Telemetry</span>
+                    </div>
                   </div>
                 </div>
 
@@ -321,14 +336,16 @@ export const SponsorsSection = () => {
 
                       <div className="sxp-community-col sxp-community-center">
                         <div
-                          className="sxp-partner-card sxp-float-card sxp-stuamb-card flex flex-col items-center justify-center p-3 text-center"
+                          className="sxp-partner-card sxp-float-card sxp-stuamb-card flex items-center justify-center gap-2.5 px-3"
                           title="Reserve Bank Innovation Hub"
                         >
-                          <svg viewBox="0 0 24 24" className="w-7 h-7 text-lime-300 mb-1" fill="none" stroke="currentColor" strokeWidth="1.8">
+                          <svg viewBox="0 0 24 24" className="w-5 h-5 text-lime-300 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8">
                             <path d="M3 21h18M3 10h18M5 10v11M19 10v11M9 10v11M15 10v11M12 3l9 7H3l9-7z" />
                           </svg>
-                          <span className="text-[11px] font-bold text-white font-geist_mono">RBIH Sandbox</span>
-                          <span className="text-[9px] text-lime-400/70 uppercase">Governance</span>
+                          <div className="flex flex-col text-left">
+                            <span className="text-xs font-bold text-white font-geist_mono">RBIH Sandbox</span>
+                            <span className="text-[9px] text-lime-400/80 uppercase font-geist_mono">Governance</span>
+                          </div>
                         </div>
                         <div
                           className="sxp-partner-card sxp-float-card-alt sxp-gdg-card flex items-center justify-center gap-2 px-3"
@@ -400,23 +417,44 @@ export const SponsorsSection = () => {
 
                 {/* Right Wing Artifacts */}
                 <div className="sxp-artifacts-wing sxp-wing-right" aria-hidden="true">
-                  <div className="sxp-polaroid-group sxp-polaroid-group-right">
+                  {/* Polaroid 3: Built for Bharat, Engineered in Bangalore */}
+                  <div className="sxp-polaroid-frame sxp-polaroid-bangalore" title="Built for Bharat, Engineered in Bengaluru">
+                    <div className="sxp-polaroid-tape" />
                     <img
-                      src="https://www.recursiveacm.in/images/ui/polaroid_howrah.png"
-                      alt=""
-                      className="sxp-art-img sxp-polaroid-howrah-img"
-                      width={250}
-                      height={189}
+                      src="/images/ecosystem/bangalore_tech_hub.jpg"
+                      alt="Bengaluru Tech Corridor"
+                      className="sxp-polaroid-photo"
+                      width={400}
+                      height={300}
+                      loading="lazy"
                     />
+                    <div className="sxp-polaroid-meta">
+                      <span className="sxp-polaroid-title">Built for Bharat</span>
+                      <span className="sxp-polaroid-subtitle">Engineered in Bengaluru</span>
+                    </div>
                   </div>
-                  <div className="sxp-artifact-item sxp-art-doodle-right">
-                    <img
-                      src="https://www.recursiveacm.in/images/ui/doodle_building_tomorrow.png"
-                      alt=""
-                      className="sxp-art-img sxp-doodle-tomorrow-img"
-                      width={165}
-                      height={134}
-                    />
+
+                  {/* Bangalore Tech Corridor Badge */}
+                  <div className="sxp-badge-bangalore" title="Bengaluru Fintech Innovation Corridor">
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 text-emerald-700 flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
+                        <circle cx="12" cy="9" r="2.5" />
+                      </svg>
+                      <span className="text-[11px] font-bold text-stone-900 font-geist_mono tracking-wider">
+                        BENGALURU HUB
+                      </span>
+                    </div>
+                    <p className="text-[10px] text-stone-700 leading-snug font-dm_sans font-medium m-0">
+                      Underwriting neural models engineered in Bangalore, deployed across 28 Indian states.
+                    </p>
+                    <div className="mt-2 pt-1.5 border-t border-dashed border-stone-300 flex items-center justify-between text-[9px] font-geist_mono text-emerald-800 font-semibold">
+                      <span>12.9716° N, 77.5946° E</span>
+                      <span className="inline-flex items-center gap-1 text-emerald-600">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                        ACTIVE
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
