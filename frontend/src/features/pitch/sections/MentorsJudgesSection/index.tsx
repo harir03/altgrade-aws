@@ -19,19 +19,24 @@ export const MentorsJudgesSection = () => {
     }
 
     const ctx = gsap.context(() => {
-      // Stagger entrance on desktop cards
-      gsap.from(".jd-grid > *", {
-        y: 30,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.06,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".jd-grid",
-          start: "top 78%",
-          toggleActions: "play none none none",
-        },
-      });
+      // Stagger entrance on desktop cards (immediateRender: false ensures cards are visible even before trigger or if anchor-linked)
+      gsap.fromTo(
+        ".jd-grid > *",
+        { y: 24, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.55,
+          stagger: 0.05,
+          ease: "power2.out",
+          immediateRender: false,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
 
       // Subtle parallax rotation & scale on wax seal emblem
       gsap.to(".jseal-wax", {

@@ -22,6 +22,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Resolution"
             secondMetricValue="4-Day"
             secondMetricLabel="Revisit Cycle"
+            imageSrc="/images/roadmap/satellite_crop.jpg"
           />
 
           <DesktopMentorCard
@@ -39,6 +40,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Data Transit"
             secondMetricValue="100%"
             secondMetricLabel="Offline"
+            imageSrc="/images/roadmap/zk_enclave.jpg"
           />
 
           <DesktopMentorCard
@@ -56,6 +58,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Disbursal"
             secondMetricValue="0%"
             secondMetricLabel="Pre-Payment"
+            imageSrc="/images/roadmap/ondc_invoice.jpg"
           />
 
           <DesktopMentorCard
@@ -73,6 +76,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Dialects"
             secondMetricValue="Native"
             secondMetricLabel="Audio KFS"
+            imageSrc="/images/roadmap/dialect_audio.jpg"
           />
 
           <DesktopMentorCard
@@ -90,6 +94,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Daily Sweep"
             secondMetricValue="Gilt"
             secondMetricLabel="Sovereign Backed"
+            imageSrc="/images/roadmap/micro_pension.jpg"
           />
 
           <DesktopMentorCard
@@ -107,6 +112,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Key Corridors"
             secondMetricValue="UPI"
             secondMetricLabel="Global Rails"
+            imageSrc="/images/roadmap/diaspora_inflow.jpg"
           />
 
           <DesktopMentorCard
@@ -124,6 +130,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Compliance"
             secondMetricValue="Real-Time"
             secondMetricLabel="Automated Audit"
+            imageSrc="/images/roadmap/fair_lending.jpg"
           />
 
           <DesktopMentorCard
@@ -141,6 +148,7 @@ export const MentorGrid = () => {
             firstMetricLabel="P99 Latency"
             secondMetricValue="Nitro"
             secondMetricLabel="Hardware HSM"
+            imageSrc="/images/roadmap/graviton_edge.jpg"
           />
 
           <DesktopMentorCard
@@ -158,6 +166,7 @@ export const MentorGrid = () => {
             firstMetricLabel="Warehouses"
             secondMetricValue="WDRA"
             secondMetricLabel="Accredited"
+            imageSrc="/images/roadmap/enwr_warehouse.jpg"
           />
         </div>
 

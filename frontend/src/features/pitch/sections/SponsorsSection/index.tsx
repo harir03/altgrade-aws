@@ -250,9 +250,9 @@ export const SponsorsSection = () => {
                             <svg viewBox="0 0 24 24" className="w-8 h-8 text-[#FF9900] flex-shrink-0" fill="currentColor">
                               <path d="M18.74 18.06c-1.39.9-3.23 1.39-5.18 1.39-3.23 0-5.83-1.3-7.55-3.32-.24-.28-.02-.6.28-.42 2.37 1.42 5.07 2.19 7.82 2.19 1.77 0 3.7-.42 5.43-1.3.39-.2.72.24.42.46zM20.25 15.65c-.17-.22-.84-.1-1.64.07-.81.16-1.57.4-1.74.19-.17-.22.42-.87.89-1.4.47-.53.94-.99 1.37-.88.43.11.83.74.88 1.15.06.4-.33.87-.76.87zM8.5 7.27c0-1.84.97-2.73 2.65-2.73 1.63 0 2.58.91 2.58 2.73v4.61c0 .48.16.66.5.66.3 0 .49-.15.82-.44l.43.43c-.43.51-.9.84-1.57.84-.79 0-1.28-.48-1.28-1.37v-.5c-.65.75-1.5 1.14-2.45 1.14-1.46 0-2.32-.98-2.32-2.58 0-1.84 1.14-2.82 3.39-2.9l1.3-.05v-.86c0-1.12-.55-1.63-1.63-1.63-.98 0-1.52.42-1.72 1.37l-1.07-.17z" />
                             </svg>
-                            <div className="flex flex-col text-left">
-                              <span className="text-[#122214] font-bold text-sm tracking-wide">AWS Cloud</span>
-                              <span className="text-[#3b6033] text-[10px] font-geist_mono font-medium">Mumbai Region</span>
+                            <div className="flex flex-col text-left whitespace-nowrap">
+                              <span className="text-[#122214] font-bold text-sm tracking-wide whitespace-nowrap">AWS Cloud</span>
+                              <span className="text-[#3b6033] text-[10px] font-geist_mono font-medium whitespace-nowrap">Mumbai Region</span>
                             </div>
                             <div className="sxp-devfolio-divider" aria-hidden="true" />
                             <div className="sxp-devfolio-tagline">
