@@ -52,21 +52,9 @@ export const HeroSection = () => {
     }
 
     const ctx = gsap.context(() => {
-      // Parallax scroll on video background
-      gsap.to(".hero-video-wrap", {
-        y: "22%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: el,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.4,
-        },
-      });
-
-      // Parallax on hero logo content: keep fully visible and gracefully drift downward with the landscape
+      // Gentle subtle drift on hero logo content to gracefully flow with the landscape
       gsap.to(".hero-center-content", {
-        y: "14%",
+        y: "8%",
         scale: 0.98,
         ease: "none",
         scrollTrigger: {
@@ -74,18 +62,6 @@ export const HeroSection = () => {
           start: "top top",
           end: "bottom top",
           scrub: 0.35,
-        },
-      });
-
-      // Parallax on bottom log divider
-      gsap.to(".hero-log-divider", {
-        y: "-10%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: el,
-          start: "top top",
-          end: "bottom top",
-          scrub: 0.3,
         },
       });
     }, el);

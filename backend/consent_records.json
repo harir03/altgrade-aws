@@ -1384,5 +1384,20 @@
       "d5_questionnaire"
     ],
     "consented_at": "2026-09-19T06:03:32.454267+00:00"
+  },
+  "d2346d01-7eb2-4688-addd-3ec932cf9944": {
+    "consent_id": "d2346d01-7eb2-4688-addd-3ec932cf9944",
+    "user_id": "farmer@altgrade.in",
+    "name": "Anonymous",
+    "email": "",
+    "phone": "",
+    "consented_sources": [
+      "d2_telecom",
+      "d4_location",
+      "d5_questionnaire",
+      "d1_bank",
+      "d3_ecommerce"
+    ],
+    "consented_at": "2026-09-22T09:03:26.948475+00:00"
   }
 }

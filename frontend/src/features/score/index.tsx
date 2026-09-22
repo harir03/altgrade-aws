@@ -944,19 +944,19 @@ export function ScorePage() {
   return (
     <div className='pb-24 sm:pb-32'>
       {notification?.has_notification && viewMode === 'technical' && (
-        <div className='mb-6 rounded-lg border border-white/20 bg-black p-4 flex items-start gap-3 animate-fade-up text-white'>
-          <div className='mt-0.5 h-8 w-8 rounded-full flex items-center justify-center shrink-0 bg-white/10 text-white border border-white/20'>
+        <div className='mb-6 rounded-xl border border-[#5C8C3A]/20 bg-white/85 backdrop-blur-md p-4 flex items-start gap-3 animate-fade-up text-[#142617] shadow-xs'>
+          <div className='mt-0.5 h-8 w-8 rounded-full flex items-center justify-center shrink-0 bg-[#E8F5E0] text-[#2D6623] border border-[#5C8C3A]/20'>
             {notification.decision === 'approved' ? (
-              <CheckCircle2 className='h-4 w-4 text-white' />
+              <CheckCircle2 className='h-4 w-4 text-[#2D6623]' />
             ) : (
-              <ShieldAlert className='h-4 w-4 text-white/80' />
+              <ShieldAlert className='h-4 w-4 text-[#C43A3A]' />
             )}
           </div>
           <div>
-            <p className='text-sm font-semibold font-mono text-white'>
+            <p className='text-sm font-semibold font-mono text-[#142617]'>
               Loan Application {notification.decision === 'approved' ? 'Approved' : 'Decision Logged'}
             </p>
-            <p className='text-xs text-white/60 mt-0.5 font-mono'>
+            <p className='text-xs text-[#52734F] mt-0.5 font-mono'>
               {notification.decision === 'approved'
                 ? `Your loan application has been approved at ${notification.interest_rate}% interest for ${notification.terms}.`
                 : 'Your loan application was reviewed by the loan officer with inclusive restructuring options.'}
@@ -967,10 +967,10 @@ export function ScorePage() {
 
       <div className='mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4'>
         <div>
-          <h1 className='font-signifier text-[36px] sm:text-[44px] font-normal leading-[1.1] tracking-[-0.66px] text-foreground'>
+          <h1 className='font-signifier text-[36px] sm:text-[44px] font-normal leading-[1.1] tracking-[-0.66px] text-[#142617]'>
             {viewMode === 'simple' ? cur.pageTitle : t('score.title', 'AltGrade Alternate Credit Score')}
           </h1>
-          <p className='text-sm text-muted-foreground mt-1'>
+          <p className='text-sm text-[#52734F] mt-1'>
             {viewMode === 'simple'
               ? cur.pageSubtitle
               : t('score.subtitle', 'Explainable risk estimation based on multi-source non-traditional financial data')}
@@ -980,16 +980,16 @@ export function ScorePage() {
           variant='outline'
           size='sm'
           onClick={() => setViewMode(viewMode === 'simple' ? 'technical' : 'simple')}
-          className='self-start sm:self-auto text-xs font-mono gap-1.5 rounded-md border border-white/15 bg-black text-white hover:bg-white hover:text-black transition-colors'
+          className='self-start sm:self-auto text-xs font-mono gap-1.5 rounded-lg border border-[#5C8C3A]/20 bg-white/80 text-[#142617] hover:bg-[#EDF5E8] transition-colors'
         >
           {viewMode === 'simple' ? (
             <>
-              <Eye className='h-3.5 w-3.5 text-white/80' />
+              <Eye className='h-3.5 w-3.5 text-[#5C8C3A]' />
               <span>{cur.technicalView}</span>
             </>
           ) : (
             <>
-              <EyeOff className='h-3.5 w-3.5 text-white/80' />
+              <EyeOff className='h-3.5 w-3.5 text-[#5C8C3A]' />
               <span>{cur.simpleView}</span>
             </>
           )}
@@ -1000,29 +1000,29 @@ export function ScorePage() {
         /* ================= STREAMLINED, UNCLUTTERED RESULT VIEW ================= */
         <div className='space-y-6 animate-fade-up'>
           {/* 1. CORE SANCTION CARD (Score + Approved Limit + Audio + Key Insights) */}
-          <Card className='overflow-hidden border border-white/15 bg-black shadow-xl'>
+          <Card className='overflow-hidden border border-[#5C8C3A]/15 bg-white/85 backdrop-blur-md shadow-sm rounded-2xl'>
             {/* Top Clean Status Strip */}
-            <div className='flex flex-wrap items-center justify-between gap-3 border-b border-white/10 bg-white/[0.02] px-6 py-3'>
+            <div className='flex flex-wrap items-center justify-between gap-3 border-b border-[#5C8C3A]/10 bg-[#EDF5E8]/80 px-6 py-3'>
               <div className='flex items-center gap-2 text-xs font-mono'>
-                <div className='flex h-4 w-4 items-center justify-center rounded-full bg-white text-black'>
+                <div className='flex h-4 w-4 items-center justify-center rounded-full bg-[#5C8C3A] text-white'>
                   <CheckCircle2 className='h-3 w-3' />
                 </div>
-                <span className='font-semibold uppercase tracking-wider text-white'>
+                <span className='font-semibold uppercase tracking-wider text-[#142617]'>
                   {isSanctionApproved ? cur.sanctionApproved : cur.scoreCalculated}
                 </span>
-                <span className='text-white/30'>•</span>
-                <span className='text-white/70'>
+                <span className='text-[#5C8C3A]/40'>•</span>
+                <span className='text-[#4D6D4A]'>
                   {notification?.interest_rate ? `${notification.interest_rate}% ${cur.subsidizedApr}` : cur.subsidizedApr}
                 </span>
-                <span className='text-white/30'>•</span>
-                <span className='text-white/70'>
+                <span className='text-[#5C8C3A]/40'>•</span>
+                <span className='text-[#4D6D4A]'>
                   {notification?.terms || cur.tenure36}
                 </span>
               </div>
 
               {/* Minimalist Audio & Language Control */}
               <div className='flex items-center gap-2'>
-                <div className='flex items-center gap-1 border border-white/15 rounded-md p-0.5 bg-black'>
+                <div className='flex items-center gap-1 border border-[#5C8C3A]/15 rounded-lg p-0.5 bg-[#EDF5E8]'>
                   {(
                     [
                       { code: 'gu', label: 'ગુજરાતી' },
@@ -1037,8 +1037,8 @@ export function ScorePage() {
                       onClick={() => handleLanguageSwitch(l.code)}
                       className={`px-2 py-0.5 rounded text-[10px] font-mono transition-colors ${
                         audioLang === l.code
-                          ? 'bg-white text-black font-semibold'
-                          : 'text-white/60 hover:text-white'
+                          ? 'bg-[#5C8C3A] text-white font-semibold shadow-xs'
+                          : 'text-[#52734F] hover:text-[#142617]'
                       }`}
                     >
                       {l.label}
@@ -1049,10 +1049,10 @@ export function ScorePage() {
                 <Button
                   size='sm'
                   onClick={() => handlePlayAudio()}
-                  className={`h-7 px-2.5 rounded-md text-[11px] font-mono gap-1.5 transition-all ${
+                  className={`h-7 px-2.5 rounded-lg text-[11px] font-mono gap-1.5 transition-all ${
                     isPlayingAudio
-                      ? 'bg-white text-black animate-pulse font-semibold'
-                      : 'border border-white/20 bg-white/10 text-white hover:bg-white/20'
+                      ? 'bg-[#5C8C3A] text-white animate-pulse font-semibold'
+                      : 'border border-[#5C8C3A]/20 bg-white/80 text-[#142617] hover:bg-[#EDF5E8]'
                   }`}
                 >
                   {isPlayingAudio ? (
@@ -1062,7 +1062,7 @@ export function ScorePage() {
                     </>
                   ) : (
                     <>
-                      <Volume2 className='h-3 w-3' />
+                      <Volume2 className='h-3 w-3 text-[#5C8C3A]' />
                       <span>{cur.listen}</span>
                     </>
                   )}
@@ -1074,45 +1074,45 @@ export function ScorePage() {
             <div className='p-6 sm:p-8 flex flex-col sm:flex-row items-center sm:items-start justify-between gap-6'>
               <div className='flex flex-col sm:flex-row items-center sm:items-start gap-6 text-center sm:text-left'>
                 {/* Radial Gauge */}
-                <div className='relative flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-black border border-white/15'>
+                <div className='relative flex h-32 w-32 shrink-0 items-center justify-center rounded-full bg-[#F6FAF3] border border-[#5C8C3A]/15'>
                   <svg className='absolute h-full w-full -rotate-90' viewBox='0 0 100 100'>
                     <circle
                       cx='50' cy='50' r='42'
                       fill='none'
                       stroke='currentColor'
-                      strokeWidth='4'
-                      className='text-white/10'
+                      strokeWidth='5'
+                      className='text-[#5C8C3A]/15'
                     />
                     <circle
                       cx='50' cy='50' r='42'
                       fill='none'
-                      strokeWidth='4'
+                      strokeWidth='5'
                       strokeLinecap='round'
                       strokeDasharray={`${(data.score / 850) * 264} 264`}
-                      stroke='#ffffff'
+                      stroke='#5C8C3A'
                       className='transition-all duration-1000'
                     />
                   </svg>
                   <div className='flex flex-col items-center justify-center'>
-                    <span className='text-3xl font-extrabold tracking-tight text-white font-mono'>{data.score}</span>
-                    <span className='text-[9px] uppercase tracking-widest text-white/50 font-mono'>{cur.outOf850}</span>
+                    <span className='text-3xl font-extrabold tracking-tight text-[#142617] font-mono'>{data.score}</span>
+                    <span className='text-[9px] uppercase tracking-widest text-[#52734F] font-mono'>{cur.outOf850}</span>
                   </div>
                 </div>
 
                 {/* Score Details & Limit */}
                 <div className='space-y-2'>
-                  <div className='inline-flex items-center gap-1.5 rounded-full bg-white/5 border border-white/15 px-2.5 py-0.5 text-[11px] font-mono text-white/80'>
-                    <CheckCircle2 className='h-3 w-3 text-white' />
+                  <div className='inline-flex items-center gap-1.5 rounded-full bg-[#E8F5E0] border border-[#5C8C3A]/20 px-2.5 py-0.5 text-[11px] font-mono text-[#2D6623]'>
+                    <CheckCircle2 className='h-3 w-3 text-[#2D6623]' />
                     <span>{cur.eligibleBanking}</span>
                   </div>
-                  <h2 className='text-2xl font-bold tracking-tight text-white'>
+                  <h2 className='text-2xl font-bold tracking-tight text-[#142617]'>
                     {data.score >= 700 ? cur.highTrust : cur.goodStanding}
                   </h2>
                   <div className='pt-1'>
-                    <span className='text-[10px] font-mono uppercase tracking-wider text-white/50'>
+                    <span className='text-[10px] font-mono uppercase tracking-wider text-[#52734F]'>
                       {cur.preApprovedLimit}
                     </span>
-                    <div className='text-3xl font-bold font-mono text-white'>
+                    <div className='text-3xl font-bold font-mono text-[#142617]'>
                       ₹{personalizeData?.credit_limit ? personalizeData.credit_limit.toLocaleString('en-IN') : '1,00,000'}
                     </div>
                   </div>
@@ -1124,7 +1124,7 @@ export function ScorePage() {
                 <Button
                   size='lg'
                   onClick={() => setOfficerModalOpen(true)}
-                  className='h-11 px-6 rounded-md bg-white text-black hover:bg-white/90 font-mono text-xs font-semibold gap-2 shadow-none'
+                  className='h-11 px-6 rounded-lg bg-[#1C3320] text-white hover:bg-[#28482D] font-mono text-xs font-semibold gap-2 shadow-xs transition-colors'
                 >
                   <PhoneCall className='h-3.5 w-3.5' />
                   <span>{cur.speakLoanOfficer}</span>
@@ -1137,9 +1137,9 @@ export function ScorePage() {
                   <Button
                     variant='outline'
                     size='sm'
-                    className='w-full h-9 rounded-md text-xs font-mono gap-1.5 border-white/15 hover:bg-white/5 text-white/80'
+                    className='w-full h-9 rounded-lg text-xs font-mono gap-1.5 border-[#5C8C3A]/20 hover:bg-[#EDF5E8] text-[#142617]'
                   >
-                    <Bot className='h-3.5 w-3.5' />
+                    <Bot className='h-3.5 w-3.5 text-[#5C8C3A]' />
                     <span>{cur.askAiAdvisor}</span>
                   </Button>
                 </Link>
@@ -1147,23 +1147,23 @@ export function ScorePage() {
             </div>
 
             {/* Bottom Shelf: Why You Qualify + Officer Recommendation (Compact & Clean) */}
-            <div className='border-t border-white/10 bg-white/[0.01] p-5 grid sm:grid-cols-2 gap-4'>
+            <div className='border-t border-[#5C8C3A]/10 bg-[#EDF5E8]/40 p-5 grid sm:grid-cols-2 gap-4'>
               <div className='space-y-1'>
-                <div className='flex items-center gap-1.5 text-xs font-semibold text-white'>
-                  <Sparkles className='h-3.5 w-3.5 text-white/80' />
+                <div className='flex items-center gap-1.5 text-xs font-semibold text-[#142617]'>
+                  <Sparkles className='h-3.5 w-3.5 text-[#5C8C3A]' />
                   <span>{cur.whyQualified}</span>
                 </div>
-                <p className='text-xs text-white/70 leading-relaxed font-sans'>
+                <p className='text-xs text-[#52734F] leading-relaxed font-sans'>
                   {whyQualifiedText}
                 </p>
               </div>
 
               <div className='space-y-1'>
-                <div className='flex items-center gap-1.5 text-xs font-semibold text-white'>
-                  <ShieldCheck className='h-3.5 w-3.5 text-white/80' />
+                <div className='flex items-center gap-1.5 text-xs font-semibold text-[#142617]'>
+                  <ShieldCheck className='h-3.5 w-3.5 text-[#5C8C3A]' />
                   <span>{cur.officerNoteTitle}</span>
                 </div>
-                <p className='text-xs text-white/70 leading-relaxed font-sans'>
+                <p className='text-xs text-[#52734F] leading-relaxed font-sans'>
                   {officerNoteText}
                 </p>
               </div>
@@ -1174,11 +1174,11 @@ export function ScorePage() {
           <div className='space-y-3 pt-2'>
             <div className='flex items-center justify-between'>
               <div>
-                <h3 className='font-mono text-xs uppercase tracking-widest text-white flex items-center gap-2'>
-                  <Wallet className='h-3.5 w-3.5 text-white/80' />
+                <h3 className='font-mono text-xs uppercase tracking-widest text-[#142617] flex items-center gap-2'>
+                  <Wallet className='h-3.5 w-3.5 text-[#5C8C3A]' />
                   {cur.topSchemesTitle} ({Math.min(3, (personalizeData?.recommendations || []).length)})
                 </h3>
-                <p className='text-xs text-white/50 font-sans mt-0.5'>
+                <p className='text-xs text-[#52734F] font-sans mt-0.5'>
                   {cur.topSchemesSubtitle}
                 </p>
               </div>
@@ -1189,38 +1189,38 @@ export function ScorePage() {
               {(personalizeData?.recommendations || []).slice(0, 3).map((rec: any, i: number) => (
                 <div
                   key={i}
-                  className='rounded-lg border border-white/10 bg-black p-4 flex flex-col justify-between space-y-3 transition-all hover:border-white/30'
+                  className='rounded-xl border border-[#5C8C3A]/15 bg-white/80 backdrop-blur-md p-4 flex flex-col justify-between space-y-3 transition-all hover:border-[#5C8C3A]/30 shadow-xs'
                 >
                   <div className='space-y-2'>
                     <div className='flex items-center justify-between text-[10px] font-mono'>
-                      <span className='px-1.5 py-0.5 rounded border border-white/15 bg-white/5 text-white/70 truncate max-w-[140px]'>
+                      <span className='px-1.5 py-0.5 rounded border border-[#5C8C3A]/20 bg-[#EDF5E8] text-[#2D6623] truncate max-w-[140px]'>
                         {rec.category}
                       </span>
-                      <span className='text-white font-semibold'>
+                      <span className='text-[#142617] font-semibold'>
                         {rec.fit_score || 95}% {cur.match}
                       </span>
                     </div>
 
-                    <h4 className='font-sans font-semibold text-sm text-white leading-snug'>
+                    <h4 className='font-sans font-semibold text-sm text-[#142617] leading-snug'>
                       {rec.name}
                     </h4>
 
-                    <div className='font-mono text-xs text-white font-medium'>
+                    <div className='font-mono text-xs text-[#5C8C3A] font-semibold'>
                       {rec.max_benefit}
                     </div>
 
-                    <p className='font-sans text-xs text-white/60 leading-relaxed line-clamp-2'>
+                    <p className='font-sans text-xs text-[#52734F] leading-relaxed line-clamp-2'>
                       {sanitizeText(rec.description)}
                     </p>
                   </div>
 
-                  <div className='pt-2 border-t border-white/10 flex items-center justify-between gap-2'>
+                  <div className='pt-2 border-t border-[#5C8C3A]/10 flex items-center justify-between gap-2'>
                     {rec.official_portal ? (
                       <a
                         href={rec.official_portal}
                         target='_blank'
                         rel='noreferrer'
-                        className='inline-flex items-center gap-1 text-[10px] font-mono text-white/50 hover:text-white'
+                        className='inline-flex items-center gap-1 text-[10px] font-mono text-[#52734F] hover:text-[#142617]'
                       >
                         <span>{cur.portal}</span>
                         <ArrowUpRight className='h-2.5 w-2.5' />
@@ -1229,7 +1229,7 @@ export function ScorePage() {
                     <Button
                       size='sm'
                       onClick={() => setOfficerModalOpen(true)}
-                      className='h-7 text-[10px] font-mono bg-white text-black hover:bg-white/90 px-3 rounded'
+                      className='h-7 text-[10px] font-mono bg-[#1C3320] text-white hover:bg-[#28482D] px-3 rounded-md'
                     >
                       {cur.enroll}
                     </Button>
