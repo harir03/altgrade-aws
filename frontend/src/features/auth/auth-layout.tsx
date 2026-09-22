@@ -1,6 +1,5 @@
 import { Link } from '@tanstack/react-router'
 import { AltGradeLogo } from '@/components/altgrade-logo'
-import { DotBackground } from '@/components/ui/dot-background'
 
 type AuthLayoutProps = {
   children: React.ReactNode

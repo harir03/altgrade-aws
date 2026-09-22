@@ -394,24 +394,24 @@ export const TracksSection = () => {
       id="themes"
       ref={sectionRef}
       aria-label="The six alternate credit intelligence pillars"
-      className="th box-border caret-transparent relative w-full pt-20 pb-20 px-4 text-center text-lime-50 scroll-mt-24 md:pt-28 md:pb-24 md:px-8"
+      className="th box-border caret-transparent relative w-full pt-10 pb-12 px-4 text-center text-lime-50 scroll-mt-20 md:pt-14 md:pb-14 md:px-8"
     >
       <div id="tracks" className="relative -top-20 h-0 pointer-events-none" aria-hidden="true" />
 
-      {/* Tightly framed container matching reference size */}
-      <div className="max-w-[1140px] mx-auto flex flex-col items-center">
+      {/* Tightly contained container matching reference proportions */}
+      <div className="th-inner">
         {/* Header matching reference screenshot */}
-        <div className="text-center space-y-2 mb-8 md:mb-12">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono tracking-[0.22em] text-[#70F35D] uppercase bg-[#70F35D]/10 border border-[#70F35D]/25">
+        <div className="text-center space-y-1.5 mb-6 md:mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-[11px] font-mono tracking-[0.22em] text-[#70F35D] uppercase bg-[#70F35D]/10 border border-[#70F35D]/25">
             THE SIX PILLARS
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[2.75rem] font-bold text-white tracking-tight leading-[1.15]">
+          <h2 className="text-2xl sm:text-3xl md:text-[2.4rem] font-bold text-white tracking-tight leading-[1.12]">
             Six directions <br className="hidden sm:inline" />
             <span className="text-white/95">to underwrite in.</span>
           </h2>
 
-          <p className="text-xs sm:text-sm text-neutral-400 max-w-[620px] mx-auto leading-relaxed pt-1">
+          <p className="text-xs sm:text-[13px] text-neutral-400 max-w-[560px] mx-auto leading-relaxed pt-0.5">
             One seat at the table for each. Pick the one you cannot stop thinking about — every pillar is evaluated on real-world honesty.
           </p>
         </div>
@@ -419,7 +419,7 @@ export const TracksSection = () => {
         {/* The Stage: Left Plate & Right Brief */}
         <div className="th-stage-reveal w-full">
           <div className="th-stage">
-            {/* Left: Morphing Visual Plate (Compact & Balanced) */}
+            {/* Left: Morphing Visual Plate (Compact, Proportional, Balanced) */}
             <div
               className="th-plate cursor-grab active:cursor-grabbing group select-none"
               onClick={handleAdvance}
@@ -440,34 +440,52 @@ export const TracksSection = () => {
               {/* Dynamic Animated Card Content keyed by track ID */}
               <div
                 key={currentTrack.id}
-                className={`th-plate-inner ${direction === "next" ? "animate-card-in-right" : "animate-card-in-left"}`}
+                className={`th-plate-inner ${direction === "next" ? "animate-card-in-next" : "animate-card-in-prev"}`}
               >
                 {/* Outlined Track Number in Top-Left */}
-                <span className="th-plate-index font-mono" aria-hidden="true">
+                <span className="th-plate-index" aria-hidden="true">
                   {currentTrack.num}
                 </span>
 
                 {/* Concentric Radar Rings & Glowing Graphic */}
                 <div className="th-plate-content relative w-full h-full flex items-center justify-center overflow-hidden">
-                  {/* Radar Circles */}
-                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-35" viewBox="0 0 400 260">
-                    <circle cx="200" cy="130" r="42" fill="none" stroke={currentTrack.themeColor} strokeWidth="1" strokeDasharray="3 3" />
-                    <circle cx="200" cy="130" r="82" fill="none" stroke={currentTrack.themeColor} strokeWidth="1" opacity="0.6" />
-                    <circle cx="200" cy="130" r="126" fill="none" stroke={currentTrack.themeColor} strokeWidth="1" strokeDasharray="4 6" opacity="0.35" />
-                    <circle cx="200" cy="130" r="170" fill="none" stroke={currentTrack.themeColor} strokeWidth="0.75" opacity="0.2" />
-                    <line x1="0" y1="130" x2="400" y2="130" stroke={currentTrack.themeColor} strokeWidth="0.5" opacity="0.15" />
-                    <line x1="200" y1="0" x2="200" y2="260" stroke={currentTrack.themeColor} strokeWidth="0.5" opacity="0.15" />
-                  </svg>
-
-                  {/* Ambient Radial Color Glow */}
+                  {/* Atmospheric Smoky Nebula Background */}
                   <div
                     className="absolute inset-0 pointer-events-none transition-all duration-700"
                     style={{
-                      background: `radial-gradient(circle at 50% 50%, ${currentTrack.glowColor} 0%, rgba(7, 13, 7, 0) 70%)`,
+                      background: `
+                        radial-gradient(ellipse 75% 65% at 28% 48%, ${currentTrack.glowColor} 0%, rgba(6, 11, 5, 0.6) 65%, rgba(6, 11, 5, 0) 100%),
+                        radial-gradient(circle at 75% 60%, ${currentTrack.themeColor}22 0%, rgba(6, 11, 5, 0) 65%)
+                      `,
                     }}
                   />
 
-                  {/* Center Glowing Icon with Pop Animation */}
+                  {/* Velvety Film Texture Overlay */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.14] mix-blend-overlay" aria-hidden="true">
+                    <filter id={`th-noise-${currentTrack.id}`}>
+                      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch" />
+                    </filter>
+                    <rect width="100%" height="100%" filter={`url(#th-noise-${currentTrack.id})`} />
+                  </svg>
+
+                  {/* Sonar / Radar Rings positioned towards center-right like reference */}
+                  <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 480 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                    <g transform="translate(270, 155)" opacity="0.34">
+                      <circle r="36" fill="none" stroke={currentTrack.themeColor} strokeWidth="1" strokeDasharray="3 3" />
+                      <circle r="72" fill="none" stroke={currentTrack.themeColor} strokeWidth="1" opacity="0.75" />
+                      <circle r="115" fill="none" stroke={currentTrack.themeColor} strokeWidth="1" strokeDasharray="4 6" opacity="0.45" />
+                      <circle r="160" fill="none" stroke={currentTrack.themeColor} strokeWidth="0.75" opacity="0.3" />
+                      <circle r="210" fill="none" stroke={currentTrack.themeColor} strokeWidth="0.75" strokeDasharray="2 4" opacity="0.2" />
+                      {/* Crosshairs */}
+                      <line x1="-270" y1="0" x2="210" y2="0" stroke={currentTrack.themeColor} strokeWidth="0.5" opacity="0.2" />
+                      <line x1="0" y1="-155" x2="0" y2="165" stroke={currentTrack.themeColor} strokeWidth="0.5" opacity="0.2" />
+                      {/* 45 deg diagonals */}
+                      <line x1="-100" y1="-100" x2="100" y2="100" stroke={currentTrack.themeColor} strokeWidth="0.5" strokeDasharray="2 4" opacity="0.12" />
+                      <line x1="100" y1="-100" x2="-100" y2="100" stroke={currentTrack.themeColor} strokeWidth="0.5" strokeDasharray="2 4" opacity="0.12" />
+                    </g>
+                  </svg>
+
+                  {/* Center Glowing Icon with Spring Pop Animation */}
                   <div className="relative z-10 th-plate-icon">
                     <TrackVisualIcon id={currentTrack.id} color={currentTrack.themeColor} />
                   </div>
@@ -485,7 +503,7 @@ export const TracksSection = () => {
 
             {/* Right: The Brief */}
             <div className="th-brief">
-              <span className="th-brief-seat">{currentTrack.seat}</span>
+              <span className="th-brief-seat" key={`seat-${currentTrack.id}`}>{currentTrack.seat}</span>
 
               {/* Title with Masked Slide-Up */}
               <h3 className="th-brief-title" key={`title-${currentTrack.id}`}>
@@ -495,7 +513,7 @@ export const TracksSection = () => {
               </h3>
 
               <span className="th-brief-rule" aria-hidden="true">
-                <i />
+                <i key={`rule-${currentTrack.id}`} />
               </span>
 
               {/* Tagline */}
@@ -508,42 +526,23 @@ export const TracksSection = () => {
                 {currentTrack.summary}
               </p>
 
-              {/* Prompts Checklist */}
+              {/* Prompts Checklist with Clean Glowing Checkmarks */}
               <ul className="th-prompts" key={`prompts-${currentTrack.id}`}>
                 {currentTrack.prompts.map((prompt, i) => (
-                  <li key={`${currentTrack.id}-${i}`} className="th-prompt-item" style={{ animationDelay: `${i * 0.05}s` }}>
-                    <span className="th-check-badge" style={{ color: currentTrack.themeColor, backgroundColor: `${currentTrack.themeColor}18` }}>
-                      <svg viewBox="0 0 16 16" className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <polyline points="3.5 8.5 6.5 11.5 12.5 4.5" />
-                      </svg>
-                    </span>
-                    <span className="text-white/80 leading-snug">{prompt}</span>
+                  <li key={`${currentTrack.id}-${i}`} className="th-prompt-item" style={{ animationDelay: `${i * 0.06}s` }}>
+                    <svg viewBox="0 0 16 16" className="th-check-svg" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" style={{ color: currentTrack.themeColor }}>
+                      <polyline points="3.5 8.5 6.5 11.5 12.5 4.5" />
+                    </svg>
+                    <span>{prompt}</span>
                   </li>
                 ))}
               </ul>
-
-              {/* Quick-advance action row */}
-              <div className="mt-6 flex items-center gap-3">
-                <button
-                  type="button"
-                  onClick={handleAdvance}
-                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all bg-[#70F35D]/15 hover:bg-[#70F35D]/25 text-[#E0F8D9] border border-[#70F35D]/30 hover:border-[#70F35D]/50 cursor-pointer"
-                >
-                  <span>{activeIdx < tracks.length - 1 ? `Next: ${tracks[activeIdx + 1].name}` : "Explore Future Scope"}</span>
-                  <svg className="w-3 h-3" viewBox="0 0 16 16" fill="none">
-                    <path d="M6 3L11 8L6 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </button>
-                <span className="text-xs text-[#70F35D]/60 font-mono">
-                  0{activeIdx + 1} / 0{tracks.length}
-                </span>
-              </div>
             </div>
           </div>
         </div>
 
         {/* Bottom Rail with 6 Horizontal Dwell Tabs */}
-        <div className="th-rail-reveal w-full mt-10 md:mt-14">
+        <div className="th-rail-reveal w-full mt-7 md:mt-9">
           <div className="th-rail" role="tablist" aria-label="Tracks">
             {tracks.map((track, idx) => {
               const isActive = idx === activeIdx;
@@ -579,6 +578,17 @@ export const TracksSection = () => {
           z-index: 10;
         }
 
+        .th-inner {
+          position: relative;
+          max-width: 1040px;
+          margin-inline: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          width: 100%;
+        }
+
         .th-stage-reveal {
           width: 100%;
           display: flex;
@@ -588,28 +598,26 @@ export const TracksSection = () => {
         /* ── Two-Column Grid: Proportional & Tightly Contained ── */
         .th-stage {
           display: grid;
-          grid-template-columns: minmax(0, 520px) minmax(0, 540px);
-          gap: clamp(2rem, 4.5vw, 3.5rem);
+          grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+          gap: clamp(1.5rem, 3.5vw, 2.75rem);
           align-items: center;
-          justify-content: center;
           width: 100%;
           text-align: left;
         }
 
-        /* ── Left: The Morphing Plate (Fixed proportional aspect ratio) ── */
+        /* ── Left: The Morphing Plate (Fixed compact proportional ratio) ── */
         .th-plate {
           position: relative;
           width: 100%;
-          max-width: 520px;
-          height: clamp(310px, 36vw, 360px);
-          aspect-ratio: 16 / 10.5;
+          max-width: 480px;
+          height: clamp(285px, 30vw, 325px);
+          aspect-ratio: 16 / 11;
           border-radius: 20px;
           overflow: hidden;
-          background: #070D07;
-          border: 1px solid rgba(255, 255, 255, 0.09);
+          background: #060B05;
           box-shadow:
-            0 24px 60px -20px rgba(0, 0, 0, 0.9),
-            0 0 0 1px rgba(112, 243, 93, 0.08);
+            0 30px 70px -34px rgba(0, 0, 0, 0.9),
+            0 0 0 1px rgba(190, 224, 168, 0.1);
           perspective: 1000px;
         }
 
@@ -619,83 +627,85 @@ export const TracksSection = () => {
           height: 100%;
         }
 
-        /* ── Smooth Morphing Card In Animation ── */
-        @keyframes cardInRight {
+        /* ── Card Entrance 3D Transition Animations ── */
+        @keyframes cardEnterNext {
           0% {
-            transform: translate3d(32px, 0, 0) scale(0.93) rotateY(-5deg);
+            transform: perspective(1000px) translate3d(42px, 0, 0) scale(0.92) rotateY(-7deg);
             opacity: 0;
-            filter: blur(8px);
+            filter: blur(10px);
           }
           100% {
-            transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+            transform: perspective(1000px) translate3d(0, 0, 0) scale(1) rotateY(0deg);
             opacity: 1;
             filter: blur(0px);
           }
         }
 
-        @keyframes cardInLeft {
+        @keyframes cardEnterPrev {
           0% {
-            transform: translate3d(-32px, 0, 0) scale(0.93) rotateY(5deg);
+            transform: perspective(1000px) translate3d(-42px, 0, 0) scale(0.92) rotateY(7deg);
             opacity: 0;
-            filter: blur(8px);
+            filter: blur(10px);
           }
           100% {
-            transform: translate3d(0, 0, 0) scale(1) rotateY(0deg);
+            transform: perspective(1000px) translate3d(0, 0, 0) scale(1) rotateY(0deg);
             opacity: 1;
             filter: blur(0px);
           }
         }
 
-        .animate-card-in-right {
-          animation: cardInRight 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-card-in-next {
+          animation: cardEnterNext 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        .animate-card-in-left {
-          animation: cardInLeft 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .animate-card-in-prev {
+          animation: cardEnterPrev 0.52s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* Icon pop entrance */
-        @keyframes iconPop {
+        /* Center Icon Spring Pop Entrance */
+        @keyframes iconSpring {
           0% {
-            transform: scale(0.72);
+            transform: scale(0.62) translateY(12px);
             opacity: 0;
           }
-          60% {
-            transform: scale(1.04);
+          65% {
+            transform: scale(1.05) translateY(-2px);
             opacity: 1;
           }
           100% {
-            transform: scale(1);
+            transform: scale(1) translateY(0);
             opacity: 1;
           }
         }
 
         .th-plate-icon {
-          animation: iconPop 0.55s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: iconSpring 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
         }
 
-        /* Outlined Index Number */
+        /* Outlined Index Number in Top-Left */
         .th-plate-index {
           position: absolute;
           left: clamp(1rem, 2vw, 1.5rem);
-          top: clamp(0.7rem, 1.5vw, 1rem);
+          top: clamp(0.5rem, 1.2vw, 0.9rem);
           z-index: 4;
-          font-size: clamp(3.2rem, 6vw, 4.5rem);
+          font-family: var(--font-headingNow), var(--font-dm_sans), sans-serif;
+          font-size: clamp(3.2rem, 6.5vw, 4.8rem);
+          font-weight: 800;
           line-height: 1;
           letter-spacing: 0.02em;
           color: transparent;
-          -webkit-text-stroke: 1.5px rgba(240, 250, 230, 0.35);
+          -webkit-text-stroke: 1.4px rgba(240, 250, 230, 0.38);
           pointer-events: none;
-          animation: indexSlideIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          animation: indexDrop 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        @keyframes indexSlideIn {
+        @keyframes indexDrop {
           0% {
-            transform: translateY(-14px);
+            transform: translateY(-16px) scale(0.9);
             opacity: 0;
           }
           100% {
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
             opacity: 1;
           }
         }
@@ -706,7 +716,7 @@ export const TracksSection = () => {
           bottom: clamp(0.8rem, 1.6vw, 1.2rem);
           z-index: 4;
           font-family: var(--font-geist_mono), monospace;
-          font-size: 0.65rem;
+          font-size: 0.66rem;
           letter-spacing: 0.18em;
           text-transform: uppercase;
           color: rgba(240, 250, 230, 0.42);
@@ -717,24 +727,25 @@ export const TracksSection = () => {
         .th-brief {
           display: flex;
           flex-direction: column;
-          max-width: 540px;
+          width: 100%;
         }
 
         .th-brief-seat {
           font-family: var(--font-geist_mono), monospace;
-          font-size: 0.72rem;
-          font-weight: 700;
-          letter-spacing: 0.22em;
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.2em;
           text-transform: uppercase;
           color: #70F35D;
+          animation: textFadeUp 0.35s ease-out forwards;
         }
 
         .th-brief-title {
-          margin: 0.5rem 0 0;
+          margin: 0.55rem 0 0;
           font-family: var(--font-headingNow), var(--font-dm_sans), sans-serif;
-          font-size: clamp(1.5rem, 14px + 1.8vw, 2.35rem);
+          font-size: clamp(1.45rem, 13px + 1.8vw, 2.25rem);
           font-weight: 700;
-          line-height: 1.15;
+          line-height: 1.14;
           letter-spacing: -0.028em;
           color: #F1F7E9;
           text-wrap: balance;
@@ -743,15 +754,18 @@ export const TracksSection = () => {
         .th-mask-line {
           display: block;
           overflow: hidden;
-        }
-        .th-mask-inner {
-          display: block;
-          animation: maskSlideUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          padding-bottom: 0.08em;
+          margin-bottom: -0.08em;
         }
 
-        @keyframes maskSlideUp {
+        .th-mask-inner {
+          display: block;
+          animation: titleSlideUp 0.46s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes titleSlideUp {
           0% {
-            transform: translateY(100%);
+            transform: translateY(105%);
             opacity: 0;
           }
           100% {
@@ -764,40 +778,52 @@ export const TracksSection = () => {
           display: block;
           width: 100%;
           height: 1px;
-          margin-block: clamp(0.75rem, 1.5vw, 1.1rem);
+          margin-block: clamp(0.75rem, 1.5vw, 1.15rem);
         }
+
         .th-brief-rule i {
           display: block;
           width: 100%;
           height: 100%;
-          background: rgba(255, 255, 255, 0.12);
+          background: rgba(143, 196, 90, 0.34);
+          transform-origin: left center;
+          animation: ruleWipe 0.48s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes ruleWipe {
+          0% {
+            transform: scaleX(0);
+          }
+          100% {
+            transform: scaleX(1);
+          }
         }
 
         .th-brief-line {
           font-family: var(--font-headingNow), var(--font-dm_sans), sans-serif;
-          font-size: clamp(0.95rem, 1.35vw, 1.12rem);
+          font-size: clamp(0.98rem, 1.4vw, 1.15rem);
           font-weight: 600;
-          line-height: 1.4;
+          line-height: 1.42;
           letter-spacing: -0.016em;
-          color: rgba(235, 246, 226, 0.95);
+          color: rgba(233, 244, 224, 0.94);
           text-wrap: pretty;
-          animation: briefFadeIn 0.4s ease-out forwards;
+          animation: textFadeUp 0.42s ease-out forwards;
         }
 
         .th-brief-summary {
           margin-top: 0.65rem;
           font-family: var(--font-dm_sans), sans-serif;
           font-size: clamp(0.82rem, 1.05vw, 0.92rem);
-          line-height: 1.6;
-          color: rgba(214, 230, 203, 0.65);
+          line-height: 1.62;
+          color: rgba(214, 230, 203, 0.60);
           text-wrap: pretty;
-          animation: briefFadeIn 0.45s ease-out 0.05s forwards;
+          animation: textFadeUp 0.46s ease-out 0.04s forwards;
         }
 
-        @keyframes briefFadeIn {
+        @keyframes textFadeUp {
           0% {
             opacity: 0;
-            transform: translateY(8px);
+            transform: translateY(10px);
             filter: blur(4px);
           }
           100% {
@@ -809,7 +835,7 @@ export const TracksSection = () => {
 
         .th-prompts {
           list-style: none;
-          margin: clamp(0.85rem, 1.8vw, 1.25rem) 0 0;
+          margin: clamp(0.85rem, 1.8vw, 1.3rem) 0 0;
           padding: 0;
           display: flex;
           flex-direction: column;
@@ -821,15 +847,16 @@ export const TracksSection = () => {
           align-items: flex-start;
           gap: 0.65rem;
           font-family: var(--font-dm_sans), sans-serif;
-          font-size: clamp(0.8rem, 0.98vw, 0.88rem);
-          line-height: 1.4;
-          animation: promptSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          font-size: clamp(0.8rem, 1.02vw, 0.89rem);
+          line-height: 1.44;
+          color: rgba(226, 240, 216, 0.82);
+          animation: promptSlideIn 0.42s cubic-bezier(0.16, 1, 0.3, 1) both;
         }
 
         @keyframes promptSlideIn {
           0% {
             opacity: 0;
-            transform: translateX(12px);
+            transform: translateX(16px);
           }
           100% {
             opacity: 1;
@@ -837,15 +864,12 @@ export const TracksSection = () => {
           }
         }
 
-        .th-check-badge {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 1.25rem;
-          height: 1.25rem;
-          border-radius: 9999px;
-          flex-shrink: 0;
-          margin-top: 0.1rem;
+        .th-check-svg {
+          flex: none;
+          width: 0.85rem;
+          height: 0.85rem;
+          margin-top: 0.22em;
+          filter: drop-shadow(0 0 4px currentColor);
         }
 
         /* ── Bottom Tabs Rail ── */
@@ -858,11 +882,10 @@ export const TracksSection = () => {
         .th-rail {
           display: grid;
           grid-template-columns: repeat(6, minmax(0, 1fr));
-          gap: clamp(0.6rem, 1.2vw, 1rem);
+          gap: clamp(0.5rem, 1.2vw, 1rem);
           width: 100%;
-          max-width: 1100px;
-          border-top: 1px solid rgba(255, 255, 255, 0.1);
-          padding-top: clamp(0.9rem, 1.8vw, 1.3rem);
+          border-top: 1px solid rgba(190, 224, 168, 0.13);
+          padding-top: clamp(0.9rem, 1.8vw, 1.4rem);
         }
 
         .th-tab {
@@ -876,12 +899,12 @@ export const TracksSection = () => {
           border: none;
           cursor: pointer;
           text-align: left;
-          transition: opacity 200ms ease;
+          transition: opacity 220ms ease;
         }
 
         .th-tab-num {
           font-family: var(--font-geist_mono), monospace;
-          font-size: 0.68rem;
+          font-size: 0.66rem;
           letter-spacing: 0.18em;
           color: rgba(190, 224, 168, 0.45);
           transition: color 200ms ease;
@@ -889,10 +912,10 @@ export const TracksSection = () => {
 
         .th-tab-name {
           font-family: var(--font-dm_sans), sans-serif;
-          font-size: clamp(0.75rem, 0.95vw, 0.86rem);
+          font-size: clamp(0.76rem, 0.98vw, 0.88rem);
           font-weight: 500;
           letter-spacing: -0.012em;
-          line-height: 1.22;
+          line-height: 1.24;
           color: rgba(226, 240, 216, 0.48);
           transition: color 200ms ease;
           text-wrap: balance;
@@ -918,7 +941,7 @@ export const TracksSection = () => {
           bottom: 0;
           height: 2px;
           border-radius: 2px;
-          background: rgba(255, 255, 255, 0.1);
+          background: rgba(190, 224, 168, 0.12);
           overflow: hidden;
         }
 
@@ -927,8 +950,8 @@ export const TracksSection = () => {
           display: block;
           height: 100%;
           width: 100%;
-          background: #70F35D;
-          box-shadow: 0 0 8px #70F35D;
+          background: linear-gradient(90deg, #5C8C3A, #70F35D);
+          box-shadow: 0 0 10px rgba(112, 243, 93, 0.7);
           transform-origin: left center;
           animation: th-dwell 6s linear forwards;
         }
@@ -969,8 +992,8 @@ export const TracksSection = () => {
             justify-items: center;
           }
           .th-plate {
-            max-width: 480px;
-            height: clamp(280px, 50vw, 320px);
+            max-width: 460px;
+            height: clamp(270px, 48vw, 310px);
           }
           .th-brief {
             max-width: 480px;
@@ -988,15 +1011,17 @@ export const TracksSection = () => {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .animate-card-in-right,
-          .animate-card-in-left,
+          .animate-card-in-next,
+          .animate-card-in-prev,
           .th-plate-icon,
+          .th-plate-index,
           .th-mask-inner,
           .th-brief-line,
           .th-brief-summary,
           .th-prompt-item {
             animation: none !important;
             transform: none !important;
+            filter: none !important;
           }
           .th-tab-bar i {
             animation: none;

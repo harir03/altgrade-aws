@@ -74,5 +74,15 @@
       "timestamp": "2026-09-12T10:09:52.947047+00:00",
       "status": "delivered"
     }
+  ],
+  "msme@altgrade.in": [
+    {
+      "message": "We noticed your savings have been lower than usual recently. We understand that managing finances can be challenging. Our team is here to help \u2014 we can explore options like adjusting your payment schedule or connecting you with savings programs that match your income pattern. Would you like us to call you?",
+      "category": "product_recommendation",
+      "channel": "in_app",
+      "officer_name": "Loan Officer",
+      "timestamp": "2026-09-22T11:51:52.658273+00:00",
+      "status": "delivered"
+    }
   ]
 }
