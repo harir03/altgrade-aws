@@ -199,7 +199,7 @@ export const CountdownSection = () => {
             <span>Restart 5-Min Cycle</span>
           </button>
           <a
-            href="/applicant"
+            href="/sign-in"
             className="inline-flex items-center gap-1 text-[11px] font-geist_mono text-[#244626] font-semibold hover:underline"
           >
             <span>Apply for live score evaluation →</span>

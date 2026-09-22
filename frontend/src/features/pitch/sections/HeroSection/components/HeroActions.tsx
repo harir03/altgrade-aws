@@ -3,7 +3,7 @@ export const HeroActions = () => {
     <div className="hero-action-dock-split">
       {/* Button 1: Applicant Portal (Pastel Green) */}
       <a
-        href="/applicant"
+        href="/sign-in"
         aria-label="Launch Applicant Portal for instant credit evaluation"
         className="hero-btn-applicant"
       >
