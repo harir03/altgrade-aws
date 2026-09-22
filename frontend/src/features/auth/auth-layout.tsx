@@ -8,13 +8,13 @@ type AuthLayoutProps = {
 
 export function AuthLayout({ children }: AuthLayoutProps) {
   return (
-    <div className="relative flex h-svh w-full items-center justify-center overflow-hidden bg-black text-white font-['Inter',-apple-system,sans-serif]">
-      <DotBackground />
-      <div className="absolute inset-0 z-[1] pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,0,0,0.75)_0%,rgba(0,0,0,0)_100%)]" />
-      <div className="relative z-[2] mx-auto flex w-full max-w-[440px] flex-col items-center justify-center space-y-2 px-4 py-8 sm:p-8">
-        <div className="mb-4 flex items-center justify-center">
+    <div className="relative flex min-h-svh w-full items-center justify-center overflow-hidden bg-[#EEF3EB] text-[#142617] font-['Inter',-apple-system,sans-serif]">
+      {/* Soft cloudy background gradient & subtle ambient glow */}
+      <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(100%_70%_at_50%_0%,rgba(210,229,205,0.45)_0%,rgba(238,243,235,0)_100%)]" />
+      <div className="relative z-[2] mx-auto flex w-full max-w-[440px] flex-col items-center justify-center space-y-3 px-4 py-8 sm:p-8">
+        <div className="mb-2 flex items-center justify-center">
           <Link to='/pitch' className='hover:opacity-90 transition-opacity'>
-            <AltGradeLogo variant="nav" theme="dark" showSublabel={true} sublabelText="ALTERNATE CREDIT FOR ALL" />
+            <AltGradeLogo variant="nav" theme="light" showSublabel={true} sublabelText="ALTERNATE CREDIT FOR ALL" />
           </Link>
         </div>
         {children}

@@ -24,13 +24,13 @@
   }
 
   ::selection {
-    background-color: #171717;
-    color: #f2f2f2;
+    background-color: #5C8C3A;
+    color: #ffffff;
   }
 
   .dark ::selection {
-    background-color: #ededed;
-    color: #0a0a0a;
+    background-color: #5C8C3A;
+    color: #ffffff;
   }
 
   /* Override Radix scroll locking for sticky headers */

@@ -114,21 +114,21 @@ export function UserAuthForm({
     <Form {...form}>
       {/* Quick Demo Logins Bar */}
       <div className="mb-2 space-y-1.5">
-        <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-400">
+        <span className="text-[10px] font-mono uppercase tracking-wider text-[#52734F]">
           Fast Demo Access
         </span>
         <div className="flex flex-wrap gap-1.5">
           <button
             type="button"
             onClick={() => fillDemoAccount('admin@altgrade.in')}
-            className="rounded-md border border-[#8FC45A]/30 bg-[#8FC45A]/10 px-2.5 py-1 text-[11px] font-mono text-[#A3D96E] hover:bg-[#8FC45A]/20 transition-colors"
+            className="rounded-lg border border-[rgba(92,140,58,0.25)] bg-[#DEEED4] px-2.5 py-1 text-[11px] font-mono text-[#163819] font-medium hover:bg-[#CFE5C4] transition-colors"
           >
             👔 Loan Officer (admin)
           </button>
           <button
             type="button"
             onClick={() => fillDemoAccount('farmer@altgrade.in')}
-            className="rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-[11px] font-mono text-zinc-300 hover:bg-white/10 transition-colors"
+            className="rounded-lg border border-[rgba(92,140,58,0.20)] bg-[#F0F5EE] px-2.5 py-1 text-[11px] font-mono text-[#142617] font-medium hover:bg-[#E2EBDD] transition-colors"
           >
             🌾 Applicant (farmer)
           </button>
@@ -145,12 +145,12 @@ export function UserAuthForm({
           name='email'
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-zinc-300 text-sm font-medium">Email</FormLabel>
+              <FormLabel className="text-[#142617] text-sm font-medium">Email</FormLabel>
               <FormControl>
                 <input
                   type="email"
                   placeholder='name@example.com'
-                  className="w-full rounded-md border border-white/10 bg-black px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-[#8FC45A]/60 focus:ring-1 focus:ring-[#8FC45A]/30 transition-colors font-mono"
+                  className="w-full rounded-xl border border-[rgba(92,140,58,0.25)] bg-white px-3.5 py-2.5 text-sm text-[#142617] placeholder:text-[#52734F]/50 outline-none focus:border-[#5C8C3A] focus:ring-1 focus:ring-[#5C8C3A]/30 transition-colors font-mono"
                   {...field}
                 />
               </FormControl>
@@ -163,18 +163,18 @@ export function UserAuthForm({
           name='password'
           render={({ field }) => (
             <FormItem className='relative'>
-              <FormLabel className="text-zinc-300 text-sm font-medium">Password</FormLabel>
+              <FormLabel className="text-[#142617] text-sm font-medium">Password</FormLabel>
               <FormControl>
                 <PasswordInput
                   placeholder='********'
-                  className="w-full rounded-md border border-white/10 bg-black px-3.5 py-2.5 text-sm text-white placeholder:text-zinc-500 outline-none focus:border-[#8FC45A]/60 focus:ring-1 focus:ring-[#8FC45A]/30 transition-colors"
+                  className="w-full rounded-xl border border-[rgba(92,140,58,0.25)] bg-white px-3.5 py-2.5 text-sm text-[#142617] placeholder:text-[#52734F]/50 outline-none focus:border-[#5C8C3A] focus:ring-1 focus:ring-[#5C8C3A]/30 transition-colors"
                   {...field}
                 />
               </FormControl>
               <FormMessage />
               <Link
                 to='/forgot-password'
-                className='absolute inset-e-0 -top-0.5 text-sm font-medium text-zinc-500 hover:text-zinc-300 transition-colors'
+                className='absolute inset-e-0 -top-0.5 text-sm font-medium text-[#52734F] hover:text-[#142617] transition-colors'
               >
                 Forgot password?
               </Link>
@@ -184,7 +184,7 @@ export function UserAuthForm({
         <button
           type="submit"
           disabled={isLoading}
-          className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-[#8FC45A] hover:bg-[#9dd666] px-4 py-2.5 text-sm font-semibold text-[#121A12] shadow-sm transition-all active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
+          className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl bg-[#1C3320] hover:bg-[#2A4A30] px-4 py-2.5 text-sm font-semibold text-white shadow-xs transition-all active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? <Loader2 className='size-4 animate-spin' /> : <LogIn className='size-4' />}
           Sign in

@@ -1687,37 +1687,37 @@ export function ConsentPage() {
               )}
             </div>
 
-            {/* Monochrome Active Call Progress Banner */}
+            {/* Active Call Progress Banner */}
             {callActive && (
-              <div className='mt-4 rounded-2xl border border-white/20 bg-black p-4 text-white animate-fade-up space-y-3 shadow-none'>
+              <div className='mt-4 rounded-2xl border border-[rgba(92,140,58,0.25)] bg-white/85 p-4 text-[#142617] animate-fade-up space-y-3 shadow-xs backdrop-blur-md'>
                 <div className='flex items-center justify-between'>
                   <div className='flex items-center gap-2.5'>
-                    <div className='flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white border border-white/20'>
+                    <div className='flex h-8 w-8 items-center justify-center rounded-xl bg-[#DEEED4] text-[#2D6325] border border-[rgba(92,140,58,0.25)]'>
                       <PhoneCall className='h-4 w-4 animate-pulse' />
                     </div>
                     <div>
-                      <h4 className='font-semibold text-xs text-white flex items-center gap-2'>
+                      <h4 className='font-semibold text-xs text-[#142617] flex items-center gap-2'>
                         AI Voice Officer Call Active
                         <span className='flex h-2 w-2 relative'>
-                          <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75'></span>
-                          <span className='relative inline-flex rounded-full h-2 w-2 bg-white'></span>
+                          <span className='animate-ping absolute inline-flex h-full w-full rounded-full bg-[#5C8C3A] opacity-75'></span>
+                          <span className='relative inline-flex rounded-full h-2 w-2 bg-[#5C8C3A]'></span>
                         </span>
                       </h4>
-                      <p className='text-[11px] text-white/60 font-mono'>{callStatusMsg}</p>
+                      <p className='text-[11px] text-[#52734F] font-mono'>{callStatusMsg}</p>
                     </div>
                   </div>
-                  <Badge variant='outline' className='border-white/20 bg-white/10 text-white text-[10px] font-mono'>
+                  <Badge variant='outline' className='border-[rgba(92,140,58,0.25)] bg-[#D2E5CD] text-[#163819] text-[10px] font-mono'>
                     Question {callQuestionsCompleted} / 10
                   </Badge>
                 </div>
                 <div className='space-y-1'>
-                  <div className='flex justify-between text-[10px] text-white/60 font-mono'>
+                  <div className='flex justify-between text-[10px] text-[#52734F] font-mono'>
                     <span>Assessment Progress</span>
                     <span>{callProgressPct}%</span>
                   </div>
-                  <div className='h-2 w-full rounded-full bg-white/10 overflow-hidden border border-white/15'>
+                  <div className='h-2 w-full rounded-full bg-[#E2EBDD] overflow-hidden border border-[rgba(92,140,58,0.18)]'>
                     <div
-                      className='h-full bg-white rounded-full transition-all duration-500 ease-out'
+                      className='h-full bg-[#1C3320] rounded-full transition-all duration-500 ease-out'
                       style={{ width: `${callProgressPct}%` }}
                     />
                   </div>
@@ -1727,16 +1727,16 @@ export function ConsentPage() {
 
             {/* Call Failed / Declined Banner */}
             {callFailed && (
-              <div className='mt-4 rounded-2xl border border-white/20 bg-black p-4 text-white animate-fade-up space-y-3 shadow-none'>
+              <div className='mt-4 rounded-2xl border border-[rgba(92,140,58,0.25)] bg-white/85 p-4 text-[#142617] animate-fade-up space-y-3 shadow-xs backdrop-blur-md'>
                 <div className='flex items-center gap-2.5'>
-                  <div className='flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white border border-white/20'>
+                  <div className='flex h-8 w-8 items-center justify-center rounded-xl bg-red-100 text-red-700 border border-red-200'>
                     <AlertCircle className='h-4 w-4' />
                   </div>
                   <div>
-                    <h4 className='font-semibold text-xs text-white'>Call Failed</h4>
-                    <p className='text-[11px] text-white/60 mt-0.5'>{callErrorMsg || 'The AI call was unanswered or ended early.'}</p>
+                    <h4 className='font-semibold text-xs text-[#142617]'>Call Failed</h4>
+                    <p className='text-[11px] text-[#52734F] mt-0.5'>{callErrorMsg || 'The AI call was unanswered or ended early.'}</p>
                     {callRetryCount > 0 && (
-                      <p className='text-[10px] text-white/50 mt-1 font-mono'>Attempt {callRetryCount} of {MAX_CALL_RETRIES}</p>
+                      <p className='text-[10px] text-[#52734F] mt-1 font-mono'>Attempt {callRetryCount} of {MAX_CALL_RETRIES}</p>
                     )}
                   </div>
                 </div>
@@ -1748,7 +1748,7 @@ export function ConsentPage() {
                     onClick={() => {
                       setCallFailed(false)
                     }}
-                    className='h-7 text-xs rounded-full border-white/20 text-white hover:bg-white/10 font-mono'
+                    className='h-7 text-xs rounded-full border-[rgba(92,140,58,0.25)] text-[#142617] hover:bg-[#D2E5CD]/50 font-mono'
                   >
                     Continue On-Screen
                   </Button>
@@ -1781,26 +1781,26 @@ export function ConsentPage() {
                           setCallFailed(true)
                         }
                       }}
-                      className='h-7 text-xs rounded-full bg-white text-black hover:bg-white/90 font-medium font-mono'
+                      className='h-7 text-xs rounded-full bg-[#1C3320] text-white hover:bg-[#2A4A30] font-medium font-mono'
                     >
                       Retry AI Call ({MAX_CALL_RETRIES - callRetryCount} left)
                     </Button>
                   ) : (
-                    <p className='text-[11px] text-white/50 font-medium self-center font-mono'>Maximum retries reached. Please answer on screen.</p>
+                    <p className='text-[11px] text-[#52734F] font-medium self-center font-mono'>Maximum retries reached. Please answer on screen.</p>
                   )}
                 </div>
               </div>
             )}
 
             {callIncomplete && !callFailed && (
-              <div className='mt-4 rounded-2xl border border-white/20 bg-black p-4 text-white animate-fade-up space-y-2 shadow-none'>
+              <div className='mt-4 rounded-2xl border border-[rgba(92,140,58,0.25)] bg-white/85 p-4 text-[#142617] animate-fade-up space-y-2 shadow-xs backdrop-blur-md'>
                 <div className='flex items-center gap-2.5'>
-                  <div className='flex h-8 w-8 items-center justify-center rounded-xl bg-white/10 text-white border border-white/20'>
+                  <div className='flex h-8 w-8 items-center justify-center rounded-xl bg-amber-100 text-amber-800 border border-amber-200'>
                     <AlertCircle className='h-4 w-4' />
                   </div>
                   <div>
-                    <h4 className='font-semibold text-xs text-white'>Call Ended Early</h4>
-                    <p className='text-[11px] text-white/60 mt-0.5'>{callErrorMsg || 'The call ended before all questions were answered. Please complete the remaining questions below.'}</p>
+                    <h4 className='font-semibold text-xs text-[#142617]'>Call Ended Early</h4>
+                    <p className='text-[11px] text-[#52734F] mt-0.5'>{callErrorMsg || 'The call ended before all questions were answered. Please complete the remaining questions below.'}</p>
                   </div>
                 </div>
               </div>

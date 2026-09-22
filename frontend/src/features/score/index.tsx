@@ -1306,22 +1306,22 @@ export function ScorePage() {
       )}
 
       {data.has_conflicts && viewMode === 'technical' && (
-        <Card className='mt-4 border-white/20 bg-black text-white shadow-none'>
+        <Card className='mt-4 border-[rgba(92,140,58,0.2)] bg-white/85 text-[#142617] backdrop-blur-md shadow-xs rounded-2xl'>
           <CardHeader>
             <div className='flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4'>
               <div>
-                <CardTitle className='flex items-center gap-2 text-base text-white font-mono'>
-                  <AlertTriangle className='h-4 w-4 text-white' />
+                <CardTitle className='flex items-center gap-2 text-base text-[#142617] font-mono'>
+                  <AlertTriangle className='h-4 w-4 text-[#D94F4F]' />
                   Conflicting Signals
                 </CardTitle>
-                <CardDescription className='text-white/60 text-xs font-mono'>
+                <CardDescription className='text-[#52734F] text-xs font-mono'>
                   Some of your data sources provided contradicting information
                 </CardDescription>
               </div>
               <Button
                 variant='outline'
                 size='sm'
-                className='border-white/20 bg-white/5 text-white hover:bg-white hover:text-black font-semibold text-xs rounded-full font-mono'
+                className='border-[rgba(92,140,58,0.25)] bg-[#D2E5CD] text-[#163819] hover:bg-[#C2DDBA] font-semibold text-xs rounded-full font-mono transition-colors'
                 onClick={() => setInterviewOpen(true)}
               >
                 Resolve via AI Interview
@@ -1332,14 +1332,14 @@ export function ScorePage() {
             {data.signal_conflicts.map((conflict, i) => (
               <div
                 key={i}
-                className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] p-3'
+                className='flex items-center justify-between rounded-lg border border-[rgba(92,140,58,0.16)] bg-white/60 p-3'
               >
                 <div className='flex items-center gap-2'>
-                  <Badge className='bg-white/10 text-white border-white/20 font-mono text-[10px]' variant='outline'>
+                  <Badge className='bg-[#D2E5CD] text-[#163819] border-[rgba(92,140,58,0.25)] font-mono text-[10px]' variant='outline'>
                     {conflict.positive_worker}: {conflict.positive_net_points > 0 ? '+' : ''}{conflict.positive_net_points.toFixed(1)} pts
                   </Badge>
-                  <span className='text-xs text-white/40 font-mono'>vs</span>
-                  <Badge className='bg-white/5 text-white/70 border-white/15 font-mono text-[10px]' variant='outline'>
+                  <span className='text-xs text-[#52734F] font-mono'>vs</span>
+                  <Badge className='bg-red-50 text-red-700 border-red-200 font-mono text-[10px]' variant='outline'>
                     {conflict.negative_worker}: {conflict.negative_net_points.toFixed(1)} pts
                   </Badge>
                 </div>
@@ -1379,13 +1379,13 @@ export function ScorePage() {
 
       {/* AI Conflict Resolution Interview Modal */}
       <Dialog open={interviewOpen} onOpenChange={setInterviewOpen}>
-        <DialogContent className='sm:max-w-[500px] max-h-[80vh] flex flex-col p-6 bg-black border border-white/15 text-white rounded-2xl'>
-          <DialogHeader className='pb-3 border-b border-white/10 shrink-0'>
-            <DialogTitle className='flex items-center gap-2 text-white font-mono tracking-tight'>
-              <AlertTriangle className='h-5 w-5 text-white' />
+        <DialogContent className='sm:max-w-[500px] max-h-[80vh] flex flex-col p-6 bg-white/95 border border-[rgba(92,140,58,0.25)] text-[#142617] rounded-2xl shadow-2xl backdrop-blur-md'>
+          <DialogHeader className='pb-3 border-b border-[rgba(92,140,58,0.16)] shrink-0'>
+            <DialogTitle className='flex items-center gap-2 text-[#142617] font-mono tracking-tight'>
+              <AlertTriangle className='h-5 w-5 text-[#5C8C3A]' />
               AI Verification Interview
             </DialogTitle>
-            <DialogDescription className='text-xs text-white/50 font-mono'>
+            <DialogDescription className='text-xs text-[#52734F] font-mono'>
               Your answers are scored for credibility and sent to the Loan Officer.
             </DialogDescription>
           </DialogHeader>
@@ -1395,19 +1395,19 @@ export function ScorePage() {
             {interviewMessages.map((msg, i) => (
               <div key={i} className={`flex gap-2.5 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 {msg.role === 'bot' && (
-                  <div className='h-7 w-7 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20'>
-                    <Bot className='h-4 w-4 text-white' />
+                  <div className='h-7 w-7 rounded-full bg-[#DEEED4] flex items-center justify-center shrink-0 border border-[rgba(92,140,58,0.25)]'>
+                    <Bot className='h-4 w-4 text-[#2D6325]' />
                   </div>
                 )}
                 <div className={`max-w-[80%] rounded-2xl px-4 py-2.5 text-xs leading-relaxed whitespace-pre-wrap ${
                   msg.role === 'user'
-                    ? 'bg-white text-black rounded-tr-none font-medium'
-                    : 'bg-white/[0.04] border border-white/10 text-white/90 rounded-tl-none'
+                    ? 'bg-[#1C3320] text-white rounded-tr-none font-medium'
+                    : 'bg-[#F0F5EE] border border-[rgba(92,140,58,0.16)] text-[#142617] rounded-tl-none'
                 }`}>
                   {msg.content}
                 </div>
                 {msg.role === 'user' && (
-                  <div className='h-7 w-7 rounded-full bg-white/10 flex items-center justify-center shrink-0 border border-white/20'>
+                  <div className='h-7 w-7 rounded-full bg-[#1C3320] flex items-center justify-center shrink-0'>
                     <User className='h-4 w-4 text-white' />
                   </div>
                 )}
@@ -1417,7 +1417,7 @@ export function ScorePage() {
           </div>
 
           {/* Input field */}
-          <div className='pt-3 border-t border-white/10 shrink-0 flex gap-2'>
+          <div className='pt-3 border-t border-[rgba(92,140,58,0.16)] shrink-0 flex gap-2'>
             <input
               type='text'
               value={interviewInput}
@@ -1425,16 +1425,16 @@ export function ScorePage() {
               onKeyDown={(e) => e.key === 'Enter' && !isInterviewSubmitted && handleSendInterviewMessage()}
               placeholder={isInterviewSubmitted ? 'Conversation finished.' : 'Explain details here...'}
               disabled={isInterviewSubmitted || submittingSummary}
-              className='flex-1 rounded-xl border border-white/15 bg-white/[0.04] px-3.5 py-2.5 text-xs text-white placeholder:text-white/40 focus:outline-none focus:ring-1 focus:ring-white disabled:opacity-50 font-mono'
+              className='flex-1 rounded-xl border border-[rgba(92,140,58,0.22)] bg-white px-3.5 py-2.5 text-xs text-[#142617] placeholder:text-[#52734F]/60 focus:outline-none focus:ring-1 focus:ring-[#5C8C3A] disabled:opacity-50 font-mono'
             />
             <Button
               size='sm'
               onClick={handleSendInterviewMessage}
               disabled={isInterviewSubmitted || submittingSummary || !interviewInput.trim()}
-              className='rounded-xl bg-white text-black hover:bg-white/90 px-4 h-9 text-xs font-mono font-semibold gap-1.5'
+              className='rounded-xl bg-[#1C3320] text-white hover:bg-[#2A4A30] px-4 h-9 text-xs font-mono font-semibold gap-1.5'
             >
               {submittingSummary ? (
-                <Loader2 className='h-3.5 w-3.5 animate-spin text-black' />
+                <Loader2 className='h-3.5 w-3.5 animate-spin text-white' />
               ) : (
                 <><Send className='h-3.5 w-3.5' /> Send</>
               )}
@@ -1443,54 +1443,54 @@ export function ScorePage() {
         </DialogContent>
       </Dialog>
 
-      {/* Field Officer Contact Request Modal - Vercel Minimalist */}
+      {/* Field Officer Contact Request Modal - Cloudy Sage Frosted */}
       <Dialog open={officerModalOpen} onOpenChange={setOfficerModalOpen}>
-        <DialogContent className='sm:max-w-[420px] p-6 rounded-xl border border-white/10 bg-black text-white shadow-2xl'>
+        <DialogContent className='sm:max-w-[420px] p-6 rounded-2xl border border-[rgba(92,140,58,0.25)] bg-white/95 text-[#142617] shadow-2xl backdrop-blur-md'>
           <DialogHeader>
-            <DialogTitle className='flex items-center gap-2 text-base font-medium tracking-tight text-white'>
-              <PhoneCall className='h-4 w-4 text-white/80' />
+            <DialogTitle className='flex items-center gap-2 text-base font-medium tracking-tight text-[#142617]'>
+              <PhoneCall className='h-4 w-4 text-[#5C8C3A]' />
               <span>{cur.officerModalTitle}</span>
             </DialogTitle>
-            <DialogDescription className='text-xs text-white/50 leading-relaxed'>
+            <DialogDescription className='text-xs text-[#52734F] leading-relaxed'>
               {cur.officerModalDesc}
             </DialogDescription>
           </DialogHeader>
 
           {officerRequested ? (
             <div className='py-6 text-center space-y-3'>
-              <div className='mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white border border-white/20'>
+              <div className='mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-[#DEEED4] text-[#2D6325] border border-[rgba(92,140,58,0.25)]'>
                 <CheckCircle2 className='h-5 w-5' />
               </div>
-              <h4 className='text-sm font-semibold text-white'>{cur.requestDispatched}</h4>
-              <p className='text-xs text-white/60 max-w-xs mx-auto leading-relaxed'>
+              <h4 className='text-sm font-semibold text-[#142617]'>{cur.requestDispatched}</h4>
+              <p className='text-xs text-[#52734F] max-w-xs mx-auto leading-relaxed'>
                 {cur.requestDispatchedDesc}
               </p>
-              <Button size='sm' className='font-mono text-xs bg-white text-black hover:bg-white/90 rounded-md px-4 h-9' onClick={() => { setOfficerModalOpen(false); setOfficerRequested(false); }}>
+              <Button size='sm' className='font-mono text-xs bg-[#1C3320] text-white hover:bg-[#2A4A30] rounded-md px-4 h-9' onClick={() => { setOfficerModalOpen(false); setOfficerRequested(false); }}>
                 {cur.close}
               </Button>
             </div>
           ) : (
             <div className='space-y-4 py-2'>
-              <div className='rounded-lg border border-white/10 bg-white/[0.02] p-3.5 space-y-1 text-xs'>
-                <div className='font-mono font-medium text-white'>{cur.assignedOfficer}</div>
-                <div className='text-white/60'>{cur.officerDetails}</div>
-                <div className='text-[11px] text-white/80 font-mono flex items-center gap-1.5 pt-0.5'>
-                  <span className='h-1.5 w-1.5 rounded-full bg-white'></span>
+              <div className='rounded-lg border border-[rgba(92,140,58,0.18)] bg-[#F0F5EE] p-3.5 space-y-1 text-xs'>
+                <div className='font-mono font-medium text-[#142617]'>{cur.assignedOfficer}</div>
+                <div className='text-[#52734F]'>{cur.officerDetails}</div>
+                <div className='text-[11px] text-[#2D6325] font-mono flex items-center gap-1.5 pt-0.5'>
+                  <span className='h-1.5 w-1.5 rounded-full bg-[#5C8C3A]'></span>
                   {cur.availableVisit}
                 </div>
               </div>
 
               <div className='space-y-2 text-xs'>
-                <label className='font-mono text-[11px] text-white/60'>{cur.contactNumber}</label>
+                <label className='font-mono text-[11px] text-[#52734F]'>{cur.contactNumber}</label>
                 <input
                   type='text'
                   defaultValue={phone || '98765 43215'}
-                  className='w-full h-9 rounded-md border border-white/15 bg-black px-3 text-xs text-white font-mono focus:border-white/40 focus:outline-none'
+                  className='w-full h-9 rounded-md border border-[rgba(92,140,58,0.22)] bg-white px-3 text-xs text-[#142617] font-mono focus:border-[#5C8C3A] focus:outline-none'
                 />
               </div>
 
               <Button
-                className='w-full rounded-md bg-white text-black hover:bg-white/90 font-mono text-xs h-10'
+                className='w-full rounded-md bg-[#1C3320] text-white hover:bg-[#2A4A30] font-mono text-xs h-10'
                 onClick={() => {
                   setOfficerRequested(true)
                   toast.success('Field officer visit request dispatched!')
