@@ -27,42 +27,42 @@ export function ProfileDropdown() {
     <>
       <DropdownMenu modal={false}>
         <DropdownMenuTrigger asChild>
-          <Button variant='ghost' className='relative h-8 w-8 rounded-full'>
+          <Button variant='ghost' className='relative h-8 w-8 rounded-full border border-[rgba(92,140,58,0.25)] hover:bg-[#DEEED4]'>
             <Avatar className='h-8 w-8'>
               <AvatarImage src='/avatars/01.png' alt='@altgrade' />
-              <AvatarFallback>{initials}</AvatarFallback>
+              <AvatarFallback className='bg-[#DEEED4] text-[#2D5A28] font-bold text-xs'>{initials}</AvatarFallback>
             </Avatar>
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent className='w-56' align='end' forceMount>
-          <DropdownMenuLabel className='font-normal'>
+        <DropdownMenuContent className='w-56 bg-white/95 border border-[rgba(92,140,58,0.18)] shadow-lg rounded-xl p-1.5' align='end' forceMount>
+          <DropdownMenuLabel className='font-normal p-2'>
             <div className='flex flex-col gap-1.5'>
-              <p className='text-sm leading-none font-medium'>{name}</p>
-              <p className='text-xs leading-none text-muted-foreground'>
+              <p className='text-sm leading-none font-semibold text-[#1A2E1C]'>{name}</p>
+              <p className='text-xs leading-none text-[#6B8F68]'>
                 {email}
               </p>
             </div>
           </DropdownMenuLabel>
-          <DropdownMenuSeparator />
+          <DropdownMenuSeparator className='bg-[rgba(92,140,58,0.15)] my-1' />
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem className='text-[#1A2E1C] hover:bg-[#DEEED4] focus:bg-[#DEEED4] rounded-md cursor-pointer text-sm'>
               Profile
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              <DropdownMenuShortcut className='text-[#6B8F68] font-mono'>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className='text-[#1A2E1C] hover:bg-[#DEEED4] focus:bg-[#DEEED4] rounded-md cursor-pointer text-sm'>
               Billing
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+              <DropdownMenuShortcut className='text-[#6B8F68] font-mono'>⌘B</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem className='text-[#1A2E1C] hover:bg-[#DEEED4] focus:bg-[#DEEED4] rounded-md cursor-pointer text-sm'>
               Settings
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+              <DropdownMenuShortcut className='text-[#6B8F68] font-mono'>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>New Team</DropdownMenuItem>
+            <DropdownMenuItem className='text-[#1A2E1C] hover:bg-[#DEEED4] focus:bg-[#DEEED4] rounded-md cursor-pointer text-sm'>New Team</DropdownMenuItem>
           </DropdownMenuGroup>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem variant='destructive' onClick={() => setOpen(true)}>
+          <DropdownMenuSeparator className='bg-[rgba(92,140,58,0.15)] my-1' />
+          <DropdownMenuItem className='text-destructive hover:bg-destructive/10 focus:bg-destructive/10 rounded-md cursor-pointer text-sm' onClick={() => setOpen(true)}>
             Sign out
-            <DropdownMenuShortcut className='text-current'>
+            <DropdownMenuShortcut className='text-destructive/70 font-mono'>
               ⇧⌘Q
             </DropdownMenuShortcut>
           </DropdownMenuItem>

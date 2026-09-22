@@ -4,8 +4,14 @@ import { getCookie } from '@/lib/cookies'
 
 export const Route = createFileRoute('/_authenticated')({
   beforeLoad: ({ location }) => {
-    const cookieState = getCookie('thisisjustarandomstring')
-    const token = cookieState ? JSON.parse(cookieState) : ''
+    let token = ''
+    try {
+      const cookieState = getCookie('thisisjustarandomstring')
+      token = cookieState ? JSON.parse(cookieState) : ''
+    } catch {
+      token = ''
+    }
+
     if (!token) {
       throw redirect({
         to: '/sign-in',
@@ -13,12 +19,16 @@ export const Route = createFileRoute('/_authenticated')({
       })
     }
 
-    const savedUser = localStorage.getItem('altgrade-user')
-    if (savedUser) {
-      const user = JSON.parse(savedUser)
-      if (!user.role?.includes('admin')) {
-        throw redirect({ to: '/' })
+    try {
+      const savedUser = localStorage.getItem('altgrade-user')
+      if (savedUser) {
+        const user = JSON.parse(savedUser)
+        if (!user.role?.includes('admin')) {
+          throw redirect({ to: '/' })
+        }
       }
+    } catch {
+      // ignore parse error
     }
   },
   component: AuthenticatedLayout,

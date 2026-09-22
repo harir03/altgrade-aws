@@ -366,7 +366,9 @@ export function ScorePage() {
     })
   }, [consentedSources])
 
-  useEffect(() => {
+  const loadScore = () => {
+    setLoading(true)
+    setError(null)
     const request = consentedSources.length > 0
       ? fetchScore(userId, consentedSources, consentId, phone, answers, timeTaken, changesCount, locationHistory)
       : fetchScoreById(userId, consentId)
@@ -379,6 +381,10 @@ export function ScorePage() {
         setError(err.message)
         setLoading(false)
       })
+  }
+
+  useEffect(() => {
+    loadScore()
 
     fetchUserNotifications(userId)
       .then((n) => setNotification(n))
@@ -917,11 +923,21 @@ export function ScorePage() {
 
   if (error || !data) {
     return (
-      <Alert variant='destructive'>
-        <AlertTriangle className='h-4 w-4' />
-        <AlertTitle>Unable to retrieve your score</AlertTitle>
-        <AlertDescription>{error || 'Please try again later'}</AlertDescription>
-      </Alert>
+      <div className='max-w-xl mx-auto py-12 px-4'>
+        <Alert variant='destructive' className='mb-6 bg-red-950/40 border-red-800 text-red-200'>
+          <AlertTriangle className='h-4 w-4' />
+          <AlertTitle>Unable to retrieve your score</AlertTitle>
+          <AlertDescription className='text-xs mt-1 text-red-300'>{error || 'Please try again later'}</AlertDescription>
+        </Alert>
+        <div className='flex gap-3'>
+          <Button onClick={loadScore} className='bg-brand-blue hover:bg-brand-blue/90 text-white'>
+            Retry Assessment
+          </Button>
+          <Button variant='outline' asChild>
+            <Link to='/'>Back to Consent</Link>
+          </Button>
+        </div>
+      </div>
     )
   }
 

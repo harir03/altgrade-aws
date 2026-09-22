@@ -13,15 +13,31 @@ export async function fetchScore(
   changesCount?: number,
   locationHistory?: string
 ): Promise<ScoreResponse> {
+  let parsedAnswers = undefined
+  if (answers) {
+    try {
+      parsedAnswers = typeof answers === 'string' ? JSON.parse(answers) : answers
+    } catch {
+      parsedAnswers = undefined
+    }
+  }
+  let parsedLocation = undefined
+  if (locationHistory) {
+    try {
+      parsedLocation = typeof locationHistory === 'string' ? JSON.parse(locationHistory) : locationHistory
+    } catch {
+      parsedLocation = undefined
+    }
+  }
   const { data } = await api.post<ScoreResponse>('/score', {
     user_id: userId,
     consented_sources: sources,
     consent_id: consentId,
     phone: phone,
-    answers: answers ? JSON.parse(answers) : undefined,
+    answers: parsedAnswers,
     time_taken_ms: timeTakenMs,
     changes_count: changesCount,
-    location_history: locationHistory ? JSON.parse(locationHistory) : undefined,
+    location_history: parsedLocation,
   })
   return data
 }
